@@ -11,17 +11,25 @@ This package requires the *Mathematica* NCAlgebra package, version NCAlgebra 4.0
 Package files
 -------------
 
-The package files are stored in the ``unidyn/`` directory ::
+upper directory
+^^^^^^^^^^^^^^^
 
-    UniDyn.m         master file; loads all the other package files
-    OpCreate.m       CreateOperator[] and CreateScalar[] convenience functions
+Example notebooks ::
 
-Each package has unit tests :: 
+    UniDyn--Demo-01.nb    loads ``NCAlgebra``, ``UniDyn``, and runs the unit tests
+
+
+unidyn directory
+^^^^^^^^^^^^^^^^
+
+The package files are stored in the ``unidyn/`` directory.  These consist of *Mathematica* files ::
+
+    UniDyn.m              master file; loads all the other package files
+    OpCreate.m            CreateOperator[] and CreateScalar[] convenience functions
+
+plus unit-testing files ::
 
     OpCreate-tests.m 
     
-There are example notebooks ::
-
-    UniDyn--Demo-01.nb    loads ``NCAlgebra``, ``UniDyn``, and runs the unit tests
 
     
