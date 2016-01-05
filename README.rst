@@ -48,8 +48,17 @@ Packaging notes
     BeginPackage["OpCreate`",{"Global`","NC`","NCAlgebra`"}]
 
     CreateOperator::usage="CreateOperator[] is used ..."
-
     CreateScalar::usage="CreateScalar[list] is used ..."
 
-    Needs["NC`"]
-    Needs["NCAlgebra`"]
+    (* No Begin["Private`"] here *)
+    
+    CommQ = NonCommutativeMultiply`CommutativeQ
+    
+    Clear[CreateScalar];
+    CreateScalar[a$sym_Symbol] := (Clear[a$sym]; CommQ[a$sym] ^:= True;)
+    
+    ...
+    
+    (* No End[] here *)
+    
+    EndPackage[]

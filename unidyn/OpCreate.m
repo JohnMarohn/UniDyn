@@ -12,10 +12,15 @@ CreateOperator::usage="CreateOperator[] is used to batch-define a bunch of opera
 
 CreateScalar::usage="CreateScalar[list] is used to batch-define a bunch of scalars. The parameter list can be a single scalar or a list of scalars.  Example: CreateScalar[{w1,w2}]."
 
-(* NO NOT put a Begin["Private`"] here because we want the upvalues to be exposed to Global` *)
+(* 
+No Begin["Private`"] here, because we want the upvalues to be exposed to Global`.
+We also do not really need to have
 
 Needs["NC`"]
 Needs["NCAlgebra`"]
+
+either, since they are declared as needed in the BeginPackage[] statement above.
+*)
 
 (*~ START ~*)
 
@@ -95,6 +100,9 @@ If[$VerboseLoad == True,
     Message[CreateOperator::usage];
     Message[CreateScalar::usage]
 ]
+
+
+
 
 
 
