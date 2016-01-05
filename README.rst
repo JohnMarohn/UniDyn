@@ -16,7 +16,7 @@ upper directory
 
 Example notebooks ::
 
-    UniDyn--Demo-01.nb    loads ``NCAlgebra``, ``UniDyn``, and runs the unit tests
+    UniDyn--Demo-01.nb    loads NCAlgebra and UniDyn; runs the unit tests
 
 
 unidyn directory
@@ -31,5 +31,25 @@ plus unit-testing files ::
 
     OpCreate-tests.m 
     
+Background reading
+------------------
 
+* *Associating Definitions with Different Symbols* in the Wolfram Language Tutorial [`link <https://reference.wolfram.com/language/tutorial/AssociatingDefinitionsWithDifferentSymbols.html>`__].  I rely a lot on the ``UpSetDelayed[]`` function, ``:^=`` in shorthand.
+
+* *Creating Mathematica packages* at the Mathematica Stack Exchange [`link <http://mathematica.stackexchange.com/questions/29324/creating-mathematica-packages>`__]. A quick and easy introduction to packaging.
     
+* *Package Development* in the Wolfram Language Guide [`link <https://reference.wolfram.com/language/guide/PackageDevelopment.html>`__]. A list of functions used to create a *Mathematica* package; no example code.  
+
+Packaging notes
+---------------
+
+.. code:: Mathematica
+
+    BeginPackage["OpCreate`",{"Global`","NC`","NCAlgebra`"}]
+
+    CreateOperator::usage="CreateOperator[] is used ..."
+
+    CreateScalar::usage="CreateScalar[list] is used ..."
+
+    Needs["NC`"]
+    Needs["NCAlgebra`"]
