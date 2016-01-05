@@ -1,0 +1,971 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     40122,        962]
+NotebookOptionsPosition[     38061,        889]
+NotebookOutlinePosition[     38418,        905]
+CellTagsIndexPosition[     38375,        902]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["UniDyn--Demo-01.nb", "Title",
+ CellChangeTimes->{{3.6352690845273046`*^9, 3.635269100847275*^9}, {
+  3.6609180081345453`*^9, 3.660918013241088*^9}}],
+
+Cell["\<\
+John A. Marohn
+jam99@cornell.edu
+Cornell University\
+\>", "Text",
+ CellChangeTimes->{{3.635269101985786*^9, 3.635269121580956*^9}},
+ FontSize->18],
+
+Cell[TextData[{
+ StyleBox["Abstract:",
+  FontWeight->"Bold"],
+ "  This demonstration notebook loads the ",
+ StyleBox["UniDyn",
+  FontWeight->"Bold"],
+ " package and executes the package\[CloseCurlyQuote]s unit tests."
+}], "Text",
+ CellChangeTimes->{{3.6352698622319117`*^9, 3.635269926908793*^9}, {
+  3.6352701305950613`*^9, 3.635270138669529*^9}},
+ FontSize->18],
+
+Cell[CellGroupData[{
+
+Cell["Set the path to the package", "Section",
+ CellChangeTimes->{{3.635270036711257*^9, 3.63527004852262*^9}}],
+
+Cell[TextData[{
+ "Tell ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " the path to the directory containing the package.    \n\n",
+ "EDIT THE FOLLOWING PATH STRING:"
+}], "Text",
+ CellChangeTimes->{{3.635270060901009*^9, 3.635270086988311*^9}},
+ FontSize->16],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "$PackagePath", " ", "=", 
+    "\"\</Users/jam99/Dropbox/MarohnGroup__Software_Library/UniDyn/unidyn\>\"\
+"}], ";"}], " "}]], "Input",
+ CellChangeTimes->{{3.6349053527016897`*^9, 3.6349054064223843`*^9}, {
+  3.634910931339162*^9, 3.634910931457775*^9}, {3.634914337947165*^9, 
+  3.6349143671071568`*^9}, {3.634922597904743*^9, 3.634922606812076*^9}, {
+  3.635268730835155*^9, 3.635268731125407*^9}, {3.635269951638358*^9, 
+  3.635269958323474*^9}, {3.660918115324842*^9, 3.660918132325369*^9}, {
+  3.660918590921587*^9, 3.660918600403768*^9}},
+ FontSize->16],
+
+Cell["YOU SHOULD NOT NEED TO EDIT ANYTHING FROM HERE ONWARDS.", "Text",
+ CellChangeTimes->{{3.635270073196437*^9, 3.635270077357624*^9}},
+ FontSize->16]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Load the package", "Section",
+ CellChangeTimes->{{3.635269129230983*^9, 3.63526913095236*^9}}],
+
+Cell[TextData[{
+ "Append the package path to the system path.  Before trying to load the \
+package, ask ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " to find it.  This is a test that we directed ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " to the correct directory.  The output of this command should be the full \
+system path to the UniDyn.m file.   "
+}], "Text",
+ CellChangeTimes->{{3.635269223597199*^9, 3.635269340159473*^9}, {
+   3.635269947982662*^9, 3.6352699492517843`*^9}, {3.635269985297124*^9, 
+   3.63527000724584*^9}, 3.635270066996499*^9, {3.63527010818321*^9, 
+   3.6352701131658497`*^9}, {3.660918102499856*^9, 3.6609181035465183`*^9}},
+ FontSize->18],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$Path", " ", "=", " ", 
+   RowBox[{"AppendTo", "[", 
+    RowBox[{"$Path", ",", "$PackagePath"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"FindFile", "[", "\"\<UniDyn`\>\"", "]"}]}], "Input",
+ CellChangeTimes->{{3.634906393354924*^9, 3.634906398308229*^9}, {
+  3.634922599063291*^9, 3.634922599752222*^9}, {3.635268728673848*^9, 
+  3.6352687402094*^9}, {3.635269954012105*^9, 3.6352699550474253`*^9}},
+ FontSize->16],
+
+Cell[BoxData["\<\"/Users/jam99/Dropbox/MarohnGroup__Software_Library/UniDyn/\
+UniDyn/UniDyn.m\"\>"], "Output",
+ CellChangeTimes->{3.66092439742654*^9, 3.660924476743696*^9, 
+  3.660924802455822*^9, 3.6609418588343477`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Now that we are confident that the path is set correctlly, load the package.  \
+Setting the global $VerboseLoad variable to True will print out the help \
+strings for key commands in the package.  \
+\>", "Text",
+ CellChangeTimes->{{3.635269347360386*^9, 3.63526943190546*^9}},
+ FontSize->18],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$VerboseLoad", " ", "=", "True"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Needs", "[", "\"\<UniDyn`\>\"", "]"}]}], "Input",
+ CellChangeTimes->{{3.6349053867510777`*^9, 3.634905416481072*^9}, {
+  3.63490767076449*^9, 3.6349076710452843`*^9}, {3.634907883893368*^9, 
+  3.634907884645959*^9}, {3.634908145028349*^9, 3.634908169747654*^9}, {
+  3.634908291290161*^9, 3.63490829242697*^9}, {3.634908346962665*^9, 
+  3.634908347381027*^9}, {3.634908708773491*^9, 3.634908709549176*^9}, {
+  3.634913586017125*^9, 3.634913590654319*^9}, {3.634914899633556*^9, 
+  3.634914906473028*^9}, {3.634922029682571*^9, 3.634922033401874*^9}, {
+  3.634922269936797*^9, 3.634922274006637*^9}, {3.634922311074657*^9, 
+  3.634922363327815*^9}, {3.634944659078182*^9, 3.634944680820159*^9}, {
+  3.634948512285396*^9, 3.634948515309455*^9}, {3.635074775893344*^9, 
+  3.6350747767888603`*^9}, {3.635093794640894*^9, 3.6350937969058867`*^9}, {
+  3.635095327382372*^9, 3.635095328040146*^9}, {3.635171740382801*^9, 
+  3.635171740920933*^9}},
+ FontSize->16],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"You are using the version of NCAlgebra which is found in:\"\
+\>"], "Print",
+ CellChangeTimes->{3.660924476785633*^9, 3.660924802505053*^9, 
+  3.660941858856225*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  \"\>", 
+   "\[InvisibleSpace]", "\<\"/Users/jam99/Downloads/NC\"\>"}],
+  SequenceForm["  ", "/Users/jam99/Downloads/NC"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.660924476785633*^9, 3.660924802505053*^9, 
+  3.660941858859124*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"You can now use \\\"<< NCAlgebra`\\\" to load NCAlgebra or \
+\"\>", "\[InvisibleSpace]", "\<\"\\\"<< NCGB`\\\" to load NCGB.\"\>"}],
+  SequenceForm[
+  "You can now use \"<< NCAlgebra`\" to load NCAlgebra or ", 
+   "\"<< NCGB`\" to load NCGB."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.660924476785633*^9, 3.660924802505053*^9, 
+  3.660941858862008*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Needs", "::", "nocont"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Context \[NoBreak]\\!\\(\\\"NC`\\\"\\)\[NoBreak] was not \
+created when Needs was evaluated. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Needs/nocont\\\", \
+ButtonNote -> \\\"Needs::nocont\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6609244768827887`*^9, 3.66092480262747*^9, 
+  3.660941858866222*^9}],
+
+Cell[BoxData["\<\"You have already loaded NCAlgebra.m\"\>"], "Print",
+ CellChangeTimes->{3.660924476785633*^9, 3.660924802505053*^9, 
+  3.660941858870113*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Needs", "::", "nocont"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Context \[NoBreak]\\!\\(\\\"NCAlgebra`\\\"\\)\[NoBreak] \
+was not created when Needs was evaluated. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Needs/nocont\\\", ButtonNote -> \
+\\\"Needs::nocont\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6609244768827887`*^9, 3.66092480262747*^9, 
+  3.660941858900981*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"You are using the version of NCAlgebra which is found in:\"\
+\>"], "Print",
+ CellChangeTimes->{3.660924476785633*^9, 3.660924802505053*^9, 
+  3.660941858904037*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  \"\>", 
+   "\[InvisibleSpace]", "\<\"/Users/jam99/Downloads/NC\"\>"}],
+  SequenceForm["  ", "/Users/jam99/Downloads/NC"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.660924476785633*^9, 3.660924802505053*^9, 
+  3.660941858906665*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"You can now use \\\"<< NCAlgebra`\\\" to load NCAlgebra or \
+\"\>", "\[InvisibleSpace]", "\<\"\\\"<< NCGB`\\\" to load NCGB.\"\>"}],
+  SequenceForm[
+  "You can now use \"<< NCAlgebra`\" to load NCAlgebra or ", 
+   "\"<< NCGB`\" to load NCGB."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.660924476785633*^9, 3.660924802505053*^9, 
+  3.6609418589105062`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Needs", "::", "nocont"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Context \[NoBreak]\\!\\(\\\"NC`\\\"\\)\[NoBreak] was not \
+created when Needs was evaluated. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Needs/nocont\\\", \
+ButtonNote -> \\\"Needs::nocont\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6609244768827887`*^9, 3.66092480262747*^9, 
+  3.660941858951322*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Needs :: \
+nocont\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this \
+calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6609244768827887`*^9, 3.66092480262747*^9, 
+  3.660941858985036*^9}],
+
+Cell[BoxData["\<\"You have already loaded NCAlgebra.m\"\>"], "Print",
+ CellChangeTimes->{3.660924476785633*^9, 3.660924802505053*^9, 
+  3.660941858988982*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"CreateOperator", "::", "usage"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"CreateOperator[] is used to batch-define a bunch of \
+operators. Example: CreateOperator[{{Ix, Iy, Iz},{Sx,Sy,Sz}}] will create six \
+operators;  each of the operators in the first list is meant to commute with \
+each of the operators in the second list.\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6609244768827887`*^9, 3.66092480262747*^9, 
+  3.6609418589920387`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"CreateScalar", "::", "usage"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"CreateScalar[list] is used to batch-define a bunch of \
+scalars. The parameter list can be a single scalar or a list of scalars.  \
+Example: CreateScalar[{w1,w2}].\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6609244768827887`*^9, 3.66092480262747*^9, 
+  3.660941858994845*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Execute the units tests", "Section",
+ CellChangeTimes->{{3.635269450321582*^9, 3.635269455866803*^9}}],
+
+Cell["\<\
+Included with the package are a number of files, ending in \
+\[OpenCurlyDoubleQuote]-tests.m\[CloseCurlyDoubleQuote], that contain tests \
+of the package\[CloseCurlyQuote]s functions -- so-called unit tests.  Set the \
+working directory to the package directory and pretty-print the directory \
+name.\
+\>", "Text",
+ CellChangeTimes->{{3.635269466546741*^9, 3.63526959787702*^9}, {
+  3.6352696661918793`*^9, 3.6352697255432568`*^9}},
+ FontSize->18],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "$PackagePath", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"{", "$PackagePath", "}"}], "}"}], ",", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"None", ",", 
+      RowBox[{"{", "\"\<Directory\>\"", "}"}]}], "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.634944324488654*^9, 3.6349443603233624`*^9}, {
+   3.6349444030097713`*^9, 3.63494440330383*^9}, {3.634944747308063*^9, 
+   3.6349447481808853`*^9}, {3.634946064022402*^9, 3.634946069263152*^9}, {
+   3.634946188079462*^9, 3.634946189912341*^9}, {3.6349479903618507`*^9, 
+   3.6349480514686327`*^9}, {3.6349480899795113`*^9, 
+   3.6349482285783367`*^9}, {3.634948408385352*^9, 3.634948452061852*^9}, {
+   3.635269608570084*^9, 3.635269645220949*^9}, 3.635269728194304*^9},
+ FontSize->16],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      TagBox["\<\"Directory\"\>",
+       HoldForm]},
+     {"\<\"/Users/jam99/Dropbox/MarohnGroup__Software_Library/UniDyn/unidyn\"\
+\>"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {None, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$, TableHeadings -> {None, {"Directory"}}]]]], "Output",\
+
+ CellChangeTimes->{
+  3.639191228274679*^9, 3.641748443961693*^9, {3.6609243826143713`*^9, 
+   3.660924397477556*^9}, 3.66092447723348*^9, 3.660924802955575*^9, 
+   3.660941859035039*^9}]
+}, Open  ]],
+
+Cell["\<\
+Get the names of all the unit-testing files included with the package \
+(following my convention that the unit testing file end in \
+\[OpenCurlyDoubleQuote]-tests.m\[CloseCurlyDoubleQuote]).   Pretty-print the \
+names of the unit-test files included with the package.\
+\>", "Text",
+ CellChangeTimes->{
+  3.6352696714534483`*^9, {3.6352697371205063`*^9, 3.6352697785313387`*^9}, {
+   3.6352698393266697`*^9, 3.635269839517961*^9}, 3.6609243923593283`*^9},
+ FontSize->18],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"fn", " ", "=", " ", 
+   RowBox[{"FileNames", "[", "\"\<*-tests.m\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"{", "fn", "}"}], "}"}], ",", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"None", ",", 
+      RowBox[{"{", "\"\<Test files found\>\"", "}"}]}], "}"}]}]}], 
+  "]"}]}], "Input",
+ FontSize->16],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      TagBox["\<\"Test files found\"\>",
+       HoldForm]},
+     {
+      TagBox[GridBox[{
+         {"\<\"OpCreate-tests.m\"\>"}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.5599999999999999]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+             Offset[0.2]}}, "RowsIndexed" -> {}}],
+       Column]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {None, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, TableHeadings -> {None, {"Test files found"}}]]]], "Output",
+ CellChangeTimes->{
+  3.639191228323477*^9, 3.641748443992653*^9, {3.6609243828556147`*^9, 
+   3.660924397509259*^9}, 3.66092447728411*^9, 3.6609248029847813`*^9, 
+   3.66094185906913*^9}]
+}, Open  ]],
+
+Cell["Finally, carry out the unit tests and make a report.", "Text",
+ CellChangeTimes->{{3.635269787557482*^9, 3.6352698056777897`*^9}},
+ FontSize->18],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tr", " ", "=", 
+   RowBox[{"TestReport", " ", "/@", " ", "fn"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TableForm", "[", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"tr", " ", "[", 
+     RowBox[{"[", "k", "]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "1", ",", 
+      RowBox[{"Length", "[", "tr", "]"}]}], "}"}]}], "]"}], "]"}]}], "Input",
+ FontSize->16],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      InterpretationBox[
+       RowBox[{
+        TagBox["TestReportObject",
+         "SummaryHead"], "[", 
+        DynamicModuleBox[{Typeset`open$$ = False}, 
+         PanelBox[
+          PaneSelectorBox[{False->GridBox[{
+             {
+              PaneBox[
+               ButtonBox[
+                
+                DynamicBox[FEPrivate`FrontEndResource[
+                 "FEBitmaps", "SquarePlusIconMedium"],
+                 ImageSizeCache->{12., {0., 12.}}],
+                Appearance->None,
+                ButtonFunction:>(Typeset`open$$ = True),
+                Evaluator->Automatic,
+                Method->"Preemptive"],
+               Alignment->{Center, Center},
+               
+               ImageSize->
+                Dynamic[{
+                 Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                  AbsoluteCurrentValue[Magnification]}]], 
+              GraphicsBox[InsetBox[
+                PaneBox[
+                 
+                 DynamicBox[FEPrivate`FrontEndResource[
+                  "MUnitExpressions", "SuccessIcon"],
+                  ImageSizeCache->{16., {4., 8.}}],
+                 Alignment->Center,
+                 
+                 ImageSize->
+                  Dynamic[{
+                   Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]]],
+               AspectRatio->1,
+               Axes->False,
+               Background->GrayLevel[0.93],
+               Frame->True,
+               FrameStyle->Directive[
+                 Thickness[Tiny], 
+                 GrayLevel[0.55]],
+               FrameTicks->None,
+               ImageSize->{Automatic, 
+                 Dynamic[
+                 3.5 CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                  Magnification]]},
+               PlotRange->{{0, 1}, {0, 1}}], GridBox[{
+                {
+                 RowBox[{
+                  TagBox["\<\"Title: \"\>",
+                   "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                  TagBox["\<\"Test Report: OpCreate-tests.m\"\>",
+                   "SummaryItem"]}], "\[SpanFromLeft]"},
+                {
+                 RowBox[{
+                  TagBox["\<\"Success rate: \"\>",
+                   "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                  TagBox[
+                   TemplateBox[{"100","\"%\""},
+                    "RowDefault"],
+                   "SummaryItem"]}], 
+                 RowBox[{
+                  TagBox["\<\"Tests run: \"\>",
+                   "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                  TagBox["23",
+                   "SummaryItem"]}]}
+               },
+               AutoDelete->False,
+               
+               BaseStyle->{
+                ShowStringCharacters -> False, NumberMarks -> False, 
+                 PrintPrecision -> 3, ShowSyntaxStyles -> False},
+               
+               GridBoxAlignment->{
+                "Columns" -> {{Left}}, "Rows" -> {{Automatic}}},
+               
+               GridBoxItemSize->{
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+               GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{Automatic}}}]}
+            },
+            AutoDelete->False,
+            BaselinePosition->{1, 1},
+            GridBoxAlignment->{"Rows" -> {{Top}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], True->
+           GridBox[{
+             {
+              PaneBox[
+               ButtonBox[
+                
+                DynamicBox[FEPrivate`FrontEndResource[
+                 "FEBitmaps", "SquareMinusIconMedium"]],
+                Appearance->None,
+                ButtonFunction:>(Typeset`open$$ = False),
+                Evaluator->Automatic,
+                Method->"Preemptive"],
+               Alignment->{Center, Center},
+               
+               ImageSize->
+                Dynamic[{
+                 Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                  AbsoluteCurrentValue[Magnification]}]], 
+              GraphicsBox[InsetBox[
+                PaneBox[
+                 
+                 DynamicBox[FEPrivate`FrontEndResource[
+                  "MUnitExpressions", "SuccessIcon"]],
+                 Alignment->Center,
+                 
+                 ImageSize->
+                  Dynamic[{
+                   Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]]],
+               AspectRatio->1,
+               Axes->False,
+               Background->GrayLevel[0.93],
+               Frame->True,
+               FrameStyle->Directive[
+                 Thickness[Tiny], 
+                 GrayLevel[0.55]],
+               FrameTicks->None,
+               ImageSize->{Automatic, 
+                 Dynamic[
+                 3.5 CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                  Magnification]]},
+               PlotRange->{{0, 1}, {0, 1}}], GridBox[{
+                {
+                 RowBox[{
+                  TagBox["\<\"Title: \"\>",
+                   "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                  TagBox["\<\"Test Report: OpCreate-tests.m\"\>",
+                   "SummaryItem"]}], "\[SpanFromLeft]"},
+                {
+                 RowBox[{
+                  TagBox["\<\"Success rate: \"\>",
+                   "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                  TagBox[
+                   TemplateBox[{"100","\"%\""},
+                    "RowDefault"],
+                   "SummaryItem"]}], 
+                 RowBox[{
+                  TagBox["\<\"Tests run: \"\>",
+                   "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                  TagBox["23",
+                   "SummaryItem"]}]},
+                {
+                 RowBox[{
+                  TagBox["\<\"Succeeded: \"\>",
+                   "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                  TagBox["23",
+                   "SummaryItem"]}], "\[SpanFromLeft]"},
+                {
+                 RowBox[{
+                  TagBox["\<\"Failed: \"\>",
+                   "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                  TagBox["0",
+                   "SummaryItem"]}], "\[SpanFromLeft]"},
+                {
+                 RowBox[{
+                  TagBox["\<\"Failed with wrong results: \"\>",
+                   "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                  TagBox["0",
+                   "SummaryItem"]}], "\[SpanFromLeft]"},
+                {
+                 RowBox[{
+                  TagBox["\<\"Failed with messages: \"\>",
+                   "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                  TagBox["0",
+                   "SummaryItem"]}], "\[SpanFromLeft]"},
+                {
+                 RowBox[{
+                  TagBox["\<\"Failed with errors: \"\>",
+                   "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                  TagBox["0",
+                   "SummaryItem"]}], "\[SpanFromLeft]"}
+               },
+               AutoDelete->False,
+               
+               BaseStyle->{
+                ShowStringCharacters -> False, NumberMarks -> False, 
+                 PrintPrecision -> 3, ShowSyntaxStyles -> False},
+               
+               GridBoxAlignment->{
+                "Columns" -> {{Left}}, "Rows" -> {{Automatic}}},
+               
+               GridBoxItemSize->{
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+               GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{Automatic}}}]}
+            },
+            AutoDelete->False,
+            BaselinePosition->{1, 1},
+            GridBoxAlignment->{"Rows" -> {{Top}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]}, Dynamic[
+           Typeset`open$$],
+           ImageSize->Automatic],
+          BaselinePosition->Baseline],
+         DynamicModuleValues:>{}], "]"}],
+       TestReportObject[
+        Association[
+        "Title" -> "Test Report: OpCreate-tests.m", "TimeElapsed" -> 
+         Quantity[0.4, "Seconds"], "TestsSucceededCount" -> 23, 
+         "TestsFailedCount" -> 0, "TestsFailedWrongResultsCount" -> 0, 
+         "TestsFailedWithMessagesCount" -> 0, "TestsFailedWithErrorsCount" -> 
+         0, "Aborted" -> False, "TestResults" -> 
+         Association[2 -> TestResultObject[
+             Association[
+             "TestIndex" -> 2, "TestID" -> "OpCreate > test01a", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000094`2.1236428514316925, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00009199999999864872, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 3 -> TestResultObject[
+             Association[
+             "TestIndex" -> 3, "TestID" -> "OpCreate > test01b", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000081`2.0590000167106437, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.0000800000000005241, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 4 -> TestResultObject[
+             Association[
+             "TestIndex" -> 4, "TestID" -> "OpCreate > test01c", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.00008`2.0536049848239375, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00007800000000024454, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 5 -> TestResultObject[
+             Association[
+             "TestIndex" -> 5, "TestID" -> "OpCreate > test02a", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000081`2.0590000167106437, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00007899999999771978, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 6 -> TestResultObject[
+             Association[
+             "TestIndex" -> 6, "TestID" -> "OpCreate > test02b", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000095`2.1282386031208413, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00009500000000173259, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 7 -> TestResultObject[
+             Association[
+             "TestIndex" -> 7, "TestID" -> "OpCreate > test02c", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000094`2.1236428514316925, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00009300000000145303, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 8 -> TestResultObject[
+             Association[
+             "TestIndex" -> 8, "TestID" -> "OpCreate > test03a", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000083`2.0695930902080675, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00008300000000005525, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 9 -> TestResultObject[
+             Association[
+             "TestIndex" -> 9, "TestID" -> "OpCreate > test03b", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000084`2.0747942838938753, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00008200000000080365, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 10 -> TestResultObject[
+             Association[
+             "TestIndex" -> 10, "TestID" -> "OpCreate > test03c", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000081`2.0590000167106437, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.0000800000000005241, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 11 -> TestResultObject[
+             Association[
+             "TestIndex" -> 11, "TestID" -> "OpCreate > test04a", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000081`2.0590000167106437, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00007899999999949614, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 12 -> TestResultObject[
+             Association[
+             "TestIndex" -> 12, "TestID" -> "OpCreate > test04b", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.00008`2.0536049848239375, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00007799999999846818, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 13 -> TestResultObject[
+             Association[
+             "TestIndex" -> 13, "TestID" -> "OpCreate > test04c", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000081`2.0590000167106437, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.0000800000000005241, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 14 -> TestResultObject[
+             Association[
+             "TestIndex" -> 14, "TestID" -> "OpCreate > test04d", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000148`2.3207767132269512, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00014800000000114721`, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 15 -> TestResultObject[
+             Association[
+             "TestIndex" -> 15, "TestID" -> "OpCreate > test04e", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000093`2.118997946385929, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00009200000000042508, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 16 -> TestResultObject[
+             Association[
+             "TestIndex" -> 16, "TestID" -> "OpCreate > test04f", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000092`2.114302825177549, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00008900000000089392, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 17 -> TestResultObject[
+             Association[
+             "TestIndex" -> 17, "TestID" -> "OpCreate > test04g", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000082`2.0643288502157104, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.0000800000000005241, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 18 -> TestResultObject[
+             Association[
+             "TestIndex" -> 18, "TestID" -> "OpCreate > test04h", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000082`2.0643288502157104, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.0000809999999997757, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 19 -> TestResultObject[
+             Association[
+             "TestIndex" -> 19, "TestID" -> "OpCreate > test05a", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000083`2.0695930902080675, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00008200000000080365, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 20 -> TestResultObject[
+             Association[
+             "TestIndex" -> 20, "TestID" -> "OpCreate > test05b", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000081`2.0590000167106437, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.0000780000000020209, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 21 -> TestResultObject[
+             Association[
+             "TestIndex" -> 21, "TestID" -> "OpCreate > test05c", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000081`2.0590000167106437, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00007799999999846818, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 22 -> TestResultObject[
+             Association[
+             "TestIndex" -> 22, "TestID" -> "OpCreate > test05d", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000082`2.0643288502157104, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00007899999999949614, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 23 -> TestResultObject[
+             Association[
+             "TestIndex" -> 23, "TestID" -> "OpCreate > test06a", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000083`2.0695930902080675, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00008099999999799934, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]], 24 -> TestResultObject[
+             Association[
+             "TestIndex" -> 24, "TestID" -> "OpCreate > test06b", "Outcome" -> 
+              "Success", "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> 
+              HoldForm[True], "ExpectedMessages" -> {}, 
+              "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+              Quantity[0.000081`2.0590000167106437, "Seconds"], "CPUTimeUsed" -> 
+              Quantity[0.00007899999999949614, "Seconds"], "MemoryUsed" -> 
+              Quantity[56, "Bytes"]]]], 
+         "TestsSucceededIndices" -> {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 
+          14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24}, 
+         "TestsFailedIndices" -> {}, "TestsFailedWrongResultsIndices" -> {}, 
+         "TestsFailedWithMessagesIndices" -> {}, 
+         "TestsFailedWithErrorsIndices" -> {}]],
+       Editable->False,
+       SelectWithContents->True,
+       Selectable->False]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.5599999999999999]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   Column],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.639191229554275*^9, 3.64174844532695*^9, {3.66092438331537*^9, 
+   3.660924398009708*^9}, 3.660924477690034*^9, 3.6609248035131683`*^9, 
+   3.660941859502709*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["Test some code here", "Section",
+ CellChangeTimes->{{3.660924415106453*^9, 3.660924421262374*^9}}]
+}, Open  ]]
+},
+WindowSize->{808, 756},
+WindowMargins->{{Automatic, 96}, {5, Automatic}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September 9, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 154, 2, 92, "Title"],
+Cell[737, 26, 156, 6, 83, "Text"],
+Cell[896, 34, 363, 10, 59, "Text"],
+Cell[CellGroupData[{
+Cell[1284, 48, 111, 1, 64, "Section"],
+Cell[1398, 51, 265, 8, 77, "Text"],
+Cell[1666, 61, 608, 13, 54, "Input"],
+Cell[2277, 76, 152, 2, 33, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2466, 83, 100, 1, 64, "Section"],
+Cell[2569, 86, 686, 15, 107, "Text"],
+Cell[CellGroupData[{
+Cell[3280, 105, 463, 10, 53, "Input"],
+Cell[3746, 117, 222, 3, 28, "Output"]
+}, Open  ]],
+Cell[3983, 123, 301, 6, 83, "Text"],
+Cell[CellGroupData[{
+Cell[4309, 133, 1066, 17, 53, "Input"],
+Cell[CellGroupData[{
+Cell[5400, 154, 182, 3, 22, "Print"],
+Cell[5585, 159, 291, 7, 22, "Print"],
+Cell[5879, 168, 412, 9, 22, "Print"]
+}, Open  ]],
+Cell[6306, 180, 520, 11, 24, "Message"],
+Cell[6829, 193, 158, 2, 22, "Print"],
+Cell[6990, 197, 527, 11, 24, "Message"],
+Cell[CellGroupData[{
+Cell[7542, 212, 182, 3, 22, "Print"],
+Cell[7727, 217, 291, 7, 22, "Print"],
+Cell[8021, 226, 414, 9, 22, "Print"]
+}, Open  ]],
+Cell[8450, 238, 520, 11, 24, "Message"],
+Cell[8973, 251, 578, 12, 24, "Message"],
+Cell[9554, 265, 158, 2, 22, "Print"],
+Cell[9715, 269, 502, 10, 56, "Message"],
+Cell[10220, 281, 407, 9, 42, "Message"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10676, 296, 108, 1, 64, "Section"],
+Cell[10787, 299, 457, 9, 83, "Text"],
+Cell[CellGroupData[{
+Cell[11269, 312, 892, 19, 53, "Input"],
+Cell[12164, 333, 1087, 29, 47, "Output"]
+}, Open  ]],
+Cell[13266, 365, 479, 9, 83, "Text"],
+Cell[CellGroupData[{
+Cell[13770, 378, 436, 14, 53, "Input"],
+Cell[14209, 394, 1515, 40, 49, "Output"]
+}, Open  ]],
+Cell[15739, 437, 151, 2, 35, "Text"],
+Cell[CellGroupData[{
+Cell[15915, 443, 418, 13, 53, "Input"],
+Cell[16336, 458, 21578, 423, 97, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[37941, 885, 104, 1, 64, "Section"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

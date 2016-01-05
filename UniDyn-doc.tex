@@ -1,0 +1,103 @@
+\documentclass{article}
+
+\usepackage{fancyvrb}                        % verbatim function
+\usepackage[usenames,dvipsnames]{color}      % Periwinkle
+\usepackage{listings,xcolor}                 % for typesetting computer code
+
+\newcommand{\VerbFcn}[1]{{#1}}
+\newcommand{\VerbCmd}[1]{{\bf #1}}
+
+\begin{document}
+
+\lstset{ %
+% language=Mathematica,      % the language of the code -- buggy  
+keywords={
+	Clear,
+	True,False,
+	Exp,Sin,Cos,Tan,
+	Not,
+	Flatten,
+	StringJoin, ToString,
+	Module, Do, For,
+	Dimensions
+	},
+keywordstyle={\sffamily\bfseries\footnotesize}, % fonts used for keywords
+basicstyle={\sffamily\footnotesize},          % fonts that are used for everything else
+xleftmargin=2em,
+xrightmargin=-2em,
+tabsize=2,                 % sets default tabsize to 2 spaces
+captionpos=t,              % sets the caption-position to bottom
+caption=\lstname,          % show the filename 
+comment=[is]{(**}{**)},    % completely IGNORE text between "(**" and "**)" in the code 
+escapeinside={(*@}{@*)},   % code between "(*@" and "@*)" will be converted to LaTeX
+%
+escapebegin=\color{Periwinkle}\hspace{-2em}\begin{minipage}{\linewidth},
+escapeend=\end{minipage}, 
+breakindent=-2em,
+postbreak=\space,
+showstringspaces=false,
+breakatwhitespace=true,
+%
+framexleftmargin=2em,
+framexrightmargin=-2em,
+frame=lines,
+frame=tb,
+%
+rangeprefix=(*~\ ,  % we will include only code between the lines "(*~ START ~*)" 
+rangesuffix=\ ~*),  % ... and "(*~ END ~*)"; the "START" and "END" parts are specified below
+columns=flexible,   % this is CRUCIAL; now function names just look like times new roman font....
+%
+literate={x\$var}{{\emph{x}}}1 
+{i\$max\$sym}{{\ensuremath{i_{\text{max}}}}}1
+{j\$max\$sym}{{\ensuremath{j_{\text{max}}}}}1
+{n\$sym}{{\emph{n}}}1
+{i\$sym}{{\emph{i}}}1
+{j\$sym}{{\emph{j}}}1
+{a\$sym}{{\emph{a}}}1
+{b\$sym}{{\emph{b}}}1
+{c\$sym}{{\emph{c}}}1
+{d\$sym}{{\emph{d}}}1
+{Ix\$sym}{{\ensuremath{I_x}}}1
+{Iy\$sym}{{\ensuremath{I_y}}}1
+{Iz\$sym}{{\ensuremath{I_z}}}1
+{Sx\$sym}{{\ensuremath{S_x}}}1
+{Sy\$sym}{{\ensuremath{S_y}}}1
+{Sz\$sym}{{\ensuremath{S_z}}}1
+{p\$sym}{{\emph{p}}}1
+{a\$new\$sym}{{\ensuremath{a_{\text{new}}}}}1
+{p\$new\$sym}{{\ensuremath{p_{\text{new}}}}}1
+{->}{{\ensuremath{\: \rightarrow \:}}}1
+{//.}{{\ensuremath{\: //. \:}}}1  % define this before the {/.} replacement or //. will come out funny
+{/.}{{\ensuremath{\: /. \:}}}1
+{/@}{{\ensuremath{\: /@ \:}}}1
+{Print["}{{Print[``}}8
+{"Op}{{``Op}}3
+{["}{{[``}}2
+{,"}{{,``}}3
+{A\$sym}{{\emph{A}}}1
+{B\$sym}{{\emph{B}}}1
+{C\$sym}{{\emph{C}}}1
+{sigma\$1\$sym}{{\ensuremath{\sigma_1}}}1
+{aR\$sym}{{\ensuremath{a^{\dagger}}}}1
+{aL\$sym}{{\ensuremath{a}}}1
+{bR\$sym}{{\ensuremath{b^{\dagger}}}}1
+{bL\$sym}{{\ensuremath{b}}}1
+{Nop\$a}{{\ensuremath{N_a}}}1
+{Nop\$b}{{\ensuremath{N_b}}}1
+{\\[Alpha]}{{\ensuremath{\alpha}}}1
+{\\[Beta]}{{\ensuremath{\beta}}}1
+{alpha\$sym}{{\ensuremath{\alpha}}}1
+{beta\$sym}{{\ensuremath{\beta}}}1
+}
+
+\section{Operators and scalars}
+% =============================
+
+Our first task is to define functions that enable \emph{Mathematica} to distinguish between (non-commutative) operators and (commutative) scalars.  This is done in the \verb+OpCreate.m+ package, whose listing appears below.  Unit tests for the functions in the package are organized into a separate package, \verb+OpCreate-tests.m+, whose listing follows. 
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpCreate.m}
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpCreate-tests.m}
+
+
+
+\end{document}
