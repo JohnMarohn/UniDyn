@@ -50,15 +50,15 @@ Packaging notes
     CreateOperator::usage="CreateOperator[] is used ..."
     CreateScalar::usage="CreateScalar[list] is used ..."
 
-    (* No Begin["Private`"] here *)
+    (* Begin["Private`"] <== No needed.  We do not want these function private! *)
     
     CommQ = NonCommutativeMultiply`CommutativeQ
     
     Clear[CreateScalar];
     CreateScalar[a$sym_Symbol] := (Clear[a$sym]; CommQ[a$sym] ^:= True;)
     
-    ...
+    <more code here>
     
-    (* No End[] here *)
+    (* End[] <== Not needed. *)
     
     EndPackage[]
