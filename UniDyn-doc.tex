@@ -1,13 +1,52 @@
-\documentclass{article}
+\documentclass[12pt,letterpaper]{refart}
 
 \usepackage{fancyvrb}                        % verbatim function
 \usepackage[usenames,dvipsnames]{color}      % Periwinkle
 \usepackage{listings,xcolor}                 % for typesetting computer code
+\usepackage{fancyhdr}                        % fancy page top and bottom
 
 \newcommand{\VerbFcn}[1]{{#1}}
 \newcommand{\VerbCmd}[1]{{\bf #1}}
 
+\setlength\papermarginwidth{1.50in}
+\settextfraction{1.00}
+
 \begin{document}
+\sloppy
+
+\title{The UniDyn \emph{Mathematica} package}
+\author{
+	John A. Marohn\thanks{jam99@cornell.edu} \\ 
+	{\footnotesize Dept. of Chemistry and Chemical Biology} \\ 
+	{\footnotesize Cornell University, Ithaca, NY 14851-1301, USA}
+}
+\maketitle
+
+\begin{abstract}
+We have developed a \emph{Mathematica} algorithm for calculating the unitary time evolution of quantum-mechanical operators.  The algorithm obtains closed-form analytical results, does not rely on a matrix representation of the operators, and is applicable to both bounded systems like coupled spins and unbounded systems like harmonic oscillators.  Two example calculations are  
+\[
+	I_{x}(t) 
+		= e^{-i \, \omega t \, I_z} \, I_x \, e^{+i \, \omega t \, I_z} 
+		= I_x \cos{\omega t} + I_y \sin{\omega t}
+\]
+and
+\[
+	a^{\dagger}(t)
+		= e^{-i \, \omega t \, a^{\dagger} \, a} a^{\dagger} e^{+i \, \omega t \, a^{\dagger}} 
+		= a^{\dagger} \, e^{-i \, \omega t}
+\] 
+with $(I_x, I_y, I_z)$ the spin angular-momentum operators, $(a^{\dagger}, a)$ the harmonic-oscillator raising and lowering operators, $\omega$ a frequency, and $t$ time.  The rotations are ``self derived'' from the underlying commutation relations, $[I_x, I_y] = i \, I_z$ \& c.p and $[a, a^{\dagger}] = 1$ in these examples.  We call the package \verb+UniDyn+, a mnemonic for \emph{unitary dynamics}.  Example calculations are presented involving magnetic resonance and quantum optics.  
+\end{abstract}
+
+\pagestyle{fancy}  % page header and footers
+
+	\lhead{\textsf{UniDyn \emph{Mathematica} package}}
+	\rhead{\textsf{Marohn, John A.}}
+	\cfoot{\thepage}
+	
+\renewcommand{\headrulewidth}{0.4pt} % line at top of page; 0.4pt typical
+\renewcommand{\footrulewidth}{0.4pt} % line at bottom of page; 0.4pt typical
+
 
 \lstset{ %
 % language=Mathematica,      % the language of the code -- buggy  
@@ -93,7 +132,7 @@ literate={x\$var}{{\emph{x}}}1
 \section{Operators and scalars}
 % =============================
 
-Our first task is to define functions that enable \emph{Mathematica} to distinguish between (non-commutative) operators and (commutative) scalars.  This is done in the \verb+OpCreate.m+ package, whose listing appears below.  Unit tests for the functions in the package are organized into a separate package, \verb+OpCreate-tests.m+, whose listing follows. 
+Our first task is to define functions that enable \emph{Mathematica} to distinguish between (non-commutative) operators and (commutative) scalars.  This is done in the \verb+OpCreate.m+ package, whose listing appears below.  Unit tests for the functions in this package are organized into a separate package, \verb+OpCreate-tests.m+, whose listing follows. 
 
 \lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpCreate.m}
 \lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpCreate-tests.m}
