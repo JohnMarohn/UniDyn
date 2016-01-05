@@ -28,8 +28,8 @@ either, since they are declared as needed in the BeginPackage[] statement above.
 We are going to build on \verb+NCAlgebra+ package's modifications to %
 \emph{Mathematica}'s \VerbFcn{NonCommutativeMultiply[]} function. The %
 \verb+NCAlgebra+ package defines a function \VerbFcn{CommutativeQ[]} % 
-which should return \VerbCmd{True} when passsed a non-commutative variable %
-and should return \VerbCmd{False} when passed a commutative variable.  To %
+which should return \VerbCmd{True} when passsed a commutative variable %
+and should return \VerbCmd{False} when passed a non-commutative variable.  To %
 speed up computations we are going to define the \emph{upvalue} of % 
 \VerbFcn{CommutativeQ[]} to be True for a commutative variable. %
 @*)
