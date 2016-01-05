@@ -161,3 +161,4 @@ pythontex-files-*/
 
 *.pdf
 *.html
+*.pyc
