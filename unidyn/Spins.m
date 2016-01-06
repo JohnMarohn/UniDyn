@@ -36,11 +36,11 @@ will return \VerbCmd{True}.  Unless $I_x$, $I_y$, and $I_z$ all already exist as
 operators, then create all three operators afresh. %
 @*)
 
-nonexistent = Or @@ (CommutativeQ /@ {Ix$sym,Iy$sym,Iz$sym});
+nonexistent = Or @@ (CommutativeQ /@ {Ix$sym, Iy$sym, Iz$sym});
 
 If[nonexistent == True,
-    Clear[Ix$sym,Iy$sym,Iz$sym];
-        CreateOperator[{{Ix$sym,Iy$sym,Iz$sym}}];
+    Clear[Ix$sym, Iy$sym, Iz$sym];
+        CreateOperator[{{Ix$sym, Iy$sym, Iz$sym}}];
         Message[SpinSingle$CreateOperators::create],
     Message[SpinSingle$CreateOperators::nocreate];];
 
@@ -94,7 +94,7 @@ Null,
 Message[SpinSingle$CreateOperators::nosimplify]
 
 ];
-Return[{Ix$sym,Iy$sym,Iz$sym}] (* <<==== IMPORTANT *)
+Return[{Ix$sym, Iy$sym, Iz$sym}] (* <<==== IMPORTANT *)
 ]
 
 (*~ END ~*)
