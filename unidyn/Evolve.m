@@ -50,7 +50,7 @@ AllCommutingQ[H_] := Module[{H$list,Comm$matrix},
 
 (*@
 \emph{If} all the terms in the Hamiltonian commute, then we may distribute %
-the \verbFcn{Evolve} operator over the terms in the Hamiltonian.
+the \VerbFcn{Evolve} operator over the terms in the Hamiltonian. %
 @*)
 
 Evolve[H_?AllCommutingQ,t_, rho_] := NonCommutativeMultiply @@ (Evolve[#, t, rho]&) /@ List @@ H
