@@ -22,14 +22,16 @@ Example notebooks ::
 unidyn directory
 ^^^^^^^^^^^^^^^^
 
-The package files are stored in the ``unidyn/`` directory.  These consist of *Mathematica* files ::
+The package files are stored in the ``unidyn/`` directory.  The package files consist of *Mathematica* files ::
 
-    UniDyn.m              master file; loads all the other package files
-    OpCreate.m            CreateOperator[] and CreateScalar[] convenience functions
+    UniDyn.m    master file; loads all the other package files
+    OpCreate.m  CreateOperator[] and CreateScalar[] convenience functions
+    Mult.m      NCSort[], SortedMult[], and MultSort[] functions to sort operators
 
 plus unit-testing files ::
 
     OpCreate-tests.m 
+    Mult-tests.m
     
 Background reading
 ------------------
