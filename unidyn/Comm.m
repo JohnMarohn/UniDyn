@@ -13,14 +13,12 @@ Comm::usage="Comm[a,b] calculates the commutator of two operators.";
 
 (*~ START ~*)
 
-CommQ = NonCommutativeMultiply`CommutativeQ;
-
 (*@ 
 Limiting cases:
 @*)
 
-Comm[a$sym_?CommQ, b$sym_] := 0
-Comm[a$sym_, b$sym_?CommQ] := 0
+Comm[a$sym_?NonCommutativeMultiply`CommutativeQ, b$sym_] := 0
+Comm[a$sym_, b$sym_?NonCommutativeMultiply`CommutativeQ] := 0
 Comm[a$sym_, a$sym_] := 0
 
 (*@
@@ -34,8 +32,8 @@ Comm[a$sym_Plus, b$sym__] := Plus @@ (Comm[#, b$sym] & ) /@ List @@ a$sym
 Rules for factoring out scalars:
 @*)
 
-Comm[a$sym__ b$sym_?CommQ, c$sym__] := b$sym Comm[a$sym, c$sym]
-Comm[a$sym__, b$sym_?CommQ c$sym__] := b$sym Comm[a$sym, c$sym]
+Comm[a$sym__ b$sym_?NonCommutativeMultiply`CommutativeQ, c$sym__] := b$sym Comm[a$sym, c$sym]
+Comm[a$sym__, b$sym_?NonCommutativeMultiply`CommutativeQ c$sym__] := b$sym Comm[a$sym, c$sym]
 
 (*@
 Two rules for simplifying commutators involving products:

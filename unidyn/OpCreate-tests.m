@@ -17,9 +17,9 @@ more complicated constructs --- are defined as commuting variables be default.
 
 Clear[a, \[Alpha], A];
 
-vtest["01a", CommutativeQ[a] == False]; 
-vtest["01b", CommutativeQ[A] == True]; 
-vtest["01c", CommutativeQ[\[Alpha]] == True]; 
+vtest["01a", CommutativeQ[a] == False]
+vtest["01b", CommutativeQ[A] == True] 
+vtest["01c", CommutativeQ[\[Alpha]] == True] 
 
 (*@
 Variables that we have defined as operators return \VerbCmd{False} when % 
@@ -94,8 +94,6 @@ vtest["06b", Not[aL$sym**aR$sym === aR$sym**aL$sym]]
 Clear[a, \[Alpha], b, \[Beta], A];
 Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym];
 Clear[aR$sym, aL$sym];
-
-
 
 
 

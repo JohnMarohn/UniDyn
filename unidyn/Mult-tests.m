@@ -106,7 +106,7 @@ Check that \VerbFcn{MultSort[]} works as expected when scalars are peppered into
 the list of operators being multiplied. %
 @*)
 
-vtest["09a", MultSort[Mult[a$sym Iy$sym, Sx$sym, Ix$sym]] === a$sym NonCommutativeMultiply[Sx$sym,Iy$sym, Ix$sym]]
+vtest["09a", MultSort[NonCommutativeMultiply[a$sym Iy$sym, Sx$sym, Ix$sym]] === a$sym NonCommutativeMultiply[Sx$sym,Iy$sym, Ix$sym]]
 
 (*@
 This is a pretty fancy test showing that the \verb+NCAlgebra+ package can factor out an % 
@@ -114,7 +114,7 @@ operator.  For the following test to work, \VerbFcn{MultSort[]}, \VerbFcn{NCExpa
 and \VerbFcn{NCCollect[]} all have to work correctly. %
 @*)
 
-expr1 = Mult[Sx$sym, a$sym Sz$sym, Ix$sym] + Mult[Ix$sym, b$sym Sx$sym];
+expr1 = NonCommutativeMultiply[Sx$sym, a$sym Sz$sym, Ix$sym] + NonCommutativeMultiply[Ix$sym, b$sym Sx$sym];
 expr2 = NCCollect[MultSort[NCExpand[expr1]], Ix$sym];
 expr3 = (a$sym Sx$sym**Sz$sym + b$sym**Sx$sym)**Ix$sym ;
 
@@ -124,6 +124,9 @@ vtest["10a", expr2 === expr3]
 
 Clear[Ix$sym, Iy$sym, Iz$sym,Sx$sym, Sy$sym, Sz$sym];
 Clear[a$sym, b$sym, c$sym, d$sym];
+
+
+
 
 
 

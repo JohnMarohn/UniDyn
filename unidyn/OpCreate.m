@@ -35,8 +35,6 @@ speed up computations we are going to define the \emph{upvalue} of %
 \VerbFcn{CommutativeQ[]} to be True for a commutative variable. %
 @*)
 
-CommQ = NonCommutativeMultiply`CommutativeQ
-
 (*@ 
 You don't really need to ``create'' a scalar, since this is the default category % 
 for any symbol, given the above definitions.  Nevertheless, by defining the upvalue % 
@@ -44,8 +42,7 @@ of \VerbFcn{ScalarQ} to be \VerbCmd{True}, you can speed up computations which %
 involve testing to see whether or not an object is a scalar.
 @*)
 
-Clear[CreateScalar];
-CreateScalar[a$sym_Symbol] := (Clear[a$sym]; CommQ[a$sym] ^:= True;)
+CreateScalar[a$sym_Symbol] := (Clear[a$sym]; NonCommutativeMultiply`CommutativeQ[a$sym] ^:= True;)
 CreateScalar[a$sym_List] := (CreateScalar /@ a$sym;)
 CreateScalar[a$sym_,b$sym__] := (CreateScalar[a$sym]; CreateScalar[b$sym];)
 
@@ -55,11 +52,10 @@ This function assigns the operators in the matrix a \emph{phylum} and an \emph{o
 which is determined by the operators location in the matrix.
 @*)
 
-Clear[CreateOperator];
 CreateOperator[a$sym_?ListQ] :=
 
   Module[{val, m, n},
-    (Clear[#]; CommQ[#] ^:= False;) & /@ Flatten[a$sym];
+    (Clear[#]; NonCommutativeMultiply`CommutativeQ[#] ^:= False;) & /@ Flatten[a$sym];
     Do[
     Do[val = a$sym[[m]][[n]];
       phylum[val] ^= m;

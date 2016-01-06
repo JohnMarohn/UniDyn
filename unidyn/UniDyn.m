@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-BeginPackage["UniDyn`",{"Global`","OpCreate`","Mult`","Comm`"}]
+BeginPackage["UniDyn`",{"Global`","OpCreate`","Mult`","Comm`","Spins`"}]
 
 $VerboseLoad::usage="True or False.  Whether to print out descriptions of key functions when loading the package."
 
