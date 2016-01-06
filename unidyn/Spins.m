@@ -23,6 +23,8 @@ SpinSingle$CreateOperators::nosimplify="No angular momentum L undefined.";
 
 Begin["Private`"] (* <<==== IMPORTANT *)
 
+(*~ START ~*)
+
 SpinSingle$CreateOperators[Ix$sym_,Iy$sym_,Iz$sym_,L_:Null] := 
 
 Module[{nonexistent},
