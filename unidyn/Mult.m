@@ -55,6 +55,7 @@ $p_{\mathrm{new}} = \{3, 1, 2, 4\}$.  We recognize $p_{\mathrm{new}}$ as %
 the order in which the input operators should appear in $a_{\mathrm{sorted}}$. %
 @*)
 
+Clear[NCSort];
 NCSort[a$sym_List] :=
 Module[{n$sym, p$sym, a$new$sym, p$new$sym},
     n$sym = Length[a$sym];
@@ -79,7 +80,7 @@ The function \VerbFcn{MultSort} reorders all the operators in %
 a \VerbFcn{NonCommutativeMultiply} call. %
 @*)
 
-Clear[MultSort];
+Clear[MultSort]
 MultSort[a$sym__] :=
     a$sym /. NonCommutativeMultiply -> SortedMult
 
@@ -92,9 +93,6 @@ If[$VerboseLoad == True,
     Message[SortedMult::usage];
     Message[MultSort::usage];
 ]
-
-
-
 
 
 

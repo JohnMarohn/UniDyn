@@ -45,7 +45,6 @@ involve testing to see whether or not an object is a scalar.
 @*)
 
 Clear[CreateScalar];
-
 CreateScalar[a$sym_Symbol] := (Clear[a$sym]; CommQ[a$sym] ^:= True;)
 CreateScalar[a$sym_List] := (CreateScalar /@ a$sym;)
 CreateScalar[a$sym_,b$sym__] := (CreateScalar[a$sym]; CreateScalar[b$sym];)
@@ -57,7 +56,6 @@ which is determined by the operators location in the matrix.
 @*)
 
 Clear[CreateOperator];
-
 CreateOperator[a$sym_?ListQ] :=
 
   Module[{val, m, n},

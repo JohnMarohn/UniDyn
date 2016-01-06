@@ -89,11 +89,11 @@ non-commutative multiplication.
 vtest["06a", Not[aL$sym**aR$sym === aL$sym aR$sym]]
 vtest["06b", Not[aL$sym**aR$sym === aR$sym**aL$sym]]
 
-Clear[a, \[Alpha], b, \[Beta]];
+(*~ END ~*)
+
+Clear[a, \[Alpha], b, \[Beta], A];
 Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym];
 Clear[aR$sym, aL$sym];
-
-(*~ END ~*)
 
 
 
