@@ -4,6 +4,7 @@
  ** OpCreate.m
  ** Create operators and scalars
  ** John A. Marohn
+ ** 2015/01/03
  **)
 
 BeginPackage["OpCreate`",{"Global`","NC`","NCAlgebra`"}]

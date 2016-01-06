@@ -65,8 +65,10 @@ keywords={
 	Exp,Sin,Cos,Tan,
 	Not,
 	Flatten,
-	StringJoin, ToString,
+	StringJoin, ToString, Length,
 	Module, Do, For,
+	Map, Table, Position, Sort, Sequence, List,
+	Return, 
 	Dimensions
 	},
 keywordstyle={\sffamily\bfseries\footnotesize}, % fonts used for keywords
@@ -96,8 +98,8 @@ rangesuffix=\ ~*),  % ... and "(*~ END ~*)"; the "START" and "END" parts are spe
 columns=flexible,   % this is CRUCIAL; now function names just look like times new roman font....
 %
 literate={x\$var}{{\emph{x}}}1 
-{i\$max\$sym}{{\ensuremath{i_{\text{max}}}}}1
-{j\$max\$sym}{{\ensuremath{j_{\text{max}}}}}1
+{i\$max\$sym}{{\ensuremath{i_{\mathrm{max}}}}}1
+{j\$max\$sym}{{\ensuremath{j_{\mathrm{max}}}}}1
 {n\$sym}{{\emph{n}}}1
 {i\$sym}{{\emph{i}}}1
 {j\$sym}{{\emph{j}}}1
@@ -112,8 +114,8 @@ literate={x\$var}{{\emph{x}}}1
 {Sy\$sym}{{\ensuremath{S_y}}}1
 {Sz\$sym}{{\ensuremath{S_z}}}1
 {p\$sym}{{\emph{p}}}1
-{a\$new\$sym}{{\ensuremath{a_{\text{new}}}}}1
-{p\$new\$sym}{{\ensuremath{p_{\text{new}}}}}1
+{a\$new\$sym}{{\ensuremath{a_{\mathrm{new}}}}}1
+{p\$new\$sym}{{\ensuremath{p_{\mathrm{new}}}}}1
 {->}{{\ensuremath{\: \rightarrow \:}}}1
 {//.}{{\ensuremath{\: //. \:}}}1  % define this before the {/.} replacement or //. will come out funny
 {/.}{{\ensuremath{\: /. \:}}}1
@@ -232,6 +234,12 @@ Our first task is to define functions that enable \emph{Mathematica} to distingu
 
 \lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpCreate.m}
 \lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpCreate-tests.m}
+
+\section{Non-commutative multiplication}
+% ======================================
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Mult.m}
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Mult-tests.m}
 
 % Cited References
 % ================
