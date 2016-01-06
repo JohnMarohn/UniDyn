@@ -27,8 +27,10 @@ The package files are stored in the ``unidyn/`` directory.  The package files co
     UniDyn.m    master file; loads all the other package files
     OpCreate.m  CreateOperator[] and CreateScalar[] convenience functions
     Mult.m      NCSort[], SortedMult[], and MultSort[] functions to sort operators
-    Comm.m
-    Spins.m
+    Comm.m      Comm[,] to implement the commutator function
+    Spins.m     Angular momentum operators for a single spin; can specify L = 1/2 or not.
+    Osc.m       Raising and lowering operators for a single harmonic oscillator
+    Evolve.m    Unitary evolution
 
 plus unit-testing files ::
 
@@ -36,6 +38,8 @@ plus unit-testing files ::
     Mult-tests.m
     Comm-tests.m
     Spins-tests.m
+    Osc-tests.m
+    Evolve-tests.m
     
 Background reading
 ------------------
