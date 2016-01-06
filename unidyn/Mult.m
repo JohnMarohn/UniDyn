@@ -7,7 +7,7 @@
  ** 2016/01/05
  **)
 
-BeginPackage["Mult`",{"Global`","OpCreate`"}]
+BeginPackage["Mult`",{"Global`","NC`","NCAlgebra`","OpCreate`"}]
 
 NCSort::usage="NCSort[list] sorts the operators in list into canonical order."
 

@@ -92,7 +92,7 @@ Null,
 Message[SpinSingle$CreateOperators::nosimplify]
 
 ];
-Return[{Ix$sym,Iy$sym,Iz$sym}]
+Return[{Ix$sym,Iy$sym,Iz$sym}] (* <<==== IMPORTANT *)
 ]
 
 (*~ END ~*)

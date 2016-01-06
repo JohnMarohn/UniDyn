@@ -27,18 +27,22 @@ The package files are stored in the ``unidyn/`` directory.  The package files co
     UniDyn.m    master file; loads all the other package files
     OpCreate.m  CreateOperator[] and CreateScalar[] convenience functions
     Mult.m      NCSort[], SortedMult[], and MultSort[] functions to sort operators
+    Comm.m
+    Spins.m
 
 plus unit-testing files ::
 
     OpCreate-tests.m 
     Mult-tests.m
+    Comm-tests.m
+    Spins-tests.m
     
 Background reading
 ------------------
 
 I rely a lot on the ``UpSetDelayed[]`` function, ``:^=`` in shorthand.  The idea up an *upvalue* and a *downvalue* is explained pretty well in the article "Associating Definitions with Different Symbols" in the Wolfram Language Tutorial [#mma-updelayed]_.  
 
-Creating a *Mathematica* package is not as well documented as I would expect.  While a list of functions used to create a *Mathematica* package can be found in the "Package Development" section of the Wolfram Language Guide [#MMA-packaging]_, a good example illustrating how to create a package is lacking.   The "Creating Mathematica packages" article on the Mathematica Stack Exchange [#MSE29324]_ is a quick and easy introduction to packaging.
+Creating a *Mathematica* package is not as well documented as I would expect.  While a list of functions used to create a *Mathematica* package can be found in the "Package Development" section of the Wolfram Language Guide [#MMA-packaging]_, a good example illustrating how to create a package is lacking in the Mathematica documentation.  The discussions at the Mathematica Stack Exchange are helpful.  The "Creating Mathematica packages" article [#MSE29324]_ is a quick and easy introduction to packaging.  The question "How can I return private members of a Mathematica package as the output of package functions without the ``PackageName`Private``` prefix?" is answered in a longer article [#MMA-packaging-1]_.
 
 Packaging notes
 ---------------
@@ -72,6 +76,9 @@ In words, the *upvalue* of ``a$sym`` when passed to the function ``CommutativeQ`
 
 This assignment works fine if implemented in a notebook.  If we implement the above code in a function defined between the ``Begin["Private`"]`` and ``End[]`` declarations in an ``m`` file, however, then the assignment is not communicated back to the ``Global``` context where it's needed.  I tried a couple of work-arounds: passing the ``a$sym`` variable back up to the ``Global``` context using a ``Return[]`` statement doesn't seem to work, nor does writing the variable ``Global`a$sym`` in the private function.  In the end, I decided to simply keep the functions defining upvalues public.  This is achieved by omitting the ``Begin["Private`"]`` and ``End[]`` statements in the package ``m`` file.
 
+Going public
+^^^^^^^^^^^^
+
 The code below, taken from ``OpCreate.m``, shows how this works. 
 
 .. code:: Mathematica
@@ -98,6 +105,54 @@ Code placed between the ``(*`` and ``*)`` characters is a *comment*.  I have lef
 
 In the above code it was important to *not* use the function ``CommutativeQ``; if we do, then *Mathematica* will think we are talking about a new, conflicting function, will throw a warning, and the code will not do what we want.  Instead, we need to specify the function we want by its full name, ``NonCommutativeMultiply`CommutativeQ``.  Since this function name is really long, in the code above we define ``CommQ`` as a short name for the function.
 
+Keeping private
+^^^^^^^^^^^^^^^
+
+The packages ``OpCreate.m``, ``Mult.m``, and ``Comm.m`` are set up this way, with no ``"Private`"`` context.  In contrast, the package ``Spins.m`` *does* have a ``"Private`"`` context:
+
+.. code:: Mathematica
+
+    BeginPackage["Spins`",{"Global`","NC`","NCAlgebra`","OpCreate`","Mult`","Comm`"}]
+    
+    SpinSingle$CreateOperators::usage="Descriptive messsage" 
+    
+    Begin["Private`"] (* <<==== IMPORTANT *)
+    
+    SpinSingle$CreateOperators[Ix$sym_,Iy$sym_,Iz$sym_,L_:Null] := 
+
+        Module[{nonexistent},
+        
+            nonexistent = Or @@ (CommutativeQ /@ {Ix$sym,Iy$sym,Iz$sym});
+    
+            <more code here>
+    
+            Ix$sym /: Comm[Ix$sym,Iy$sym] =  I Iz$sym; 
+    
+            <more code here>
+    
+        ];
+        
+        Return[{Ix$sym,Iy$sym,Iz$sym}] (* <<==== IMPORTANT *)
+    ]
+    
+    End[]
+    EndPackage[]
+
+Without the ``"Private`"`` context, *Mathematica* would get confused by the appearance of the ``CommutativeQ`` and ``Comm`` functions because they are defined elsewhere first.  Without the ``"Private`"`` context in ``Spins.m``, you get the following problems.  First, when you load the ``UniDyn``` package in a notebook 
+
+.. code:: Mathematica
+
+    $VerboseLoad = True;
+    Needs["UniDyn`"]
+
+you get the error
+
+.. code:: Mathematica
+
+    CommutativeQ::shdw: Symbol CommutativeQ appears in multiple contexts {Spins`,NonCommutativeMultiply`}; definitions in context Spins` may shadow or be shadowed by other definitions. >>
+    
+Moreover, when you run the unit-testing files, most of the tests fail.  Wrapping the function ``SpinSingle$CreateOperators`` in ``Begin["Private`"]`` and ``End[]`` solves the *shadowing* problem.  Because the function is now hidden in a private context, the declaration ``SpinSingle$CreateOperators::usage`` is needed to expose the function's existence to the ``Global``` context.  The function ``SpinSingle$CreateOperators`` defines *upvalues* for the spin operators.  The ``Return[]`` statement is needed to pass these definitions back up to the ``Global``` context.
+
 References
 ----------
 
@@ -106,3 +161,5 @@ References
 .. [#MSE29324] http://mathematica.stackexchange.com/questions/29324/creating-mathematica-packages
 
 .. [#MMA-packaging] https://reference.wolfram.com/language/guide/PackageDevelopment.html
+
+.. [#MMA-packaging-1] http://mathematica.stackexchange.com/questions/7502/how-can-i-return-private-members-of-a-mathematica-package-as-the-output-of-packa
