@@ -9,6 +9,7 @@
 
 Off[OscSingle$CreateOperators::create]
 Off[OscSingle$CreateOperators::nocreate]
+Off[OscSingle$CreateOperators::comm]
 
 Off[SpinSingle$CreateOperators::create]
 Off[SpinSingle$CreateOperators::nocreate]
@@ -139,6 +140,7 @@ Clear[Ix$sym, Iy$sym, Iz$sym, aL$sym, aR$sym, Nop];
 
 On[OscSingle$CreateOperators::create]
 On[OscSingle$CreateOperators::nocreate]
+On[OscSingle$CreateOperators::comm]
 
 On[SpinSingle$CreateOperators::create]
 On[SpinSingle$CreateOperators::nocreate]

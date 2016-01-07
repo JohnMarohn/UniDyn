@@ -19,7 +19,7 @@ SpinSingle$CreateOperators::comm="Adding spin commutations relations.";
 
 SpinSingle$CreateOperators::simplify="Angular momentum L = 1/2. Adding operator simplification rules.";
 
-SpinSingle$CreateOperators::nosimplify="No angular momentum L undefined.";
+SpinSingle$CreateOperators::nosimplify="No angular momentum L defined.";
 
 Begin["Private`"] (* <<==== IMPORTANT *)
 
