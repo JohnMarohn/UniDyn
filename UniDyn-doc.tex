@@ -1,5 +1,6 @@
 \documentclass[12pt,letterpaper]{refart}
 
+\usepackage{amsmath}                         % American Mathematical Society math
 \usepackage{fancyvrb}                        % verbatim function
 \usepackage[usenames,dvipsnames]{color}      % Periwinkle
 \usepackage{listings}                        % for typesetting computer code
@@ -138,11 +139,13 @@ literate={x\$var}{{\emph{x}}}1
 {beta\$sym}{{\ensuremath{\beta}}}1
 }
 
+\clearpage
 \section{Introduction}
 % ====================
 
 \input{UniDyn-doc--intro.tex}
 
+\clearpage
 \section{Operators and scalars}
 % =============================
 

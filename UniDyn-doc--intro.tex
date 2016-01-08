@@ -83,3 +83,106 @@
 % ==============
 
 \cite{Helton2015feb} \cite{Levitt2015mar}
+
+Given a Hamiltonian operator ${\cal H}$ and an initial (density) operator $\rho(0)$, the \VerbFcn{Evolve} function tries to implement the following unitary rotation:
+\begin{equation}
+\rho(t) 
+	= e^{-i {\cal H} t} \: \rho(0) \: e^{+i {\cal H} t}
+	\equiv \text{\VerbFcn{Evolver}}[{\cal H},t,\rho_0]
+	\label{Eq:Evolve}
+\end{equation}
+assuming that the Hamiltonian operator is time-independent.  To simplify Eq.~\ref{Eq:Evolve} 
+any further we must specify ${\cal H}$ and $\rho(0)$.  In general ${\cal H}$ and $\rho(0)$ will involve non-commuting operators.  With the commutation relations specified, however, it is often possible to obtain a closed-form algebraic solution to Eq.~\ref{Eq:Evolve}.  Here we follow the general procedure for obtaining a closed-form solution to Eq.~\ref{Eq:Evolve} outlined by Slichter in Section 2.3 of his \emph{Principles of Magnetic Resonance} text \cite{Slichter1990}.
+
+Slichter was interested in calculating the unitary evolution of angular momentum operators arising in spin-physics problems.  Below we introduce the Slichter procedure by considering a few representative examples.  We show that his procedure works remarkably well for calculating the unitary evolution in other cases involving, for example, the time evolution of position and momentum operators under the harmonic-oscillator Hamiltonian.  It will become apparent that automating Slichter's procedure in a computer algebra program like \emph{Mathematica} is possible but challenging.  We introduce a generalization of the Slichter algorithm that is well suited for automation by a computer algebra program.  We have implemented this algorithm as a \emph{Mathematica} function, \VerbFcn{Evolver}.  This function evaluates Eq.~\ref{Eq:Evolve} given an ${\cal H}$, a $\rho(0)$, and the commutation relations between the operators contained in ${\cal H}$ and $\rho(0)$.
+
+To understand Slichter's procedure, let us consider first the case where ${\cal H} = \omega I_z$ and $\rho_0 = I_{+} = I_x + i \, I_y$,
+\begin{equation}
+\rho(t) 
+	= e^{-i \, \omega t \, I_z} \: I_{+} \: e^{+i \, \omega t \, I_z}.
+\end{equation}
+Taking the time derivative we obtain
+\begin{subequations}  
+\begin{align}
+\dot{\rho}(t)
+	& = e^{-i \, \omega t \, I_z} \: 
+		(-i \, \omega [I_z,I_{+}] ) 
+		\: e^{+i \, \omega t \, I_z} 
+		\label{Eq:I+rot-(a)} \\
+	& = -i \, \omega \left( 
+			e^{-i \, \omega t \, I_z} \: I_{+} \: e^{+i \, \omega t \, I_z} 
+		\right)
+		\label{Eq:I+rot-(b)}
+\end{align}
+\end{subequations} 
+where we have used $[I_z,I_{+}] = I_{+}$ to reduce the commutator in Eq.~\ref{Eq:I+rot-(a)}.  We recognize the term in parenthesis in Eq.~\ref{Eq:I+rot-(b)} as the original time dependent density operator, $\rho(t)$.  Equation~\ref{Eq:I+rot-(b)} thus becomes
+\begin{equation}
+\dot{\rho}(t) 
+	= -i \, \omega \, \rho(t)
+	\label{Eq:Eq:I+rot-ODE}
+\end{equation}
+In this differential equation, $\omega$ is a \emph{number}, while $\rho(t)$ is an \emph{operator}.  The solution to this differential equation is
+\begin{equation}
+\rho(t) 
+	= \rho(0) \, e^{-i \, \omega t}
+ 	= I_{+} \, e^{-i \, \omega t},
+\end{equation}
+which we can easily verify by back substitution.  As a result of the unitary evolution under the Hamiltonian, the $I_{+}$ operator has picked up a phase factor. An analogous calculation arises in a harmonic oscillator problem where the Hamiltonian is ${\cal H} = \omega (a^{\dagger} a + 1/2)$ and the initial operator is $\rho(0) = a^{\dagger}$, 
+\begin{equation}
+\rho(t) 
+	= e^{-i \omega t (a^{\dagger} a + 1/2)} 
+		\, a^{\dagger} 
+		\, e^{+i \omega t (a^{\dagger} a + 1/2)}
+\end{equation}
+Using the same procedure and the commutation relation $[a^{\dagger} a,a^{\dagger}]=1$, this equation reduces to 
+\begin{equation}
+	\rho(t)  = a^{\dagger} e^{-i \: \omega t}.
+\end{equation}
+These two cases have in common that the commutator of the Hamiltonian with the operator of interest is simply proportional to the operator. As a result of this underlying commutation relation, the problem of calculating Eq.~\ref{Eq:Evolve} in both cases has been reduced to the problem of solving a first-order differential equation, Eq.~\ref{Eq:Eq:I+rot-ODE}.  
+
+The second case to consider is ${\cal H} = \omega I_z$ and $\rho_0 = I_x$,
+\begin{equation}
+\rho(t) 
+	= e^{-i \, \omega t \, I_z} \: I_x \: e^{+i \, \omega t \, I_z}.
+\end{equation}
+Taking the time derivative we obtain
+\begin{subequations}  
+\begin{align}
+\dot{\rho}(t)
+	& = e^{-i \, \omega t \, I_z} \: 
+		(-i \, \omega [I_z,I_x] ) 
+		\: e^{+i \, \omega t \, I_z} 
+		\label{Eq:Ixrot-(a)} \\
+	& = \omega \left( 
+			e^{-i \, \omega t \, I_z} \: I_y \: e^{+i \, \omega t \, I_z} 
+		\right)
+		\label{Eq:Ixrot-(b)}
+\end{align}
+\end{subequations} 
+where we have used $[I_z,I_x] = i \, I_y$ to reduce the commutator in Eq.~\ref{Eq:Ixrot-(a)}.  In contrast to the previous case, $\dot{\rho}(t)$ is not proportional to $\dot{\rho}$.  Taking another time derivative we obtain
+\begin{subequations}  
+\begin{align}
+\ddot{\rho}(t)
+	& = \omega \, e^{-i \, \omega t \, I_z} \: 
+		(-i \, \omega [I_z,I_y] ) 
+		\: e^{+i \, \omega t \, I_z} 
+		\label{Eq:Ixrot-(c)} \\
+	& = \omega^2 \left( 
+			e^{-i \, \omega t \, I_z} \: I_x \: e^{+i \, \omega t \, I_z} 
+		\right)
+		\label{Eq:Ixrot-(d)}
+\end{align}
+\end{subequations} 
+where we have used $[I_z,I_y] = -i \, I_x$ to reduce the commutator in Eq.~\ref{Eq:Ixrot-(a)}. The term in parenthesis in Eq.~\ref{Eq:Ixrot-(d)} is proportional to $\rho(t)$ and consequently
+\begin{equation}
+\ddot{\rho}(t) = \omega^2 \, \rho(t)
+\end{equation}
+The solution to this differential equation is
+\begin{equation}
+\rho(t) = \rho(0) \, \sin{(\omega t)} + \frac{\dot{\rho}(0)}{\omega} \, \cos{(\omega t)}
+\end{equation}
+We are given that $\rho(0) = I_x$ and we see from Eq.~\ref{Eq:Ixrot-(b)} that $\dot{\rho}(0) = \omega \, I_y$.  Plugging in these initial conditions we obtain
+\begin{equation}
+\rho(t) = I_x \, \sin{(\omega t)} + I_y \, \cos{(\omega t)}
+\end{equation}
+
