@@ -50,7 +50,7 @@ vtest["00b", Or @@ tests == False]
 
 (*@
 We should also check the limiting case that *none* of the operators have been %
-defined yet. &
+defined yet. %
 @*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym];

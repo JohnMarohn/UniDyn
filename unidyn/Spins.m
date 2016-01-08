@@ -34,8 +34,8 @@ Test if the operators exist; if they do not already exist, then create them. %
 If an operator \VerbFcn{Op} has been created already, then \VerbFcn{CommutativeQ[Op]} % 
 will return \VerbCmd{True}.  Unless $I_x$, $I_y$, and $I_z$ all already exist as % 
 operators, then create all three operators afresh. In the code below it is important %
-that we call \verb+NonCommutativeMultiply`CommutativeQ+ and not just %
-\verb+CommutativeQ+. &
+that we call \VerbFcn{NonCommutativeMultiply`CommutativeQ} and not just %
+\VerbFcn{CommutativeQ}. %
 @*)
 
 nonexistent = Or @@ (NonCommutativeMultiply`CommutativeQ /@ {Ix$sym, Iy$sym, Iz$sym});
