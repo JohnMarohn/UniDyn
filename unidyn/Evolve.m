@@ -16,6 +16,8 @@ Evolver::usage="Evolver[H,t,\[Rho](0)] calculates \[Rho](t) = Exp[-I H t] \[Rho]
 
 Evolver::unsolvable="Unrecognized evolution";
 
+VisualComplexity::usage="A cost function to coax Mathematica into writing simpler-looking answers."
+
 Begin["Private`"]
 
 (*~ START ~*)
@@ -61,6 +63,13 @@ Evolve[H$sym_?AllCommutingQ,t$sym_, rho$sym_] :=
 	NonCommutativeMultiply @@ (Evolve[#, t$sym, rho$sym]&) /@ List @@ H$sym
 
 (*@
+A function to coerce \emph{Mathematica} into writing simpler looking expressions, from %
+http://mathematica.stackexchange.com/questions/5403/how-to-get-fullsimplify-to-fully-simplify-my-expression-with-custom-complexity-f
+@*)
+
+VisualComplexity:=(Count[ToBoxes[#],Except[" "|"("|")",_String],Infinity]&)
+
+(*@
 Main algorithm
 @*)
 
@@ -72,7 +81,8 @@ Module[{k, a$vect, q, r, r$value, X, x4, x3, x2, x1, time, system, sol},
   Clear[rho$sym];
   rho$sym[0] = rho$sym$0;
   Do[
-	rho$sym[k+1] = Simplify[NCExpand[-I Comm[H$sym,rho$sym[k]]]],
+	rho$sym[k+1] = NCExpand[-I Comm[H$sym,rho$sym[k]]] 
+      // FullSimplify[#,ComplexityFunction->VisualComplexity]&,
     {k,0,4}
   ];
   If[OptionValue[quiet] == False, Print["r = ",rho$sym[#]& /@ {0,1,2,3,4} // MatrixForm]];
@@ -80,7 +90,11 @@ Module[{k, a$vect, q, r, r$value, X, x4, x3, x2, x1, time, system, sol},
   r = Null;
   r = Catch[
     Do[
-      q = NCExpand[NonCommutativeMultiply`inv[rho$sym[k]] ** rho$sym[3]];
+
+      q = NCExpand[NonCommutativeMultiply`inv[
+        rho$sym[k]] ** rho$sym[3]
+       ] // FullSimplify[#,ComplexityFunction->VisualComplexity]& ;
+
       If[NonCommutativeMultiply`CommutativeQ[q]==True,Throw[{3-k,q}]],
       {k,0,2}
     ]
@@ -110,8 +124,6 @@ If[$VerboseLoad == True,
     Message[Evolve::usage]
     Message[Evolver::usage]
 ]
-
-
 
 
 

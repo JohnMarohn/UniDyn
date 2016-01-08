@@ -49,6 +49,15 @@ tests = NonCommutativeMultiply`CommutativeQ /@ {Ix$sym, Iy$sym, Iz$sym};
 vtest["00b", Or @@ tests == False]
 
 (*@
+We should also check the limiting case that *none* of the operators have been %
+defined yet. &
+@*)
+
+Clear[Ix$sym, Iy$sym, Iz$sym];
+tests = NonCommutativeMultiply`CommutativeQ /@ {Ix$sym, Iy$sym, Iz$sym};
+vtest["00c", Or @@ tests == True]
+
+(*@
 Create spin angular momentum operators with the total angular momentum unspecified.  % 
 Test that the canonical angular momentum commutation relation holds true.  With the % 
 total angular momentum unspecified, the product $I_x I_y$ cannot be simplified further.
@@ -128,6 +137,9 @@ On[SpinSingle$CreateOperators::nocreate]
 On[SpinSingle$CreateOperators::comm]
 On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nosimplify]
+
+
+
 
 
 

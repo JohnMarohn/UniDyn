@@ -9,6 +9,7 @@
 
 Off[SpinSingle$CreateOperators::comm]
 Off[SpinSingle$CreateOperators::simplify]
+Off[SpinSingle$CreateOperators::nocreate]
 Off[OscSingle$CreateOperators::comm]
 Off[OscSingle$CreateOperators::create]
 
@@ -99,7 +100,10 @@ Free evolution of $I_{+}$:
 @*)
 
 vtest["04c > free evolution of I+", 
-  Simplify[TrigToExp[Evolver[omega$sym Iz$sym, t$sym, Ix$sym + I Iy$sym]]] === Exp[-I omega$sym t$sym](Ix$sym + I Iy$sym)]
+  Simplify[TrigToExp[
+    Evolver[omega$sym Iz$sym, t$sym, Ix$sym] + I Evolver[omega$sym Iz$sym, t$sym, Iy$sym]
+  ]] 
+  === Exp[-I omega$sym t$sym](Ix$sym + I Iy$sym)]
 
 (*@
 Evolution under a scalar coupling:
@@ -108,29 +112,36 @@ Evolution under a scalar coupling:
 vtest["04d > scalar-coupling evolution of Ix", 
   Simplify[Evolver[d$sym Iz$sym ** Sz$sym, t$sym, Ix$sym]] === Ix$sym Cos[d$sym t$sym/2]+2 Iy$sym**Sz$sym Sin[d$sym t$sym/2]]
 
-
 (*@
-Off-resonance nutation of $I_z$ [probably OK, have to check it yet]:
+Off-resonance nutation of $I_z$ --- still needs a check:
 @*)
 
-(Evolver[omega$sym (Cos[theta$sym] Iz$sym + Sin[theta$sym] Ix$sym), t$sym, Iz$sym] /. 
-  {Cos[theta$sym] -> delta$sym/Sqrt[delta$sym^2+omega$sym^2], Sin[theta$sym] -> omega$sym/Sqrt[delta$sym^2+omega$sym^2]}) /. 
-  {t$sym -> t, omega$sym -> \[Omega], delta$sym -> \[CapitalDelta], Ix$sym -> Ix, Iy$sym -> Iy, Iz$sym -> Iz} //
-  NCCollect[#,{Ix, Iy, Iz}]& 
+\[Rho] = Collect[
+  (Evolver[delta$sym Iz$sym + omega$sym Ix$sym , t$sym, Iz$sym] 
+    // Simplify[#, Assumptions->{Element[delta$sym, Reals], delta$sym > 0, Element[omega$sym, Reals], omega$sym >= 0}]&  
+    // ExpToTrig // FullSimplify), {Ix$sym, Iy$sym, Iz$sym}]; 
+
+\[Rho] /. {t$sym -> t, 
+  delta$sym -> Subscript[\[Omega],0],
+  omega$sym -> Subscript[\[Omega],1],
+  Ix$sym -> Ix, Iy$sym -> Iy, Iz$sym -> Iz}
+
 
 (*@
-Off-resonance variable-phase nutation of $I_z$ [answer requires a kluge in the algorithm]:
+Off-resonance variable-phase nutation of $I_z$ -- still needs a check:
 @*)
 
-Evolver[omega$sym (
-  Cos[theta$sym] Iz$sym + Sin[theta$sym] Cos[phi$sym] Ix$sym + Sin[theta$sym] Sin[phi$sym] Iy$sym), 
-  t$sym, Iz$sym, quiet -> False] /. 
-  {Cos[theta$sym] -> delta$sym/Sqrt[delta$sym^2+omega$sym^2], Sin[theta$sym] -> omega$sym/Sqrt[delta$sym^2+omega$sym^2]} /. 
-  {t$sym -> t, omega$sym -> \[Omega], delta$sym -> \[CapitalDelta], Ix$sym -> Ix, Iy$sym -> Iy, Iz$sym -> Iz, phi$sym -> \[Phi]} //
-  NCCollect[#,{Ix, Iy, Iz}]& 
+\[Rho] = Collect[ 
+  (Evolver[delta$sym Iz$sym + omega$sym (Cos[phi$sym] Ix$sym + Sin[phi$sym] Iy$sym), t$sym, Iz$sym]
+    // Simplify[#, Assumptions->{Element[delta$sym, Reals], delta$sym > 0, Element[omega$sym, Reals], omega$sym >= 0}]&  
+    // ExpToTrig // FullSimplify), {Ix$sym, Iy$sym, Iz$sym}]; 
+
+\[Rho] /. {t$sym -> t,  phi$sym -> \[Phi],
+  delta$sym -> Subscript[\[Omega],0], omega$sym -> Subscript[\[Omega],1], 
+  Ix$sym -> Ix, Iy$sym -> Iy, Iz$sym -> Iz}
 
 (*@
-Clear up:
+Clean up:
 @*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym, omega$sym, d$sym, delta$sym,  theta$sym, phi$sym, rho$sym, t$sym]
@@ -162,13 +173,16 @@ QP$rules = {aR$sym -> (Q + I P)/Sqrt[2], aL$sym -> (Q - I P)/Sqrt[2]};
 vtest["05b > free evolution of Q", 
   Simplify[Evolver[H$sym, t$sym, Q$sym] /. QP$rules] === Q Cos[omega$sym t$sym] + P Sin[omega$sym t$sym]]
 
-
 (*~ END ~*)
 
 On[SpinSingle$CreateOperators::comm]
 On[SpinSingle$CreateOperators::simplify]
+On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
+
+
+
 
 
 
