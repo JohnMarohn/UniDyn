@@ -16,9 +16,15 @@
 	urlcolor=blue,
 	pagebackref=false]{hyperref}             % hyperrefs
 	
+\renewcommand{\headrulewidth}{0.4pt} % line at top of page; 0.4pt typical
+\renewcommand{\footrulewidth}{0.4pt} % line at bottom of page; 0.4pt typical
+\newcommand{\myparagraph}[1]{\paragraph{#1 ---\hspace{-0.125in}}}
+
+	
 \newcommand{\VerbFcn}[1]{{#1}}
 \newcommand{\VerbCmd}[1]{{\bf #1}}
 
+\setlength{\parindent}{0.25in}
 \setlength\papermarginwidth{1.50in}
 \settextfraction{1.00}
 
@@ -43,8 +49,6 @@
 	\rhead{\textsf{John A.\ Marohn}}
 	\cfoot{\thepage}
 	
-\renewcommand{\headrulewidth}{0.4pt} % line at top of page; 0.4pt typical
-\renewcommand{\footrulewidth}{0.4pt} % line at bottom of page; 0.4pt typical
 
 
 \lstset{ %
@@ -140,7 +144,6 @@ literate={x\$var}{{\emph{x}}}1
 {beta\$sym}{{\ensuremath{\beta}}}1
 }
 
-\clearpage
 \section{Introduction}
 % ====================
 

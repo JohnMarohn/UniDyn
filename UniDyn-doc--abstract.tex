@@ -1,15 +1,3 @@
 %!TEX root = UniDyn-doc.tex
 
-We have developed a \emph{Mathematica} algorithm for symbolically calculating the unitary transformations of quantum-mechanical operators.  The algorithm obtains closed-form analytical results, does not rely on a matrix representation of the operators, and is applicable to both bounded systems like coupled spins and unbounded systems like harmonic oscillators.  Two example calculations are  
-\[
-	I_{x}(t) 
-		= e^{-i \, \omega t \, I_z} \, I_x \, e^{+i \, \omega t \, I_z} 
-		= I_x \cos{\omega t} + I_y \sin{\omega t}
-\]
-and
-\[
-	a^{\dagger}(t)
-		= e^{-i \, \omega t \, a^{\dagger} \, a} a^{\dagger} e^{i \, \omega t \, a^{\dagger}} 
-		= a^{\dagger} \, e^{ii \, \omega t}
-\] 
-with $(I_x, I_y, I_z)$ the spin angular-momentum operators, $(a^{\dagger}, a)$ the harmonic-oscillator raising and lowering operators, $\omega$ a frequency, and $t$ time.  The rotations are ``self derived'' from the underlying commutation relations, $[I_x, I_y] = i \, I_z$ \& c.p and $[a, a^{\dagger}] = 1$ in these examples.  We call the package \verb+UniDyn+, a mnemonic for \emph{unitary dynamics}.  Example calculations are presented involving magnetic resonance and quantum optics.
+We have developed a \emph{Mathematica} algorithm for symbolically calculating the unitary transformations of quantum-mechanical operators.  The algorithm obtains closed-form analytical results, does not rely on a matrix representation of operators, and is applicable to both bounded systems like coupled spins and unbounded systems like harmonic oscillators.  The rotations are ``self derived'' from the operators' underlying commutation relations.  Example calculations are presented involving magnetic resonance and quantum optics.  
