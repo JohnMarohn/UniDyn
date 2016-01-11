@@ -70,7 +70,8 @@ http://mathematica.stackexchange.com/questions/5403/how-to-get-fullsimplify-to-f
 VisualComplexity:=(Count[ToBoxes[#],Except[" "|"("|")",_String],Infinity]&)
 
 (*@
-Main algorithm
+The \VerbFcn{Evolver} function follows. By default, the function will not %
+print out intermediate results during the computation.  %
 @*)
 
 Options[Evolver] = {quiet -> True};
@@ -78,14 +79,37 @@ Options[Evolver] = {quiet -> True};
 Evolver[H$sym_, t$sym_, rho$sym$0_, opts : OptionsPattern[]] :=
 
 Module[{k, a$vect, q, r, r$value, X, x4, x3, x2, x1, time, system, sol},
+
   Clear[rho$sym];
   rho$sym[0] = rho$sym$0;
+
+(*@ Evalute the derivates of the density operator by repeatedly applying the %
+commutator. Simplify them as much as possible. Getting the simplication right %
+is tricky.  A special function has to be fed to \VerbFcn{FullSimplify} to get %
+it to return useful results.  @*)
+
   Do[
 	rho$sym[k+1] = NCExpand[-I Comm[H$sym,rho$sym[k]]] 
       // FullSimplify[#,ComplexityFunction->VisualComplexity]&,
     {k,0,4}
   ];
+
+(*@ Print out the vector of density-operator derivatives if asked. @*)
+
   If[OptionValue[quiet] == False, Print["r = ",rho$sym[#]& /@ {0,1,2,3,4} // MatrixForm]];
+
+(*@ Look for an entry in $(\rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ list that is % 
+proportijonal to $\rho^{(3)}$. Stop when you find it.  Determining %
+\emph{proportional to} is tricky.  Here we use the ability of the \verb+NCALgebra+ %
+package to compute a symbolic inverse of an operator.  When %
+$(\rho^{(n)})^{-1}**\rho^{(3)}$ is a scalar, then we have found a match. % 
+We are implicity assuming that the entries $(\rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ %
+\emph{have} an inverse.  This will be true of then entries involve Hermitian %
+operators.  If the entries involve \emph{non-Hermitian operators}, however, like %
+$I_{+}$ or $I_{-}$ then the entries might not have a proper inverse.  % 
+We do not, at present, test whether the operators in the list are Hermitian or not. % 
+@*) 
+
   a$vect={0,0,0,0};
   r = Null;
   r = Catch[
@@ -99,20 +123,48 @@ Module[{k, a$vect, q, r, r$value, X, x4, x3, x2, x1, time, system, sol},
       {k,0,2}
     ]
   ];
+
+(*@
+If we have not found a match by now, then throw up our hands and exit the function. %
+Spit out the full $(\rho^{(3)}, \rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ vector, %
+in case the user can spot the \emph{proportional to} condition.
+@*)
+
   If[r=== Null,
     Message[Evolver::unsolvable];
     Return[rho$sym[#]& /@ {0,1,2,3,4}],
     r$value=r
   ];
+
+(*@ 
+Set up the coupling matrix $\bm{\Omega}$ based on the matching condition. %
+@*)
+
   a$vect[[r$value[[1]]]] = r$value[[2]];
   A = {a$vect,{1, 0 ,0, 0},{0, 1, 0, 0}, {0, 0 ,1, 0}};
+
+(*@
+If asked, spit out the coupling matrix for inspection. %
+@*)
+
   If[OptionValue[quiet] == False,Print["A = ", A // MatrixForm]];
+
+(*@
+Set up the four coupled equations and solve them.
+@*)
+
   X[time_] = {x4[time], x3[time], x2[time], x1[time]};
   system = {D[X[time],time] == A . X[time],
     x4[0]== rho$sym[3], x3[0]== rho$sym[2], x2[0]== rho$sym[1], x1[0]== rho$sym[0]};
   sol = DSolve[system,{x1,x2,x3,x4},time];
+
+(*@ 
+Return only the first element of the solution, $\lambda_1(t)$.  
+@*)
+
   Return[x1[time]  /. sol[[1]] /. time -> t$sym];
 ];
+
 
 (*~ END ~*)
 

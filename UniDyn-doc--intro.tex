@@ -418,12 +418,13 @@ Plugging this integration constant into Eq.~\ref{Eq:Example4-temp} we obtain the
 		- \frac{\Delta\omega \, \omega_1}
 		       {\Delta\omega^2 + \omega_1^2} I_x
 	\right) 
-	\cos{(\sqrt{\Delta\omega^2 + \omega_1^2} \: t)}.	
+	\cos{(\sqrt{\Delta\omega^2 + \omega_1^2} \: t)}.
+	\label{Eq:example4-soln}	
 \end{multline}
 
 We see in this example an answer for $\rho(t)$ that is markedly more complicated that in the previous examples, the solution to (essentially) a third order differential equation.  To uncover this differential equation, is was necessary to compare subsequent derivatives of $\rho(t)$ not to $\rho(0)$ but to $\dot{\rho}(0)$ instead.  Considering in total the four examples of unitary evolution considered so far, it would seem that any algorithm we develop needs to consider the possibility that the density operator satisfies a first, second, or even third-order differential equation. 
 
-\myparagraph{Method 4} We now show by example that the single differential equation in each of these four cases can be reduced to a set of \emph{coupled first-order} differential equations --- a significant step towards making a simple automated, unitary evolution algorithm.  We would expect the four cases to each still require a decision on the number of coupled of equations required to solve for $\rho$ in each case.  Surprisingly, no decision is needed.  We will show that all four cases can be handled by a set of four coupled differential equations.  This is the essential new insight implemented here in the \VerbFcn{Evolver} algorithm. 
+\myparagraph{Method 4} We now show by example that the single differential equation in each of these four cases can be reduced to a set of \emph{coupled first-order} differential equations --- a significant step towards making a simple automated, unitary evolution algorithm.  We would expect the four cases to each still require a decision on the number of coupled of equations required to solve for $\rho$ in each case.  Surprisingly, no decision is needed.  We will show that all the cases we have discussed so far can be handled by a set of four coupled differential equations.  This is the essential new insight implemented here in the \VerbFcn{Evolver} algorithm. 
 
 To understand the new method, consider transforming the second-order differential equation in Eq.~\ref{Eq:Ixrot-ODE} into two coupled first-order equations.  Let the two new variables be 
 \begin{equation}
@@ -433,13 +434,13 @@ Taking the time derivative of each of these variables we obtain
 \begin{subequations}
 \begin{align}
 \dot{x}_1 & = \dot{\rho} = x_2, \text{ and} \\
-\dot{x}_1 & = \ddot{\rho} = \omega^2 \rho = \omega^2 x_1.
+\dot{x}_1 & = \ddot{\rho} = - \omega^2 \rho = - \omega^2 x_1.
 \end{align}
 \end{subequations}
 It is apparent that these two variables satisfy the following set of coupled first order equations
 \begin{equation}
 \frac{d}{dt} \begin{bmatrix} x_2 \\ x_1 \end{bmatrix}
-	= \begin{bmatrix} 0 & \omega^2 \\ 1 & 0 \end{bmatrix}
+	= \begin{bmatrix} 0 & - \omega^2 \\ 1 & 0 \end{bmatrix}
 	  \begin{bmatrix} x_2 \\ x_1 \end{bmatrix}
 \text{ with } 
 \begin{bmatrix} x_2(0) \\ x_1(0) \end{bmatrix}
@@ -460,16 +461,16 @@ and taking the time derivative gives
 \dot{x}_2 & = \ddot{\rho} = x_3, \text{ and} \\
 \dot{x}_3 & = \dddot{\rho} \\
 	& = \omega^2 \, U^{\dagger} \, (-i \, \omega [I_z,I_x] ) \, U \\
-	& = \omega^3 \, U^{\dagger} \, I_{y} \, U \\
-	& = \omega^2 \, \dot{\rho} \\
-	& = \omega^2 \, x_2.
+	& = - \omega^3 \, U^{\dagger} \, I_{y} \, U \\
+	& = - \omega^2 \, \dot{\rho} \\
+	& = - \omega^2 \, x_2.
 \end{align}
 \end{subequations}
-In writing $\dot{x}_3$ we have used the shorthand $U(t) \equiv e^{+i \, \omega t \, I_z}$ and employed Eq.~\ref{Eq:Ixrot-(b)} to simplify the result.  The three variables satisfy the following set of coupled first-order differential equations
+In writing $\dot{x}_3$ we have used the shorthand $U(t) \equiv \exp{[i \, \omega t \, I_z]}$ and employed Eq.~\ref{Eq:Ixrot-(b)} to simplify the result.  The three variables satisfy the following set of coupled first-order differential equations
 \begin{equation}
 \frac{d}{dt} \begin{bmatrix} x_3 \\ x_2 \\ x_1 \end{bmatrix}
 	= \begin{bmatrix} 
-	    0 & \omega^2 & 0 \\
+	    0 & -\omega^2 & 0 \\
 		1 & 0 & 0 \\
 		0 & 1 & 0
 	  \end{bmatrix}
@@ -491,3 +492,79 @@ In writing $\dot{x}_3$ we have used the shorthand $U(t) \equiv e^{+i \, \omega t
 \end{equation}
 Solving this new set of three coupled equations gives $x_1(t) = \rho(t) = I_x \, \sin{(\omega t)} + I_y \, \cos{(\omega t)}$ --- the \emph{same answer} that was obtained by solving the set of two coupled equations, Eqs.~\ref{Eq:Ixrot-2x2}.  This finding suggests that we are at liberty to ``overguess'' the number of equations required to solve the problem.
 
+Let us see how the new method would be applied to solve the Example 4 problem with ${\cal H} = \Delta \omega I_z + \omega_1 I_x$ and $\rho(0) = I_z$.  The time derivatives up to third order may be summarized as
+\begin{equation}
+\begin{bmatrix}
+	\rho^{(3)} \\
+	\rho^{(2)} \\
+	\rho^{(1)} \\
+	\rho^{(0)} 
+\end{bmatrix}
+=
+U^{\dagger}
+\begin{bmatrix}
+	- \Delta\omega (\Delta\omega^2 + \omega_1^2) \, I_y \\
+	-\Delta\omega \, (\Delta\omega \, I_x - \omega_1 I_z)  \\
+	\Delta \omega \, I_y \\
+	I_x 
+\end{bmatrix}
+U
+\end{equation}
+with $\rho^{(n)}$ the $n^{\text{th}}$ derivative of $\rho$ with respect to time and
+\begin{equation}
+U \equiv \exp{[i \, (\Delta \omega I_z + \omega_1 I_x) \, t]}.
+\end{equation}
+We see that $\rho^{(3)} = - (\Delta\omega^2 + \omega_1^2) \, \rho^{(1)}$, as we showed before.  Defining $x_n = \rho^{(n-1)}$ for $n = 1$ through $4$, we obtain the following set of four coupled equations describing the time evolution of the density operator:
+\begin{equation}
+\underbrace{
+\frac{d}{dt} 
+	\begin{bmatrix} 
+		x_4 \\ x_3 \\ x_2 \\ x_1 
+	\end{bmatrix}}_{\dot{\bm{\lambda}}}
+	= \underbrace{\begin{bmatrix} 
+	    0 & -(\Delta\omega^2 + \omega_1^2) & 0 & 0 \\
+	    1 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 1 & 0
+	  \end{bmatrix}}_{\bm{\Omega}}
+	  \underbrace{\begin{bmatrix} 
+	  	x_4 \\ x_3 \\ x_2 \\ x_1
+	   \end{bmatrix}}_{\bm{\lambda}}
+\end{equation}
+with
+\begin{equation}
+\underbrace{\begin{bmatrix} 
+x_4(0) \\ x_3(0) \\ x_2(0) \\ x_1(0) 
+\end{bmatrix}}_{{\bm{\lambda}}_0}
+=
+\begin{bmatrix}
+	- \Delta\omega (\Delta\omega^2 + \omega_1^2) \, I_y \\
+	-\Delta\omega \, (\Delta\omega \, I_x - \omega_1 I_z)  \\
+	\Delta \omega \, I_y \\
+	I_x 
+\end{bmatrix}
+\end{equation}
+Solving these coupled equations, we obtain Eq.~\ref{Eq:example4-soln} for $x_1 = \rho(t)$.  
+
+In the above equations we have defined $\bm{\lambda}$ as the vector of $x_n$'s we are interested in and $\bm{\Omega}$ as the matrix of coefficients coupling $\bm{\lambda}$ to $\dot{\bm{\lambda}}$.  The coupled equations are summarized as
+\begin{equation}
+\frac{d \bm{\lambda}}{d t} 
+	- \bm{\Omega} \cdot \bm{\lambda} 
+	= 0
+	\label{Eq:big-equation}
+\end{equation} 
+with $\bm{\lambda}_0$ given.  The \VerbFcn{Evolver} algorithm proceeds as follows.
+\begin{enumerate}
+
+\item Evaluate the derivatives $\rho^{(1)}$ through $\rho^{(3)}$ by repeatedly applying computing $\rho^{(n+1)} = [-i H, \rho^{(n)}]$, starting from $\rho^{(0)} = \rho(0)$.  Assign the initial-condition vector ${\bm{\lambda}}_0 = (\rho^{(3)}, \ldots, \rho^{(0)})$.
+
+\item Fill in the lower 3 rows of $\bm{\Omega}$ by placing a $1$ in entries one below the diagonal and $0$ in all the other positions.
+
+\item  Look for an entry in the list $(\rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ that is proportional to $\rho^{(3)}$, starting with the $\rho^{(2)}$ (entry $n = 3$) and working towards $\rho^{(0)}$ (entry $n = 1$). Call the entry where the match occurs $n_{\text{match}}$. Call the ratio between $\rho^{(3)}$ and the matching entry $r$.
+
+\item Fill in the upper row of $\bm{\Omega}$ with zeros.  Assign the value $r$ to the entry in the $n_{\text{match}}$ column of the upper row of $\bm{\Omega}$, counting from the right to the left.  
+
+\item Feed Eq.~\ref{Eq:big-equation}, including the initial condition, to \emph{Mathematica} to solve.  The time-dependent density operator is $\rho(t) = \lambda_{1}(t)$. 
+
+\end{enumerate}
+	

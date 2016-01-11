@@ -49,7 +49,7 @@ Make up some Hamiltonians and see if they pass the all-terms-commuting test.  %
 The first test is particularly important.  In test 03a and 03b below, nothing %
 happens; the Hamiltonian is either so simple that it can be broken into pieces, 03a, %
 or contains terms which do not commut, 03b.   In test 03c we have a Hamiltonian %
-whose three terms commute, and in this case the \VerbFcn{Evolve} operator an be %
+whose three terms commute, and in this case the \VerbFcn{Evolve} operator can be %
 expanded. %
 @*)
 
@@ -73,9 +73,9 @@ To test the unitary evolution operator on spins, let us set up a model two-spin 
 Ths system is comprised of an $L = 1/2$ $I$ spin and an unspecified-$L$ $S$ spin. %
 @*)
 
-Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym, omega$sym, d$sym, delta$sym,  theta$sym, phi$sym, rho$sym, t$sym]
+Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym, \[Omega], d$sym, \[CapitalDelta], rho$sym, t$sym]
 
-CreateScalar[omega$sym, d$sym, delta$sym, theta$sym, phi$sym];
+CreateScalar[\[Omega], d$sym, \[CapitalDelta]];
 CreateOperator[{{Ix$sym, Iy$sym, Iz$sym},{Sx$sym, Sy$sym, Sz$sym}}]
 
 SpinSingle$CreateOperators[Ix$sym, Iy$sym, Iz$sym, L=1/2];
@@ -86,24 +86,22 @@ Free evolution of $I_x$:
 @*)
 
 vtest["04a > free evolution of Ix", 
-  Evolver[omega$sym Iz$sym, t$sym, Ix$sym] === Ix$sym Cos[omega$sym t$sym] + Iy$sym Sin[omega$sym t$sym]]
+  Evolver[\[Omega] Iz$sym, t$sym, Ix$sym] === Ix$sym Cos[\[Omega] t$sym] + Iy$sym Sin[\[Omega] t$sym]]
 
 (*@
 On-resonance nutation of $I_z$: 
 @*)
 
 vtest["04b > on-resonance nutation of Iz", 
-  Evolver[omega$sym Ix$sym, t$sym, Iz$sym] === Iz$sym Cos[omega$sym t$sym] - Iy$sym Sin[omega$sym t$sym]]
+  Evolver[\[Omega] Ix$sym, t$sym, Iz$sym] === Iz$sym Cos[\[Omega] t$sym] - Iy$sym Sin[\[Omega] t$sym]]
 
 (*@
 Free evolution of $I_{+}$:
 @*)
 
 vtest["04c > free evolution of I+", 
-  Simplify[TrigToExp[
-    Evolver[omega$sym Iz$sym, t$sym, Ix$sym] + I Evolver[omega$sym Iz$sym, t$sym, Iy$sym]
-  ]] 
-  === Exp[-I omega$sym t$sym](Ix$sym + I Iy$sym)]
+  Simplify[TrigToExp[Evolver[\[Omega] Iz$sym, t$sym, Ix$sym] + I Evolver[\[Omega] Iz$sym, t$sym, Iy$sym]]] 
+  === Exp[-I \[Omega] t$sym](Ix$sym + I Iy$sym)]
 
 (*@
 Evolution under a scalar coupling:
@@ -114,38 +112,47 @@ vtest["04d > scalar-coupling evolution of Ix",
   === Ix$sym Cos[d$sym t$sym/2]+2 Iy$sym**Sz$sym Sin[d$sym t$sym/2]]
 
 (*@
-Off-resonance nutation of $I_z$ --- still needs a check:
+Off-resonance nutation of $I_z$.  It is important to carefully set the assumptions used by %
+\VerbFcn{Simplify}.
 @*)
 
-\[Rho] = Collect[
-  (Evolver[delta$sym Iz$sym + omega$sym Ix$sym , t$sym, Iz$sym] 
-    // Simplify[#, Assumptions->{Element[delta$sym, Reals], delta$sym > 0, Element[omega$sym, Reals], omega$sym >= 0}]&  
-    // ExpToTrig // FullSimplify), {Ix$sym, Iy$sym, Iz$sym}]; 
+$Assumptions = {Element[\[CapitalDelta], Reals], \[CapitalDelta] > 0, Element[\[Omega], Reals], \[Omega] >= 0};
 
-\[Rho] /. {t$sym -> t, 
-  delta$sym -> Subscript[\[Omega],0],
-  omega$sym -> Subscript[\[Omega],1],
-  Ix$sym -> Ix, Iy$sym -> Iy, Iz$sym -> Iz}
+constant1 = (\[CapitalDelta]^2)/(\[CapitalDelta]^2 + \[Omega]^2);
+constant2 = (\[CapitalDelta] \[Omega])/(\[CapitalDelta]^2 + \[Omega]^2);
+constant3 = (\[Omega]^2)/(\[CapitalDelta]^2 + \[Omega]^2);
+constant4 = \[Omega]/Sqrt[\[CapitalDelta]^2 + \[Omega]^2];
+omega$eff = Sqrt[\[CapitalDelta]^2 + \[Omega]^2];
+
+rho$known = Collect[
+  constant1 Iz$sym + constant2 Ix$sym + (constant3 Iz$sym - constant2 Ix$sym) Cos[omega$eff t$sym] - constant4 Iy$sym Sin[omega$eff t$sym] // 
+  Expand, {Ix$sym, Iy$sym, Iz$sym}];
+
+rho$calc = Collect[
+  Evolver[\[CapitalDelta] Iz$sym + \[Omega] Ix$sym , t$sym, Iz$sym] // 
+  Simplify // ExpToTrig // FullSimplify, {Ix$sym, Iy$sym, Iz$sym}]; 
+
+vtest["04e > Off-resonance nutation of of Iz", rho$calc == rho$known]
 
 (*@
 Clean up:
 @*)
 
-Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym, omega$sym, d$sym, delta$sym,  theta$sym, phi$sym, rho$sym, t$sym]
+Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym, \[Omega], d$sym, \[CapitalDelta], rho$sym, t$sym]
 
 (*@
 Harmonic oscillator evolution.  First, create the harmonic oscillator Hamiltonian in symmetric form.  Evolve % 
 the lowering operator and confirm that it picks up the expected phase factor. % 
 @*)
 
-Clear[aL$sym, aR$sym, omega$sym, Q$sym, P$sym, H$sym, Q, P];
-CreateScalar[omega$sym];
+Clear[aL$sym, aR$sym, \[Omega], Q$sym, P$sym, H$sym, Q, P];
+CreateScalar[\[Omega]];
 OscSingle$CreateOperators[aL$sym, aR$sym];
 
-H$sym = omega$sym (aL$sym**aR$sym + aR$sym**aL$sym)/2;
+H$sym = \[Omega] (aL$sym**aR$sym + aR$sym**aL$sym)/2;
 
 vtest["05a > free evolution of a", 
-  Evolver[H$sym, t$sym, aL$sym] === aL$sym Exp[I omega$sym t$sym]]
+  Evolver[H$sym, t$sym, aL$sym] === aL$sym Exp[I \[Omega] t$sym]]
 
 (*@
 Evolve the position operator.  To do this, write the position operator in terms of the raising and lowering % 
@@ -158,7 +165,11 @@ CreateOperator[{{Q,P}}];
 QP$rules = {aR$sym -> (Q + I P)/Sqrt[2], aL$sym -> (Q - I P)/Sqrt[2]};
 
 vtest["05b > free evolution of Q", 
-  Simplify[Evolver[H$sym, t$sym, Q$sym] /. QP$rules] === Q Cos[omega$sym t$sym] + P Sin[omega$sym t$sym]]
+  Simplify[Evolver[H$sym, t$sym, Q$sym] /. QP$rules] === Q Cos[\[Omega] t$sym] + P Sin[\[Omega] t$sym]]
+
+(*@ Clean up: @*)
+
+Clear[aL$sym, aR$sym, \[Omega], Q$sym, P$sym, H$sym, Q, P];
 
 (*~ END ~*)
 
@@ -167,9 +178,6 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
-
-
-
 
 
 
