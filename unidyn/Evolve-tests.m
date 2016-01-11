@@ -110,7 +110,8 @@ Evolution under a scalar coupling:
 @*)
 
 vtest["04d > scalar-coupling evolution of Ix", 
-  Simplify[Evolver[d$sym Iz$sym ** Sz$sym, t$sym, Ix$sym]] === Ix$sym Cos[d$sym t$sym/2]+2 Iy$sym**Sz$sym Sin[d$sym t$sym/2]]
+  Simplify[Evolver[d$sym Iz$sym ** Sz$sym, t$sym, Ix$sym]] 
+  === Ix$sym Cos[d$sym t$sym/2]+2 Iy$sym**Sz$sym Sin[d$sym t$sym/2]]
 
 (*@
 Off-resonance nutation of $I_z$ --- still needs a check:
@@ -124,20 +125,6 @@ Off-resonance nutation of $I_z$ --- still needs a check:
 \[Rho] /. {t$sym -> t, 
   delta$sym -> Subscript[\[Omega],0],
   omega$sym -> Subscript[\[Omega],1],
-  Ix$sym -> Ix, Iy$sym -> Iy, Iz$sym -> Iz}
-
-
-(*@
-Off-resonance variable-phase nutation of $I_z$ -- still needs a check:
-@*)
-
-\[Rho] = Collect[ 
-  (Evolver[delta$sym Iz$sym + omega$sym (Cos[phi$sym] Ix$sym + Sin[phi$sym] Iy$sym), t$sym, Iz$sym]
-    // Simplify[#, Assumptions->{Element[delta$sym, Reals], delta$sym > 0, Element[omega$sym, Reals], omega$sym >= 0}]&  
-    // ExpToTrig // FullSimplify), {Ix$sym, Iy$sym, Iz$sym}]; 
-
-\[Rho] /. {t$sym -> t,  phi$sym -> \[Phi],
-  delta$sym -> Subscript[\[Omega],0], omega$sym -> Subscript[\[Omega],1], 
   Ix$sym -> Ix, Iy$sym -> Iy, Iz$sym -> Iz}
 
 (*@

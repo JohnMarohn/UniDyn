@@ -423,11 +423,11 @@ Plugging this integration constant into Eq.~\ref{Eq:Example4-temp} we obtain the
 
 We see in this example an answer for $\rho(t)$ that is markedly more complicated that in the previous examples, the solution to (essentially) a third order differential equation.  To uncover this differential equation, is was necessary to compare subsequent derivatives of $\rho(t)$ not to $\rho(0)$ but to $\dot{\rho}(0)$ instead.  Considering in total the four examples of unitary evolution considered so far, it would seem that any algorithm we develop needs to consider the possibility that the density operator satisfies a first, second, or even third-order differential equation. 
 
-\myparagraph{Method 4} We now show that the differential equations in each of these four cases can be reduced to a set of coupled first-order differential equations --- a significant simplification.  We would expect the four cases to still require a different number of coupled of equations. This is not the case.  We show that, remarkably, all four cases can be handled by a set of four coupled differential equations.  This is the essential new insight implemented here in the \VerbFcn{Evolver} algorithm. 
+\myparagraph{Method 4} We now show by example that the single differential equation in each of these four cases can be reduced to a set of \emph{coupled first-order} differential equations --- a significant step towards making a simple automated, unitary evolution algorithm.  We would expect the four cases to each still require a decision on the number of coupled of equations required to solve for $\rho$ in each case.  Surprisingly, no decision is needed.  We will show that all four cases can be handled by a set of four coupled differential equations.  This is the essential new insight implemented here in the \VerbFcn{Evolver} algorithm. 
 
 To understand the new method, consider transforming the second-order differential equation in Eq.~\ref{Eq:Ixrot-ODE} into two coupled first-order equations.  Let the two new variables be 
 \begin{equation}
-x_1 = \rho \text{ and } x_2 = \dot{\rho}
+x_1 = \rho \text{ and } x_2 = \dot{\rho}.
 \end{equation}
 Taking the time derivative of each of these variables we obtain 
 \begin{subequations}

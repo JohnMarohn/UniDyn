@@ -17,6 +17,11 @@ upper directory
 Example notebooks ::
 
     UniDyn--Demo-01.nb    loads NCAlgebra and UniDyn; runs the unit tests
+    
+    UniDyn--Demo-02.nb    Spin magnetization evolving under off-resonance, 
+                           variable-phase rf irradiation.  Use Evolver to calculate the
+                           magnetization analytically, then make a vector plot of the 
+                           magnetization under various resonance offsets and rf phases.
 
 
 unidyn directory
