@@ -101,7 +101,7 @@ system = {eqns,
   x4[0]== rho$sym[3], x3[0]== rho$sym[2], x2[0]== rho$sym[1], x1[0]== rho$sym[0]};
   sol = DSolve[system,{x1,x2,x3,x4},time];
 
-rho$calc = (x1[time] /. sol[[1]] /. time -> t$sym);
+rho$calc = (x1[time] /. sol[[1]] /. time -> t$sym) // Expand // ExpToTrig // FullSimplify ;
 rho$known = Ix$sym Cos[t$sym \[CapitalDelta]] + Iy$sym Sin[t$sym \[CapitalDelta]];
 
 vtest["04a > DSolve test", rho$calc === rho$known]
@@ -204,6 +204,9 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
+
+
+
 
 
 
