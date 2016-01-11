@@ -192,7 +192,7 @@ OscSingle$CreateOperators[aL$sym, aR$sym];
 H$sym = \[Omega] (aL$sym**aR$sym + aR$sym**aL$sym)/2;
 
 vtest["06a > free evolution of a", 
-  Simplify[Expand[Evolver[H$sym, t$sym, aL$sym, quiet -> quiet$query]]]
+  Simplify[TrigToExp[Expand[Evolver[H$sym, t$sym, aL$sym, quiet -> quiet$query]]]]
     === aL$sym Exp[I \[Omega] t$sym]]
 
 (*@
@@ -209,7 +209,6 @@ vtest["06b > free evolution of Q",
   Simplify[ExpToTrig[Expand[Evolver[H$sym, t$sym, Q$sym, quiet -> quiet$query] /. QP$rules]]]
     == Q Cos[\[Omega] t$sym] + P Sin[\[Omega] t$sym]]
 
-
 (*@ Clean up: @*)
 
 Clear[aL$sym, aR$sym, \[Omega], Q$sym, P$sym, H$sym, Q, P];
@@ -221,6 +220,3 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
-
-
-
