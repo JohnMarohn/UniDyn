@@ -7,12 +7,21 @@
  ** 2016/01/06
  **)
 
-vtest[label_,test_] := 
-    VerificationTest[test,
-        True,
-        TestID-> StringJoin[
-            "OpQ > test",
-            ToString[label]]]
+If[$VersionNumber < 10.,
+
+  vtest[label_,test_] :=
+    If[test === True, 
+      Print["Pass"],
+      Print["Fail > ", StringJoin["Comm > test",ToString[label]]]],
+
+  vtest[label_,test_] := 
+      VerificationTest[test,
+          True,
+          TestID-> StringJoin[
+              "Comm > test",
+              ToString[label]]]
+]
+
 
 Clear[a$sym, b$sym, c$sym, d$sym];
 Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym];
@@ -82,6 +91,9 @@ vtest["05a", NCExpand[Comm[A$sym**B$sym**C$sym, D$sym]]
 Clear[a$sym, b$sym, c$sym, d$sym];
 Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym];
 Clear[A$sym, B$sym, C$sym, D$sym];
+
+
+
 
 
 

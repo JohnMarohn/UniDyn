@@ -16,12 +16,20 @@ Off[SpinSingle$CreateOperators::nosimplify]
 (*@ Create a shorthand function for creating unit tests.
 @*)
 
-vtest[label_,test_] := 
-    VerificationTest[test,
-        True,
-        TestID-> StringJoin[
-            "Spins > test",
-            ToString[label]]]
+If[$VersionNumber < 10.,
+
+  vtest[label_,test_] :=
+    If[test === True, 
+      Print["Pass"],
+      Print["Fail > ", StringJoin["Spins > test",ToString[label]]]],
+
+  vtest[label_,test_] := 
+      VerificationTest[test,
+          True,
+          TestID-> StringJoin[
+              "Spins > test",
+              ToString[label]]]
+]
 
 Clear[w, Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym];
 
@@ -137,6 +145,9 @@ On[SpinSingle$CreateOperators::nocreate]
 On[SpinSingle$CreateOperators::comm]
 On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nosimplify]
+
+
+
 
 
 

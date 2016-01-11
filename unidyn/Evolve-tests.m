@@ -215,7 +215,7 @@ QP$rules = {aR$sym -> (Q + I P)/Sqrt[2], aL$sym -> (Q - I P)/Sqrt[2]};
 
 vtest["06b > free evolution of Q", 
   Simplify[ExpToTrig[Expand[Evolver[H$sym, t$sym, Q$sym, quiet -> quiet$query] /. QP$rules]]]
-    == Q Cos[\[Omega] t$sym] + P Sin[\[Omega] t$sym] + 3]
+    == Q Cos[\[Omega] t$sym] + P Sin[\[Omega] t$sym]]
 
 (*@ Clean up: @*)
 
