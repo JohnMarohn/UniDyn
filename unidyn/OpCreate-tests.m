@@ -2,6 +2,8 @@
 
 (*~ START ~*)
 
+Needs["UniDyn`"]
+
 If[$VersionNumber < 10.,
 
   vtest[label_,test_] :=
