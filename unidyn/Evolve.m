@@ -150,12 +150,19 @@ If asked, spit out the coupling matrix for inspection. %
   If[OptionValue[quiet] == False,Print["A = ", A // MatrixForm]];
 
 (*@
-Set up the four coupled equations and solve them.
+Set up the four coupled equations and solve them.  Respect \emph{Mathematica} %
+version 8 standards here and feed \VerbFcn{DSolve[]} a list where each element %
+of the list is an equation. % 
 @*)
 
   X[time_] = {x4[time], x3[time], x2[time], x1[time]};
-  system = {D[X[time],time] == A . X[time],
+  lhs$list = D[X[time],time];
+  rhs$list = A . X[time];
+  eqns = (lhs$list[[#]] == rhs$list[[#]])& /@ {1,2,3,4};
+ 
+  system = {eqns,
     x4[0]== rho$sym[3], x3[0]== rho$sym[2], x2[0]== rho$sym[1], x1[0]== rho$sym[0]};
+  
   sol = DSolve[system,{x1,x2,x3,x4},time];
 
 (*@ 

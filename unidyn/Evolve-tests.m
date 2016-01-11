@@ -74,7 +74,7 @@ Ths system is comprised of an $L = 1/2$ $I$ spin and an unspecified-$L$ $S$ spin
 @*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym, \[Omega], d$sym, \[CapitalDelta], rho$sym, t$sym]
-Clear[A, r, lhs$list, rhs$list, time, eqns, system, rho$calc, rho$known]
+Clear[A, r, lhs$list, rhs$list, time, eqns, system, rho$calc, rho$known, X]
 
 CreateScalar[\[Omega], d$sym, \[CapitalDelta]];
 CreateOperator[{{Ix$sym, Iy$sym, Iz$sym},{Sx$sym, Sy$sym, Sz$sym}}]
@@ -93,6 +93,8 @@ it to the solver. %
 A = {{0,-\[CapitalDelta]^2,0,0},{1,0,0,0},{0,1,0,0},{0,0,1,0}};
 r = {Ix$sym, Iy$sym \[CapitalDelta], -Ix$sym \[CapitalDelta]^2, -Iy$sym \[CapitalDelta]^3, Ix$sym \[CapitalDelta]^4};
 (rho$sym[#-1] = r[[#]])& /@ {1,2,3,4,5}; 
+
+X[time_] = {x4[time], x3[time], x2[time], x1[time]};
 lhs$list = D[X[time],time];
 rhs$list = A . X[time];
 eqns = (lhs$list[[#]] == rhs$list[[#]])& /@ {1,2,3,4}; 
@@ -101,7 +103,7 @@ system = {eqns,
   x4[0]== rho$sym[3], x3[0]== rho$sym[2], x2[0]== rho$sym[1], x1[0]== rho$sym[0]};
   sol = DSolve[system,{x1,x2,x3,x4},time];
 
-rho$calc = (x1[time] /. sol[[1]] /. time -> t$sym) // Expand // ExpToTrig // FullSimplify ;
+rho$calc = (x1[time] /. sol[[1]] /. time -> t$sym) // Expand // ExpToTrig // FullSimplify;
 rho$known = Ix$sym Cos[t$sym \[CapitalDelta]] + Iy$sym Sin[t$sym \[CapitalDelta]];
 
 vtest["04a > DSolve test", rho$calc === rho$known]
@@ -164,7 +166,7 @@ Clean up:
 @*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym, \[Omega], d$sym, \[CapitalDelta], rho$sym, t$sym]
-Clear[A, r, lhs$list, rhs$list, time, eqns, system, rho$calc, rho$known]
+Clear[A, r, lhs$list, rhs$list, time, eqns, system, rho$calc, rho$known, X]
 
 (*@
 Harmonic oscillator evolution.  First, create the harmonic oscillator Hamiltonian in symmetric form.  Evolve % 
@@ -204,12 +206,6 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
-
-
-
-
-
-
 
 
 
