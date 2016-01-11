@@ -27,6 +27,12 @@ vtest[label_,test_] :=
 (*~ START ~*)
 
 (*@
+Global debugging flag to force \VerbFcn{Evolver} to be noisy instead of quiet.
+@*)
+
+quiet$query = False;
+
+(*@
 Show that the \VerbFcn{Evolve} operator is distributive over both sums %
 and non-commutative products of operators.  Show that scalars are pulled %
 out front, even if buried in a oomplicated product of operators and scalars. %
@@ -113,21 +119,24 @@ Free evolution of $I_x$:
 @*)
 
 vtest["05a > free evolution of Ix", 
-  Evolver[\[Omega] Iz$sym, t$sym, Ix$sym] === Ix$sym Cos[\[Omega] t$sym] + Iy$sym Sin[\[Omega] t$sym]]
+  Evolver[\[Omega] Iz$sym, t$sym, Ix$sym, quiet -> quiet$query] 
+    === Ix$sym Cos[\[Omega] t$sym] + Iy$sym Sin[\[Omega] t$sym]]
 
 (*@
 On-resonance nutation of $I_z$: 
 @*)
 
 vtest["05b > on-resonance nutation of Iz", 
-  Evolver[\[Omega] Ix$sym, t$sym, Iz$sym] === Iz$sym Cos[\[Omega] t$sym] - Iy$sym Sin[\[Omega] t$sym]]
+  Evolver[\[Omega] Ix$sym, t$sym, Iz$sym, quiet -> quiet$query] 
+    === Iz$sym Cos[\[Omega] t$sym] - Iy$sym Sin[\[Omega] t$sym]]
 
 (*@
 Free evolution of $I_{+}$:
 @*)
 
 vtest["05c > free evolution of I+", 
-  Simplify[TrigToExp[Evolver[\[Omega] Iz$sym, t$sym, Ix$sym] + I Evolver[\[Omega] Iz$sym, t$sym, Iy$sym]]] 
+  Simplify[TrigToExp[Evolver[\[Omega] Iz$sym, t$sym, Ix$sym, quiet -> quiet$query] 
+    + I Evolver[\[Omega] Iz$sym, t$sym, Iy$sym, quiet -> quiet$query]]] 
   === Exp[-I \[Omega] t$sym](Ix$sym + I Iy$sym)]
 
 (*@
@@ -135,7 +144,7 @@ Evolution under a scalar coupling:
 @*)
 
 vtest["05d > scalar-coupling evolution of Ix", 
-  Simplify[Evolver[d$sym Iz$sym ** Sz$sym, t$sym, Ix$sym]] 
+  Simplify[Evolver[d$sym Iz$sym ** Sz$sym, t$sym, Ix$sym, quiet -> quiet$query]] 
   === Ix$sym Cos[d$sym t$sym/2]+2 Iy$sym**Sz$sym Sin[d$sym t$sym/2]]
 
 (*@
@@ -156,7 +165,7 @@ rho$known = Collect[
   Expand, {Ix$sym, Iy$sym, Iz$sym}];
 
 rho$calc = Collect[
-  Evolver[\[CapitalDelta] Iz$sym + \[Omega] Ix$sym , t$sym, Iz$sym] // 
+  Evolver[\[CapitalDelta] Iz$sym + \[Omega] Ix$sym , t$sym, Iz$sym, quiet -> quiet$query] // 
   Simplify // ExpToTrig // FullSimplify, {Ix$sym, Iy$sym, Iz$sym}]; 
 
 vtest["05e > Off-resonance nutation of of Iz", rho$calc == rho$known]
@@ -180,7 +189,8 @@ OscSingle$CreateOperators[aL$sym, aR$sym];
 H$sym = \[Omega] (aL$sym**aR$sym + aR$sym**aL$sym)/2;
 
 vtest["06a > free evolution of a", 
-  Evolver[H$sym, t$sym, aL$sym] === aL$sym Exp[I \[Omega] t$sym]]
+  Evolver[H$sym, t$sym, aL$sym, quiet -> quiet$query] 
+    === aL$sym Exp[I \[Omega] t$sym]]
 
 (*@
 Evolve the position operator.  To do this, write the position operator in terms of the raising and lowering % 
@@ -193,7 +203,8 @@ CreateOperator[{{Q,P}}];
 QP$rules = {aR$sym -> (Q + I P)/Sqrt[2], aL$sym -> (Q - I P)/Sqrt[2]};
 
 vtest["06b > free evolution of Q", 
-  Simplify[Evolver[H$sym, t$sym, Q$sym] /. QP$rules] === Q Cos[\[Omega] t$sym] + P Sin[\[Omega] t$sym]]
+  Simplify[Evolver[H$sym, t$sym, Q$sym, quiet -> quiet$query] /. QP$rules] 
+    === Q Cos[\[Omega] t$sym] + P Sin[\[Omega] t$sym]]
 
 (*@ Clean up: @*)
 
@@ -206,6 +217,9 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
+
+
+
 
 
 

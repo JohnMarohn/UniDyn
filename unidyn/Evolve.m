@@ -96,7 +96,7 @@ it to return useful results.  @*)
 
 (*@ Print out the vector of density-operator derivatives if asked. @*)
 
-  If[OptionValue[quiet] == False, Print["r = ",rho$sym[#]& /@ {0,1,2,3,4} // MatrixForm]];
+  If[OptionValue[quiet] == False, Print["\[Rho] matrix = ",rho$sym[#]& /@ {0,1,2,3,4} // MatrixForm]];
 
 (*@ Look for an entry in $(\rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ list that is % 
 proportijonal to $\rho^{(3)}$. Stop when you find it.  Determining %
@@ -147,7 +147,7 @@ Set up the coupling matrix $\bm{\Omega}$ based on the matching condition. %
 If asked, spit out the coupling matrix for inspection. %
 @*)
 
-  If[OptionValue[quiet] == False,Print["A = ", A // MatrixForm]];
+  If[OptionValue[quiet] == False,Print["\[CapitalOmega] = ", A // MatrixForm]];
 
 (*@
 Set up the four coupled equations and solve them.  Respect \emph{Mathematica} %
@@ -164,6 +164,10 @@ of the list is an equation. %
     x4[0]== rho$sym[3], x3[0]== rho$sym[2], x2[0]== rho$sym[1], x1[0]== rho$sym[0]};
   
   sol = DSolve[system,{x1,x2,x3,x4},time];
+
+  If[OptionValue[quiet] == False, Print["system of equations = ", system // MatrixForm]];
+  If[OptionValue[quiet] == False, Print["1st solution = ", sol[[1]][[1]] ]];
+  If[OptionValue[quiet] == False, Print["1st solution w/ substitution = ", x1[time]  /. sol[[1]][[1]] /. time -> t$sym ]];
 
 (*@ 
 Return only the first element of the solution, $\lambda_1(t)$.  
