@@ -152,7 +152,7 @@ If asked, spit out the coupling matrix for inspection. %
 (*@
 Set up the four coupled equations and solve them.  Respect \emph{Mathematica} %
 version 8 standards here and feed \VerbFcn{DSolve[]} a list where each element %
-of the list is an equation. % 
+of the list is an equation.  First set up the equations. % 
 @*)
 
   X[time_] = {x4[time], x3[time], x2[time], x1[time]};
@@ -162,10 +162,16 @@ of the list is an equation. %
  
   system = {eqns,
     x4[0]== rho$sym[3], x3[0]== rho$sym[2], x2[0]== rho$sym[1], x1[0]== rho$sym[0]};
-  
-  sol = DSolve[system,{x1,x2,x3,x4},time];
 
   If[OptionValue[quiet] == False, Print["system of equations = ", system // MatrixForm]];
+
+(*@
+Now solve them and print out the solution with the private variables replaced %
+by public ones. %
+@*)  
+
+  sol = DSolve[system,{x1,x2,x3,x4},time];
+
   If[OptionValue[quiet] == False, Print["1st solution = ", sol[[1]][[1]] ]];
   If[OptionValue[quiet] == False, Print["1st solution w/ substitution = ", x1[time]  /. sol[[1]][[1]] /. time -> t$sym ]];
 
