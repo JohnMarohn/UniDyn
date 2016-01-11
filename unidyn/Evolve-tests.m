@@ -74,6 +74,7 @@ Ths system is comprised of an $L = 1/2$ $I$ spin and an unspecified-$L$ $S$ spin
 @*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym, \[Omega], d$sym, \[CapitalDelta], rho$sym, t$sym]
+Clear[A, r, lhs$list, rhs$list, time, eqns, system, rho$calc, rho$known]
 
 CreateScalar[\[Omega], d$sym, \[CapitalDelta]];
 CreateOperator[{{Ix$sym, Iy$sym, Iz$sym},{Sx$sym, Sy$sym, Sz$sym}}]
@@ -82,24 +83,48 @@ SpinSingle$CreateOperators[Ix$sym, Iy$sym, Iz$sym, L=1/2];
 SpinSingle$CreateOperators[Sx$sym, Sy$sym, Sz$sym, L=1/2];
 
 (*@
+Test the differential equation solver first.  In \emph{Mathematica} version 10 %
+gives more leeway in how the equations are set up -- you can set one list %
+equal to another, for example.  In \emph{Mathematica} version 8, in contrast %
+the syntax is not so forgiving.  Let us mock-up an equation by hand and feed %
+it to the solver. %
+@*)
+
+A = {{0,-\[CapitalDelta]^2,0,0},{1,0,0,0},{0,1,0,0},{0,0,1,0}};
+r = {Ix$sym, Iy$sym \[CapitalDelta], -Ix$sym \[CapitalDelta]^2, -Iy$sym \[CapitalDelta]^3, Ix$sym \[CapitalDelta]^4};
+(rho$sym[#-1] = r[[#]])& /@ {1,2,3,4,5}; 
+lhs$list = D[X[time],time];
+rhs$list = A . X[time];
+eqns = (lhs$list[[#]] == rhs$list[[#]])& /@ {1,2,3,4}; 
+
+system = {eqns,
+  x4[0]== rho$sym[3], x3[0]== rho$sym[2], x2[0]== rho$sym[1], x1[0]== rho$sym[0]};
+  sol = DSolve[system,{x1,x2,x3,x4},time];
+
+rho$calc = (x1[time] /. sol[[1]] /. time -> t$sym);
+rho$known = Ix$sym Cos[t$sym \[CapitalDelta]] + Iy$sym Sin[t$sym \[CapitalDelta]];
+
+vtest["04a > DSolve test", rho$calc === rho$known]
+
+(*@
 Free evolution of $I_x$: 
 @*)
 
-vtest["04a > free evolution of Ix", 
+vtest["05a > free evolution of Ix", 
   Evolver[\[Omega] Iz$sym, t$sym, Ix$sym] === Ix$sym Cos[\[Omega] t$sym] + Iy$sym Sin[\[Omega] t$sym]]
 
 (*@
 On-resonance nutation of $I_z$: 
 @*)
 
-vtest["04b > on-resonance nutation of Iz", 
+vtest["05b > on-resonance nutation of Iz", 
   Evolver[\[Omega] Ix$sym, t$sym, Iz$sym] === Iz$sym Cos[\[Omega] t$sym] - Iy$sym Sin[\[Omega] t$sym]]
 
 (*@
 Free evolution of $I_{+}$:
 @*)
 
-vtest["04c > free evolution of I+", 
+vtest["05c > free evolution of I+", 
   Simplify[TrigToExp[Evolver[\[Omega] Iz$sym, t$sym, Ix$sym] + I Evolver[\[Omega] Iz$sym, t$sym, Iy$sym]]] 
   === Exp[-I \[Omega] t$sym](Ix$sym + I Iy$sym)]
 
@@ -107,7 +132,7 @@ vtest["04c > free evolution of I+",
 Evolution under a scalar coupling:
 @*)
 
-vtest["04d > scalar-coupling evolution of Ix", 
+vtest["05d > scalar-coupling evolution of Ix", 
   Simplify[Evolver[d$sym Iz$sym ** Sz$sym, t$sym, Ix$sym]] 
   === Ix$sym Cos[d$sym t$sym/2]+2 Iy$sym**Sz$sym Sin[d$sym t$sym/2]]
 
@@ -132,13 +157,14 @@ rho$calc = Collect[
   Evolver[\[CapitalDelta] Iz$sym + \[Omega] Ix$sym , t$sym, Iz$sym] // 
   Simplify // ExpToTrig // FullSimplify, {Ix$sym, Iy$sym, Iz$sym}]; 
 
-vtest["04e > Off-resonance nutation of of Iz", rho$calc == rho$known]
+vtest["05e > Off-resonance nutation of of Iz", rho$calc == rho$known]
 
 (*@
 Clean up:
 @*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym, \[Omega], d$sym, \[CapitalDelta], rho$sym, t$sym]
+Clear[A, r, lhs$list, rhs$list, time, eqns, system, rho$calc, rho$known]
 
 (*@
 Harmonic oscillator evolution.  First, create the harmonic oscillator Hamiltonian in symmetric form.  Evolve % 
@@ -151,7 +177,7 @@ OscSingle$CreateOperators[aL$sym, aR$sym];
 
 H$sym = \[Omega] (aL$sym**aR$sym + aR$sym**aL$sym)/2;
 
-vtest["05a > free evolution of a", 
+vtest["06a > free evolution of a", 
   Evolver[H$sym, t$sym, aL$sym] === aL$sym Exp[I \[Omega] t$sym]]
 
 (*@
@@ -164,7 +190,7 @@ CreateOperator[{{Q,P}}];
 {Q$sym, P$sym} = {(aR$sym + aL$sym)/Sqrt[2], I (aR$sym - aL$sym)/Sqrt[2]};
 QP$rules = {aR$sym -> (Q + I P)/Sqrt[2], aL$sym -> (Q - I P)/Sqrt[2]};
 
-vtest["05b > free evolution of Q", 
+vtest["06b > free evolution of Q", 
   Simplify[Evolver[H$sym, t$sym, Q$sym] /. QP$rules] === Q Cos[\[Omega] t$sym] + P Sin[\[Omega] t$sym]]
 
 (*@ Clean up: @*)
@@ -178,6 +204,9 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
+
+
+
 
 
 
