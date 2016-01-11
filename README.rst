@@ -13,7 +13,7 @@ Tested in *Mathematica* version 10.0.1.0 running in OS 10.9.5.
 Installation
 ------------
 
-Open up ``UniDyn--Demo-01.nb`` and follow the directions.  You will be asked to enter in the *Mathematica* notebook a string indicating the location where you downloaded the package files too.  After entering that string, evaluate the notebook to import ``NC``, ``NCAlgebra``, ``UniDyn``, and run the 100+ ``UniDyn`` units tests.
+Open up ``UniDyn--Demo-01.nb`` and follow the directions.  You will be asked to enter in the *Mathematica* notebook a string indicating the location where you downloaded the package files to.  After entering that string, evaluate the notebook to import ``NC``, ``NCAlgebra``, ``UniDyn``, and run the 100+ ``UniDyn`` units tests.  If that all goes well, then open up ``UniDyn--Demo-02.nb``, reenter the location string, and run the notebook. 
 
 Package files
 -------------
@@ -30,6 +30,16 @@ Example notebooks ::
                            magnetization analytically, then make a vector plot of the 
                            magnetization under various resonance offsets and rf phases.
 
+Documentation ::
+
+    UniDyn-doc.pdf        Documentation.  Most of the documentation is contained    
+                           *inline*, in comments in the source code -- literate
+                           programming!  The source code is read directly into the
+                           tex document and typeset.  
+    
+    UniDyn-doc.tex               Main document file.
+    UniDyn-doc--abstract.tex     Document abstract.
+    UniDyn-doc--intro.tex        Document introduction, explains the algorithm.
 
 unidyn directory
 ^^^^^^^^^^^^^^^^
