@@ -17,12 +17,20 @@ Off[OscSingle$CreateOperators::create]
 Create a shorthand function for creating unit tests.
 @*)
 
-vtest[label_,test_] := 
-    VerificationTest[test,
-        True,
-        TestID-> StringJoin[
-            "Osc > test",
-            ToString[label]]]
+If[$VersionNumber < 10.,
+
+  vtest[label_,test_] :=
+    If[test === True, 
+      Print["Pass"],
+      Print["Fail > ", StringJoin["Osc > test",ToString[label]]]],
+
+  vtest[label_,test_] := 
+      VerificationTest[test,
+          True,
+          TestID-> StringJoin[
+              "Osc > test",
+              ToString[label]]]
+]
 
 (*~ START ~*)
 
@@ -207,7 +215,7 @@ QP$rules = {aR$sym -> (Q + I P)/Sqrt[2], aL$sym -> (Q - I P)/Sqrt[2]};
 
 vtest["06b > free evolution of Q", 
   Simplify[ExpToTrig[Expand[Evolver[H$sym, t$sym, Q$sym, quiet -> quiet$query] /. QP$rules]]]
-    == Q Cos[\[Omega] t$sym] + P Sin[\[Omega] t$sym]]
+    == Q Cos[\[Omega] t$sym] + P Sin[\[Omega] t$sym] + 3]
 
 (*@ Clean up: @*)
 
@@ -220,3 +228,6 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
+
+
+
