@@ -29,6 +29,8 @@ Example notebooks ::
                            variable-phase rf irradiation.  Use Evolver to calculate the
                            magnetization analytically, then make a vector plot of the 
                            magnetization under various resonance offsets and rf phases.
+                           
+    UniDyn--Demo-Scratch.nb    Operator playground
 
 Documentation ::
 
@@ -62,7 +64,11 @@ plus unit-testing files ::
     Spins-tests.m
     Osc-tests.m
     Evolve-tests.m
-    
+
+.. include:: HISTORY.rst
+
+.. include:: TODO.rst
+
 Background reading
 ------------------
 
