@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    188464,       4439]
-NotebookOptionsPosition[    180851,       4196]
-NotebookOutlinePosition[    181210,       4212]
-CellTagsIndexPosition[    181167,       4209]
+NotebookDataLength[    209144,       5018]
+NotebookOptionsPosition[    201527,       4775]
+NotebookOutlinePosition[    201886,       4791]
+CellTagsIndexPosition[    201843,       4788]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -4151,18 +4151,17 @@ Cell[BoxData[{
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Simplify", "[", 
-  RowBox[{
-   RowBox[{"Evolver", "[", 
-    RowBox[{"H$1", ",", "t", ",", "aR"}], "]"}], "  ", "/.", " ", 
-   "QP$rules"}], "]"}]], "Input",
+ RowBox[{
+  RowBox[{"Evolver", "[", 
+   RowBox[{"H$1", ",", "t", ",", "aR"}], "]"}], " "}]], "Input",
  CellChangeTimes->{{3.6615999979301577`*^9, 3.661600052902892*^9}, {
   3.661600252980455*^9, 3.6616003005713778`*^9}, {3.661600331228952*^9, 
   3.6616003753055487`*^9}, {3.661600425748569*^9, 3.6616004460721083`*^9}, {
   3.661600561499104*^9, 3.661600577381302*^9}, {3.661600638480967*^9, 
   3.661600666015003*^9}, {3.661600701280002*^9, 3.6616007310693493`*^9}, {
   3.661601025010738*^9, 3.6616010520976973`*^9}, {3.66160156137223*^9, 
-  3.661601567965077*^9}, {3.66160169077514*^9, 3.661601690909215*^9}},
+  3.661601567965077*^9}, {3.66160169077514*^9, 3.661601690909215*^9}, {
+  3.661604378984228*^9, 3.661604387210058*^9}},
  FontSize->16],
 
 Cell[BoxData[
@@ -4170,16 +4169,595 @@ Cell[BoxData[
   StyleBox[
    RowBox[{"Evolver", "::", "unsolvable"}], "MessageName"], 
   RowBox[{":", " "}], "\<\"Unrecognized evolution\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.661604317396896*^9, 3.661604372092123*^9}],
+ CellChangeTimes->{
+  3.661604317396896*^9, {3.661604372092123*^9, 3.661604389733602*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{
-   FractionBox[
-    RowBox[{
-     RowBox[{"\[ImaginaryI]", " ", "P"}], "+", "Q"}], 
-    SqrtBox["2"]], ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}]], "Output",\
-
+  RowBox[{"aR", ",", 
+   RowBox[{
+    RowBox[{"-", "\[ImaginaryI]"}], " ", "F", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], ")"}]}], ",", 
+   RowBox[{
+    RowBox[{"-", 
+     SuperscriptBox["F", "2"]}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+       "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+       "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], "]"}]}], 
+     ")"}]}], ",", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox["F", "3"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+         "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], "]"}]}], 
+       "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+         "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], "]"}]}], 
+       "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+         "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], "]"}]}], 
+       "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+         "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], "]"}]}], 
+       "]"}]}], ")"}]}], ",", 
+   RowBox[{
+    SuperscriptBox["F", "4"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{
+                 RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}],
+            "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+           "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{
+                 RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}],
+            "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+           "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{
+                 RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}],
+            "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+           "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{
+                 RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}],
+            "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+           "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{
+                 RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}],
+            "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+           "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{
+                 RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}],
+            "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+           "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{
+                 RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}],
+            "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+           "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{
+                 RowBox[{"-", "i"}], " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}],
+            "]"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"Comm", "[", 
+       RowBox[{
+        RowBox[{"aL", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+        RowBox[{"Comm", "[", 
+         RowBox[{
+          RowBox[{"aL", " ", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+          RowBox[{"Comm", "[", 
+           RowBox[{
+            RowBox[{"aL", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"i", " ", "\[Phi]"}]]}], ",", 
+            RowBox[{"Comm", "[", 
+             RowBox[{
+              RowBox[{"aL", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"i", " ", "\[Phi]"}]]}], ",", "aR"}], "]"}]}], 
+           "]"}]}], "]"}]}], "]"}]}], ")"}]}]}], "}"}]], "Output",
  CellChangeTimes->{
   3.661600376064962*^9, {3.661600426843581*^9, 3.66160044692731*^9}, {
    3.661600567841215*^9, 3.66160057816276*^9}, {3.661600643374647*^9, 
@@ -4187,7 +4765,8 @@ Cell[BoxData[
    3.6616010484626513`*^9, 3.6616010618633747`*^9}, 3.6616015385193167`*^9, 
    3.6616015689219103`*^9, {3.6616016294550962`*^9, 3.661601652197709*^9}, 
    3.661601691539207*^9, 3.6616021841194553`*^9, 3.661602350590143*^9, 
-   3.661602505026248*^9, 3.661604317425989*^9, 3.6616043721031218`*^9},
+   3.661602505026248*^9, 3.661604317425989*^9, {3.6616043721031218`*^9, 
+   3.66160438973948*^9}},
  FontSize->16]
 }, Open  ]]
 }, Open  ]]
@@ -4434,9 +5013,9 @@ Cell[CellGroupData[{
 Cell[177924, 4116, 217, 3, 35, "Subsubsection"],
 Cell[178144, 4121, 930, 27, 53, "Input"],
 Cell[CellGroupData[{
-Cell[179099, 4152, 703, 13, 32, "Input"],
-Cell[179805, 4167, 237, 5, 24, "Message"],
-Cell[180045, 4174, 754, 16, 91, "Output"]
+Cell[179099, 4152, 687, 12, 32, "Input"],
+Cell[179789, 4166, 264, 6, 24, "Message"],
+Cell[180056, 4174, 21419, 595, 634, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
