@@ -29,6 +29,12 @@ Example notebooks ::
                            variable-phase rf irradiation.  Use Evolver to calculate the
                            magnetization analytically, then make a vector plot of the 
                            magnetization under various resonance offsets and rf phases.
+
+    UniDyn--Demo-03.nb    Demonstrates how to take the digital Fourier transform of one-
+                           dimensional and two-dimensional data.  Examples illustrate 
+                           the FT data-ordering problem, aliasing, apodization, and zero 
+                           filling with one-dimensional data and the phase-twist lineshape
+                           observed when Fourier transforming two-dimensional data sets.  
                            
     UniDyn--Demo-Scratch.nb    Operator playground
 

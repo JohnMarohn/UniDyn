@@ -1,6 +1,11 @@
 History
 -------
 
+2016/05/05 jam99
+^^^^^^^^^^^^^^^^
+
+Add a notebook UniDyn--Demo-03.nb that illustrates how to take the digital Fourier transform of data in *Mathematica*.
+
 2016/01/11 jam99
 ^^^^^^^^^^^^^^^^
 
