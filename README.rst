@@ -34,7 +34,12 @@ Example notebooks ::
                            dimensional and two-dimensional data.  Examples illustrate 
                            the FT data-ordering problem, aliasing, apodization, and zero 
                            filling with one-dimensional data and the phase-twist lineshape
-                           observed when Fourier transforming two-dimensional data sets.  
+                           observed when Fourier transforming two-dimensional data sets.
+                           
+    UniDyn--Demo-04.nb    Calculates the signal analytically for two weakly coupled spins, 
+                           calculates a numerical signal, and Fourier transforms the 
+                           numerical signal to reveal the *spectrum* of the two 
+                           coupled spins.  
                            
     UniDyn--Demo-Scratch.nb    Operator playground
 

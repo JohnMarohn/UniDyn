@@ -4,7 +4,7 @@ History
 2016/05/05 jam99
 ^^^^^^^^^^^^^^^^
 
-Add a notebook UniDyn--Demo-03.nb that illustrates how to take the digital Fourier transform of data in *Mathematica*.
+Add a notebook UniDyn--Demo-03.nb, that illustrates how to take the digital Fourier transform of data in *Mathematica*, and a notebook UniDyn--Demo-04.nb that calculates the signal analytically for two weakly coupled spins, calculates a numerical signal, and Fourier transforms it.
 
 2016/01/11 jam99
 ^^^^^^^^^^^^^^^^

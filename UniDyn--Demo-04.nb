@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     70631,       1779]
-NotebookOptionsPosition[     64524,       1587]
-NotebookOutlinePosition[     64883,       1603]
-CellTagsIndexPosition[     64840,       1600]
+NotebookDataLength[     46189,       1245]
+NotebookOptionsPosition[     42512,       1128]
+NotebookOutlinePosition[     42870,       1144]
+CellTagsIndexPosition[     42827,       1141]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -107,8 +107,6 @@ system path to the UniDyn.m file.   "
    3.6352701131658497`*^9}, {3.660918102499856*^9, 3.6609181035465183`*^9}},
  FontSize->18],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[{
  RowBox[{
   RowBox[{"$Path", " ", "=", " ", 
@@ -121,14 +119,6 @@ Cell[BoxData[{
   3.6352687402094*^9}, {3.635269954012105*^9, 3.6352699550474253`*^9}},
  FontSize->16],
 
-Cell[BoxData["\<\"/Users/jam99/Dropbox/MarohnGroup__Software_Library/UniDyn/\
-UniDyn/UniDyn.m\"\>"], "Output",
- CellChangeTimes->{3.6614395574918413`*^9, 3.6614396580238953`*^9, 
-  3.6614412236682367`*^9, 3.6614416049705687`*^9, 3.661459971584806*^9, 
-  3.661460641196282*^9, 3.66146212408635*^9, 3.661540501296219*^9, 
-  3.661697881395488*^9, 3.671421669719912*^9}]
-}, Open  ]],
-
 Cell["\<\
 Now that we are confident that the path is set correctlly, load the package.  \
 Setting the global $VerboseLoad variable to True will print out the help \
@@ -136,8 +126,6 @@ strings for key commands in the package.  \
 \>", "Text",
  CellChangeTimes->{{3.635269347360386*^9, 3.63526943190546*^9}},
  FontSize->18],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -154,660 +142,37 @@ EA==
   "],
  FontSize->16],
 
-Cell[CellGroupData[{
-
-Cell[BoxData["\<\"You are using the version of NCAlgebra which is found in:\"\
-\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216698847113`*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"  \"\>", 
-   "\[InvisibleSpace]", "\<\"/Users/jam99/Downloads/NC\"\>"}],
-  SequenceForm["  ", "/Users/jam99/Downloads/NC"],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216698884706`*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"You can now use \\\"<< NCAlgebra`\\\" to load NCAlgebra or \
-\"\>", "\[InvisibleSpace]", "\<\"\\\"<< NCGB`\\\" to load NCGB.\"\>"}],
-  SequenceForm[
-  "You can now use \"<< NCAlgebra`\" to load NCAlgebra or ", 
-   "\"<< NCGB`\" to load NCGB."],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669893032*^9}],
-
-Cell[BoxData["\<\"NCMultiplication.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669897127*^9}],
-
-Cell[BoxData["\<\"NC1SetCommands.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669900988*^9}],
-
-Cell[BoxData["\<\"NCInverses.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669904911*^9}],
-
-Cell[BoxData["\<\"NCTransposes.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669908865*^9}],
-
-Cell[BoxData["\<\"NCAdjoints.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669912848*^9}],
-
-Cell[BoxData["\<\"NCCo.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669916833*^9}],
-
-Cell[BoxData["\<\"NCRoots.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216699208384`*^9}],
-
-Cell[BoxData["\<\"NC2SetCommands.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669924822*^9}],
-
-Cell[BoxData["\<\"NCCollect.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669928965*^9}],
-
-Cell[BoxData["\<\"NCSubstitute.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669932969*^9}],
-
-Cell[BoxData["\<\"NCMonomial.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.67142166993696*^9}],
-
-Cell[BoxData["\<\"NCSolve.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669940943*^9}],
-
-Cell[BoxData["\<\"NCTools.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669944968*^9}],
-
-Cell[BoxData["\<\"NC2SimplifyRational.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669948942*^9}],
-
-Cell[BoxData["\<\"NC1SimplifyRational.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669952814*^9}],
-
-Cell[BoxData["\<\"NCSimplifyRational.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669956675*^9}],
-
-Cell[BoxData["\<\"NCComplex.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421669960557*^9}],
-
-Cell[BoxData["\<\"NCMatMult.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670045232*^9}],
-
-Cell[BoxData["\<\"NCDiff.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.67142167006964*^9}],
-
-Cell[BoxData["\<\"NCSchur.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.67142167007303*^9}],
-
-Cell[BoxData["\<\"NCAlias.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670076543*^9}],
-
-Cell[BoxData["\<\"Grabs.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670079672*^9}],
-
-Cell[BoxData["\<\"NCTaylorCoeff.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670082699*^9}],
-
-Cell[BoxData["\<\"NCConvexity.m and NCGuts.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670085725*^9}],
-
-Cell[BoxData["\<\"NCRealizationFunctions.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216700888767`*^9}],
-
-Cell[BoxData["\<\"NCTeXForm.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670092106*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"NCTeX::Using '\"\>", "\[InvisibleSpace]", "\<\"open\"\>", 
-   "\[InvisibleSpace]", "\<\"' as PDFViewer.\"\>"}],
-  SequenceForm["NCTeX::Using '", "open", "' as PDFViewer."],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216700952177`*^9}],
-
-Cell[BoxData["\<\"NCTeX.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216700982437`*^9}],
-
-Cell[BoxData["\<\"NCMaster.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670101181*^9}],
-
-Cell[BoxData["\<\"NCOutput.m loaded\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216701041203`*^9}],
-
-Cell["\<\
-------------------------------------------------------------
-NCAlgebra - Version 4.0.6
-Compatible with Mathematica Version 9
-
-Authors:
-  J. William Helton*
-  Mauricio de Oliveira* 
-  Mark Stankus* 
-  Robert L. Miller#
-
-* Math Dept, UCSD                
-# General Atomics Corp
-  La  Jolla, CA 92093
-
-Copyright: 
-  Helton and Miller June 1991
-  Helton 2002
-  All rights reserved.
-
-The program was written by the authors and by:
-  David Hurst, Daniel Lamm, Orlando Merino, Robert Obar,
-  Henry Pfister, Mike Walker, John Wavrik, Lois Yu,
-  J. Camino, J. Griffin, J. Ovall, T. Shaheen, John Shopple. 
-  The beginnings of the program come from eran@slac.
-  Considerable recent help came from Igor Klep.
-
-
-This program was written with support from 
-  AFOSR, NSF, ONR, Lab for Math and Statistics at UCSD,
-  UCSD Faculty Mentor Program,
-  and US Department of Education.
-  Primary support in 2010 is from the 
-    NSF Division of Mathematical Sciences.
-
-If you 
-  (1) are a user, 
-  (2) want to be a user, 
-  (3) refer to NCAlgebra in a publication, or 
-  (4) have had an interesting experience with NCAlgebra,
-let us know by sending an e-mail message to  
-
-  ncalg@math.ucsd.edu. 
-
-We do not want to restrict access to NCAlgebra, but do 
-  want to keep track of how it is being used.
-
-For NCAlgebra updates see the web page:
-
-  www.math.ucsd.edu/~ncalg 
-------------------------------------------------------------\
-\>", "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670109017*^9}],
-
-Cell[BoxData["\<\"You are using the version of NCAlgebra which is found in:\"\
-\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216701118917`*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"  \"\>", 
-   "\[InvisibleSpace]", "\<\"/Users/jam99/Downloads/NC\"\>"}],
-  SequenceForm["  ", "/Users/jam99/Downloads/NC"],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670115011*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"You can now use \\\"<< NCAlgebra`\\\" to load NCAlgebra or \
-\"\>", "\[InvisibleSpace]", "\<\"\\\"<< NCGB`\\\" to load NCGB.\"\>"}],
-  SequenceForm[
-  "You can now use \"<< NCAlgebra`\" to load NCAlgebra or ", 
-   "\"<< NCGB`\" to load NCGB."],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670118053*^9}],
-
-Cell[BoxData["\<\"You have already loaded NCAlgebra.m\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670121004*^9}]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"CreateOperator", "::", "usage"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"CreateOperator[] is used to batch-define a bunch of \
-operators. Example: CreateOperator[{{Ix, Iy, Iz},{Sx,Sy,Sz}}] will create six \
-operators;  each of the operators in the first list is meant to commute with \
-each of the operators in the second list.\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.661439557790968*^9, 3.661439658440359*^9, 
-  3.661441223958006*^9, 3.661441605334827*^9, 3.661459971910454*^9, 
-  3.661460641464985*^9, 3.661462124375621*^9, 3.661540501590858*^9, 
-  3.6616978817222443`*^9, 3.671421670124449*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"CreateScalar", "::", "usage"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"CreateScalar[list] is used to batch-define a bunch of \
-scalars. The parameter list can be a single scalar or a list of scalars.  \
-Example: CreateScalar[{w1,w2}].\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.661439557790968*^9, 3.661439658440359*^9, 
-  3.661441223958006*^9, 3.661441605334827*^9, 3.661459971910454*^9, 
-  3.661460641464985*^9, 3.661462124375621*^9, 3.661540501590858*^9, 
-  3.6616978817222443`*^9, 3.671421670127428*^9}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["\<\"You are using the version of NCAlgebra which is found in:\"\
-\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216701292677`*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"  \"\>", 
-   "\[InvisibleSpace]", "\<\"/Users/jam99/Downloads/NC\"\>"}],
-  SequenceForm["  ", "/Users/jam99/Downloads/NC"],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216701309557`*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"You can now use \\\"<< NCAlgebra`\\\" to load NCAlgebra or \
-\"\>", "\[InvisibleSpace]", "\<\"\\\"<< NCGB`\\\" to load NCGB.\"\>"}],
-  SequenceForm[
-  "You can now use \"<< NCAlgebra`\" to load NCAlgebra or ", 
-   "\"<< NCGB`\" to load NCGB."],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670133573*^9}],
-
-Cell[BoxData["\<\"You have already loaded NCAlgebra.m\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216701361713`*^9}]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"NCSort", "::", "usage"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"NCSort[list] sorts the operators in list into canonical \
-order.\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.661439557790968*^9, 3.661439658440359*^9, 
-  3.661441223958006*^9, 3.661441605334827*^9, 3.661459971910454*^9, 
-  3.661460641464985*^9, 3.661462124375621*^9, 3.661540501590858*^9, 
-  3.6616978817222443`*^9, 3.671421670138824*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"SortedMult", "::", "usage"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"SortedMult[list] returns Mult[list$ordered], where \
-list$ordered are the elements of list sorted into canonical order.\"\>"}]], \
-"Message", "MSG",
- CellChangeTimes->{3.661439557790968*^9, 3.661439658440359*^9, 
-  3.661441223958006*^9, 3.661441605334827*^9, 3.661459971910454*^9, 
-  3.661460641464985*^9, 3.661462124375621*^9, 3.661540501590858*^9, 
-  3.6616978817222443`*^9, 3.671421670140593*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"MultSort", "::", "usage"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"MultSort[NonCommutativeMultiplyt[list]] returns returns \
-NonCommutativeMultiply[list$ordered], where list$ordered are the elements of \
-list sorted into canonical order.  \"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.661439557790968*^9, 3.661439658440359*^9, 
-  3.661441223958006*^9, 3.661441605334827*^9, 3.661459971910454*^9, 
-  3.661460641464985*^9, 3.661462124375621*^9, 3.661540501590858*^9, 
-  3.6616978817222443`*^9, 3.671421670142502*^9}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["\<\"You are using the version of NCAlgebra which is found in:\"\
-\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670144273*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"  \"\>", 
-   "\[InvisibleSpace]", "\<\"/Users/jam99/Downloads/NC\"\>"}],
-  SequenceForm["  ", "/Users/jam99/Downloads/NC"],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670145973*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"You can now use \\\"<< NCAlgebra`\\\" to load NCAlgebra or \
-\"\>", "\[InvisibleSpace]", "\<\"\\\"<< NCGB`\\\" to load NCGB.\"\>"}],
-  SequenceForm[
-  "You can now use \"<< NCAlgebra`\" to load NCAlgebra or ", 
-   "\"<< NCGB`\" to load NCGB."],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670148568*^9}],
-
-Cell[BoxData["\<\"You have already loaded NCAlgebra.m\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216701511383`*^9}]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Comm", "::", "usage"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Comm[a,b] calculates the commutator of two \
-operators.\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.661439557790968*^9, 3.661439658440359*^9, 
-  3.661441223958006*^9, 3.661441605334827*^9, 3.661459971910454*^9, 
-  3.661460641464985*^9, 3.661462124375621*^9, 3.661540501590858*^9, 
-  3.6616978817222443`*^9, 3.671421670153767*^9}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["\<\"You are using the version of NCAlgebra which is found in:\"\
-\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670155479*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"  \"\>", 
-   "\[InvisibleSpace]", "\<\"/Users/jam99/Downloads/NC\"\>"}],
-  SequenceForm["  ", "/Users/jam99/Downloads/NC"],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670157202*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"You can now use \\\"<< NCAlgebra`\\\" to load NCAlgebra or \
-\"\>", "\[InvisibleSpace]", "\<\"\\\"<< NCGB`\\\" to load NCGB.\"\>"}],
-  SequenceForm[
-  "You can now use \"<< NCAlgebra`\" to load NCAlgebra or ", 
-   "\"<< NCGB`\" to load NCGB."],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216701598682`*^9}],
-
-Cell[BoxData["\<\"You have already loaded NCAlgebra.m\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216701624527`*^9}]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"SpinSingle$CreateOperators", "::", "usage"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"SpinSingle$CreateOperators[Ix,Iy,Iz,L] creates Ix, Iy, and \
-Iz angular momentum operators and defines their commutation relations.  When \
-the total angular momentum L = 1/2, additional rules are defined to simplify \
-products of the angular momentum operators.  When the total angular momentum \
-L is unspecified, no such simplification rules are defined.\"\>"}]], "Message",\
- "MSG",
- CellChangeTimes->{3.661439557790968*^9, 3.661439658440359*^9, 
-  3.661441223958006*^9, 3.661441605334827*^9, 3.661459971910454*^9, 
-  3.661460641464985*^9, 3.661462124375621*^9, 3.661540501590858*^9, 
-  3.6616978817222443`*^9, 3.6714216701651993`*^9}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["\<\"You are using the version of NCAlgebra which is found in:\"\
-\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216701671877`*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"  \"\>", 
-   "\[InvisibleSpace]", "\<\"/Users/jam99/Downloads/NC\"\>"}],
-  SequenceForm["  ", "/Users/jam99/Downloads/NC"],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670168931*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"You can now use \\\"<< NCAlgebra`\\\" to load NCAlgebra or \
-\"\>", "\[InvisibleSpace]", "\<\"\\\"<< NCGB`\\\" to load NCGB.\"\>"}],
-  SequenceForm[
-  "You can now use \"<< NCAlgebra`\" to load NCAlgebra or ", 
-   "\"<< NCGB`\" to load NCGB."],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216701715603`*^9}],
-
-Cell[BoxData["\<\"You have already loaded NCAlgebra.m\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670174316*^9}]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"OscSingle$CreateOperators", "::", "usage"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"OscSingle$CreateOperators[aL,aR] creates a raising \
-operator aR and a lowering operator aL for single harmonic oscillator and \
-defines the operator commutation relations.\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.661439557790968*^9, 3.661439658440359*^9, 
-  3.661441223958006*^9, 3.661441605334827*^9, 3.661459971910454*^9, 
-  3.661460641464985*^9, 3.661462124375621*^9, 3.661540501590858*^9, 
-  3.6616978817222443`*^9, 3.671421670177047*^9}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["\<\"You are using the version of NCAlgebra which is found in:\"\
-\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.6714216701788483`*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"  \"\>", 
-   "\[InvisibleSpace]", "\<\"/Users/jam99/Downloads/NC\"\>"}],
-  SequenceForm["  ", "/Users/jam99/Downloads/NC"],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670180546*^9}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"You can now use \\\"<< NCAlgebra`\\\" to load NCAlgebra or \
-\"\>", "\[InvisibleSpace]", "\<\"\\\"<< NCGB`\\\" to load NCGB.\"\>"}],
-  SequenceForm[
-  "You can now use \"<< NCAlgebra`\" to load NCAlgebra or ", 
-   "\"<< NCGB`\" to load NCGB."],
-  Editable->False]], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670183299*^9}],
-
-Cell[BoxData["\<\"You have already loaded NCAlgebra.m\"\>"], "Print",
- CellChangeTimes->{3.6614395575159388`*^9, 3.661439658191596*^9, 
-  3.6614412237184343`*^9, 3.6614416050124187`*^9, 3.661459971602405*^9, 
-  3.6614606412348022`*^9, 3.6614621241205177`*^9, 3.661540501333885*^9, 
-  3.661697881443022*^9, 3.671421670185917*^9}]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Evolve", "::", "usage"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Evolve[H,t,\[Rho]] represents unitary evolution of the \
-density operator \[Rho] for a time t under the Hamiltonian H.  This function \
-expands according to simplification rules but leaves the evolution \
-unevaluated.\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.661439557790968*^9, 3.661439658440359*^9, 
-  3.661441223958006*^9, 3.661441605334827*^9, 3.661459971910454*^9, 
-  3.661460641464985*^9, 3.661462124375621*^9, 3.661540501590858*^9, 
-  3.6616978817222443`*^9, 3.671421670188595*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Evolver", "::", "usage"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Evolver[H,t,\[Rho](0)] calculates \[Rho](t) = Exp[-I H t] \
-\[Rho](0) Exp[+I H t], assuming that H is time independent, according to the \
-commutation rules followed by \[Rho](0) and H.\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.661439557790968*^9, 3.661439658440359*^9, 
-  3.661441223958006*^9, 3.661441605334827*^9, 3.661459971910454*^9, 
-  3.661460641464985*^9, 3.661462124375621*^9, 3.661540501590858*^9, 
-  3.6616978817222443`*^9, 3.671421670190668*^9}]
-}, Open  ]]
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.671444060089981*^9, 3.671444060645646*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Examples of unitary evolution in a single spin 1/2 system", "Section",
+Cell["Evolver with simplification", "Section",
+ CellChangeTimes->{{3.6714440687071867`*^9, 3.671444088666716*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SimplifyingEvolver", "[", 
+   RowBox[{"H_", ",", "t_", ",", "\[Rho]$0_"}], "]"}], ":=", "  ", 
+  "\[IndentingNewLine]", "\t", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Evolver", "[", 
+      RowBox[{"H", ",", " ", "t", ",", " ", "\[Rho]$0"}], "]"}], "//", 
+     "Simplify"}], "//", " ", "ExpToTrig"}], " ", "//", " ", "FullSimplify", 
+   " "}]}]], "Input",
+ CellChangeTimes->{{3.671444089823865*^9, 3.671444165795093*^9}},
+ FontSize->18]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Unitary evolution of a single spin 1/2 ", "Section",
  CellChangeTimes->{{3.6614338330758963`*^9, 3.661433850988009*^9}, {
   3.6614339433230333`*^9, 3.661433947755453*^9}, {3.671422107818894*^9, 
-  3.671422108739214*^9}}],
+  3.671422108739214*^9}, {3.671445264092331*^9, 3.6714452741228848`*^9}}],
 
 Cell[CellGroupData[{
 
@@ -842,32 +207,21 @@ and not just \[GreaterSlantEqual] 0."
    3.66169791700492*^9},
  FontSize->18],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[{
  RowBox[{
   RowBox[{"Clear", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   RowBox[{"\[CapitalDelta]", ",", "                     ", 
+   RowBox[{"\[CapitalDelta]\[Omega]", ",", "                     ", 
     RowBox[{"(*", " ", 
      RowBox[{"Resonance", " ", "offset", " ", "frequency"}], " ", "*)"}], 
-    "\[IndentingNewLine]", "\[Omega]", ",", "                     ", 
+    "\[IndentingNewLine]", "\[Omega]$1", ",", "                  ", 
     RowBox[{"(*", " ", 
      RowBox[{
      "Rabi", " ", "frequency", " ", "of", " ", "the", " ", "applied", " ", 
-      "irradiation"}], " ", "*)"}], "\[IndentingNewLine]", "\[Phi]", ",", 
-    "                     ", 
-    RowBox[{"(*", " ", 
-     RowBox[{
-     "Phase", " ", "of", " ", "the", " ", "applied", " ", "irradiation"}], 
-     " ", "*)"}], "\[IndentingNewLine]", "Ix", ",", " ", "Iy", ",", " ", "Iz",
-     ",", " ", 
+      "irradiation"}], " ", "*)"}], "\[IndentingNewLine]", "Ix", ",", " ", 
+    "Iy", ",", " ", "Iz", ",", "  ", 
     RowBox[{"(*", " ", 
      RowBox[{"Spin", " ", "angular", " ", "momentum", " ", "operators"}], " ",
-      "*)"}], "\[IndentingNewLine]", "\[Rho]", ",", "                      ", 
-    
-    RowBox[{"(*", " ", 
-     RowBox[{"Spin", " ", "density", " ", "operator"}], " ", "*)"}], " ", 
-    "\[IndentingNewLine]", "\[Rho]$0", ",", "                  ", 
+      "*)"}], "\[IndentingNewLine]", "\[Rho]$0", ",", "                  ", 
     RowBox[{"(*", " ", 
      RowBox[{"Initial", " ", "spin", " ", "density", " ", "operator"}], " ", 
      "*)"}], "\[IndentingNewLine]", "H"}], "                          ", 
@@ -876,8 +230,7 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"CreateScalar", "[", 
-   RowBox[{"\[CapitalDelta]", ",", "\[Omega]", ",", "\[Phi]"}], " ", "]"}], 
-  ";"}], "\n", 
+   RowBox[{"\[CapitalDelta]\[Omega]", ",", "\[Omega]$1"}], "]"}], ";"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"SpinSingle$CreateOperators", "[", 
@@ -890,65 +243,24 @@ Cell[BoxData[{
    RowBox[{"{", 
     RowBox[{
      RowBox[{"Element", "[", 
-      RowBox[{"\[CapitalDelta]", ",", " ", "Reals"}], "]"}], ",", " ", 
-     RowBox[{"\[CapitalDelta]", " ", "\[GreaterSlantEqual]", " ", "0"}], ",", 
+      RowBox[{"\[CapitalDelta]\[Omega]", ",", " ", "Reals"}], "]"}], ",", " ", 
+     RowBox[{
+     "\[CapitalDelta]\[Omega]", " ", "\[GreaterSlantEqual]", " ", "0"}], ",", 
      " ", 
      RowBox[{"Element", "[", 
-      RowBox[{"\[Omega]", ",", " ", "Reals"}], "]"}], ",", " ", 
-     RowBox[{"\[Omega]", "  ", ">", " ", "0"}]}], "}"}]}], ";"}]}], "Input",
+      RowBox[{"\[Omega]$1", ",", " ", "Reals"}], "]"}], ",", " ", 
+     RowBox[{
+      RowBox[{"\[Omega]", " ", "$1"}], " ", ">", " ", "0"}]}], "}"}]}], 
+  ";"}]}], "Input",
  CellChangeTimes->{{3.6614339585492563`*^9, 3.661434010703532*^9}, {
    3.661434214867899*^9, 3.661434222437502*^9}, {3.661434384868638*^9, 
    3.6614346039604807`*^9}, {3.6614346490398808`*^9, 3.661434789890903*^9}, {
    3.661435094092959*^9, 3.661435125986967*^9}, {3.6614352184576807`*^9, 
    3.661435260920999*^9}, 3.661454979504386*^9, {3.6614550830373096`*^9, 
    3.6614550896485147`*^9}, {3.661455140167131*^9, 3.66145514338946*^9}, {
-   3.6614552141564493`*^9, 3.661455268214559*^9}},
- FontSize->16],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"SpinSingle$CreateOperators", "::", "create"}], "MessageName"], 
-  RowBox[{":", " "}], "\<\"Creating spin operators.\"\>"}]], "Message", "MSG",
- 
- CellChangeTimes->{
-  3.661439558073163*^9, 3.6614396710431547`*^9, 3.661441224252407*^9, 
-   3.6614416056752863`*^9, 3.6614551442601643`*^9, 3.661455221301177*^9, 
-   3.661455269930846*^9, {3.661455305158642*^9, 3.661455308147059*^9}, {
-   3.661455790996602*^9, 3.661455808970603*^9}, 3.661459972151178*^9, 
-   3.661460641723474*^9, 3.661462124717436*^9, 3.6615405019266*^9, 
-   3.661697882042041*^9, 3.6714217581668177`*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"SpinSingle$CreateOperators", "::", "comm"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Adding spin commutations relations.\"\>"}]], "Message", \
-"MSG",
- CellChangeTimes->{
-  3.661439558073163*^9, 3.6614396710431547`*^9, 3.661441224252407*^9, 
-   3.6614416056752863`*^9, 3.6614551442601643`*^9, 3.661455221301177*^9, 
-   3.661455269930846*^9, {3.661455305158642*^9, 3.661455308147059*^9}, {
-   3.661455790996602*^9, 3.661455808970603*^9}, 3.661459972151178*^9, 
-   3.661460641723474*^9, 3.661462124717436*^9, 3.6615405019266*^9, 
-   3.661697882042041*^9, 3.6714217583161297`*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"SpinSingle$CreateOperators", "::", "simplify"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Angular momentum L = 1/2. Adding operator simplification \
-rules.\"\>"}]], "Message", "MSG",
- CellChangeTimes->{
-  3.661439558073163*^9, 3.6614396710431547`*^9, 3.661441224252407*^9, 
-   3.6614416056752863`*^9, 3.6614551442601643`*^9, 3.661455221301177*^9, 
-   3.661455269930846*^9, {3.661455305158642*^9, 3.661455308147059*^9}, {
-   3.661455790996602*^9, 3.661455808970603*^9}, 3.661459972151178*^9, 
-   3.661460641723474*^9, 3.661462124717436*^9, 3.6615405019266*^9, 
-   3.661697882042041*^9, 3.671421758452923*^9}]
-}, Open  ]]
+   3.6614552141564493`*^9, 3.661455268214559*^9}, {3.67144439281918*^9, 
+   3.671444466838715*^9}, {3.6714447797901983`*^9, 3.67144478623868*^9}},
+ FontSize->16]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -975,52 +287,28 @@ representation.  The intial density operator is parallel to ",
 Cell[BoxData[{
  RowBox[{
   RowBox[{"H", " ", "=", " ", 
-   RowBox[{"\[Omega]", " ", "Ix"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"\[Omega]$1", " ", "Ix"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"\[Rho]$0", " ", "=", " ", "Iz"}], ";"}]}], "Input",
  CellChangeTimes->{{3.661435227848398*^9, 3.6614352284068127`*^9}, {
   3.67142180007626*^9, 3.6714218530576353`*^9}, {3.671421959643671*^9, 
-  3.6714219696004133`*^9}},
+  3.6714219696004133`*^9}, {3.67144444768364*^9, 3.671444447928295*^9}},
  FontSize->18],
 
-Cell["\<\
-Calculating the time-dependent denstity operator might take as long as 10 to \
-15 seconds to complete.  \
-\>", "Text",
+Cell["Calculate the time-dependent denstity operator.  ", "Text",
  CellChangeTimes->{{3.6614351443358517`*^9, 3.661435173054531*^9}, {
   3.6614549233087606`*^9, 3.661454923410828*^9}, {3.66145543210454*^9, 
-  3.661455456329935*^9}},
+  3.661455456329935*^9}, {3.671444261951881*^9, 3.671444267395067*^9}},
  FontSize->18],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"\[Rho]", " ", "[", 
-     RowBox[{"t_", ",", "\[Omega]_"}], "]"}], "=", " ", 
-    RowBox[{"Collect", "[", " ", "\[IndentingNewLine]", "\t", 
-     RowBox[{
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{
-         RowBox[{
-          RowBox[{"Evolver", "[", 
-           RowBox[{"H", ",", " ", "t", ",", " ", "\[Rho]$0"}], "]"}], "//", 
-          "Simplify"}], "//", " ", "ExpToTrig"}], " ", "//", " ", 
-        "FullSimplify"}], ")"}], ",", " ", "\[IndentingNewLine]", "\t", 
-      RowBox[{"{", 
-       RowBox[{"Ix", ",", "Iy", ",", " ", "Iz"}], "}"}]}], "]"}]}], ";"}], 
-  " ", "\[IndentingNewLine]"}], "\n", 
- RowBox[{
-  RowBox[{"\[Rho]", "[", 
-   RowBox[{"t", ",", " ", "\[Omega]"}], "]"}], " ", "/.", " ", 
+  RowBox[{"SimplifyingEvolver", "[", 
+   RowBox[{"H", ",", "t", ",", "\[Rho]$0"}], "]"}], " ", "/.", " ", 
   RowBox[{"{", " ", 
-   RowBox[{"\[Omega]", " ", "->", " ", 
+   RowBox[{"\[Omega]$1", "->", " ", 
     RowBox[{"Subscript", "[", 
-     RowBox[{"\[Omega]", ",", "1"}], "]"}]}], 
-   "}"}]}], "\[IndentingNewLine]"}], "Input",
+     RowBox[{"\[Omega]", ",", "1"}], "]"}]}], "}"}]}]], "Input",
  CellChangeTimes->{{3.6614340197481413`*^9, 3.661434178968038*^9}, {
    3.661434272954471*^9, 3.661434333128969*^9}, {3.661434640514575*^9, 
    3.661434643212017*^9}, {3.661434786650895*^9, 3.661434809637779*^9}, {
@@ -1028,26 +316,10 @@ Cell[BoxData[{
    3.661435197915441*^9}, 3.661455661961378*^9, {3.6614557085212173`*^9, 
    3.6614557978065453`*^9}, {3.661455834919834*^9, 3.6614558778332987`*^9}, {
    3.6714218159749727`*^9, 3.671421839685802*^9}, {3.67142199694174*^9, 
-   3.671422014075262*^9}},
- FontSize->18],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Iz", " ", 
-   RowBox[{"Cos", "[", 
-    RowBox[{"t", " ", 
-     SubscriptBox["\[Omega]", "1"]}], "]"}]}], "-", 
-  RowBox[{"Iy", " ", 
-   RowBox[{"Sin", "[", 
-    RowBox[{"t", " ", 
-     SubscriptBox["\[Omega]", "1"]}], "]"}]}]}]], "Output",
- CellChangeTimes->{{3.661455873634028*^9, 3.661455889449592*^9}, 
-   3.661459983014784*^9, 3.661460651970139*^9, 3.66146213544132*^9, 
-   3.661540512710565*^9, 3.661697893202258*^9, 3.671421768943363*^9, {
-   3.6714218124671583`*^9, 3.6714218560839043`*^9}, 3.671421973324435*^9, {
-   3.671422006274605*^9, 3.671422015400853*^9}},
+   3.671422014075262*^9}, {3.671443825072248*^9, 3.6714439215422697`*^9}, {
+   3.671444206438972*^9, 3.671444233751779*^9}, {3.671444450342011*^9, 
+   3.671444450487729*^9}},
  FontSize->18]
-}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1059,109 +331,61 @@ Cell["Free evolution", "Subsection",
 
 Cell[TextData[{
  "Zeeman-interaction Hamilonian written in the interaction representation.  \
-The intial density operator is parallel to ",
+The initial density operator is parallel to ",
  Cell[BoxData[
   FormBox[
    SubscriptBox["I", "x"], TraditionalForm]]],
  "."
 }], "Text",
  CellChangeTimes->{{3.66145534764102*^9, 3.661455424815099*^9}, {
-  3.671421878357871*^9, 3.671421937332016*^9}},
+  3.671421878357871*^9, 3.671421937332016*^9}, {3.6714442931458473`*^9, 
+  3.6714442946514378`*^9}},
  FontSize->18],
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{"H", " ", "=", " ", 
-   RowBox[{"\[CapitalDelta]", " ", "Iz"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"\[CapitalDelta]\[Omega]", " ", "Iz"}]}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"\[Rho]$0", " ", "=", " ", "Ix"}], ";"}]}], "Input",
  CellChangeTimes->{{3.661435227848398*^9, 3.6614352284068127`*^9}, {
   3.67142180007626*^9, 3.6714218530576353`*^9}, {3.6714220466047583`*^9, 
-  3.671422048575047*^9}},
+  3.671422048575047*^9}, {3.671444387730156*^9, 3.671444388691031*^9}},
  FontSize->18],
 
-Cell["\<\
-Calculating the time-dependent denstity operator might take as long as 10 to \
-15 seconds to complete.  \
-\>", "Text",
+Cell["Calculate the time-dependent denstity operator.  ", "Text",
  CellChangeTimes->{{3.6614351443358517`*^9, 3.661435173054531*^9}, {
   3.6614549233087606`*^9, 3.661454923410828*^9}, {3.66145543210454*^9, 
-  3.661455456329935*^9}},
+  3.661455456329935*^9}, {3.671444261951881*^9, 3.671444267395067*^9}},
  FontSize->18],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"\[Rho]", " ", "[", 
-     RowBox[{"t_", ",", "\[CapitalDelta]_"}], "]"}], "=", " ", 
-    RowBox[{"Collect", "[", " ", "\[IndentingNewLine]", "\t", 
-     RowBox[{
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{
-         RowBox[{
-          RowBox[{"Evolver", "[", 
-           RowBox[{"H", ",", " ", "t", ",", " ", "\[Rho]$0"}], "]"}], "//", 
-          "Simplify"}], "//", " ", "ExpToTrig"}], " ", "//", " ", 
-        "FullSimplify"}], ")"}], ",", " ", "\[IndentingNewLine]", "\t", 
-      RowBox[{"{", 
-       RowBox[{"Ix", ",", "Iy", ",", " ", "Iz"}], "}"}]}], "]"}]}], ";"}], 
-  " ", "\[IndentingNewLine]"}], "\n", 
- RowBox[{
-  RowBox[{"\[Rho]", "[", 
-   RowBox[{"t", ",", "\[CapitalDelta]"}], "]"}], " ", "/.", " ", 
-  RowBox[{"{", 
-   RowBox[{"\[CapitalDelta]", "->", " ", 
-    RowBox[{"(", 
-     RowBox[{
-      RowBox[{"Subscript", "[", 
-       RowBox[{"\[Omega]", ",", "0"}], "]"}], " ", "-", " ", "\[Omega]"}], 
-     ")"}]}], "}"}]}], "\[IndentingNewLine]"}], "Input",
+  RowBox[{"SimplifyingEvolver", "[", 
+   RowBox[{"H", ",", "t", ",", "\[Rho]$0"}], "]"}], " "}]], "Input",
  CellChangeTimes->{{3.6614340197481413`*^9, 3.661434178968038*^9}, {
    3.661434272954471*^9, 3.661434333128969*^9}, {3.661434640514575*^9, 
    3.661434643212017*^9}, {3.661434786650895*^9, 3.661434809637779*^9}, {
    3.661435106977956*^9, 3.661435116198124*^9}, {3.6614351828003273`*^9, 
    3.661435197915441*^9}, 3.661455661961378*^9, {3.6614557085212173`*^9, 
    3.6614557978065453`*^9}, {3.661455834919834*^9, 3.6614558778332987`*^9}, {
-   3.6714218159749727`*^9, 3.671421839685802*^9}, {3.671422022512437*^9, 
-   3.671422029722958*^9}, {3.671422068496024*^9, 3.671422079813089*^9}},
- FontSize->18],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Ix", " ", 
-   RowBox[{"Cos", "[", 
-    RowBox[{"t", " ", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"-", "\[Omega]"}], "+", 
-       SubscriptBox["\[Omega]", "0"]}], ")"}]}], "]"}]}], "+", 
-  RowBox[{"Iy", " ", 
-   RowBox[{"Sin", "[", 
-    RowBox[{"t", " ", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"-", "\[Omega]"}], "+", 
-       SubscriptBox["\[Omega]", "0"]}], ")"}]}], "]"}]}]}]], "Output",
- CellChangeTimes->{{3.661455873634028*^9, 3.661455889449592*^9}, 
-   3.661459983014784*^9, 3.661460651970139*^9, 3.66146213544132*^9, 
-   3.661540512710565*^9, 3.661697893202258*^9, 3.671421768943363*^9, {
-   3.6714218124671583`*^9, 3.6714218560839043`*^9}, {3.6714220305575933`*^9, 
-   3.6714220810246964`*^9}},
+   3.6714218159749727`*^9, 3.671421839685802*^9}, {3.67142199694174*^9, 
+   3.671422014075262*^9}, {3.671443825072248*^9, 3.6714439215422697`*^9}, {
+   3.671444206438972*^9, 3.671444233751779*^9}, {3.671444303923465*^9, 
+   3.6714443370387487`*^9}, {3.671444373803419*^9, 3.67144438068778*^9}, {
+   3.6714444813129387`*^9, 3.6714444814771967`*^9}},
  FontSize->18]
-}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Examples of unitary evolution in a two spin 1/2 system", "Section",
+Cell["Unitary evolution of two coupled spins", "Section",
  CellChangeTimes->{{3.6614338330758963`*^9, 3.661433850988009*^9}, {
   3.6614339433230333`*^9, 3.661433947755453*^9}, {3.671422107818894*^9, 
-  3.671422108739214*^9}, {3.6714222011816072`*^9, 3.671422206982089*^9}}],
+  3.671422108739214*^9}, {3.6714222011816072`*^9, 3.671422206982089*^9}, {
+  3.67144525430057*^9, 3.6714453019043407`*^9}}],
 
 Cell[CellGroupData[{
 
@@ -1197,8 +421,6 @@ and not just \[GreaterSlantEqual] 0."
    3.66169791700492*^9},
  FontSize->18],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[{
  RowBox[{
   RowBox[{"Clear", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -1223,7 +445,9 @@ Cell[BoxData[{
     
     RowBox[{"(*", " ", 
      RowBox[{"Spin", " ", "density", " ", "operator"}], " ", "*)"}], " ", 
-    "\[IndentingNewLine]", "\[Rho]$0", ",", "                  ", 
+    "\[IndentingNewLine]", "t", ",", "                       ", 
+    RowBox[{"(*", " ", "Time", " ", "*)"}], "\[IndentingNewLine]", "\[Rho]$0",
+     ",", "                  ", 
     RowBox[{"(*", " ", 
      RowBox[{"Initial", " ", "spin", " ", "density", " ", "operator"}], " ", 
      "*)"}], "\[IndentingNewLine]", "H"}], "                          ", 
@@ -1232,8 +456,9 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"CreateScalar", "[", 
-   RowBox[{"\[CapitalDelta]", ",", "\[Omega]", ",", "\[Phi]"}], " ", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+   "\[CapitalDelta]$I", ",", "\[CapitalDelta]$S", ",", "J", ",", "t"}], " ", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"CreateOperator", "[", 
    RowBox[{"{", 
@@ -1277,103 +502,10 @@ Cell[BoxData[{
    3.661435260920999*^9}, 3.661454979504386*^9, {3.6614550830373096`*^9, 
    3.6614550896485147`*^9}, {3.661455140167131*^9, 3.66145514338946*^9}, {
    3.6614552141564493`*^9, 3.661455268214559*^9}, {3.671422223446307*^9, 
-   3.671422276457761*^9}, {3.6714223930390167`*^9, 3.671422478451767*^9}},
- FontSize->16],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"SpinSingle$CreateOperators", "::", "nocreate"}], "MessageName"], 
-  RowBox[{":", " "}], "\<\"Spin operators already exist.\"\>"}]], "Message", \
-"MSG",
- CellChangeTimes->{
-  3.661439558073163*^9, 3.6614396710431547`*^9, 3.661441224252407*^9, 
-   3.6614416056752863`*^9, 3.6614551442601643`*^9, 3.661455221301177*^9, 
-   3.661455269930846*^9, {3.661455305158642*^9, 3.661455308147059*^9}, {
-   3.661455790996602*^9, 3.661455808970603*^9}, 3.661459972151178*^9, 
-   3.661460641723474*^9, 3.661462124717436*^9, 3.6615405019266*^9, 
-   3.661697882042041*^9, 3.6714217581668177`*^9, 3.671422277095945*^9, 
-   3.671422479900042*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"SpinSingle$CreateOperators", "::", "comm"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Adding spin commutations relations.\"\>"}]], "Message", \
-"MSG",
- CellChangeTimes->{
-  3.661439558073163*^9, 3.6614396710431547`*^9, 3.661441224252407*^9, 
-   3.6614416056752863`*^9, 3.6614551442601643`*^9, 3.661455221301177*^9, 
-   3.661455269930846*^9, {3.661455305158642*^9, 3.661455308147059*^9}, {
-   3.661455790996602*^9, 3.661455808970603*^9}, 3.661459972151178*^9, 
-   3.661460641723474*^9, 3.661462124717436*^9, 3.6615405019266*^9, 
-   3.661697882042041*^9, 3.6714217581668177`*^9, 3.671422277095945*^9, 
-   3.6714224800393248`*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"SpinSingle$CreateOperators", "::", "simplify"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Angular momentum L = 1/2. Adding operator simplification \
-rules.\"\>"}]], "Message", "MSG",
- CellChangeTimes->{
-  3.661439558073163*^9, 3.6614396710431547`*^9, 3.661441224252407*^9, 
-   3.6614416056752863`*^9, 3.6614551442601643`*^9, 3.661455221301177*^9, 
-   3.661455269930846*^9, {3.661455305158642*^9, 3.661455308147059*^9}, {
-   3.661455790996602*^9, 3.661455808970603*^9}, 3.661459972151178*^9, 
-   3.661460641723474*^9, 3.661462124717436*^9, 3.6615405019266*^9, 
-   3.661697882042041*^9, 3.6714217581668177`*^9, 3.671422277095945*^9, 
-   3.6714224801833267`*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"SpinSingle$CreateOperators", "::", "nocreate"}], "MessageName"], 
-  RowBox[{":", " "}], "\<\"Spin operators already exist.\"\>"}]], "Message", \
-"MSG",
- CellChangeTimes->{
-  3.661439558073163*^9, 3.6614396710431547`*^9, 3.661441224252407*^9, 
-   3.6614416056752863`*^9, 3.6614551442601643`*^9, 3.661455221301177*^9, 
-   3.661455269930846*^9, {3.661455305158642*^9, 3.661455308147059*^9}, {
-   3.661455790996602*^9, 3.661455808970603*^9}, 3.661459972151178*^9, 
-   3.661460641723474*^9, 3.661462124717436*^9, 3.6615405019266*^9, 
-   3.661697882042041*^9, 3.6714217581668177`*^9, 3.671422277095945*^9, 
-   3.671422480312655*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"SpinSingle$CreateOperators", "::", "comm"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Adding spin commutations relations.\"\>"}]], "Message", \
-"MSG",
- CellChangeTimes->{
-  3.661439558073163*^9, 3.6614396710431547`*^9, 3.661441224252407*^9, 
-   3.6614416056752863`*^9, 3.6614551442601643`*^9, 3.661455221301177*^9, 
-   3.661455269930846*^9, {3.661455305158642*^9, 3.661455308147059*^9}, {
-   3.661455790996602*^9, 3.661455808970603*^9}, 3.661459972151178*^9, 
-   3.661460641723474*^9, 3.661462124717436*^9, 3.6615405019266*^9, 
-   3.661697882042041*^9, 3.6714217581668177`*^9, 3.671422277095945*^9, 
-   3.671422480458106*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"SpinSingle$CreateOperators", "::", "simplify"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Angular momentum L = 1/2. Adding operator simplification \
-rules.\"\>"}]], "Message", "MSG",
- CellChangeTimes->{
-  3.661439558073163*^9, 3.6614396710431547`*^9, 3.661441224252407*^9, 
-   3.6614416056752863`*^9, 3.6614551442601643`*^9, 3.661455221301177*^9, 
-   3.661455269930846*^9, {3.661455305158642*^9, 3.661455308147059*^9}, {
-   3.661455790996602*^9, 3.661455808970603*^9}, 3.661459972151178*^9, 
-   3.661460641723474*^9, 3.661462124717436*^9, 3.6615405019266*^9, 
-   3.661697882042041*^9, 3.6714217581668177`*^9, 3.671422277095945*^9, 
-   3.671422480597084*^9}]
-}, Open  ]]
+   3.671422276457761*^9}, {3.6714223930390167`*^9, 3.671422478451767*^9}, {
+   3.6714445143764687`*^9, 3.671444514801667*^9}, {3.6714447631748466`*^9, 
+   3.671444772352507*^9}, {3.671445003838581*^9, 3.6714450185403843`*^9}},
+ FontSize->16]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1400,7 +532,10 @@ representation.  The intial density operator is parallel to ",
 Cell[BoxData[{
  RowBox[{
   RowBox[{"H$0", " ", "=", " ", 
-   RowBox[{"\[CapitalDelta]$I", " ", "Iz"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[CapitalDelta]$I", " ", "Iz"}], " ", "+", " ", 
+    RowBox[{"\[CapitalDelta]$S", " ", "Sz"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"H$J", " ", "=", "  ", 
    RowBox[{"J", " ", 
@@ -1412,181 +547,587 @@ Cell[BoxData[{
   3.6714219696004133`*^9}, {3.6714223575305777`*^9, 3.6714223833917007`*^9}, {
   3.671422492003399*^9, 3.6714225172812433`*^9}, {3.671422565223255*^9, 
   3.6714226639457006`*^9}, {3.671422720776108*^9, 3.671422732714869*^9}, {
-  3.671422884191368*^9, 3.671422906513636*^9}},
+  3.671422884191368*^9, 3.671422906513636*^9}, {3.671445306458117*^9, 
+  3.671445315152834*^9}},
  FontSize->18],
 
-Cell["Calculate the time-dependent denstity operator in two steps.", "Text",
+Cell["Try to calculate the density operator in a single step.", "Text",
  CellChangeTimes->{{3.6614351443358517`*^9, 3.661435173054531*^9}, {
   3.6614549233087606`*^9, 3.661454923410828*^9}, {3.66145543210454*^9, 
-  3.661455456329935*^9}, {3.671423019921378*^9, 3.671423027975905*^9}},
+  3.661455456329935*^9}, {3.671423019921378*^9, 3.671423027975905*^9}, {
+  3.671444610818163*^9, 3.6714446239059343`*^9}},
  FontSize->18],
+
+Cell[BoxData[
+ RowBox[{"\[Rho]$0", "//", " ", 
+  RowBox[{
+   RowBox[{"SimplifyingEvolver", "[", 
+    RowBox[{
+     RowBox[{"H$0", "+", "H$J"}], ",", "t", ",", " ", "#"}], "]"}], 
+   "&"}]}]], "Input",
+ CellChangeTimes->{{3.6714445338823757`*^9, 3.67144458551854*^9}, {
+  3.67144462976528*^9, 3.6714446319951973`*^9}},
+ FontSize->18],
+
+Cell["\<\
+This single-step evolution fails.  Instead calculate the denstity operator in \
+two steps.  We can do this because the H$J and H$0 Hamiltonians commute. \
+Evolve under the J-coupling first and under the chemical shift second.\
+\>", "Text",
+ CellChangeTimes->{{3.6614351443358517`*^9, 3.661435173054531*^9}, {
+  3.6614549233087606`*^9, 3.661454923410828*^9}, {3.66145543210454*^9, 
+  3.661455456329935*^9}, {3.671423019921378*^9, 3.671423027975905*^9}, {
+  3.671444658306387*^9, 3.671444659698904*^9}, {3.6714449146063337`*^9, 
+  3.6714449155532513`*^9}, {3.6714450795854177`*^9, 3.67144514621312*^9}, {
+  3.671445228941722*^9, 3.671445240799491*^9}},
+ FontSize->18],
+
+Cell[BoxData[
+ RowBox[{"\[Rho]", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"\[Rho]$0", "//", " ", 
+    RowBox[{
+     RowBox[{"SimplifyingEvolver", "[", 
+      RowBox[{"H$J", ",", "t", ",", " ", "#"}], "]"}], "&"}]}], " ", "//", 
+   " ", 
+   RowBox[{
+    RowBox[{"SimplifyingEvolver", "[", 
+     RowBox[{"H$0", ",", "t", ",", " ", "#"}], "]"}], "&"}]}]}]], "Input",
+ CellChangeTimes->{{3.6714445338823757`*^9, 3.67144458551854*^9}, {
+  3.671444718970388*^9, 3.671444720200667*^9}, {3.67144506677122*^9, 
+  3.671445068444508*^9}},
+ FontSize->18],
+
+Cell["\<\
+Try another way -- evolve under the chemical shift first and under the \
+J-coupling second.\
+\>", "Text",
+ CellChangeTimes->{{3.671444834167573*^9, 3.671444836235317*^9}, 
+   3.6714448860615*^9, {3.67144504811789*^9, 3.6714450516386957`*^9}, {
+   3.671445149850709*^9, 3.671445168663072*^9}},
+ FontSize->18],
+
+Cell[BoxData[
+ RowBox[{"\[Rho]", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"\[Rho]$0", "//", " ", 
+    RowBox[{
+     RowBox[{"SimplifyingEvolver", "[", 
+      RowBox[{"H$0", ",", "t", ",", " ", "#"}], "]"}], "&"}]}], " ", "//", 
+   " ", 
+   RowBox[{
+    RowBox[{"SimplifyingEvolver", "[", 
+     RowBox[{"H$J", ",", "t", ",", " ", "#"}], "]"}], "&"}]}]}]], "Input",
+ CellChangeTimes->{{3.671444842217965*^9, 3.67144484462682*^9}, {
+  3.671445070458337*^9, 3.6714450715733213`*^9}},
+ FontSize->18],
+
+Cell["We see by inspection that we get the same answer either way.", "Text",
+ CellChangeTimes->{{3.671445189839492*^9, 3.671445213699987*^9}},
+ FontSize->18]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
+Cell["Load spin 1/2 operator matrices", "Subsection",
+ CellChangeTimes->{{3.661433867714074*^9, 3.661433876857678*^9}, {
+  3.671421868173057*^9, 3.671421871614409*^9}, {3.6714219148357353`*^9, 
+  3.671421918418017*^9}, {3.671422672061537*^9, 3.6714226776017923`*^9}, {
+  3.671445358783841*^9, 3.671445362453095*^9}, {3.671446027798325*^9, 
+  3.6714460412821283`*^9}, {3.6714462497064*^9, 3.671446264593584*^9}},
+ FontSize->18],
+
+Cell["\<\
+Load matrices representing two J=1/2 spins and give them a test drive.\
+\>", "Text",
+ CellChangeTimes->{{3.6714456820202208`*^9, 3.6714457113829813`*^9}, {
+  3.671445998615802*^9, 3.6714460069003553`*^9}},
+ FontSize->18],
+
 Cell[BoxData[
+ RowBox[{"<<", "Matrices--two-spin-half.m"}]], "Input",
+ CellChangeTimes->{{3.671445490424717*^9, 3.6714454909529467`*^9}},
+ FontSize->16],
+
+Cell["Let's look at one of the matrices, the matrix for Iz. ", "Text",
+ CellChangeTimes->{{3.671446066910582*^9, 3.6714461288371677`*^9}},
+ FontSize->18],
+
+Cell[BoxData[
+ RowBox[{"mIz", " ", "//", " ", "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.6714461004791517`*^9, 3.671446108624913*^9}},
+ FontSize->18],
+
+Cell["\<\
+For a single spin 1/2 particle, Iz is a 2 x 2 matrix.  In the product space \
+of two spin 1/2 particles, however, the Iz is now a 4 x 4 matrix.  All the \
+operators are 4 x 4 matrices.
+
+Check that the [Ix, Iy]/I = Iz and [Sx, Sy]/I = Sz commutation relations hold \
+with the matrices.\
+\>", "Text",
+ CellChangeTimes->{{3.6714457461606293`*^9, 3.671445793433889*^9}, {
+  3.671446130846957*^9, 3.6714462332544622`*^9}},
+ FontSize->18],
+
+Cell[BoxData[{
  RowBox[{
-  RowBox[{"\[Rho]$1", "[", 
-   RowBox[{"t_", ",", "\[CapitalDelta]$I_"}], "]"}], "=", " ", 
-  RowBox[{"Collect", "[", " ", "\[IndentingNewLine]", "\t", 
-   RowBox[{
-    RowBox[{"(", 
+  RowBox[{
+   RowBox[{"m$1", "=", " ", 
+    FractionBox[
      RowBox[{
-      RowBox[{
-       RowBox[{
-        RowBox[{"Evolver", "[", 
-         RowBox[{"H$0", ",", " ", "t", ",", " ", "\[Rho]$0"}], "]"}], "//", 
-        "Simplify"}], "//", " ", "ExpToTrig"}], " ", "//", " ", 
-      "FullSimplify"}], ")"}], ",", " ", "\[IndentingNewLine]", "\t", 
-    RowBox[{"{", 
-     RowBox[{"Ix", ",", "Iy", ",", " ", "Iz"}], "}"}]}], "]"}]}]], "Input",
- CellChangeTimes->{{3.6614340197481413`*^9, 3.661434178968038*^9}, {
-   3.661434272954471*^9, 3.661434333128969*^9}, {3.661434640514575*^9, 
-   3.661434643212017*^9}, {3.661434786650895*^9, 3.661434809637779*^9}, {
-   3.661435106977956*^9, 3.661435116198124*^9}, {3.6614351828003273`*^9, 
-   3.661435197915441*^9}, 3.661455661961378*^9, {3.6614557085212173`*^9, 
-   3.6614557978065453`*^9}, {3.661455834919834*^9, 3.6614558778332987`*^9}, {
-   3.6714218159749727`*^9, 3.671421839685802*^9}, {3.67142199694174*^9, 
-   3.671422014075262*^9}, {3.671422350743552*^9, 3.671422351437056*^9}, {
-   3.671422536370167*^9, 3.671422553057973*^9}, {3.671422850589497*^9, 
-   3.6714229460700397`*^9}, 3.671423056022331*^9},
+      RowBox[{"mIx", " ", ".", " ", "mIy"}], " ", "-", " ", 
+      RowBox[{"mIy", ".", "mIx"}]}], "I"]}], " ", ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"m$2", " ", "=", " ", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"mSx", " ", ".", " ", "mSy"}], " ", "-", " ", 
+      RowBox[{"mSy", ".", "mSx"}]}], "I"]}], " ", ";"}], " "}]}], "Input",
+ CellChangeTimes->{{3.671445494504896*^9, 3.671445533291304*^9}, {
+  3.671445568666006*^9, 3.67144560414019*^9}, {3.6714458103519*^9, 
+  3.671445839226697*^9}},
+ FontSize->16],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"m$1", " ", "//", " ", "MatrixForm"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"should", " ", "be", " ", "Iz"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"m$2", " ", "//", " ", "MatrixForm", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"should", " ", "be", " ", "Sz"}], " ", "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.67144559223693*^9, 3.671445621775893*^9}, {
+  3.671445829324806*^9, 3.671445840614127*^9}},
+ FontSize->16],
+
+Cell["\<\
+Make the (matrix) operator I$total = Iz + Sz.  We can see by inspection that \
+this matrix looks correct.  The I$total operator should have eigenvalues \
+{-1,0,0,+1}.  The matrix I$total is diagonal and we can read the eigenvalues \
+off diagonal elements.\
+\>", "Text",
+ CellChangeTimes->{{3.671445880334059*^9, 3.6714459936436*^9}},
  FontSize->18],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"Ix", " ", 
-   RowBox[{"Cos", "[", 
-    RowBox[{"t", " ", "\[CapitalDelta]$I"}], "]"}]}], "+", 
-  RowBox[{"Iy", " ", 
-   RowBox[{"Sin", "[", 
-    RowBox[{"t", " ", "\[CapitalDelta]$I"}], "]"}]}]}]], "Output",
- CellChangeTimes->{3.671423003928234*^9, 3.6714230714693413`*^9},
+  RowBox[{"m$1", " ", "+", " ", "m$2"}], " ", "//", " ", 
+  "MatrixForm"}]], "Input",
  FontSize->16]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
+Cell["Calculate the analytical signal using the matrices", "Subsection",
+ CellChangeTimes->{{3.671446273220752*^9, 3.671446279573361*^9}, {
+  3.671446693404964*^9, 3.6714467036370564`*^9}, {3.671446816216303*^9, 
+  3.671446818974146*^9}}],
+
+Cell["Calculate the density operator matrix.", "Text",
+ CellChangeTimes->{{3.671446402857369*^9, 3.671446411712953*^9}},
+ FontSize->18],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[Rho]$matrix", " ", "=", " ", 
+   RowBox[{"\[Rho]", " ", "/.", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Ix", "\[Rule]", " ", "mIx"}], ",", " ", 
+      RowBox[{"Iy", "\[Rule]", " ", "mIy"}], ",", " ", 
+      RowBox[{"Iz", "\[Rule]", " ", "mIz"}], ",", " ", 
+      RowBox[{"Sx", "\[Rule]", " ", "mSx"}], ",", " ", 
+      RowBox[{"Sy", "\[Rule]", " ", "mSy"}], ",", " ", 
+      RowBox[{"Sz", "\[Rule]", " ", "mSz"}]}], "}"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"\[Rho]$matrix", " ", "//", " ", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.671446283504434*^9, 3.671446370013102*^9}},
+ FontSize->16],
+
+Cell["\<\
+From this matrix we can calculate the I-spin signals as Trace[\[Rho] Ix] and \
+Trace[\[Rho] Iy]\
+\>", "Text",
+ CellChangeTimes->{{3.671446415848536*^9, 3.6714464343628063`*^9}, {
+  3.671446572921509*^9, 3.671446610169005*^9}},
+ FontSize->18],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Tr", "[", 
+   RowBox[{"\[Rho]$matrix", " ", ".", " ", "mIx"}], "]"}], " ", "//", " ", 
+  "Simplify"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Tr", "[", 
+   RowBox[{"\[Rho]$matrix", " ", ".", " ", "mIy"}], "]"}], " ", "//", " ", 
+  "Simplify"}]}], "Input",
+ CellChangeTimes->{{3.671446436184062*^9, 3.671446460159924*^9}, {
+  3.671446493512258*^9, 3.671446525803396*^9}, {3.671446589260594*^9, 
+  3.6714465911514063`*^9}},
+ FontSize->16],
+
+Cell["\<\
+We can mimic the complex signal collected by the NMR spectrometer by \
+calculating the expectation value of the Ix + I Iy operator: Trace[\[Rho] \
+(Ix+ I Iy)].\
+\>", "Text",
+ CellChangeTimes->{{3.671446615373083*^9, 3.671446675573143*^9}},
+ FontSize->18],
+
 Cell[BoxData[
- RowBox[{"Collect", "[", " ", "\[IndentingNewLine]", "\t", 
+ RowBox[{
+  RowBox[{"S", "[", "t_", "]"}], ":=", " ", 
   RowBox[{
-   RowBox[{"(", 
+   RowBox[{"Tr", "[", 
+    RowBox[{"\[Rho]$matrix", " ", ".", " ", 
+     RowBox[{"(", 
+      RowBox[{"mIx", "-", " ", 
+       RowBox[{"I", " ", "mIy"}]}], ")"}]}], "]"}], "  ", "//", " ", 
+   "TrigToExp", " "}]}]], "Input",
+ CellChangeTimes->{{3.671446537674589*^9, 3.671446565590992*^9}, {
+   3.671446679689185*^9, 3.671446686372024*^9}, {3.671446793205759*^9, 
+   3.671446804190036*^9}, 3.6714481371244497`*^9, {3.6714505565428677`*^9, 
+   3.671450556829133*^9}},
+ FontSize->16]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Plot the signal as a function of time", "Subsection",
+ CellChangeTimes->{{3.671446822352291*^9, 3.6714468757257767`*^9}},
+ FontSize->18],
+
+Cell["\<\
+Create a more realistic experimental signal by multiplying the \
+above-calculated signal by a decaying exponential.\
+\>", "Text",
+ CellChangeTimes->{{3.6714469211618567`*^9, 3.6714470073287077`*^9}},
+ FontSize->18],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"S$expt", "[", "t_", "]"}], " ", "=", " ", 
+  RowBox[{
+   RowBox[{"S", "[", "t", "]"}], " ", 
+   RowBox[{"Exp", "[", 
+    RowBox[{
+     RowBox[{"-", "t"}], "/", "T2"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.671446889252241*^9, 3.6714469026844177`*^9}, {
+  3.671446959436038*^9, 3.671446970904915*^9}, {3.671447429270523*^9, 
+  3.6714474332727137`*^9}},
+ FontSize->16],
+
+Cell["\<\
+To plot, set the total number of points (NN) and the total time (T).  We set \
+NN equal to a power of 2 in anticipation of taking a digital Fourier \
+transform.\
+\>", "Text",
+ CellChangeTimes->{{3.5949414229321012`*^9, 3.594941479672656*^9}},
+ FontSize->18],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"NN", " ", "=", " ", 
+   RowBox[{"2", "^", "10"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"T", " ", "=", " ", "10.0"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.594991722414856*^9, 3.5949917229397697`*^9}, {
+  3.6714502329166527`*^9, 3.671450233424068*^9}, {3.671450477554515*^9, 
+  3.6714504778582277`*^9}},
+ FontSize->18],
+
+Cell["\<\
+From NN and T we derive the time step (dt) and the frequency step (df).  Now \
+generate a list of data points based on the above function.  At the same \
+time, generate a list of time points (t) and frequency points (f) for \
+plotting. \
+\>", "Text",
+ CellChangeTimes->{{3.59494150240346*^9, 3.594941603782978*^9}},
+ FontSize->18],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dt", " ", "=", " ", 
+   RowBox[{"T", "/", 
+    RowBox[{"(", 
+     RowBox[{"NN", "-", "1"}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"df", " ", "=", " ", 
+    RowBox[{"1", "/", "dt"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Y", " ", "=", " ", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"y", "[", "t", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "T", ",", "dt"}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"jj", "/", "T"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"jj", ",", 
+       RowBox[{
+        RowBox[{"-", "NN"}], "/", "2"}], ",", 
+       RowBox[{
+        RowBox[{"NN", "/", "2"}], "-", "1"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"t", " ", "=", " ", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"ii", "*", "dt"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"ii", ",", "0", ",", 
+        RowBox[{"NN", "-", "1"}]}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<The time step is \>\"", ",", "dt", ",", "\"\< s\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<The Nyquist frequency is \>\"", ",", 
+   RowBox[{"1", "/", 
+    RowBox[{"(", 
+     RowBox[{"2", "*", "dt"}], ")"}]}], ",", "\"\< Hz\>\""}], "]"}]}], "Input",\
+
+ CellChangeTimes->{{3.59493235695424*^9, 3.5949324622740393`*^9}, {
+   3.5949329212374773`*^9, 3.594933020293639*^9}, {3.594941484330391*^9, 
+   3.594941501373295*^9}, {3.594941696885819*^9, 3.5949417765822287`*^9}, {
+   3.594941818366678*^9, 3.594941819859702*^9}, {3.5949469989336433`*^9, 
+   3.594947001044293*^9}, 3.5949577630752707`*^9},
+ FontSize->18],
+
+Cell["Give numbers for the chemical shift and the J-coupling.", "Text",
+ CellChangeTimes->{{3.671447394983695*^9, 3.6714474158952637`*^9}},
+ FontSize->18],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[CapitalDelta]$I", " ", "=", " ", 
+   RowBox[{"2", "\[Pi]", " ", "\[Times]", "10.0"}]}], ";", "    ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"chemical", " ", 
+    RowBox[{"shift", " ", "[", 
+     RowBox[{"rad", "/", "s"}], "]"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"J", " ", "=", "  ", 
+   RowBox[{"2", "\[Pi]", " ", "\[Times]", " ", "8.0"}]}], ";", "         ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"heteronuclear", " ", "scalar", " ", "coupling", " ", 
+    RowBox[{"constant", " ", "[", 
+     RowBox[{"rad", "/", "s"}], "]"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"T2", " ", "=", " ", "1.0"}], ";", "                  ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"spin", " ", "dephasing", " ", 
+    RowBox[{"time", " ", "[", "s", "]"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.671447604729793*^9, 3.671447668917508*^9}, {
+  3.6714477541558647`*^9, 3.671447778543397*^9}, {3.671450991153552*^9, 
+  3.671451022391514*^9}},
+ FontSize->18],
+
+Cell["Plot the real and imaginary part of the signal", "Text",
+ CellChangeTimes->{{3.6714500367811728`*^9, 3.67145005728123*^9}},
+ FontSize->18],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{
-      RowBox[{
-       RowBox[{"Evolver", "[", 
-        RowBox[{"H$J", ",", " ", "t", ",", " ", "Ix"}], "]"}], "//", 
-       "Simplify"}], "//", " ", "ExpToTrig"}], " ", "//", " ", 
-     "FullSimplify"}], ")"}], ",", " ", "\[IndentingNewLine]", "\t", 
-   RowBox[{"{", 
-    RowBox[{"Ix", ",", "Iy", ",", " ", "Iz"}], "}"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.671423101863112*^9, 3.6714231176838503`*^9}},
- FontSize->18],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Ix", " ", 
-   RowBox[{"Cos", "[", 
-    FractionBox[
-     RowBox[{"J", " ", "t"}], "2"], "]"}]}], "+", 
-  RowBox[{"2", " ", 
-   RowBox[{"Iy", "**", "Sz"}], " ", 
-   RowBox[{"Sin", "[", 
-    FractionBox[
-     RowBox[{"J", " ", "t"}], "2"], "]"}]}]}]], "Output",
- CellChangeTimes->{3.6714231351600122`*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Collect", "[", " ", "\[IndentingNewLine]", "\t", 
-   RowBox[{
-    RowBox[{"(", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", " ", 
+        RowBox[{
+         RowBox[{"S$expt", " ", "/@", " ", "t"}], " ", "//", " ", "Re"}]}], 
+       "}"}], " ", "//", " ", "Transpose"}], ",", "\[IndentingNewLine]", 
      RowBox[{
-      RowBox[{
-       RowBox[{
-        RowBox[{"Evolver", "[", 
-         RowBox[{"H$J", ",", " ", "t", ",", " ", "Iy"}], "]"}], "//", 
-        "Simplify"}], "//", " ", "ExpToTrig"}], " ", "//", " ", 
-      "FullSimplify"}], ")"}], ",", " ", "\[IndentingNewLine]", "\t", 
-    RowBox[{"{", 
-     RowBox[{"Ix", ",", "Iy", ",", " ", "Iz"}], "}"}]}], "]"}], 
-  "\[IndentingNewLine]"}]], "Input",
- CellChangeTimes->{{3.671423122046741*^9, 3.671423128812964*^9}},
- FontSize->18],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Iy", " ", 
-   RowBox[{"Cos", "[", 
-    FractionBox[
-     RowBox[{"J", " ", "t"}], "2"], "]"}]}], "-", 
-  RowBox[{"2", " ", 
-   RowBox[{"Ix", "**", "Sz"}], " ", 
-   RowBox[{"Sin", "[", 
-    FractionBox[
-     RowBox[{"J", " ", "t"}], "2"], "]"}]}]}]], "Output",
- CellChangeTimes->{3.671423140648487*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"\[Rho]$2", "[", 
-   RowBox[{"t_", ",", "\[CapitalDelta]$I_", ",", "J_"}], "]"}], "=", " ", 
-  RowBox[{"Collect", "[", " ", "\[IndentingNewLine]", "\t", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", " ", 
+        RowBox[{
+         RowBox[{"S$expt", " ", "/@", " ", "t"}], " ", "//", " ", "Im"}]}], 
+       "}"}], " ", "//", " ", "Transpose"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Joined", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}], ",", "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"(", 
-     RowBox[{
-      RowBox[{
-       RowBox[{
-        RowBox[{"Evolver", "[", 
-         RowBox[{"H$J", ",", " ", "t", ",", " ", 
-          RowBox[{"\[Rho]$1", "[", 
-           RowBox[{"t", ",", "\[CapitalDelta]$I"}], "]"}]}], "]"}], "//", 
-        "Simplify"}], "//", " ", "ExpToTrig"}], " ", "//", " ", 
-      "FullSimplify"}], ")"}], ",", " ", "\[IndentingNewLine]", "\t", 
+   "PlotLabel", "\[Rule]", 
+    "\"\<Free induction decay of 1H coupled to 13C\\n\>\""}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"AxesLabel", "\[Rule]", 
     RowBox[{"{", 
-     RowBox[{"Ix", ",", "Iy", ",", " ", "Iz"}], "}"}]}], "]"}]}]], "Input",
- CellChangeTimes->{{3.671423059434949*^9, 3.671423084806951*^9}},
+     RowBox[{"\"\<time [s]\>\"", ",", "\"\<Signal(t)\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.67144779890044*^9, 3.671447848340846*^9}, {
+  3.671447937029454*^9, 3.6714479473527603`*^9}, {3.671447999669054*^9, 
+  3.671448034363092*^9}, {3.671449785628702*^9, 3.671449951663116*^9}},
+ FontSize->18],
+
+Cell["\<\
+A function to calculate the digital Fourier transform of signal.\
+\>", "Text",
+ CellChangeTimes->{{3.67145051013356*^9, 3.671450534424446*^9}},
  FontSize->18],
 
 Cell[BoxData[
  RowBox[{
-  StyleBox[
-   RowBox[{"Evolver", "::", "unsolvable"}], "MessageName"], 
-  RowBox[{":", " "}], "\<\"Unrecognized evolution\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.67142306298184*^9, 3.671423128883823*^9}],
+  RowBox[{"DFFT", "[", 
+   RowBox[{"signal_", ",", "t_", ",", " ", 
+    RowBox[{"query_:", "True"}]}], "]"}], " ", ":=", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "True", " ", "to", " ", "plot", " ", "both", " ", "real", " ", "and", " ", 
+    "imaginary", " ", "FT", " ", "parts"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "NN", "}"}], ",", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"NN", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"Dimensions", "[", 
+        RowBox[{"signal", " ", "/@", " ", "t"}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"FFTS", " ", "=", " ", 
+      RowBox[{"RotateRight", "[", 
+       RowBox[{
+        RowBox[{"Fourier", "[", 
+         RowBox[{"signal", "/@", " ", "t"}], "]"}], ",", 
+        RowBox[{"NN", "/", "2"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"T", " ", "=", " ", 
+      RowBox[{"t", "[", 
+       RowBox[{"[", 
+        RowBox[{"-", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"f", " ", "=", " ", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"jj", "/", "T"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"jj", ",", 
+          RowBox[{
+           RowBox[{"-", "NN"}], "/", "2"}], ",", 
+          RowBox[{
+           RowBox[{"NN", "/", "2"}], "-", "1"}]}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"p1", "=", " ", 
+      RowBox[{"ListLinePlot", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Transpose", "[", 
+           RowBox[{"{", 
+            RowBox[{"t", ",", 
+             RowBox[{"Re", "[", 
+              RowBox[{"signal", " ", "/@", " ", "t"}], "]"}]}], "}"}], "]"}], 
+          ",", "\[IndentingNewLine]", 
+          RowBox[{"Transpose", "[", 
+           RowBox[{"{", 
+            RowBox[{"t", ",", 
+             RowBox[{"Im", "[", 
+              RowBox[{"signal", "/@", " ", "t"}], "]"}]}], "}"}], "]"}]}], 
+         "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "1"}], ",", "1"}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"AxesLabel", "\[Rule]", " ", 
+         RowBox[{"{", 
+          RowBox[{"\"\<time [s]\>\"", ",", "\"\<signal\>\""}], "}"}]}]}], 
+       "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"query", " ", "\[Equal]", " ", "True"}], ",", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"p2", "=", 
+        RowBox[{"ListLinePlot", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", 
+              RowBox[{"f", ",", 
+               RowBox[{"Re", "[", "FFTS", "]"}]}], "}"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", 
+              RowBox[{"f", ",", 
+               RowBox[{"Im", "[", "FFTS", "]"}]}], "}"}], "]"}]}], " ", "}"}],
+           ",", "\[IndentingNewLine]", 
+          RowBox[{"PlotRange", "\[Rule]", " ", "All"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"\"\<freq [Hz]\>\"", ",", "\"\<DFT{signal}\>\""}], 
+            "}"}]}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"p2", "=", 
+        RowBox[{"ListLinePlot", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Transpose", "[", 
+           RowBox[{"{", 
+            RowBox[{"f", ",", 
+             RowBox[{"Re", "[", "FFTS", "]"}]}], "}"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"PlotRange", "\[Rule]", " ", "All"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"\"\<freq [Hz]\>\"", ",", "\"\<DFT{signal}\>\""}], 
+            "}"}]}]}], "]"}]}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Show", "[", 
+      RowBox[{"GraphicsGrid", "[", 
+       RowBox[{"{", 
+        RowBox[{"{", 
+         RowBox[{"p1", ",", "p2"}], "}"}], "}"}], "]"}], "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.594944534421811*^9, 3.5949447042651577`*^9}, {
+   3.594944761549816*^9, 3.5949447856729527`*^9}, {3.5949457080553913`*^9, 
+   3.594945725580372*^9}, 3.594957008065167*^9, {3.5949599090104303`*^9, 
+   3.594959943126217*^9}, {3.671420918194263*^9, 3.671420985060692*^9}, {
+   3.6714500698553047`*^9, 3.6714501975055017`*^9}, {3.671450354497389*^9, 
+   3.671450368115725*^9}, {3.6714504102572317`*^9, 3.671450429646456*^9}, {
+   3.6714507085616426`*^9, 3.671450719913899*^9}, {3.671450779304175*^9, 
+   3.671450820615818*^9}, {3.6714508637422657`*^9, 3.671450868872673*^9}, {
+   3.6714509162185383`*^9, 3.671450949134245*^9}, {3.6714510544854803`*^9, 
+   3.671451069853394*^9}},
+ FontSize->18],
 
-Cell[BoxData["$Aborted"], "Output",
- CellChangeTimes->{3.6714230663353367`*^9, 3.671423132756131*^9}]
-}, Open  ]]
+Cell["Fourier transform the signal to obtain the spectrum.", "Text",
+ CellChangeTimes->{{3.6714510493757668`*^9, 3.6714510513046627`*^9}, {
+  3.671451088925737*^9, 3.671451100765924*^9}},
+ FontSize->18],
+
+Cell[BoxData[{
+ RowBox[{"DFFT", "[", 
+  RowBox[{"S$expt", ",", "t"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"DFFT", "[", 
+  RowBox[{"S$expt", ",", "t", ",", " ", "False"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6714476849652023`*^9, 3.671447688933979*^9}, {
+  3.671450451756751*^9, 3.671450457086381*^9}, {3.671450955985718*^9, 
+  3.671450959835928*^9}, {3.671451075639289*^9, 3.6714510806381702`*^9}},
+ FontSize->18]
 }, Open  ]]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell["Clean up", "Section",
- CellChangeTimes->{{3.661434199971715*^9, 3.661434206498426*^9}}],
-
-Cell[BoxData[
- RowBox[{"(*", " ", "\[IndentingNewLine]", 
-  RowBox[{"Clear", "[", 
-   RowBox[{
-   "\[Omega]", ",", " ", "\[CapitalDelta]", ",", " ", "\[Phi]", ",", " ", 
-    "Ix", ",", " ", "Iy", ",", " ", "Iz", ",", " ", "\[Rho]", ",", " ", 
-    "\[Rho]$0", ",", " ", "H"}], "]"}], "\[IndentingNewLine]", 
-  "*)"}]], "Input",
- CellChangeTimes->{{3.6614342078368998`*^9, 3.661434242329479*^9}, {
-  3.661434698858177*^9, 3.6614347003281317`*^9}, {3.6614347626672*^9, 
-  3.661434766309744*^9}, {3.661439580768929*^9, 3.661439585503661*^9}},
- FontSize->16]
-}, Open  ]]
+ CellChangeTimes->{{3.661434199971715*^9, 3.661434206498426*^9}}]
 }, Open  ]]
 },
-WindowSize->{1084, 803},
-WindowMargins->{{34, Automatic}, {-3, Automatic}},
+WindowSize->{1112, 804},
+WindowMargins->{{5, Automatic}, {24, Automatic}},
 FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September 9, \
 2014)",
 StyleDefinitions->"Default.nb"
@@ -1615,171 +1156,96 @@ Cell[2629, 82, 152, 2, 33, "Text"]
 Cell[CellGroupData[{
 Cell[2818, 89, 100, 1, 64, "Section"],
 Cell[2921, 92, 686, 15, 83, "Text"],
-Cell[CellGroupData[{
-Cell[3632, 111, 463, 10, 53, "Input"],
-Cell[4098, 123, 366, 5, 28, "Output"]
+Cell[3610, 109, 463, 10, 53, "Input"],
+Cell[4076, 121, 301, 6, 59, "Text"],
+Cell[4380, 129, 590, 13, 53, "Input"],
+Cell[4973, 144, 92, 1, 28, "Input"]
 }, Open  ]],
-Cell[4479, 131, 301, 6, 59, "Text"],
 Cell[CellGroupData[{
-Cell[4805, 141, 590, 13, 53, "Input"],
-Cell[CellGroupData[{
-Cell[5420, 158, 354, 5, 22, "Print"],
-Cell[5777, 165, 463, 9, 22, "Print"],
-Cell[6243, 176, 582, 11, 22, "Print"],
-Cell[6828, 189, 318, 4, 22, "Print"],
-Cell[7149, 195, 316, 4, 21, "Print"],
-Cell[7468, 201, 312, 4, 21, "Print"],
-Cell[7783, 207, 314, 4, 22, "Print"],
-Cell[8100, 213, 312, 4, 22, "Print"],
-Cell[8415, 219, 306, 4, 21, "Print"],
-Cell[8724, 225, 311, 4, 21, "Print"],
-Cell[9038, 231, 316, 4, 21, "Print"],
-Cell[9357, 237, 311, 4, 21, "Print"],
-Cell[9671, 243, 314, 4, 21, "Print"],
-Cell[9988, 249, 311, 4, 21, "Print"],
-Cell[10302, 255, 309, 4, 21, "Print"],
-Cell[10614, 261, 309, 4, 21, "Print"],
-Cell[10926, 267, 321, 4, 22, "Print"],
-Cell[11250, 273, 321, 4, 22, "Print"],
-Cell[11574, 279, 320, 4, 22, "Print"],
-Cell[11897, 285, 311, 4, 22, "Print"],
-Cell[12211, 291, 311, 4, 21, "Print"],
-Cell[12525, 297, 307, 4, 21, "Print"],
-Cell[12835, 303, 308, 4, 21, "Print"],
-Cell[13146, 309, 309, 4, 21, "Print"],
-Cell[13458, 315, 307, 4, 21, "Print"],
-Cell[13768, 321, 315, 4, 22, "Print"],
-Cell[14086, 327, 326, 4, 22, "Print"],
-Cell[14415, 333, 326, 4, 21, "Print"],
-Cell[14744, 339, 311, 4, 21, "Print"],
-Cell[15058, 345, 512, 9, 22, "Print"],
-Cell[15573, 356, 309, 4, 21, "Print"],
-Cell[15885, 362, 310, 4, 21, "Print"],
-Cell[16198, 368, 312, 4, 22, "Print"],
-Cell[16513, 374, 1693, 55, 707, "Print"],
-Cell[18209, 431, 354, 5, 22, "Print"],
-Cell[18566, 438, 461, 9, 22, "Print"],
-Cell[19030, 449, 582, 11, 22, "Print"],
-Cell[19615, 462, 328, 4, 22, "Print"]
+Cell[5102, 150, 114, 1, 64, "Section"],
+Cell[5219, 153, 480, 13, 57, "Input"]
 }, Open  ]],
-Cell[19958, 469, 661, 12, 39, "Message"],
-Cell[20622, 483, 568, 11, 24, "Message"],
 Cell[CellGroupData[{
-Cell[21215, 498, 354, 5, 22, "Print"],
-Cell[21572, 505, 463, 9, 22, "Print"],
-Cell[22038, 516, 582, 11, 22, "Print"],
-Cell[22623, 529, 330, 4, 22, "Print"]
-}, Open  ]],
-Cell[22968, 536, 463, 10, 24, "Message"],
-Cell[23434, 548, 524, 11, 24, "Message"],
-Cell[23961, 561, 573, 11, 39, "Message"],
+Cell[5736, 171, 274, 3, 64, "Section"],
 Cell[CellGroupData[{
-Cell[24559, 576, 352, 5, 22, "Print"],
-Cell[24914, 583, 461, 9, 22, "Print"],
-Cell[25378, 594, 582, 11, 22, "Print"],
-Cell[25963, 607, 330, 4, 22, "Print"]
+Cell[6035, 178, 108, 1, 44, "Subsection"],
+Cell[6146, 181, 899, 26, 65, "Text"],
+Cell[7048, 209, 2534, 53, 253, "Input"]
 }, Open  ]],
-Cell[26308, 614, 452, 10, 24, "Message"],
 Cell[CellGroupData[{
-Cell[26785, 628, 352, 5, 22, "Print"],
-Cell[27140, 635, 461, 9, 22, "Print"],
-Cell[27604, 646, 584, 11, 22, "Print"],
-Cell[28191, 659, 330, 4, 22, "Print"]
+Cell[9619, 267, 224, 4, 42, "Subsection"],
+Cell[9846, 273, 413, 11, 37, "Text"],
+Cell[10262, 286, 428, 9, 57, "Input"],
+Cell[10693, 297, 293, 4, 35, "Text"],
+Cell[10989, 303, 988, 18, 33, "Input"]
 }, Open  ]],
-Cell[28536, 666, 780, 14, 78, "Message"],
 Cell[CellGroupData[{
-Cell[29341, 684, 354, 5, 22, "Print"],
-Cell[29698, 691, 461, 9, 22, "Print"],
-Cell[30162, 702, 584, 11, 22, "Print"],
-Cell[30749, 715, 328, 4, 22, "Print"]
-}, Open  ]],
-Cell[31092, 722, 590, 11, 42, "Message"],
-Cell[CellGroupData[{
-Cell[31707, 737, 354, 5, 22, "Print"],
-Cell[32064, 744, 461, 9, 22, "Print"],
-Cell[32528, 755, 582, 11, 22, "Print"],
-Cell[33113, 768, 328, 4, 22, "Print"]
-}, Open  ]],
-Cell[33456, 775, 616, 12, 42, "Message"],
-Cell[34075, 789, 585, 11, 24, "Message"]
+Cell[12014, 326, 166, 3, 42, "Subsection"],
+Cell[12183, 331, 412, 11, 37, "Text"],
+Cell[12598, 344, 445, 10, 57, "Input"],
+Cell[13046, 356, 293, 4, 35, "Text"],
+Cell[13342, 362, 935, 15, 33, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34709, 806, 244, 3, 64, "Section"],
+Cell[14326, 383, 323, 4, 64, "Section"],
 Cell[CellGroupData[{
-Cell[34978, 813, 108, 1, 44, "Subsection"],
-Cell[35089, 816, 899, 26, 65, "Text"],
-Cell[CellGroupData[{
-Cell[36013, 846, 2763, 59, 293, "Input"],
-Cell[38779, 907, 619, 12, 24, "Message"],
-Cell[39401, 921, 631, 13, 24, "Message"],
-Cell[40035, 936, 661, 13, 24, "Message"]
-}, Open  ]]
+Cell[14674, 391, 157, 2, 44, "Subsection"],
+Cell[14834, 395, 899, 26, 65, "Text"],
+Cell[15736, 423, 3947, 84, 393, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[40745, 955, 224, 4, 42, "Subsection"],
-Cell[40972, 961, 413, 11, 37, "Text"],
-Cell[41388, 974, 381, 9, 57, "Input"],
-Cell[41772, 985, 310, 7, 35, "Text"],
-Cell[CellGroupData[{
-Cell[42107, 996, 1513, 35, 149, "Input"],
-Cell[43623, 1033, 620, 15, 33, "Output"]
-}, Open  ]]
+Cell[19720, 512, 277, 4, 42, "Subsection"],
+Cell[20000, 518, 413, 11, 37, "Text"],
+Cell[20416, 531, 906, 20, 80, "Input"],
+Cell[21325, 553, 350, 5, 35, "Text"],
+Cell[21678, 560, 332, 9, 33, "Input"],
+Cell[22013, 571, 675, 11, 59, "Text"],
+Cell[22691, 584, 539, 14, 33, "Input"],
+Cell[23233, 600, 317, 7, 35, "Text"],
+Cell[23553, 609, 491, 13, 33, "Input"],
+Cell[24047, 624, 157, 2, 35, "Text"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[44292, 1054, 166, 3, 42, "Subsection"],
-Cell[44461, 1059, 358, 10, 37, "Text"],
-Cell[44822, 1071, 388, 9, 57, "Input"],
-Cell[45213, 1082, 310, 7, 35, "Text"],
-Cell[CellGroupData[{
-Cell[45548, 1093, 1640, 37, 149, "Input"],
-Cell[47191, 1132, 772, 21, 33, "Output"]
-}, Open  ]]
-}, Open  ]]
+Cell[24241, 631, 426, 6, 42, "Subsection"],
+Cell[24670, 639, 230, 5, 35, "Text"],
+Cell[24903, 646, 152, 3, 32, "Input"],
+Cell[25058, 651, 153, 2, 35, "Text"],
+Cell[25214, 655, 154, 3, 33, "Input"],
+Cell[25371, 660, 442, 10, 107, "Text"],
+Cell[25816, 672, 645, 19, 99, "Input"],
+Cell[26464, 693, 463, 11, 53, "Input"],
+Cell[26930, 706, 358, 7, 59, "Text"],
+Cell[27291, 715, 124, 4, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[48024, 1160, 289, 3, 64, "Section"],
+Cell[27452, 724, 238, 3, 44, "Subsection"],
+Cell[27693, 729, 135, 2, 35, "Text"],
+Cell[27831, 733, 659, 15, 53, "Input"],
+Cell[28493, 750, 251, 6, 35, "Text"],
+Cell[28747, 758, 478, 12, 53, "Input"],
+Cell[29228, 772, 264, 6, 59, "Text"],
+Cell[29495, 780, 560, 14, 33, "Input"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[48338, 1167, 157, 2, 44, "Subsection"],
-Cell[48498, 1171, 899, 26, 65, "Text"],
-Cell[CellGroupData[{
-Cell[49422, 1201, 3664, 79, 373, "Input"],
-Cell[53089, 1282, 674, 13, 24, "Message"],
-Cell[53766, 1297, 681, 14, 24, "Message"],
-Cell[54450, 1313, 713, 14, 24, "Message"],
-Cell[55166, 1329, 674, 13, 24, "Message"],
-Cell[55843, 1344, 679, 14, 24, "Message"],
-Cell[56525, 1360, 711, 14, 24, "Message"]
+Cell[30092, 799, 142, 2, 42, "Subsection"],
+Cell[30237, 803, 224, 5, 35, "Text"],
+Cell[30464, 810, 406, 11, 33, "Input"],
+Cell[30873, 823, 267, 6, 59, "Text"],
+Cell[31143, 831, 371, 9, 57, "Input"],
+Cell[31517, 842, 340, 7, 59, "Text"],
+Cell[31860, 851, 1930, 56, 241, "Input"],
+Cell[33793, 909, 154, 2, 35, "Text"],
+Cell[33950, 913, 1018, 22, 103, "Input"],
+Cell[34971, 937, 144, 2, 35, "Text"],
+Cell[35118, 941, 1261, 31, 195, "Input"],
+Cell[36382, 974, 168, 4, 35, "Text"],
+Cell[36553, 980, 5194, 125, 724, "Input"],
+Cell[41750, 1107, 202, 3, 35, "Text"],
+Cell[41955, 1112, 421, 8, 57, "Input"]
 }, Open  ]]
 }, Open  ]],
-Cell[CellGroupData[{
-Cell[57285, 1380, 277, 4, 42, "Subsection"],
-Cell[57565, 1386, 413, 11, 37, "Text"],
-Cell[57981, 1399, 777, 16, 80, "Input"],
-Cell[58761, 1417, 304, 4, 35, "Text"],
-Cell[CellGroupData[{
-Cell[59090, 1425, 1317, 26, 80, "Input"],
-Cell[60410, 1453, 323, 9, 32, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[60770, 1467, 552, 14, 80, "Input"],
-Cell[61325, 1483, 338, 11, 80, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[61700, 1499, 600, 16, 103, "Input"],
-Cell[62303, 1517, 336, 11, 46, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[62676, 1533, 767, 19, 80, "Input"],
-Cell[63446, 1554, 236, 5, 24, "Message"],
-Cell[63685, 1561, 101, 1, 28, "Output"]
-}, Open  ]]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[63847, 1569, 93, 1, 64, "Section"],
-Cell[63943, 1572, 553, 11, 73, "Input"]
-}, Open  ]]
+Cell[42403, 1124, 93, 1, 64, "Section"]
 }, Open  ]]
 }
 ]
