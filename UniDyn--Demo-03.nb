@@ -1335,8 +1335,8 @@ Cell[BoxData[{
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{991, 585},
-WindowMargins->{{5, Automatic}, {99, Automatic}},
+WindowSize->{991, 716},
+WindowMargins->{{5, Automatic}, {Automatic, 41}},
 PrintingCopies->1,
 PrintingPageRange->{1, Automatic},
 ShowSelection->True,
