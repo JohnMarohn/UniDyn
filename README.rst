@@ -41,6 +41,11 @@ Example notebooks ::
                            numerical signal to reveal the *spectrum* of the two 
                            coupled spins.  
                            
+    UniDyn--Demo-05.nb    Calculates the signal analytically and numerically for two
+                           weakly coupled spins in the following experiments: INEPT
+                           polarization transfer, heteronuclear COSY, and homonuclear
+                           COSY.
+                           
     UniDyn--Demo-Scratch.nb    Operator playground
 
 Documentation ::
