@@ -1,6 +1,11 @@
 History
 -------
 
+2016/05/11 jam99
+^^^^^^^^^^^^^^^^
+
+Notebook UniDyn--Demo-05.nb added to illustrate, for two weakly coupled spins, the 1D spectrum, the INEPT experiment, the heteronuclear COSY, and the homonuclear COSY.
+
 2016/05/05 jam99
 ^^^^^^^^^^^^^^^^
 
