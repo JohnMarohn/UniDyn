@@ -4,7 +4,11 @@ History
 2016/09/14 jam99
 ^^^^^^^^^^^^^^^^
 
-One of the unit tests in Evolve-tests.m broke when I upgraded from *Mathematica* version 10 to 11.  Tweak Evolve-tests.m so the "off-resonance evolution of Iz" test case passes in *Mathematica* version 11.
+* One of the unit tests in Evolve-tests.m broke when I upgraded from *Mathematica* version 10 to 11.  Tweak Evolve-tests.m so the "off-resonance evolution of Iz" test case passes in *Mathematica* version 11.
+
+* Fixed bug the definition of the rules for simplifying harmonic oscillator Q and P operators.  The symptom of the bug was that when P was rewritten in terms of raising and lowering operators and then converted back to position and momentum operators, the result was -P and not P.  Add a unit test to Evolve-tests.m to check that the conversion and back-conversion returns Q and P as expected.
+
+* Added unit tests covering harmonic oscillator "postion kick" and "momentum kick" Hamiltonians. 
 
 2016/05/11 jam99
 ^^^^^^^^^^^^^^^^

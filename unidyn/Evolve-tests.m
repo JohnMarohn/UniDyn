@@ -190,18 +190,23 @@ Clear[A, r, lhs$list, rhs$list, time, eqns, system, rho$calc, rho$known, X]
 
 (*@
 Harmonic oscillator evolution.  First, create the harmonic oscillator Hamiltonian in symmetric form.  Evolve % 
-the lowering operator and confirm that it picks up the expected phase factor. % 
+the lowering operator and confirm that it picks up the expected phase factor. Evolve the raising operator %
+and confirm that it picks up the expected (conjugate) phase factor. % 
 @*)
 
-Clear[aL$sym, aR$sym, \[Omega], Q$sym, P$sym, H$sym, Q, P];
-CreateScalar[\[Omega]];
+Clear[aL$sym, aR$sym, \[Omega], Q$sym, P$sym, H$sym, Q, P, delta$q$sym, delta$p$sym];
+CreateScalar[\[Omega], delta$x$sym, delta$p$sym];
 OscSingle$CreateOperators[aL$sym, aR$sym];
 
 H$sym = \[Omega] (aL$sym**aR$sym + aR$sym**aL$sym)/2;
 
-vtest["06a > free evolution of a", 
+vtest["06a1 > free evolution of lowering operator", 
   Simplify[TrigToExp[Expand[Evolver[H$sym, t$sym, aL$sym, quiet -> quiet$query]]]]
     === aL$sym Exp[I \[Omega] t$sym]]
+
+vtest["06a2 > free evolution of raising operator", 
+  Simplify[TrigToExp[Expand[Evolver[H$sym, t$sym, aR$sym, quiet -> quiet$query]]]]
+    === aR$sym Exp[-I \[Omega] t$sym]]
 
 (*@
 Evolve the position operator.  To do this, write the position operator in terms of the raising and lowering % 
@@ -211,15 +216,46 @@ For the re-write step, create a \emph{new} set of non-commuting operators, to av
 
 CreateOperator[{{Q,P}}];
 {Q$sym, P$sym} = {(aR$sym + aL$sym)/Sqrt[2], I (aR$sym - aL$sym)/Sqrt[2]};
-QP$rules = {aR$sym -> (Q + I P)/Sqrt[2], aL$sym -> (Q - I P)/Sqrt[2]};
+QP$rules = {aR$sym -> (Q - I P)/Sqrt[2], aL$sym -> (Q + I P)/Sqrt[2]};
 
-vtest["06b > free evolution of Q", 
+(*@
+Write Q and P in terms of raising and lower operators, write the raising and lowering % 
+operators in terms of position and momentum, and you should get the original %
+Q and P back again.
+@*)
+
+vtest["06b > test Q definition", Simplify[Q$sym /. QP$rules] === Q]
+vtest["06c > test P definition", Simplify[P$sym /. QP$rules] === P]
+
+(*@
+Now we are ready to evolve position and momentum.
+@*)
+
+vtest["06d > free evolution of Q", 
   Simplify[ExpToTrig[Expand[Evolver[H$sym, t$sym, Q$sym, quiet -> quiet$query] /. QP$rules]]]
-    == Q Cos[\[Omega] t$sym] + P Sin[\[Omega] t$sym]]
+    == Q Cos[\[Omega] t$sym] - P Sin[\[Omega] t$sym]]
+
+vtest["06e > free evolution of P", 
+  Simplify[ExpToTrig[Expand[Evolver[H$sym, t$sym, P$sym, quiet -> quiet$query] /. QP$rules]]]
+    == P Cos[\[Omega] t$sym] + Q Sin[\[Omega] t$sym]]
+
+(*@
+Check that the operator $e^{-\delta q P}$ delivers a position kick and that %
+the operator $e^{-\delta p X}$ delivers a momentum kick.  These are examples %
+of evolution where the commuting series terminates.  %
+@*)
+
+vtest["06f > position kick",
+	Simplify[Evolver[delta$q$sym P$sym, t, Q$sym] /. QP$rules ~Join~ {t-> 1}] 
+	 == Q - delta$q$sym]
+
+vtest["06g > momentum kick",
+	Simplify[Evolver[delta$p$sym Q$sym, t, P$sym] /. QP$rules ~Join~ {t-> 1}] 
+	 == P + delta$p$sym]
 
 (*@ Clean up: @*)
 
-Clear[aL$sym, aR$sym, \[Omega], Q$sym, P$sym, H$sym, Q, P];
+Clear[aL$sym, aR$sym, \[Omega], Q$sym, P$sym, H$sym, Q, P, delta$q$sym, delta$p$sym];
 
 (*~ END ~*)
 
@@ -228,6 +264,12 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
+
+
+
+
+
+
 
 
 
