@@ -176,10 +176,10 @@ rho$known = Collect[
     Expand, {Ix$sym, Iy$sym, Iz$sym}];
 
 rho$calc = Collect[
-  Evolver[\[CapitalDelta] Iz$sym + \[Omega] Ix$sym , t$sym, Iz$sym, quiet -> quiet$query] // 
-    Simplify // ExpToTrig // FullSimplify, {Ix$sym, Iy$sym, Iz$sym}]; 
+  Evolver[\[CapitalDelta] Iz$sym + \[Omega] Ix$sym , t$sym, Iz$sym, quiet -> quiet$query] 
+  // FullSimplify, {Ix$sym, Iy$sym, Iz$sym}, Expand]; 
 
-vtest["05e > Off-resonance nutation of of Iz", rho$calc == rho$known]
+vtest["05e > Off-resonance nutation of of Iz", rho$calc === rho$known]
 
 (*@
 Clean up:
@@ -228,6 +228,9 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
+
+
+
 
 
 
