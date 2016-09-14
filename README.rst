@@ -81,9 +81,15 @@ plus unit-testing files ::
     Osc-tests.m
     Evolve-tests.m
 
-.. include:: HISTORY.rst
+Other files
+-----------
 
-.. include:: TODO.rst
+* History [`link <https://github.com/JohnMarohn/UniDyn/blob/master/HISTORY.rst>`__]
+
+* To-do list [`link <https://github.com/JohnMarohn/UniDyn/blob/master/TODO.rst>`__]
+
+* License [`link <https://github.com/JohnMarohn/UniDyn/blob/master/LICENSE>`__]
+
 
 Background reading
 ------------------
