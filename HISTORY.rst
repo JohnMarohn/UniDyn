@@ -1,6 +1,11 @@
 History
 -------
 
+2016/09/14 jam99
+^^^^^^^^^^^^^^^^
+
+One of the unit tests in Evolve-tests.m broke when I upgraded from *Mathematica* version 10 to 11.  Tweak Evolve-tests.m so the "off-resonance evolution of Iz" test case passes in *Mathematica* version 11.
+
 2016/05/11 jam99
 ^^^^^^^^^^^^^^^^
 
