@@ -25,7 +25,8 @@ by default.  Other lettered variables --- like capital letters, greek letters, a
 more complicated constructs --- are defined as commuting variables be default.
 @*)
 
-Clear[a, \[Alpha], A];
+(* Clear[a, \[Alpha], A]; *)
+SetNonCommutative[a];
 
 vtest["01a", CommutativeQ[a] == False]
 vtest["01b", CommutativeQ[A] == True] 
@@ -104,6 +105,9 @@ vtest["06b", Not[aL$sym**aR$sym === aR$sym**aL$sym]]
 Clear[a, \[Alpha], b, \[Beta], A];
 Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym];
 Clear[aR$sym, aL$sym];
+
+
+
 
 
 

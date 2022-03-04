@@ -53,9 +53,9 @@ Clear[H,t,H1,H2,H3,Q,R,S,U,V,W,q,r,s,u,v,w];
 CreateOperator[{{Q,R},{S,U},{V,W}}]
 CreateScalar[{q,r,s,u,v,w}]
 
-vtest["01a", Evolve[H, t, Q + R + S] === Evolve[H,t,Q]+Evolve[H,t,R]+Evolve[H,t,S]]
-vtest["01b", Evolve[H, t, Q**R**S] === Evolve[H,t,Q]**Evolve[H,t,R]**Evolve[H,t,S]]
-vtest["01c", Evolve[H,t,(Q q)**(r R)**(s S) + u U]
+vtest["01a > distribute addition", Evolve[H, t, Q + R + S] === Evolve[H,t,Q]+Evolve[H,t,R]+Evolve[H,t,S]]
+vtest["01b > distribute multiplication", Evolve[H, t, Q**R**S] === Evolve[H,t,Q]**Evolve[H,t,R]**Evolve[H,t,S]]
+vtest["01c > distribute complicated expression", Evolve[H,t,(Q q)**(r R)**(s S) + u U]
     === u Evolve[H,t,U] + q r s Evolve[H,t,Q]**Evolve[H,t,R]**Evolve[H,t,S]]
 
 (*@
@@ -69,15 +69,15 @@ expanded. %
 
 H0 = Q;
 H1 = q Q**R + s S**U + U**S + V**V**W;
-H2 = q Q +s S + v Q**S;
+H2 = q Q + s S + v Q**S;
 
-vtest["02a", AllCommutingQ[H0] === False]
-vtest["02b", AllCommutingQ[H1] === False]
-vtest["02c", AllCommutingQ[H2] === True]
+vtest["02a > commuting test 1", AllCommutingQ[H0] === False]
+vtest["02b > commuting test 2", AllCommutingQ[H1] === False]
+vtest["02c > commuting test 3", AllCommutingQ[H2] === True]
 
-vtest["03a", Evolve[H0,t,Q] === Evolve[Q,t,Q]]
-vtest["03b", Evolve[H1,t,Q] === Evolve[q Q**R+s S**U+U**S+V**V**W,t,Q]]
-vtest["03c", Evolve[H2,t,Q] === Evolve[q Q,t,Q]**Evolve[s S,t,Q]**Evolve[v Q**S,t,Q]]
+vtest["03a > Evolve expand test 1", Evolve[H0,t,Q] === Evolve[Q,t,Q]]
+vtest["03b > Evolve expand test 2", Evolve[H1,t,Q] === Evolve[q Q**R+s S**U+U**S+V**V**W,t,Q]]
+vtest["03c > Evolve expand test 3", Evolve[H2,t,Q] === Evolve[q Q,t,Q]**Evolve[s S,t,Q]**Evolve[v Q**S,t,Q]]
 
 Clear[H0,H1,H2]
 Clear[Q,R,S,U,V,W,q,r,s,u,v,w]
@@ -125,6 +125,11 @@ vtest["04a > DSolve test", rho$calc === rho$known]
 (*@
 Free evolution of $I_x$: 
 @*)
+
+vtest["05a > free evolution of Ix test", 
+  FullSimplify[ExpToTrig[Expand[
+    Evolver[\[Omega] Iz$sym, t$sym, Ix$sym]]]]
+  === Ix$sym Cos[\[Omega] t$sym] + Iy$sym Sin[\[Omega] t$sym]]
 
 vtest["05a > free evolution of Ix", 
   FullSimplify[ExpToTrig[Expand[
@@ -264,6 +269,7 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
+
 
 
 
