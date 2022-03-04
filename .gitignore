@@ -162,3 +162,4 @@ pythontex-files-*/
 *.pdf
 *.html
 *.pyc
+.DS_Store
