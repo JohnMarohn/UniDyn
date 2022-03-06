@@ -8,11 +8,11 @@
 
 BeginPackage["Evolve`",{"Global`","NC`","NCAlgebra`","OpCreate`","Mult`","Comm`","Spins`","Osc`"}]
 
-Evolve::usage="Evolve[H,t,\[Rho]] represents unitary evolution of the density operator \[Rho] for a time t under the Hamiltonian H.  This function expands according to simplification rules but leaves the evolution unevaluated."
+Evolve::usage="Evolve[H, t, \[Rho]] represents unitary evolution of the density operator \[Rho] for a time t under the Hamiltonian H.  This function expands according to simplification rules but leaves the evolution unevaluated."
 
 AllCommutingQ::usage="A test to see if all the terms in an expression commute.  Returns False for symbols."
 
-Evolver::usage="Evolver[H,t,\[Rho](0)] calculates \[Rho](t) = Exp[-I H t] \[Rho](0) Exp[+I H t], assuming that H is time independent, according to the commutation rules followed by \[Rho](0) and H."
+Evolver::usage="Evolver[H, t, \[Rho](0)] calculates \[Rho](t) = Exp[-I H t] \[Rho](0) Exp[+I H t], assuming that H is time independent, according to the commutation rules followed by \[Rho](0) and H."
 
 Evolver::unsolvable="Unrecognized evolution";
 
@@ -89,7 +89,7 @@ is tricky.  A special function has to be fed to \VerbFcn{FullSimplify} to get %
 it to return useful results.  @*)
 
   Do[
-	rho$sym[k+1] = NCExpand[-I Comm[H$sym,rho$sym[k]]] 
+	rho$sym[k+1] = NonCommutativeMultiply`NCExpand[-I Comm[H$sym,rho$sym[k]]] 
       // FullSimplify[#,ComplexityFunction->VisualComplexity]&,
     {k,0,4}
   ];
@@ -115,7 +115,7 @@ We do not, at present, test whether the operators in the list are Hermitian or n
   r = Catch[
     Do[
 
-      q = NCExpand[NonCommutativeMultiply`inv[
+      q = NonCommutativeMultiply`NCExpand[NonCommutativeMultiply`inv[
         rho$sym[k]] ** rho$sym[3]
        ] // FullSimplify[#,ComplexityFunction->VisualComplexity]& ;
 

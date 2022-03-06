@@ -6,14 +6,20 @@ Implements the unitary evolution of quantum mechanical operators in *Mathematica
 Requirements
 ------------
 
-This package requires the *Mathematica* NCAlgebra package, version NCAlgebra 4.0.6, available for download from the University of San Diego non-commutative algebra group at http://math.ucsd.edu/~ncalg/download10.shtml.   To install the package, download  NC2015.tar and unpack the file by clicking on it.   The package should unpack into the ``NC/`` directory.  In this directory you should see the *Mathematica* notebook ``InstallNCAlgebra.nb``.  Open up this notebook and run it to install the package.
+This package requires the *Mathematica* NCAlgebra package, available for download from https://github.com/NCAlgebra/NC.  The package was written by the University of San Diego non-commutative algebra group, primarily Bill Helton and Mauricio de Oliveira.  Follow the directions at the github webpage to install.  There are a number of ways to install the package; I recommend following the directions "Automatic Installation and Updates".
 
-Tested in *Mathematica* versions 10.0.1.0 and 11.0.0.0 running in OS 10.9.5.  
+The package has been tested in the following environment:
+
+* macOS version 12.1 (Monterey);
+
+* *Mathematica* version 12.3.1; and 
+
+* NCAlgebra version 5.0.6, installed locally using the Input[] command.
 
 Installation
 ------------
 
-Open up ``UniDyn--Demo-01.nb`` and follow the directions.  You will be asked to enter in the *Mathematica* notebook a string indicating the location where you downloaded the package files to.  After entering that string, evaluate the notebook to import ``NC``, ``NCAlgebra``, ``UniDyn``, and run the 100+ ``UniDyn`` units tests.  If that all goes well, then open up ``UniDyn--Demo-02.nb``, reenter the location string, and run the notebook. 
+Open up ``UniDyn--Demo-01.nb`` and follow the directions.  You will be asked to enter in the *Mathematica* notebook a string indicating the location where you downloaded the UniDyn package files to.  After entering that string, evaluate the notebook to import ``NC``, ``NCAlgebra``, ``UniDyn``, and run the 100+ ``UniDyn`` unit tests.  If that all goes well, then open up ``UniDyn--Demo-02.nb``, reenter the location string, and run the notebook.
 
 Package files
 -------------
@@ -26,34 +32,37 @@ Example notebooks ::
     UniDyn--Demo-01.nb    loads NCAlgebra and UniDyn; runs the unit tests
     
     UniDyn--Demo-02.nb    Spin magnetization evolving under off-resonance, 
-                           variable-phase rf irradiation.  Use Evolver to calculate the
-                           magnetization analytically, then make a vector plot of the 
-                           magnetization under various resonance offsets and rf phases.
+                          variable-phase rf irradiation.  Use Evolver to 
+                          calculate the magnetization analytically, then make a 
+                          vector plot of the magnetization under various 
+                          resonance offsets and rf phases.
 
-    UniDyn--Demo-03.nb    Demonstrates how to take the digital Fourier transform of one-
-                           dimensional and two-dimensional data.  Examples illustrate 
-                           the FT data-ordering problem, aliasing, apodization, and zero 
-                           filling with one-dimensional data and the phase-twist lineshape
-                           observed when Fourier transforming two-dimensional data sets.
+    UniDyn--Demo-03.nb    Demonstrates how to take the digital Fourier 
+                          transform of one-dimensional and two-dimensional 
+                          data.  Examples illustrate the FT data-ordering 
+                          problem, aliasing, apodization, and zero filling with 
+                          one-dimensional data and the phase-twist lineshape 
+                          observed when Fourier transforming two-dimensional 
+                          data sets.
                            
-    UniDyn--Demo-04.nb    Calculates the signal analytically for two weakly coupled spins, 
-                           calculates a numerical signal, and Fourier transforms the 
-                           numerical signal to reveal the *spectrum* of the two 
-                           coupled spins.  
+    UniDyn--Demo-04.nb    Calculates the signal analytically for two weakly 
+                          coupled spins, calculates a numerical signal, and 
+                          Fourier transforms the numerical signal to reveal
+                          the *spectrum* of the two coupled spins.  
                            
-    UniDyn--Demo-05.nb    Calculates the signal analytically and numerically for two
-                           weakly coupled spins in the following experiments: INEPT
-                           polarization transfer, heteronuclear COSY, and homonuclear
-                           COSY.
+    UniDyn--Demo-05.nb    Calculates the signal analytically and numerically 
+                          for two weakly coupled spins in the following 
+                          magnetic resonance experiments: INEPT polarization 
+                          transfer, heteronuclear COSY, and homonuclear COSY.
                            
     UniDyn--Demo-Scratch.nb    Operator playground
 
 Documentation ::
 
-    UniDyn-doc.pdf        Documentation.  Most of the documentation is contained    
-                           *inline*, in comments in the source code -- literate
-                           programming!  The source code is read directly into the
-                           tex document and typeset.  
+    UniDyn-doc.pdf        Documentation.  Most of the documentation is 
+                          contained *inline*, in comments in the source code.
+                          The source code is read directly into the tex 
+                          document and typeset.  
     
     UniDyn-doc.tex               Main document file.
     UniDyn-doc--abstract.tex     Document abstract.
@@ -66,9 +75,11 @@ The package files are stored in the ``unidyn/`` directory.  The package files co
 
     UniDyn.m    master file; loads all the other package files
     OpCreate.m  CreateOperator[] and CreateScalar[] convenience functions
-    Mult.m      NCSort[], SortedMult[], and MultSort[] functions to sort operators
+    Mult.m      NCSort[], SortedMult[], and MultSort[] functions to sort 
+                operators
     Comm.m      Comm[,] to implement the commutator function
-    Spins.m     Angular momentum operators for a single spin; can specify L = 1/2 or not.
+    Spins.m     Angular momentum operators for a single spin; can specify 
+                L = 1/2 or not.
     Osc.m       Raising and lowering operators for a single harmonic oscillator
     Evolve.m    Unitary evolution
 

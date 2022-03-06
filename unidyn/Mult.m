@@ -13,7 +13,7 @@ NCSort::usage="NCSort[list] sorts the operators in list into canonical order."
 
 SortedMult::usage="SortedMult[list] returns Mult[list$ordered], where list$ordered are the elements of list sorted into canonical order."
 
-MultSort::usage="MultSort[NonCommutativeMultiplyt[list]] returns returns NonCommutativeMultiply[list$ordered], where list$ordered are the elements of list sorted into canonical order.  "
+MultSort::usage="MultSort[NonCommutativeMultiplyt[list]] returns returns NonCommutativeMultiply[list$ordered], where list$ordered are the elements of list sorted into canonical order."
 
 (*~ START ~*)
 
@@ -36,8 +36,8 @@ we would report the sorted list
 	a_{\mathrm{sorted}} = \{ I_y, I_x, S_x, S_y \}.
 \]
 The $S$ operator, being of a higher phylum that an $I$ operator, should be %
-passed through the $I$ operators.  We do not pass $S_x$ past $S_y$ because % 
-$S_x$ and $S_y$ do not commute. %
+passed through the $I$ operators.  We do not pass $I_x$ to the left of $I_y$ % 
+because $I_x$ and $I_y$ do not commute. %
 @*)
 
 (*@

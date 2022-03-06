@@ -1,6 +1,15 @@
 History
 -------
 
+2022/03/05 jam99
+^^^^^^^^^^^^^^^^
+
+* Rebooting this package, after a long hiatus, now that I am teaching graduate quantum mechanics again.
+
+* Upgraded to *Mathematica* version 12.3.0.1 and NCAlgebra 5.0.6.  These upgrades broke (a) one unit test in OpCreate-tests.m and (b) all the operator rotations (half the tests) in Evolve-tests.m.  The failure in (a) was patched by explicitly declaring a variable to be non-commutative. It seems like lower-case variables are not defaulting, as expected, to be non-commutative in the NCAlgebra package; the patch is a workaround.  The failure is (b) was fixed by replacing NCExpand with NonCommutativeMultiply`NCExpand in Evolve.m.  I note that I had previously figured out that CommutativeQ needs to be called as NonCommutativeMultiply`CommutativeQ inside the private part of my package, so I am puzzled why I didn't wrap the call to NCExpand similarly.
+
+* Rewrote the Demo notebooks Rewrite UniDyn--Demo-01.nb and UniDyn--Demo-Scratch.nb so that you now have to input the filepath for both the NCAlgebra and UniDyn installation locations.  TO DO: Rewrite the other notebooks too.
+
 2016/09/14 jam99
 ^^^^^^^^^^^^^^^^
 

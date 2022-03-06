@@ -36,6 +36,7 @@ If[$VersionNumber < 10.,
 
 (*@
 Global debugging flag to force \VerbFcn{Evolver} to be noisy instead of quiet.
+Set to False for noisy output and to True for quiet output.
 @*)
 
 quiet$query = True;
@@ -48,15 +49,26 @@ For this test, we'll make three sets of two commuting operators representing, %
 for example, three indepdendent harmonic oscillators. %
 @*)
 
-Clear[H,t,H1,H2,H3,Q,R,S,U,V,W,q,r,s,u,v,w];
+Clear[H, t, H1, H2, H3, Q, R, S, U, V, W, q, r, s, u, v, w];
 
 CreateOperator[{{Q,R},{S,U},{V,W}}]
 CreateScalar[{q,r,s,u,v,w}]
 
-vtest["01a > distribute addition", Evolve[H, t, Q + R + S] === Evolve[H,t,Q]+Evolve[H,t,R]+Evolve[H,t,S]]
-vtest["01b > distribute multiplication", Evolve[H, t, Q**R**S] === Evolve[H,t,Q]**Evolve[H,t,R]**Evolve[H,t,S]]
-vtest["01c > distribute complicated expression", Evolve[H,t,(Q q)**(r R)**(s S) + u U]
-    === u Evolve[H,t,U] + q r s Evolve[H,t,Q]**Evolve[H,t,R]**Evolve[H,t,S]]
+vtest["01a > distribute addition", Evolve[H, t, Q + R + S] 
+	=== Evolve[H, t, Q] + Evolve[H, t, R] + Evolve[H, t, S]]
+vtest["01b > distribute multiplication", Evolve[H, t, Q**R**S] 
+	=== Evolve[H, t, Q]**Evolve[H, t, R]**Evolve[H, t, S]]
+vtest["01c > distribute complicated expression", Evolve[H, t, (Q q)**(r R)**(s S) + u U]
+    === u Evolve[H, t, U] + q r s Evolve[H, t, Q]**Evolve[H, t, R]**Evolve[H, t, S]]
+
+(*@
+Double check that \VerbFcn{NCExpand[]} bottoms out propertly when presented % 
+an operator and a product of scalars and operators.   
+@*)
+
+vtest["01d > NCExpand bottom-out test 1", NCExpand[Q] === Q]
+vtest["01e > NCExpand bottom-out test 2", NCExpand[Q q r] === q r Q]
+vtest["01f > NCExpand bottom-out test 3", NCExpand[Mult[U, S] w v] === v w Mult[U, S]]
 
 (*@
 Make up some Hamiltonians and see if they pass the all-terms-commuting test.  %
@@ -75,12 +87,14 @@ vtest["02a > commuting test 1", AllCommutingQ[H0] === False]
 vtest["02b > commuting test 2", AllCommutingQ[H1] === False]
 vtest["02c > commuting test 3", AllCommutingQ[H2] === True]
 
-vtest["03a > Evolve expand test 1", Evolve[H0,t,Q] === Evolve[Q,t,Q]]
-vtest["03b > Evolve expand test 2", Evolve[H1,t,Q] === Evolve[q Q**R+s S**U+U**S+V**V**W,t,Q]]
-vtest["03c > Evolve expand test 3", Evolve[H2,t,Q] === Evolve[q Q,t,Q]**Evolve[s S,t,Q]**Evolve[v Q**S,t,Q]]
+vtest["03a > Evolve expand test 1", Evolve[H0, t, Q] === Evolve[Q, t, Q]]
+vtest["03b > Evolve expand test 2", Evolve[H1, t, Q] 
+	=== Evolve[q Q**R + s S**U + U**S + V**V**W, t, Q]]
+vtest["03c > Evolve expand test 3", Evolve[H2, t, Q] 
+	=== Evolve[q Q, t, Q]**Evolve[s S, t, Q]**Evolve[v Q**S, t, Q]]
 
-Clear[H0,H1,H2]
-Clear[Q,R,S,U,V,W,q,r,s,u,v,w]
+Clear[H0, H1, H2]
+Clear[Q, R, S, U, V, W, q, r, s, u, v, w]
 
 (*@
 To test the unitary evolution operator on spins, let us set up a model two-spin system.  % 
@@ -269,6 +283,12 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
+
+
+
+
+
+
 
 
 

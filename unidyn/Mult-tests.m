@@ -23,7 +23,7 @@ If[$VersionNumber < 10.,
 ]
 
 
-Clear[Ix$sym, Iy$sym, Iz$sym,Sx$sym, Sy$sym, Sz$sym];
+Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym];
 Clear[a$sym, b$sym, c$sym, d$sym];
 
 (*~ START ~*)
@@ -63,15 +63,24 @@ vtest["02a", Not[Mult[a$sym, b$sym + c$sym] === a$sym b$sym + a$sym c$sym]]
 vtest["02b", Not[Mult[a$sym + b$sym, c$sym] === a$sym c$sym + b$sym c$sym]]
 
 (*@
-To get \VerbFcn{NonCommutativeMultiply[]} to distribute, we have to % 
-call \VerbFcn{NCExpand[]}.   
+Test that \VerbFcn{NCExpand[]} bottoms out propertly when presented an % 
+operator and a product of scalars and operators.   
 @*)
 
-vtest["03a", NCExpand[Mult[a$sym, b$sym + c$sym]] === a$sym b$sym + a$sym c$sym]
-vtest["03b", NCExpand[Mult[a$sym + b$sym, c$sym]] === a$sym c$sym + b$sym c$sym]
+vtest["03a", NCExpand[Ix$sym] === Ix$sym]
+vtest["03b", NCExpand[Ix$sym a$sym b$sym] === a$sym b$sym Ix$sym]
+vtest["03c", NCExpand[Mult[Iy$sym, Ix$sym] a$sym b$sym] === a$sym b$sym Mult[Iy$sym, Ix$sym]]
 
-vtest["04a", NCExpand[Mult[Ix$sym, Iy$sym + Iz$sym]] === Mult[Ix$sym, Iy$sym] + Mult[Ix$sym, Iz$sym]]
-vtest["04b", NCExpand[Mult[Ix$sym + Iy$sym, Iz$sym]] === Mult[Ix$sym, Iz$sym] + Mult[Iy$sym, Iz$sym]]
+(*@
+To get \VerbFcn{NonCommutativeMultiply[]} to distribute, we first have % 
+to call \VerbFcn{NCExpand[]}.   
+@*)
+
+vtest["04a", NCExpand[Mult[a$sym, b$sym + c$sym]] === a$sym b$sym + a$sym c$sym]
+vtest["04b", NCExpand[Mult[a$sym + b$sym, c$sym]] === a$sym c$sym + b$sym c$sym]
+
+vtest["04c", NCExpand[Mult[Ix$sym, Iy$sym + Iz$sym]] === Mult[Ix$sym, Iy$sym] + Mult[Ix$sym, Iz$sym]]
+vtest["04d", NCExpand[Mult[Ix$sym + Iy$sym, Iz$sym]] === Mult[Ix$sym, Iz$sym] + Mult[Iy$sym, Iz$sym]]
 
 (*@
 Here is an example where we apparently do \emph{not} have to call \VerbFcn{NCExpand[]}.
@@ -108,7 +117,7 @@ tests fail.  This confirms that the operators are being sorted according to our 
 
 CreateOperator[{{Sx$sym, Sy$sym, Sz$sym},{Ix$sym, Iy$sym, Iz$sym}}];
 vtest["08b", Not[SortedMult[Iy$sym, Sx$sym, Ix$sym] === Mult[Iy$sym, Ix$sym, Sx$sym]]]
-vtest["08d", Not[MultSort[Mult[Iy$sym, Sx$sym, Ix$sym]] === Mult[Iy$sym,Ix$sym,Sx$sym]]]
+vtest["08d", Not[MultSort[Mult[Iy$sym, Sx$sym, Ix$sym]] === Mult[Iy$sym, Ix$sym, Sx$sym]]]
 
 (*@
 Check that \VerbFcn{MultSort[]} works as expected when scalars are peppered into % 
@@ -133,6 +142,9 @@ vtest["10a", expr2 === expr3]
 
 Clear[Ix$sym, Iy$sym, Iz$sym,Sx$sym, Sy$sym, Sz$sym];
 Clear[a$sym, b$sym, c$sym, d$sym];
+
+
+
 
 
 
