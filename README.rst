@@ -12,7 +12,7 @@ The package has been tested in the following environment:
 
 * macOS version 12.1 (Monterey);
 
-* *Mathematica* version 12.3.1; and 
+* *Mathematica* version 13.0.0.0; and 
 
 * NCAlgebra version 5.0.6, installed locally using the Input[] command.
 
