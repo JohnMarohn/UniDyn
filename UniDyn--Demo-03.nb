@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     51990,       1431]
-NotebookOptionsPosition[     48982,       1337]
-NotebookOutlinePosition[     49414,       1356]
-CellTagsIndexPosition[     49371,       1353]
+NotebookDataLength[     62406,       1554]
+NotebookOptionsPosition[     55652,       1457]
+NotebookOutlinePosition[     56124,       1476]
+CellTagsIndexPosition[     56081,       1473]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,7 +23,8 @@ Cell[CellGroupData[{
 Cell["UniDyn--Demo-03.nb", "Title",
  CellChangeTimes->{{3.6352690845273046`*^9, 3.635269100847275*^9}, {
   3.6609180081345453`*^9, 3.660918013241088*^9}, {3.671419022704728*^9, 
-  3.671419022988055*^9}}],
+  3.671419022988055*^9}},ExpressionUUID->"57c94bc9-a190-4532-9e59-\
+805e12eaa4c9"],
 
 Cell["\<\
 John A. Marohn
@@ -31,7 +32,7 @@ jam99@cornell.edu
 Cornell University\
 \>", "Text",
  CellChangeTimes->{{3.635269101985786*^9, 3.635269121580956*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"60cd6257-a9a3-417a-b01b-b2b51370e333"],
 
 Cell[TextData[{
  StyleBox["Abstract:",
@@ -42,7 +43,7 @@ Cell[TextData[{
  CellChangeTimes->{{3.6352698622319117`*^9, 3.635269926908793*^9}, {
   3.6352701305950613`*^9, 3.635270138669529*^9}, {3.671419808904469*^9, 
   3.6714198342134438`*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"445430fb-ed83-4888-b4bd-6b6c62d85fc0"],
 
 Cell[CellGroupData[{
 
@@ -52,7 +53,7 @@ Introductory example illustrating one-dimensional DFT data ordering\
  CellChangeTimes->{{3.5949413192214937`*^9, 3.594941336720796*^9}, {
   3.5949453273016653`*^9, 3.59494533941819*^9}, {3.594945838557001*^9, 
   3.594945866551278*^9}},
- FontSize->24],
+ FontSize->24,ExpressionUUID->"90c42255-89d2-452b-8568-589622fcb799"],
 
 Cell[TextData[{
  "Transverse magnetization, detected off resonance, decaying due to T2.  \
@@ -66,7 +67,7 @@ so we can see it but small enough so that it is ",
  CellChangeTimes->{{3.5949413434269943`*^9, 3.594941418125842*^9}, {
   3.594942303146006*^9, 3.594942333309588*^9}, {3.594942424106098*^9, 
   3.594942446393694*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"7f4c9913-1d4a-492d-8e7c-ec2a1615d56c"],
 
 Cell[BoxData[{
  RowBox[{
@@ -91,7 +92,9 @@ Cell[BoxData[{
   3.5949423474252853`*^9}, {3.5949423860754538`*^9, 3.594942420603627*^9}, {
   3.594942702058899*^9, 3.594942703073826*^9}, {3.5949917709390993`*^9, 
   3.594991771731494*^9}, {3.594991820410502*^9, 3.594991845769019*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[217]:=",ExpressionUUID->"08bdec70-b78f-4488-a6c8-07f0a0a47eb3"],
 
 Cell["\<\
 To plot, set the total number of points (NN) and the total time (T).  We set \
@@ -99,30 +102,34 @@ NN equal to a power of 2 in anticipation of taking a digital Fourier \
 transform.\
 \>", "Text",
  CellChangeTimes->{{3.5949414229321012`*^9, 3.594941479672656*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"5686a7b2-6ef6-4c6e-8064-fc2dfd42c1bb"],
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{"NN", " ", "=", " ", 
    RowBox[{"2", "^", "10"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"T", " ", "=", " ", "10.0"}], ";"}]}], "Input",
- CellChangeTimes->{{3.594991722414856*^9, 3.5949917229397697`*^9}},
- FontSize->18],
+  RowBox[{"T$final", " ", "=", " ", "10.0"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.594991722414856*^9, 3.5949917229397697`*^9}, 
+   3.859898123575143*^9},
+ FontSize->18,
+ CellLabel->
+  "In[219]:=",ExpressionUUID->"e6c8b6b7-263f-49ec-9aaf-2f87fb8c2a0c"],
 
 Cell["\<\
-From NN and T we derive the time step (dt) and the frequency step (df).  Now \
-generate a list of data points based on the above function.  At the same \
+From NN and T$final we derive the time step (dt) and the frequency step (df). \
+ Now generate a list of data points based on the above function.  At the same \
 time, generate a list of time points (t) and frequency points (f) for \
 plotting. \
 \>", "Text",
- CellChangeTimes->{{3.59494150240346*^9, 3.594941603782978*^9}},
- FontSize->18],
+ CellChangeTimes->{{3.59494150240346*^9, 3.594941603782978*^9}, {
+  3.859898132618085*^9, 3.859898133327224*^9}},
+ FontSize->18,ExpressionUUID->"21454233-907b-42ba-b199-900f7b464338"],
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{"dt", " ", "=", " ", 
-   RowBox[{"T", "/", 
+   RowBox[{"T$final", "/", 
     RowBox[{"(", 
      RowBox[{"NN", "-", "1"}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -137,13 +144,13 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"y", "[", "t", "]"}], ",", 
       RowBox[{"{", 
-       RowBox[{"t", ",", "0", ",", "T", ",", "dt"}], "}"}]}], "]"}]}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+       RowBox[{"t", ",", "0", ",", "T$final", ",", "dt"}], "}"}]}], "]"}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"f", " ", "=", " ", 
    RowBox[{"Table", "[", 
     RowBox[{
-     RowBox[{"jj", "/", "T"}], ",", 
+     RowBox[{"jj", "/", "T$final"}], ",", 
      RowBox[{"{", 
       RowBox[{"jj", ",", 
        RowBox[{
@@ -174,12 +181,15 @@ Cell[BoxData[{
    3.5949329212374773`*^9, 3.594933020293639*^9}, {3.594941484330391*^9, 
    3.594941501373295*^9}, {3.594941696885819*^9, 3.5949417765822287`*^9}, {
    3.594941818366678*^9, 3.594941819859702*^9}, {3.5949469989336433`*^9, 
-   3.594947001044293*^9}, 3.5949577630752707`*^9},
- FontSize->18],
+   3.594947001044293*^9}, 3.5949577630752707`*^9, {3.8598981437593803`*^9, 
+   3.8598981526857653`*^9}},
+ FontSize->18,
+ CellLabel->
+  "In[221]:=",ExpressionUUID->"029f2684-de54-4fc8-8dc4-7100b64883ce"],
 
 Cell["Plot the data versus time:", "Text",
  CellChangeTimes->{{3.594941616811623*^9, 3.594941626630321*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"99306be3-7a7b-48e0-ad67-ad080762bd20"],
 
 Cell[BoxData[
  RowBox[{"ListLinePlot", "[", 
@@ -191,14 +201,16 @@ Cell[BoxData[
  CellChangeTimes->{{3.594932836109618*^9, 3.594932855052656*^9}, {
   3.594933025071356*^9, 3.5949330381028423`*^9}, {3.594991752405946*^9, 
   3.594991760907765*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[228]:=",ExpressionUUID->"92c3cc01-9c5f-40bb-bbfd-0c2b08873dce"],
 
 Cell["\<\
 Take the Fourier transform and plot the absolute value of the Fourier \
 transform.\
 \>", "Text",
  CellChangeTimes->{{3.5949416309106417`*^9, 3.5949416468867893`*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"84cb23ac-2c29-4721-a8de-e15551052dc0"],
 
 Cell[BoxData[
  RowBox[{"ListLinePlot", "[", 
@@ -211,7 +223,9 @@ Cell[BoxData[
    RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.594933612092114*^9, 3.594933637530788*^9}, {
   3.594941653895267*^9, 3.5949416663508863`*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[229]:=",ExpressionUUID->"d6582670-a8df-438e-b3e1-1cb5a19ab231"],
 
 Cell[TextData[{
  "Note that we do not see peaks in the frequency spectrum where we expect.  \
@@ -225,7 +239,7 @@ reordering with the ",
  "[] function. "
 }], "Text",
  CellChangeTimes->{{3.594942466673541*^9, 3.5949426091162024`*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"6d0e0d70-515a-4fcd-8674-29665bf20594"],
 
 Cell[BoxData[{
  RowBox[{
@@ -246,7 +260,9 @@ Cell[BoxData[{
    3.594933150859618*^9, 3.594933158955861*^9}, {3.5949332472729816`*^9, 
    3.5949332976303577`*^9}, {3.5949333659659767`*^9, 3.594933366574314*^9}, {
    3.594933649850091*^9, 3.594933650707128*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[230]:=",ExpressionUUID->"78d526c9-a6c5-4701-8d1e-4b4901905d4a"],
 
 Cell["\<\
 Now the plot looks right.  Check that there is a peak at zero frequency due \
@@ -255,7 +271,7 @@ spectrum:\
 \>", "Text",
  CellChangeTimes->{{3.594942261578443*^9, 3.5949422957910967`*^9}, {
   3.594942642302126*^9, 3.5949426886088333`*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"e9f01bca-fa44-4863-9734-5338276a3c8e"],
 
 Cell[BoxData[{
  RowBox[{
@@ -296,11 +312,13 @@ Cell[BoxData[{
  CellChangeTimes->{{3.5949339320710287`*^9, 3.594934014535941*^9}, {
   3.59493408280459*^9, 3.59493410909136*^9}, {3.594934178713039*^9, 
   3.594934222807138*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[232]:=",ExpressionUUID->"346536c7-7e12-40ca-8b23-edb99d2ae8fa"],
 
 Cell["We can zoom in on the spectrum near zero frequency:", "Text",
  CellChangeTimes->{{3.594942738286278*^9, 3.5949427585023737`*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"82c85a6b-d802-44c7-a2de-e60d65aad850"],
 
 Cell[BoxData[
  RowBox[{"ListLinePlot", "[", 
@@ -323,7 +341,9 @@ Cell[BoxData[
    3.5949332976303577`*^9}, {3.594933584437954*^9, 3.59493359214079*^9}, {
    3.594934233598269*^9, 3.594934235391025*^9}, {3.594941848576969*^9, 
    3.5949418683354816`*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[235]:=",ExpressionUUID->"021448bd-68cc-497a-9020-f0bc0573863d"],
 
 Cell["\<\
 Print out the frequency of the peak in the absolute value of the Fourier \
@@ -331,7 +351,7 @@ Transform.  We see that the peak occurs at the expected frequency.\
 \>", "Text",
  CellChangeTimes->{{3.594942198075101*^9, 3.594942257376462*^9}, {
   3.594942714649664*^9, 3.5949427239039583`*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"8763a76d-e49f-4342-ad87-eb77873598bc"],
 
 Cell[BoxData[
  RowBox[{"f", "[", 
@@ -342,7 +362,9 @@ Cell[BoxData[
     RowBox[{"[", 
      RowBox[{"-", "1"}], "]"}], "]"}], "]"}], "]"}]], "Input",
  CellChangeTimes->{{3.5949421192728*^9, 3.594942196651538*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[236]:=",ExpressionUUID->"eaaf552e-2835-497c-9153-284ebe019cd5"],
 
 Cell[BoxData[
  RowBox[{"ListLinePlot", "[", 
@@ -359,7 +381,9 @@ Cell[BoxData[
         RowBox[{"Im", "[", "FFTY", "]"}]}], "}"}], "]"}]}], "}"}], ",", 
    RowBox[{"PlotRange", "\[Rule]", " ", "All"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.5949456229288197`*^9, 3.59494568674356*^9}},
- FontSize->18]
+ FontSize->18,
+ CellLabel->
+  "In[237]:=",ExpressionUUID->"eba33471-0882-4fd6-ba9b-bae16e0ff68f"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -370,7 +394,7 @@ Define our own one-dimensional DFT module and illustrate aliasing\
  CellChangeTimes->{{3.5949428315060863`*^9, 3.59494284588323*^9}, {
   3.594945314549473*^9, 3.594945355737638*^9}, {3.594945860138277*^9, 
   3.5949458619919453`*^9}},
- FontSize->24],
+ FontSize->24,ExpressionUUID->"963b6e46-3940-4d62-b4a0-60bf0c122faa"],
 
 Cell[TextData[{
  "This digital Fourier transform module, ",
@@ -384,7 +408,7 @@ total length of time in seconds\n\t\nand produces a plot of (1) the signal \
 versus time and the (2) absolute value of DFT{signal} versus frequency.  "
 }], "Text",
  CellChangeTimes->{{3.594945060629004*^9, 3.594945201071529*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"a031ddbe-54b9-449f-8fd3-d0b89a26add1"],
 
 Cell[BoxData[
  RowBox[{
@@ -490,11 +514,19 @@ Cell[BoxData[
    3.594944761549816*^9, 3.5949447856729527`*^9}, {3.5949457080553913`*^9, 
    3.594945725580372*^9}, 3.594957008065167*^9, {3.5949599090104303`*^9, 
    3.594959943126217*^9}, {3.671420918194263*^9, 3.671420985060692*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[238]:=",ExpressionUUID->"b9a21e18-789a-4748-b251-e0242c9ea68a"],
 
-Cell["Test drive the module", "Text",
- CellChangeTimes->{{3.5949452048208017`*^9, 3.594945214759532*^9}},
- FontSize->18],
+Cell["\<\
+Test drive the module.  Feed the DFFT program a signal consisting of a cosine \
+oscillation plus a constant term.  The cosine oscillation gives rise to peaks \
+at plus and minus the oscillation frequency in the Fourier transform.  The \
+constant term gives rise to a peak at zero frequency in the Fourier transform.\
+\>", "Text",
+ CellChangeTimes->{{3.5949452048208017`*^9, 3.594945214759532*^9}, {
+  3.85989860301221*^9, 3.85989867705508*^9}},
+ FontSize->18,ExpressionUUID->"87d79abe-b1b2-4c15-9a5e-414699972b2c"],
 
 Cell[BoxData[{
  RowBox[{
@@ -524,53 +556,107 @@ Cell[BoxData[{
   3.59494474924924*^9}, {3.594944798472404*^9, 3.5949448042308807`*^9}, {
   3.594947019078774*^9, 3.594947019872064*^9}, {3.594959921760831*^9, 
   3.594959925711832*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[239]:=",ExpressionUUID->"77a7b20e-3c67-4179-bd29-e3b24049bccb"],
 
 Cell[TextData[{
- "Make an interactive graphic where we can vary the freqency and decay time \
-of the oscillation while watching the signal oscillation versus time and the \
-Fourier transform of the signal versus frequency.  This animation illustrates \
-the problem of ",
- StyleBox["folding in",
-  FontWeight->"Bold",
-  FontSlant->"Italic"],
- " or ",
+ "Illustrate ",
  StyleBox["aliasing",
-  FontWeight->"Bold",
-  FontSlant->"Italic"],
- "."
+  FontWeight->"Bold"],
+ " or ",
+ StyleBox["folding-in",
+  FontWeight->"Bold"],
+ " as follows.  The Nyquist frequency in this example is 25.575 Hz.  Plot two \
+example Cosine waves and their Fourier transforms.  \n\nThe wave below, ",
+ StyleBox["y1",
+  FontWeight->"Bold"],
+ ",  has an oscillation frequency of 20 Hz, and we see a peak at 20 Hz in the \
+Fourier transform.  "
 }], "Text",
- CellChangeTimes->{{3.594945217954723*^9, 3.594945288719762*^9}},
- FontSize->18],
+ CellChangeTimes->{{3.859898377926098*^9, 3.8598984179002323`*^9}, {
+  3.8598984652528133`*^9, 3.8598985190990543`*^9}, {3.8598985580299397`*^9, 
+  3.8598985670347853`*^9}, {3.859898681985949*^9, 3.8598987542701397`*^9}, {
+  3.859899040660726*^9, 3.85989906962743*^9}},
+ FontSize->18,ExpressionUUID->"15f4590d-b97d-4e8f-9fb6-e29723715700"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "y1", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"y1", "[", "t_", "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"Cos", "[", 
+    RowBox[{"2", " ", "\[Pi]", " ", 
+     RowBox[{"(", "20.0", ")"}], " ", "t"}], "]"}], " ", 
+   RowBox[{"Exp", "[", 
+    RowBox[{
+     RowBox[{"-", "0.5"}], " ", "t"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"DFFT", "[", 
+  RowBox[{"y1", ",", 
+   RowBox[{"2", "^", "9"}], ",", "10."}], "]"}]}], "Input",
+ CellChangeTimes->{{3.859898524542018*^9, 3.859898536295309*^9}, {
+  3.859898576346266*^9, 3.85989859439894*^9}, {3.8598987591951733`*^9, 
+  3.8598987627676888`*^9}},
+ FontSize->18,
+ CellLabel->
+  "In[242]:=",ExpressionUUID->"ef2cd78d-62d0-41fe-84de-2ba65bd7f3c2"],
+
+Cell[TextData[{
+ "The wave below, ",
+ StyleBox["y2",
+  FontWeight->"Bold"],
+ ", has an oscillation frequency of 40 Hz, well above the Nyquist frequency.  \
+ It \[OpenCurlyDoubleQuote]wants\[CloseCurlyDoubleQuote] to appear at a \
+frequency 40 - 25.575 =  14.425 Hz ",
+ StyleBox["above",
+  FontSlant->"Italic"],
+ " the Nyquist frequency.  Instead, the peak ",
+ StyleBox["actually",
+  FontSlant->"Italic"],
+ " appears at a frequency 14.425 Hz  ",
+ StyleBox["below",
+  FontSlant->"Italic"],
+ " the Nyquist frequency, at 25.575 - 14.425 = 11.15 Hz.  This is due to \
+\[OpenCurlyDoubleQuote]folding\[CloseCurlyDoubleQuote] or \
+\[OpenCurlyDoubleQuote]aliasing\[CloseCurlyDoubleQuote]."
+}], "Text",
+ CellChangeTimes->{{3.859898377926098*^9, 3.8598984179002323`*^9}, {
+  3.8598984652528133`*^9, 3.8598985190990543`*^9}, {3.8598985580299397`*^9, 
+  3.8598985670347853`*^9}, {3.859898681985949*^9, 3.8598987542701397`*^9}, {
+  3.8598988162053223`*^9, 3.859899021095027*^9}, {3.859899058603025*^9, 
+  3.8598990764358387`*^9}, {3.859899142653874*^9, 3.859899171815319*^9}},
+ FontSize->18,ExpressionUUID->"c58ee855-5062-439a-903c-625dc398f176"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "y2", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"y2", "[", "t_", "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"Cos", "[", 
+    RowBox[{"2", " ", "\[Pi]", " ", 
+     RowBox[{"(", "40.", ")"}], " ", "t"}], "]"}], " ", 
+   RowBox[{"Exp", "[", 
+    RowBox[{
+     RowBox[{"-", "0.5"}], " ", "t"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"DFFT", "[", 
+  RowBox[{"y2", ",", 
+   RowBox[{"2", "^", "9"}], ",", "10."}], "]"}]}], "Input",
+ CellChangeTimes->{{3.859898524542018*^9, 3.859898536295309*^9}, {
+  3.859898576346266*^9, 3.85989859439894*^9}, {3.8598987591951733`*^9, 
+  3.859898800173471*^9}},
+ FontSize->18,
+ CellLabel->
+  "In[245]:=",ExpressionUUID->"43249a0d-c453-4840-b2d1-fd68632bc5ba"],
 
 Cell[BoxData[
- RowBox[{"Manipulate", "[", 
-  RowBox[{
-   RowBox[{
-    RowBox[{
-     RowBox[{"z", "[", "t_", "]"}], " ", ":=", " ", 
-     RowBox[{
-      RowBox[{"Cos", "[", 
-       RowBox[{"2", " ", "\[Pi]", " ", "f0", " ", "t"}], "]"}], " ", 
-      RowBox[{"Exp", "[", 
-       RowBox[{
-        RowBox[{"-", "t"}], "/", "\[Tau]"}], "]"}]}]}], ";", " ", 
-    RowBox[{"DFFT", "[", " ", 
-     RowBox[{"z", ",", 
-      RowBox[{"2", "^", "9"}], ",", "10."}], "]"}]}], ",", 
-   RowBox[{"{", 
-    RowBox[{"f0", ",", "1", ",", "100"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"\[Tau]", ",", "0.05", ",", "20"}], "}"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.5949448103358192`*^9, 3.5949448663345823`*^9}, {
-   3.594944928215951*^9, 3.5949449283680162`*^9}, {3.594944959763175*^9, 
-   3.594944989448687*^9}, {3.594947056084023*^9, 3.594947078275901*^9}, {
-   3.639226540362088*^9, 3.639226542238358*^9}, {3.671419175174728*^9, 
-   3.6714191766331797`*^9}, {3.671419215514007*^9, 3.671419215911168*^9}, {
-   3.671419345989169*^9, 3.67141937304876*^9}, 3.671419412727743*^9, {
-   3.671419446840716*^9, 3.671419448332218*^9}, {3.6714196223635387`*^9, 
-   3.6714196269561*^9}, {3.671451178546722*^9, 3.671451179852962*^9}},
- FontSize->18]
+ RowBox[{"Clear", "[", 
+  RowBox[{"y1", ",", "y2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.859899109948658*^9, 3.8598991172629433`*^9}},
+ FontSize->16,
+ CellLabel->
+  "In[248]:=",ExpressionUUID->"94a0db9a-6ca3-48f2-9aa9-3a3237b37e98"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -578,13 +664,13 @@ Cell[CellGroupData[{
 Cell["Fourier transforming complex-valued data", "Section",
  CellChangeTimes->{{3.59495931245061*^9, 3.594959327240593*^9}, {
   3.671420477681213*^9, 3.671420495833673*^9}},
- FontSize->24],
+ FontSize->24,ExpressionUUID->"bdb792b7-2471-4cbe-9c35-3c7cc5897e7d"],
 
 Cell["Fourier transform a decaying cosine wave.", "Text",
  CellChangeTimes->{{3.5949452048208017`*^9, 3.594945214759532*^9}, {
   3.671420534243029*^9, 3.671420551846202*^9}, {3.671420598360965*^9, 
   3.671420600577992*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"febba946-8067-41b3-ae68-5b92d919a9dd"],
 
 Cell[BoxData[{
  RowBox[{
@@ -613,7 +699,9 @@ Cell[BoxData[{
   3.594947019078774*^9, 3.594947019872064*^9}, {3.594959921760831*^9, 
   3.594959925711832*^9}, {3.671420635628975*^9, 3.671420639042426*^9}, {
   3.671421065935596*^9, 3.671421066265998*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[249]:=",ExpressionUUID->"e61e34e9-e7e2-4e00-aeaf-b1dca39451a3"],
 
 Cell["\<\
 Fourier transform a decaying sine wave.  How is the Fourier transform \
@@ -622,7 +710,7 @@ different?\
  CellChangeTimes->{{3.5949452048208017`*^9, 3.594945214759532*^9}, {
   3.671420534243029*^9, 3.671420551846202*^9}, {3.671420583857707*^9, 
   3.67142062048442*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"9e58d7f8-ca9d-4206-b3aa-f0ba7f9f5cfd"],
 
 Cell[BoxData[{
  RowBox[{
@@ -652,7 +740,9 @@ Cell[BoxData[{
   3.594959925711832*^9}, {3.671420567915023*^9, 3.671420570835552*^9}, {
   3.671420630156015*^9, 3.67142063054795*^9}, {3.671421044076049*^9, 
   3.671421063004467*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[252]:=",ExpressionUUID->"7db7f071-d2fe-4f11-940a-453743abf43f"],
 
 Cell[TextData[{
  "Make a ",
@@ -664,7 +754,7 @@ transform of the complex signal different?"
  CellChangeTimes->{{3.5949452048208017`*^9, 3.594945214759532*^9}, {
   3.671420534243029*^9, 3.671420551846202*^9}, {3.671420583857707*^9, 
   3.67142062048442*^9}, {3.671421110237145*^9, 3.671421162063745*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"549dd2ef-fb79-44dc-80f0-e700b2ce9316"],
 
 Cell[BoxData[{
  RowBox[{
@@ -709,13 +799,15 @@ Zc8D6RMxj8D0niY1mQtA+tjP5bIg+r3seWUQnZDcrgKiA1uTLC8C6c/Pq8H0
 rgiLtutAOuT4NjB9z/3vpbVRrx1v7Im6DKKF/x25BaL1c5/8AtHa7Uk864A0
 +5/bvCD6AsdLQRDddtlCGEQDAKxasOE=
   "],
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[255]:=",ExpressionUUID->"a28f1949-cee8-485c-993f-f44e3edb8ee1"],
 
 Cell["\<\
 Change how we make the linear combination of the Cos[] and Sin[] signals.\
 \>", "Text",
  CellChangeTimes->{{3.6714211729213047`*^9, 3.671421213044559*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"d61855fa-5cef-40c3-9998-6d1672a6ddc1"],
 
 Cell[BoxData[{
  RowBox[{
@@ -728,19 +820,21 @@ Cell[BoxData[{
   RowBox[{"y", ",", 
    RowBox[{"2", "^", "10"}], ",", "10."}], "]"}]}], "Input",
  CellChangeTimes->{3.671421092999763*^9},
- FontSize->18]
+ FontSize->18,
+ CellLabel->
+  "In[260]:=",ExpressionUUID->"96d5faba-3f1b-4f1a-bc40-567db1f7258b"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Apodization and Zero Filling", "Section",
  CellChangeTimes->{{3.59495931245061*^9, 3.594959327240593*^9}},
- FontSize->24],
+ FontSize->24,ExpressionUUID->"690b10e9-8a17-4300-872f-4730345bbd5b"],
 
 Cell["When the data abruptly stops ... you get \[OpenCurlyDoubleQuote]sinc\
 \[CloseCurlyDoubleQuote] wiggles", "Text",
  CellChangeTimes->{{3.594960000153171*^9, 3.594960027314456*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"9eb9bb33-2341-4d4a-b6e7-bb697bbd31b7"],
 
 Cell[BoxData[{
  RowBox[{
@@ -763,7 +857,9 @@ Cell[BoxData[{
    3.594959555855669*^9, 3.5949596664971943`*^9}, {3.594959716009983*^9, 
    3.594959876724729*^9}, {3.594959963793688*^9, 3.594959973679324*^9}, 
    3.594960077341351*^9},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[262]:=",ExpressionUUID->"180476aa-ad3e-4fa4-b147-7a10d50a3d58"],
 
 Cell["\<\
 If, on the other hand, you force the data to decay ... then the sinc() \
@@ -771,7 +867,7 @@ wiggles largely go away.\
 \>", "Text",
  CellChangeTimes->{{3.594960037989106*^9, 3.594960060713273*^9}, {
   3.594960111626753*^9, 3.594960113671382*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"03c73988-5da2-45a8-a7bb-c77f662f728b"],
 
 Cell[BoxData[{
  RowBox[{
@@ -797,7 +893,9 @@ Cell[BoxData[{
  CellChangeTimes->{{3.594960071472042*^9, 3.594960095611577*^9}, {
   3.594960127853794*^9, 3.594960145824997*^9}, {3.594992790226657*^9, 
   3.594992796559663*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[266]:=",ExpressionUUID->"f29a7634-b9ab-4e95-8c12-35118fdf5f4f"],
 
 Cell["\<\
 The Exp[] function is not exactly zero at the cutoff time of 1 second in the \
@@ -805,7 +903,7 @@ above example, so some sinc() wiggles remain.  Are there better windows?  A \
 Hanning window forces the data to zero at the end.\
 \>", "Text",
  CellChangeTimes->{{3.5949604738688507`*^9, 3.59496056495175*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"992835d2-afff-467f-9cbb-1d8128ad4da3"],
 
 Cell[BoxData[{
  RowBox[{
@@ -835,7 +933,9 @@ Cell[BoxData[{
   3.594960127853794*^9, 3.594960145824997*^9}, {3.5949602928385763`*^9, 
   3.5949603156113253`*^9}, {3.594960347145711*^9, 3.594960433777526*^9}, {
   3.5949927738252583`*^9, 3.594992780144782*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[270]:=",ExpressionUUID->"f66592cd-07b4-4a62-859b-b781239d5e3d"],
 
 Cell["\<\
 Procedure:
@@ -846,14 +946,14 @@ Procedure:
  (3) THEN Fourier transform\
 \>", "Text",
  CellChangeTimes->{{3.594960585969408*^9, 3.5949606457168922`*^9}},
- FontSize->18]
+ FontSize->18,ExpressionUUID->"9c87f8d9-324e-42aa-b156-c6d05d0c41cc"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Two-dimensional DFT", "Section",
  CellChangeTimes->{{3.594945939625945*^9, 3.5949459525481453`*^9}},
- FontSize->24],
+ FontSize->24,ExpressionUUID->"9e6a033c-0ddb-42b4-b00e-4bda714c0748"],
 
 Cell[BoxData[
  RowBox[{
@@ -878,7 +978,9 @@ Cell[BoxData[
   3.594946385911016*^9}, {3.594946762405901*^9, 3.5949467694092693`*^9}, {
   3.594946830080761*^9, 3.594946830191124*^9}, {3.594946871072894*^9, 
   3.594946893476865*^9}, {3.594946924254838*^9, 3.5949469336044064`*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[275]:=",ExpressionUUID->"4df52d92-5aec-4889-a6b5-66c2420ddec1"],
 
 Cell[BoxData[{
  RowBox[{
@@ -886,11 +988,11 @@ Cell[BoxData[{
    RowBox[{"2", "^", "7"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"T", " ", "=", " ", "10.0"}], ";"}], 
+   RowBox[{"T$final", " ", "=", " ", "10.0"}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"dt", " ", "=", " ", 
-   RowBox[{"T", "/", 
+   RowBox[{"T$final", "/", 
     RowBox[{"(", 
      RowBox[{"NN", "-", "1"}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -904,10 +1006,10 @@ Cell[BoxData[{
       RowBox[{"z", "[", 
        RowBox[{"t1", ",", "t2"}], "]"}], ",", 
       RowBox[{"{", 
-       RowBox[{"t1", ",", "0", ",", "T", ",", "dt"}], "}"}], ",", 
+       RowBox[{"t1", ",", "0", ",", "T$final", ",", "dt"}], "}"}], ",", 
       RowBox[{"{", 
-       RowBox[{"t2", ",", "0", ",", "T", ",", "dt"}], "}"}]}], "]"}]}], ";"}],
-   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+       RowBox[{"t2", ",", "0", ",", "T$final", ",", "dt"}], "}"}]}], "]"}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{"Print", "[", 
   RowBox[{"\"\<The timestep is \>\"", ",", "dt", ",", "\"\< s\>\""}], 
   "]"}], "\[IndentingNewLine]", 
@@ -920,8 +1022,11 @@ Cell[BoxData[{
  CellChangeTimes->{{3.594946048675725*^9, 3.594946049553727*^9}, {
   3.594946154305338*^9, 3.594946154626248*^9}, {3.594946259212221*^9, 
   3.594946281210513*^9}, {3.594946337552256*^9, 3.5949463415450993`*^9}, {
-  3.594946986125286*^9, 3.594946989099011*^9}},
- FontSize->18],
+  3.594946986125286*^9, 3.594946989099011*^9}, {3.859898266985124*^9, 
+  3.859898281418085*^9}},
+ FontSize->18,
+ CellLabel->
+  "In[276]:=",ExpressionUUID->"dbe5bffa-1b4e-4423-94af-dd381214c69d"],
 
 Cell[BoxData[
  RowBox[{"ListPlot3D", "[", 
@@ -930,7 +1035,9 @@ Cell[BoxData[
  CellChangeTimes->{{3.5949460565641403`*^9, 3.594946081676386*^9}, {
   3.5949461243340282`*^9, 3.5949461247236347`*^9}, {3.594946251468362*^9, 
   3.5949462543640327`*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[283]:=",ExpressionUUID->"33b6c67c-6105-4c44-852f-e23ec2ae8deb"],
 
 Cell[BoxData[{
  RowBox[{
@@ -954,7 +1061,9 @@ Cell[BoxData[{
    3.594933649850091*^9, 3.594933650707128*^9}, {3.594946475414301*^9, 
    3.594946490043274*^9}, {3.594946529332533*^9, 3.594946550385046*^9}, {
    3.59494674022941*^9, 3.594946741051218*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[284]:=",ExpressionUUID->"ed97f0ed-24a9-4c80-86d2-72178d956620"],
 
 Cell[BoxData[
  RowBox[{"ListContourPlot", "[", 
@@ -962,13 +1071,15 @@ Cell[BoxData[
    RowBox[{"Re", "[", "FFTS", "]"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.5949471560364323`*^9, 3.5949472231200953`*^9}, 
    3.594958949901574*^9},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[286]:=",ExpressionUUID->"741028d3-350c-486f-a14c-8fcd3f0cf950"],
 
 Cell[CellGroupData[{
 
 Cell["2D DFT module (phase-twist lineshape)", "Subsection",
  CellChangeTimes->{{3.5949579031157618`*^9, 3.594957933741427*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"e63639f7-77af-4ce4-80b5-8084a97ca65f"],
 
 Cell[BoxData[
  RowBox[{
@@ -1075,11 +1186,13 @@ Cell[BoxData[
   3.594957155855196*^9, 3.594957277562665*^9}, {3.594957557028574*^9, 
   3.594957615024877*^9}, {3.5949576453196*^9, 3.594957654589705*^9}, {
   3.5949577025671883`*^9, 3.594957751911088*^9}},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[287]:=",ExpressionUUID->"9cba0f7f-f42b-4df8-8721-403ef967f504"],
 
 Cell["An example of the phase-twist lineshape", "Text",
  CellChangeTimes->{{3.594957878650667*^9, 3.5949578938461447`*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"04184296-2f26-4ee4-a93e-5d5c4dabfe6b"],
 
 Cell[BoxData[{
  RowBox[{
@@ -1107,7 +1220,9 @@ Cell[BoxData[{
   3.594957677883772*^9, 3.59495767848808*^9}, {3.5949578461657677`*^9, 
   3.594957850562192*^9}, {3.594989526534432*^9, 3.594989527533743*^9}, {
   3.594989579580455*^9, 3.594989580161521*^9}},
- FontSize->18]
+ FontSize->18,
+ CellLabel->
+  "In[288]:=",ExpressionUUID->"88522921-0a3c-4a77-a90b-e18ba449fe6e"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1115,10 +1230,10 @@ Cell[CellGroupData[{
 Cell["2D DFT module (pure absorption lineshape)", "Subsection",
  CellChangeTimes->{{3.5949579031157618`*^9, 3.594957933741427*^9}, {
   3.59495796799019*^9, 3.594957974083548*^9}},
- FontSize->18],
+ FontSize->18,ExpressionUUID->"55e3cf5a-b441-437b-9cf0-e82cc9f523b5"],
 
 Cell[TextData[{
- "We obtain a pure absorbtion lineshape by Fourier transforming along one \
+ "We obtain a pure absorption lineshape by Fourier transforming along one \
 dimension, taking the real part, Fourier transforming along the other \
 dimension, and taking the real part.  Stepwise, the procedure is:\n\n\tCos[w1 \
 t1] Exp[-k1 t1] Cos[w2 t2] Exp[-k2 t2]\n\tCos[w1 t1] Exp[-k1 t1] (A[w2]+I \
@@ -1130,8 +1245,9 @@ Implimenting the FT along just one dimension in ",
  " is a pain -- I have to resort to looping over each row/column and doing a \
 1D Fourier transform .... very inelegant.  "
 }], "Text",
- CellChangeTimes->{{3.594959019184924*^9, 3.594959276557362*^9}},
- FontSize->18],
+ CellChangeTimes->{{3.594959019184924*^9, 3.594959276557362*^9}, 
+   3.859898303439011*^9},
+ FontSize->18,ExpressionUUID->"c5c8c9d6-b9f2-44e6-bc5d-312926a1237d"],
 
 Cell[BoxData[
  RowBox[{
@@ -1297,12 +1413,14 @@ Cell[BoxData[
    3.5949585343820257`*^9, 3.594958534570817*^9}, {3.594958654136594*^9, 
    3.594958654303648*^9}, {3.594958759825755*^9, 3.5949588597548532`*^9}, 
    3.594958890748712*^9},
- FontSize->18],
+ FontSize->18,
+ CellLabel->
+  "In[290]:=",ExpressionUUID->"8ad01b3a-3030-469b-a9ab-a174c807b14c"],
 
-Cell["An example of a pure-absorbtion lineshape", "Text",
+Cell["An example of a pure-absorption lineshape", "Text",
  CellChangeTimes->{{3.594957878650667*^9, 3.5949578938461447`*^9}, {
-  3.5949588313273563`*^9, 3.594958837516678*^9}},
- FontSize->18],
+   3.5949588313273563`*^9, 3.594958837516678*^9}, 3.859898316903634*^9},
+ FontSize->18,ExpressionUUID->"513ff452-20ba-4637-abbd-91a165a5359e"],
 
 Cell[BoxData[{
  RowBox[{
@@ -1330,19 +1448,21 @@ Cell[BoxData[{
   3.594957677883772*^9, 3.59495767848808*^9}, {3.5949578461657677`*^9, 
   3.594957850562192*^9}, {3.5949579889020977`*^9, 3.5949579894371777`*^9}, {
   3.594958742149143*^9, 3.5949587425790653`*^9}},
- FontSize->18]
+ FontSize->18,
+ CellLabel->
+  "In[291]:=",ExpressionUUID->"d0998693-fd1d-433a-aaef-aff6f7871fde"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{991, 716},
+WindowSize->{1246, 1129},
 WindowMargins->{{5, Automatic}, {Automatic, 41}},
 PrintingCopies->1,
 PrintingPageRange->{1, Automatic},
 ShowSelection->True,
-FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September 9, \
-2014)",
-StyleDefinitions->"Default.nb"
+FrontEndVersion->"13.0 for Mac OS X x86 (64-bit) (December 2, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"020fa980-486e-4685-9257-720f3f5a2bbd"
 ]
 (* End of Notebook Content *)
 
@@ -1356,80 +1476,83 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[579, 22, 203, 3, 92, "Title"],
-Cell[785, 27, 156, 6, 83, "Text"],
-Cell[944, 35, 349, 9, 35, "Text"],
+Cell[579, 22, 260, 4, 98, "Title",ExpressionUUID->"57c94bc9-a190-4532-9e59-805e12eaa4c9"],
+Cell[842, 28, 211, 6, 90, "Text",ExpressionUUID->"60cd6257-a9a3-417a-b01b-b2b51370e333"],
+Cell[1056, 36, 404, 9, 38, "Text",ExpressionUUID->"445430fb-ed83-4888-b4bd-6b6c62d85fc0"],
 Cell[CellGroupData[{
-Cell[1318, 48, 276, 6, 60, "Section"],
-Cell[1597, 56, 566, 12, 83, "Text"],
-Cell[2166, 70, 1091, 23, 57, "Input"],
-Cell[3260, 95, 267, 6, 59, "Text"],
-Cell[3530, 103, 269, 7, 57, "Input"],
-Cell[3802, 112, 340, 7, 83, "Text"],
-Cell[4145, 121, 1930, 56, 241, "Input"],
-Cell[6078, 179, 123, 2, 35, "Text"],
-Cell[6204, 183, 402, 10, 33, "Input"],
-Cell[6609, 195, 191, 5, 35, "Text"],
-Cell[6803, 202, 421, 11, 33, "Input"],
-Cell[7227, 215, 575, 12, 107, "Text"],
-Cell[7805, 229, 823, 19, 57, "Input"],
-Cell[8631, 250, 322, 7, 59, "Text"],
-Cell[8956, 259, 1220, 39, 80, "Input"],
-Cell[10179, 300, 150, 2, 35, "Text"],
-Cell[10332, 304, 844, 21, 33, "Input"],
-Cell[11179, 327, 297, 6, 59, "Text"],
-Cell[11479, 335, 304, 9, 33, "Input"],
-Cell[11786, 346, 528, 15, 57, "Input"]
+Cell[1485, 49, 331, 6, 62, "Section",ExpressionUUID->"90c42255-89d2-452b-8568-589622fcb799"],
+Cell[1819, 57, 621, 12, 64, "Text",ExpressionUUID->"7f4c9913-1d4a-492d-8e7c-ec2a1615d56c"],
+Cell[2443, 71, 1174, 25, 67, "Input",ExpressionUUID->"08bdec70-b78f-4488-a6c8-07f0a0a47eb3"],
+Cell[3620, 98, 322, 6, 38, "Text",ExpressionUUID->"5686a7b2-6ef6-4c6e-8064-fc2dfd42c1bb"],
+Cell[3945, 106, 384, 10, 67, "Input",ExpressionUUID->"e6c8b6b7-263f-49ec-9aaf-2f87fb8c2a0c"],
+Cell[4332, 118, 450, 8, 64, "Text",ExpressionUUID->"21454233-907b-42ba-b199-900f7b464338"],
+Cell[4785, 128, 2086, 59, 304, "Input",ExpressionUUID->"029f2684-de54-4fc8-8dc4-7100b64883ce"],
+Cell[6874, 189, 178, 2, 38, "Text",ExpressionUUID->"99306be3-7a7b-48e0-ad67-ad080762bd20"],
+Cell[7055, 193, 485, 12, 37, "Input",ExpressionUUID->"92c3cc01-9c5f-40bb-bbfd-0c2b08873dce"],
+Cell[7543, 207, 246, 5, 38, "Text",ExpressionUUID->"84cb23ac-2c29-4721-a8de-e15551052dc0"],
+Cell[7792, 214, 504, 13, 37, "Input",ExpressionUUID->"d6582670-a8df-438e-b3e1-1cb5a19ab231"],
+Cell[8299, 229, 630, 12, 90, "Text",ExpressionUUID->"6d0e0d70-515a-4fcd-8674-29665bf20594"],
+Cell[8932, 243, 906, 21, 67, "Input",ExpressionUUID->"78d526c9-a6c5-4701-8d1e-4b4901905d4a"],
+Cell[9841, 266, 377, 7, 64, "Text",ExpressionUUID->"e9f01bca-fa44-4863-9734-5338276a3c8e"],
+Cell[10221, 275, 1303, 41, 96, "Input",ExpressionUUID->"346536c7-7e12-40ca-8b23-edb99d2ae8fa"],
+Cell[11527, 318, 205, 2, 38, "Text",ExpressionUUID->"82c85a6b-d802-44c7-a2de-e60d65aad850"],
+Cell[11735, 322, 927, 23, 37, "Input",ExpressionUUID->"021448bd-68cc-497a-9020-f0bc0573863d"],
+Cell[12665, 347, 352, 6, 38, "Text",ExpressionUUID->"8763a76d-e49f-4342-ad87-eb77873598bc"],
+Cell[13020, 355, 387, 11, 37, "Input",ExpressionUUID->"eaaf552e-2835-497c-9153-284ebe019cd5"],
+Cell[13410, 368, 611, 17, 37, "Input",ExpressionUUID->"eba33471-0882-4fd6-ba9b-bae16e0ff68f"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12351, 366, 274, 6, 60, "Section"],
-Cell[12628, 374, 519, 12, 179, "Text"],
-Cell[13150, 388, 3974, 104, 540, "Input"],
-Cell[17127, 494, 120, 2, 35, "Text"],
-Cell[17250, 498, 1308, 28, 80, "Input"],
-Cell[18561, 528, 515, 15, 83, "Text"],
-Cell[19079, 545, 1228, 27, 57, "Input"]
+Cell[14058, 390, 329, 6, 62, "Section",ExpressionUUID->"963b6e46-3940-4d62-b4a0-60bf0c122faa"],
+Cell[14390, 398, 574, 12, 194, "Text",ExpressionUUID->"a031ddbe-54b9-449f-8fd3-d0b89a26add1"],
+Cell[14967, 412, 4057, 106, 684, "Input",ExpressionUUID->"b9a21e18-789a-4748-b251-e0242c9ea68a"],
+Cell[19027, 520, 524, 8, 90, "Text",ExpressionUUID->"87d79abe-b1b2-4c15-9a5e-414699972b2c"],
+Cell[19554, 530, 1391, 30, 96, "Input",ExpressionUUID->"77a7b20e-3c67-4179-bd29-e3b24049bccb"],
+Cell[20948, 562, 780, 18, 116, "Text",ExpressionUUID->"15f4590d-b97d-4e8f-9fb6-e29723715700"],
+Cell[21731, 582, 764, 20, 96, "Input",ExpressionUUID->"ef2cd78d-62d0-41fe-84de-2ba65bd7f3c2"],
+Cell[22498, 604, 1132, 24, 90, "Text",ExpressionUUID->"c58ee855-5062-439a-903c-625dc398f176"],
+Cell[23633, 630, 761, 20, 96, "Input",ExpressionUUID->"43249a0d-c453-4840-b2d1-fd68632bc5ba"],
+Cell[24397, 652, 249, 6, 34, "Input",ExpressionUUID->"94a0db9a-6ca3-48f2-9aa9-3a3237b37e98"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20344, 577, 188, 3, 60, "Section"],
-Cell[20535, 582, 238, 4, 35, "Text"],
-Cell[20776, 588, 1355, 27, 80, "Input"],
-Cell[22134, 617, 286, 7, 35, "Text"],
-Cell[22423, 626, 1403, 28, 80, "Input"],
-Cell[23829, 656, 426, 10, 59, "Text"],
-Cell[24258, 668, 1521, 43, 172, "Input"],
-Cell[25782, 713, 180, 4, 35, "Text"],
-Cell[25965, 719, 383, 11, 57, "Input"]
+Cell[24683, 663, 243, 3, 62, "Section",ExpressionUUID->"bdb792b7-2471-4cbe-9c35-3c7cc5897e7d"],
+Cell[24929, 668, 293, 4, 38, "Text",ExpressionUUID->"febba946-8067-41b3-ae68-5b92d919a9dd"],
+Cell[25225, 674, 1438, 29, 96, "Input",ExpressionUUID->"e61e34e9-e7e2-4e00-aeaf-b1dca39451a3"],
+Cell[26666, 705, 341, 7, 38, "Text",ExpressionUUID->"9e58d7f8-ca9d-4206-b3aa-f0ba7f9f5cfd"],
+Cell[27010, 714, 1486, 30, 96, "Input",ExpressionUUID->"7db7f071-d2fe-4f11-940a-453743abf43f"],
+Cell[28499, 746, 481, 10, 38, "Text",ExpressionUUID->"549dd2ef-fb79-44dc-80f0-e700b2ce9316"],
+Cell[28983, 758, 1604, 45, 212, "Input",ExpressionUUID->"a28f1949-cee8-485c-993f-f44e3edb8ee1"],
+Cell[30590, 805, 235, 4, 38, "Text",ExpressionUUID->"d61855fa-5cef-40c3-9998-6d1672a6ddc1"],
+Cell[30828, 811, 466, 13, 67, "Input",ExpressionUUID->"96d5faba-3f1b-4f1a-bc40-567db1f7258b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26385, 735, 127, 2, 60, "Section"],
-Cell[26515, 739, 199, 3, 35, "Text"],
-Cell[26717, 744, 876, 21, 103, "Input"],
-Cell[27596, 767, 251, 6, 35, "Text"],
-Cell[27850, 775, 902, 24, 103, "Input"],
-Cell[28755, 801, 313, 6, 59, "Text"],
-Cell[29071, 809, 1159, 28, 126, "Input"],
-Cell[30233, 839, 313, 9, 131, "Text"]
+Cell[31331, 829, 182, 2, 62, "Section",ExpressionUUID->"690b10e9-8a17-4300-872f-4730345bbd5b"],
+Cell[31516, 833, 254, 3, 38, "Text",ExpressionUUID->"9eb9bb33-2341-4d4a-b6e7-bb697bbd31b7"],
+Cell[31773, 838, 959, 23, 125, "Input",ExpressionUUID->"180476aa-ad3e-4fa4-b147-7a10d50a3d58"],
+Cell[32735, 863, 306, 6, 38, "Text",ExpressionUUID->"03c73988-5da2-45a8-a7bb-c77f662f728b"],
+Cell[33044, 871, 985, 26, 125, "Input",ExpressionUUID->"f29a7634-b9ab-4e95-8c12-35118fdf5f4f"],
+Cell[34032, 899, 368, 6, 64, "Text",ExpressionUUID->"992835d2-afff-467f-9cbb-1d8128ad4da3"],
+Cell[34403, 907, 1242, 30, 157, "Input",ExpressionUUID->"f66592cd-07b4-4a62-859b-b781239d5e3d"],
+Cell[35648, 939, 368, 9, 142, "Text",ExpressionUUID->"9c87f8d9-324e-42aa-b156-c6d05d0c41cc"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30583, 853, 121, 2, 60, "Section"],
-Cell[30707, 857, 948, 23, 33, "Input"],
-Cell[31658, 882, 1504, 41, 218, "Input"],
-Cell[33165, 925, 318, 7, 33, "Input"],
-Cell[33486, 934, 966, 22, 57, "Input"],
-Cell[34455, 958, 230, 6, 33, "Input"],
+Cell[36053, 953, 176, 2, 62, "Section",ExpressionUUID->"9e6a033c-0ddb-42b4-b00e-4bda714c0748"],
+Cell[36232, 957, 1031, 25, 37, "Input",ExpressionUUID->"4df52d92-5aec-4889-a6b5-66c2420ddec1"],
+Cell[37266, 984, 1661, 44, 272, "Input",ExpressionUUID->"dbe5bffa-1b4e-4423-94af-dd381214c69d"],
+Cell[38930, 1030, 401, 9, 37, "Input",ExpressionUUID->"33b6c67c-6105-4c44-852f-e23ec2ae8deb"],
+Cell[39334, 1041, 1049, 24, 67, "Input",ExpressionUUID->"ed97f0ed-24a9-4c80-86d2-72178d956620"],
+Cell[40386, 1067, 313, 8, 37, "Input",ExpressionUUID->"741028d3-350c-486f-a14c-8fcd3f0cf950"],
 Cell[CellGroupData[{
-Cell[34710, 968, 142, 2, 42, "Subsection"],
-Cell[34855, 972, 4147, 105, 540, "Input"],
-Cell[39005, 1079, 138, 2, 35, "Text"],
-Cell[39146, 1083, 975, 26, 57, "Input"]
+Cell[40724, 1079, 197, 2, 51, "Subsection",ExpressionUUID->"e63639f7-77af-4ce4-80b5-8084a97ca65f"],
+Cell[40924, 1083, 4230, 107, 684, "Input",ExpressionUUID->"9cba0f7f-f42b-4df8-8721-403ef967f504"],
+Cell[45157, 1192, 193, 2, 38, "Text",ExpressionUUID->"04184296-2f26-4ee4-a93e-5d5c4dabfe6b"],
+Cell[45353, 1196, 1058, 28, 67, "Input",ExpressionUUID->"88522921-0a3c-4a77-a90b-e18ba449fe6e"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[40158, 1114, 194, 3, 42, "Subsection"],
-Cell[40355, 1119, 792, 14, 299, "Text"],
-Cell[41150, 1135, 6611, 164, 793, "Input"],
-Cell[47764, 1301, 191, 3, 35, "Text"],
-Cell[47958, 1306, 984, 26, 57, "Input"]
+Cell[46448, 1229, 249, 3, 51, "Subsection",ExpressionUUID->"55e3cf5a-b441-437b-9cf0-e82cc9f523b5"],
+Cell[46700, 1234, 873, 15, 298, "Text",ExpressionUUID->"c5c8c9d6-b9f2-44e6-bc5d-312926a1237d"],
+Cell[47576, 1251, 6694, 166, 974, "Input",ExpressionUUID->"8ad01b3a-3030-469b-a9ab-a174c807b14c"],
+Cell[54273, 1419, 269, 3, 38, "Text",ExpressionUUID->"513ff452-20ba-4637-abbd-91a165a5359e"],
+Cell[54545, 1424, 1067, 28, 67, "Input",ExpressionUUID->"d0998693-fd1d-433a-aaef-aff6f7871fde"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -1437,4 +1560,3 @@ Cell[47958, 1306, 984, 26, 57, "Input"]
 ]
 *)
 
-(* End of internal cache information *)
