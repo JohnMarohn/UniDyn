@@ -19,7 +19,7 @@ The package has been tested in the following environment:
 Installation
 ------------
 
-Open up ``UniDyn--Demo-01.nb`` and follow the directions.  You will be asked to enter in the *Mathematica* notebook a string indicating the location where you downloaded the UniDyn package files to.  After entering that string, evaluate the notebook to import ``NC``, ``NCAlgebra``, ``UniDyn``, and run the 100+ ``UniDyn`` unit tests.  If that all goes well, then open up ``UniDyn--Demo-02.nb``, reenter the location string, and run the notebook.
+Open up ``UniDyn--Demo-01.nb`` and follow the directions.  You will be asked to enter in the *Mathematica* notebook a string indicating the location where you downloaded the UniDyn and NCAlgebra package files to.  After entering those location strings, evaluate the notebook to import ``NC``, ``NCAlgebra``, ``UniDyn``, and run the 100+ ``UniDyn`` unit tests.  If that all goes well, you are ready to run the other notebooks, starting with ``UniDyn--Demo-02.nb``.  At the top of each notebook you will have to re-enter the location strings.
 
 Package files
 -------------
@@ -40,10 +40,10 @@ Example notebooks ::
     UniDyn--Demo-03.nb    Demonstrates how to take the digital Fourier 
                           transform of one-dimensional and two-dimensional 
                           data.  Examples illustrate the FT data-ordering 
-                          problem, aliasing, apodization, and zero filling with 
-                          one-dimensional data and the phase-twist lineshape 
-                          observed when Fourier transforming two-dimensional 
-                          data sets.
+                          problem, aliasing, apodization, and zero filling 
+                          with one-dimensional data and the phase-twist 
+                          lineshape observed when Fourier transforming 
+                          two-dimensional data sets.
                            
     UniDyn--Demo-04.nb    Calculates the signal analytically for two weakly 
                           coupled spins, calculates a numerical signal, and 
@@ -82,6 +82,12 @@ The package files are stored in the ``unidyn/`` directory.  The package files co
                 L = 1/2 or not.
     Osc.m       Raising and lowering operators for a single harmonic oscillator
     Evolve.m    Unitary evolution
+  
+and::
+
+    Matrices--two-spin-half.m    Matrices for the six angular momentum
+                                 operators for a spin system consisting 
+                                 of two I=1/2 spins.
 
 plus unit-testing files ::
 
@@ -131,7 +137,7 @@ The usual way to package a function is to do something like
 
 In this example, the inner details of ``my$function`` are hidden in the ``Private``` context, in *Mathematica* speak. When you run an ``nb`` or ``m`` file, you are working in the ``Global``` context.  The name ``my$function`` is exposed to the ``Global``` context because the ``my$function::usage`` declaration appears before ``Begin["Private`"]``.  The function ``my$function`` returns its result ``7`` to the ``Global``` context but if code in an ``nb`` or ``m`` file asks for the value of the intermediate variable ``c``, then nothing is returned; the function ``my$function`` and any variable declared between ``Begin["Private`"]`` and ``End[]`` will not be reported to the ``Global``` context.
 
-In the ``UniDyn`` package we will define some symbols as commutative and others as non-commutative.  We will be using the version of the ``NonCommutativeMultiply`` function defined in the ``NCAlgebra`` package.  To decide whether a symbol is commutative or not, the functions in the ``NCAlgebra`` package look to the ``CommutativeQ`` function; a symbol is commutative if it returns ``True`` when passed to the function ``CommutativeQ``.  To define the ``a$sym`` variable, for example, as commutative we would declare 
+In the ``UniDyn`` package we will define some symbols as commutative and others as non-commutative.  We will be using the version of the ``NonCommutativeMultiply`` function defined in the ``NCAlgebra`` package.  To decide whether a symbol is commutative or not, the functions in the ``NCAlgebra`` package look to the ``CommutativeQ`` function; a symbol is commutative if it returns ``True`` when passed to the function ``CommutativeQ``.  To define the ``a$sym`` variable, for example, as commutative we would declare
 
 .. code:: Mathematica
 

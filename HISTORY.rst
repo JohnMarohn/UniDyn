@@ -1,10 +1,17 @@
 History
 -------
 
+2022/04/25 jam99
+^^^^^^^^^^^^^^^^
+
+* Rewrite ``UniDyn--Demo-02.nb`` through ``UniDyn--Demo-05.nb``.  See the commit messages for a short summary of major code revisions required for each file.
+
+* Regenerate all the associated ``.pdf`` files.  Clear the outputs of the ``.nb`` files to save space.
+
 2022/03/07 jam99
 ^^^^^^^^^^^^^^^^
 
-* Upgrade from Mathematica 12.3.1 to 13.0.0.0.  Rewrite UniDyn--Demo-01.nb and UniDyn--Demo-Scratch.nb to replace the reserved name "tr" with "test$report".
+* Upgrade from Mathematica 12.3.1 to 13.0.0.0.  Rewrite ``UniDyn--Demo-01.nb`` and ``UniDyn--Demo-Scratch.nb`` to replace the reserved name ``tr`` with ``test$report``.
 
 2022/03/05 jam99
 ^^^^^^^^^^^^^^^^
