@@ -90,7 +90,7 @@ Given a time-independent Hamiltonian ${\cal H}$ and an initial (density) operato
 	\equiv \text{\VerbFcn{Evolver}}[{\cal H},t,\rho(0)]
 	\label{Eq:Evolve}
 \end{equation}
-Knowing the commutation relations among the operators comprising ${\cal H}$ and $\rho(0)$, it is often possible to obtain a closed-form algebraic solution to Eq.~\ref{Eq:Evolve}.  The \VerbFcn{Evolver} algorithm obtains a closed-form solution to Eq.~\ref{Eq:Evolve} using an algorithm built on an approach described by Slichter in Section 2.3 of his \emph{Principles of Magnetic Resonance} text \cite{Slichter1990}.
+Knowing the commutation relations among the operators comprising ${\cal H}$ and $\rho(0)$, it is often possible to obtain a closed-form algebraic solution to Eq.~\ref{Eq:Evolve}.  The \VerbFcn{Evolver} algorithm obtains a closed-form solution to Eq.~\ref{Eq:Evolve} by extending an approach introduced by Slichter in Section 2.3 of his \emph{Principles of Magnetic Resonance} text \cite{Slichter1990}.
 
 Slichter was interested in calculating the unitary evolution of angular momentum operators arising in spin-physics problems.  Below we introduce the Slichter procedure by considering a few representative examples.  We show that his procedure works remarkably well for calculating the unitary evolution in other cases as well --- calculating the time evolution of position and momentum operators evolving under the harmonic-oscillator Hamiltonian, for example.  It will become apparent that automating Slichter's procedure in a computer algebra program like \emph{Mathematica} is possible but challenging.  We introduce a generalization of the Slichter algorithm that is well suited for automation by a computer algebra program.  We have implemented this algorithm as a \emph{Mathematica} function, \VerbFcn{Evolver}.  This function evaluates Eq.~\ref{Eq:Evolve} given an ${\cal H}$, a $\rho(0)$, and the commutation relations between the operators comprising ${\cal H}$ and $\rho(0)$.
 
@@ -271,13 +271,9 @@ as the solution to Eq.~\ref{Eq:Ixrot}.
 
 We can imagine automating the steps leading to Eqs.~\ref{Eq:I+rot-soln}, \ref{Eq:adaggerrot-soln}, and \ref{Eq:Ixrot-soln}.   What is required is the ability to
 \begin{enumerate}
-
-\item perform non-commutative algebra, 
-
-\item evaluate commutators, and
-
-\item determine which differential equation an evolved operator satisfies.
-
+  \item perform non-commutative algebra, 
+  \item evaluate commutators, and
+  \item determine which differential equation an evolved operator satisfies.
 \end{enumerate}
 \emph{Mathematica} has a native function for carrying out non-commutative multiplication, but this function has essentially no simplification rules associated with it; for example,
 \begin{Verbatim}[xleftmargin=0.25in]
@@ -292,7 +288,7 @@ Based on our experience so far, developing an algorithm capable of self-deriving
 \rho^{(2)} & = U^{\dagger} \, [-i {\cal H}, [-i {\cal H}, \rho(0)]] \, U
 	= U^{\dagger} \, [-i {\cal H}, \rho^{(1)}] \, U
 \end{align}
-and continuing until we obtain an expression that is proportional to $\rho = U^{\dagger} \, \rho(0) \, U$. If $n$ iterations are required, then $\rho(t)$ must satisfy an $n^\text{th}$ order differential equation.  If the equation's coefficients and initial conditions can be extracted from the  available non-commutative expressions correctly, then the differential equation can be fed to \emph{Mathematica} to solve.  This is roughly the procedure we will use.  Because it would have to handle solving a large number of possible differential equations, however, significant effort would be required to implement the procedure just outlined in a automated way.  The next example highlights why this is so.  This example will serve as our launching point for introducing a revised, simple, and general algorithm for implementing the Slichter procedure for evaluating unitary evolution in an automated way. 
+and continuing until we obtain an expression that is proportional to $\rho = U^{\dagger} \, \rho(0) \, U$. If $n$ iterations are required, then $\rho(t)$ must satisfy an $n^\text{th}$ order differential equation.  If the equation's coefficients and initial conditions can be extracted from the  available non-commutative expressions correctly, then the differential equation can be fed to \emph{Mathematica} to solve.  This is roughly the procedure we will use.  Because it would have to handle solving a large number of possible differential equations, however, significant effort would be required to implement the procedure just outlined in an automated way.  The next example highlights why this is so.  This example will serve as our launching point for introducing a revised, simple, and general algorithm for implementing the Slichter procedure for evaluating unitary evolution in an automated way. 
 
 \myparagraph{Example 4} Consider a unitary evolution with ${\cal H} = \Delta \omega I_z + \omega_1 I_x$ and $\rho(0) = I_z$.  This rotation is involved in calculating the evolution of the difference in populations of a two level system when near-resonant irradiation is applied.  The two-level system could be, for example, a spin $I = 1/2$ particle like a proton spin in a magnetic resonance experiment or it could be the lowest two electronic energy levels of an atom in a quantum optics experiment.  The unitary evolution we are interested in computing is
 \begin{equation}
@@ -555,15 +551,15 @@ In the above equations we have defined $\bm{\lambda}$ as the vector of $x_n$'s w
 with $\bm{\lambda}_0$ given.  The \VerbFcn{Evolver} algorithm proceeds as follows.
 \begin{enumerate}
 
-\item Evaluate the derivatives $\rho^{(1)}$ through $\rho^{(3)}$ by repeatedly applying computing $\rho^{(n+1)} = [-i H, \rho^{(n)}]$, starting from $\rho^{(0)} = \rho(0)$.  Assign the initial-condition vector ${\bm{\lambda}}_0 = (\rho^{(3)}, \ldots, \rho^{(0)})$.
-
-\item Fill in the lower 3 rows of $\bm{\Omega}$ by placing a $1$ in entries one below the diagonal and $0$ in all the other positions.
-
-\item  Look for an entry in the list $(\rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ that is proportional to $\rho^{(3)}$, starting with the $\rho^{(2)}$ (entry $n = 3$) and working towards $\rho^{(0)}$ (entry $n = 1$). Call the entry where the match occurs $n_{\text{match}}$. Call the ratio between $\rho^{(3)}$ and the matching entry $r$.
-
-\item Fill in the upper row of $\bm{\Omega}$ with zeros.  Assign the value $r$ to the entry in the $n_{\text{match}}$ column of the upper row of $\bm{\Omega}$, counting from the right to the left.  
-
-\item Feed Eq.~\ref{Eq:big-equation}, including the initial condition, to \emph{Mathematica} to solve.  The time-dependent density operator is $\rho(t) = \lambda_{1}(t)$. 
+  \item Evaluate the derivatives $\rho^{(1)}$ through $\rho^{(3)}$ by repeatedly applying computing $\rho^{(n+1)} = [-i H, \rho^{(n)}]$, starting from $\rho^{(0)} = \rho(0)$.  Assign the initial-condition vector ${\bm{\lambda}}_0 = (\rho^{(3)}, \ldots, \rho^{(0)})$.
+  
+  \item Fill in the lower 3 rows of $\bm{\Omega}$ by placing a $1$ in entries one below the diagonal and $0$ in all the other positions.
+  
+  \item  Look for an entry in the list $(\rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ that is proportional to $\rho^{(3)}$, starting with the $\rho^{(2)}$ (entry $n = 3$) and working towards $\rho^{(0)}$ (entry $n = 1$). Call the entry where the match occurs $n_{\text{match}}$. Call the ratio between $\rho^{(3)}$ and the matching entry $r$.
+  
+  \item Fill in the upper row of $\bm{\Omega}$ with zeros.  Assign the value $r$ to the entry in the $n_{\text{match}}$ column of the upper row of $\bm{\Omega}$, counting from the right to the left.  
+  
+  \item Feed Eq.~\ref{Eq:big-equation}, including the initial condition, to \emph{Mathematica} to solve.  The time-dependent density operator is $\rho(t) = \lambda_{1}(t)$. 
 
 \end{enumerate}
 	

@@ -1,16 +1,19 @@
 \documentclass[12pt,letterpaper]{refart}
 
-\usepackage{amsmath}                         % American Mathematical Society math
+\usepackage{amsmath}                         % American Mathematical Society
 \usepackage{bm}                              % bold math
-\usepackage{braket}                          % For Dirac notation
+\usepackage{braket}                          % Dirac notation
 \usepackage{fancyvrb}                        % verbatim function
 \usepackage[usenames,dvipsnames]{color}      % Periwinkle
-\usepackage{listings}                        % for typesetting computer code
+\usepackage{listings}                        % typeset computer code
 \usepackage{fancyhdr}                        % fancy page top and bottom
 \usepackage{palatino}                        % cool font 
-\usepackage[sort&compress,
-	square,
-	numbers]{natbib}                         % bibliography                        
+\usepackage{newpxtext}                       % associated math font for palatino
+\usepackage{newpxmath}                       % associated math font for palatino
+\usepackage[T1]{fontenc}                     % unicode catch-all
+
+\usepackage[sort&compress,square,numbers]{natbib} % bibliography       
+\usepackage{natmove}                              % bibliography 
 \usepackage[colorlinks=true,
 	citecolor=blue,
 	linkcolor=blue,
@@ -21,7 +24,6 @@
 \renewcommand{\footrulewidth}{0.4pt} % line at bottom of page; 0.4pt typical
 \newcommand{\myparagraph}[1]{\paragraph{#1 ---\hspace{-0.125in}}}
 
-	
 \newcommand{\VerbFcn}[1]{{#1}}
 \newcommand{\VerbCmd}[1]{{\bf #1}}
 
@@ -32,7 +34,9 @@
 \begin{document}
 \sloppy
 
-\title{The UniDyn \emph{Mathematica} package: Self-deriving operator unitary rotations in quantum mechanics}
+\title{
+  The UniDyn \emph{Mathematica} package:
+  Self-derived unitary operator rotations in quantum mechanics}
 \author{
 	John A. Marohn\thanks{jam99@cornell.edu} \\ 
 	{\footnotesize Dept. of Chemistry and Chemical Biology} \\ 
@@ -51,13 +55,12 @@
 	\cfoot{\thepage}
 	
 
-
 \lstset{ %
 % language=Mathematica,      % the language of the code -- buggy  
 keywords={
 	Clear,
 	True,False,
-	Exp,Sin,Cos,Tan,
+	Exp, Sin, Cos, Tan,
 	Not,
 	Flatten,
 	StringJoin, ToString, Length,
@@ -205,9 +208,9 @@ Our first task is to define functions that enable \emph{Mathematica} to distingu
 % ================
 
 \clearpage
-\bibliographystyle{bst/pccp-bibtex-nomonth-title-url-conf-note}
 \renewcommand*{\bibfont}{\raggedright\normalfont\small}
-\bibliography{bib/UNSORTED_bib}
+\bibliographystyle{bst/nsf}
+\bibliography{bib/UniDyn-doc}
 
 
 \end{document}
