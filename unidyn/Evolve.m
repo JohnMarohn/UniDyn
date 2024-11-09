@@ -6,7 +6,7 @@
  ** John Marohn
  **)
 
-BeginPackage["Evolve`",{"Global`","NC`","NCAlgebra`","OpCreate`","Mult`","Comm`","Spins`","Osc`"}]
+BeginPackage["Evolve`",{"Global`","OpQ`","Mult`","Comm`","Spins`","Osc`"}]
 
 Evolve::usage="Evolve[H, t, \[Rho]] represents unitary evolution of the density operator \[Rho] for a time t under the Hamiltonian H.  This function expands according to simplification rules but leaves the evolution unevaluated."
 
@@ -23,20 +23,19 @@ Begin["Private`"]
 (*~ START ~*)
 
 (*@ 
-The evolution operator distribute over \VerbFcn{Plus} and \VerbFcn{NonCommutativeMultiply}.
+The evolution operator distribute over \VerbFcn{Plus} and \VerbFcn{Mult}.
 @*)
 
 Clear[Evolve];
 Evolve[H$sym__, t$sym__, rho$sym_Plus] := Plus @@ (Evolve[H$sym, t$sym, #]&) /@ List @@ rho$sym
 
-Evolve[H$sym__, t$sym__, rho$sym_NonCommutativeMultiply] := 
-	NonCommutativeMultiply @@ (Evolve[H$sym, t$sym, #]&) /@ List @@ rho$sym
+Evolve[H$sym__, t$sym__, rho$sym_Mult] := Mult @@ (Evolve[H$sym, t$sym, #]&) /@ List @@ rho$sym
 
 (*@
 Scalars in front of the density operator should be pulled out front.
 @*)
 
-Evolve[H$sym__, t$sym__, Times[a_?NonCommutativeMultiply`CommutativeQ, rho$sym__]] := a Evolve[H$sym, t$sym, rho$sym]
+Evolve[H$sym__, t$sym__, Times[a_?ScalarQ, rho$sym__]] := a Evolve[H$sym, t$sym, rho$sym]
 
 (*@
 A test to see if all the terms in a sum commute with each other. %
@@ -45,10 +44,10 @@ at the top of this package so that this function is available in the \verb+Gener
 context of the notebook.
 @*)
 
-AllCommutingQ[H$sym_] := Module[{H$list,Comm$matrix},
+AllCommutingQ[H$sym_] := Module[{H$list, Comm$matrix},
   If [Head[H$sym] === Plus,
     H$list = List @@ H$sym;
-	Comm$matrix = Outer[Comm,H$list, H$list];
+	Comm$matrix = Outer[Comm, H$list, H$list];
 	Return[And @@ ((# === 0)& /@ Flatten[Comm$matrix])],
   Return[False]
   ]
@@ -59,8 +58,8 @@ AllCommutingQ[H$sym_] := Module[{H$list,Comm$matrix},
 the \VerbFcn{Evolve} operator over the terms in the Hamiltonian. %
 @*)
 
-Evolve[H$sym_?AllCommutingQ,t$sym_, rho$sym_] := 
-	NonCommutativeMultiply @@ (Evolve[#, t$sym, rho$sym]&) /@ List @@ H$sym
+Evolve[H$sym_?AllCommutingQ, t$sym_, rho$sym_] := 
+	Mult @@ (Evolve[#, t$sym, rho$sym]&) /@ List @@ H$sym
 
 (*@
 A function to coerce \emph{Mathematica} into writing simpler looking expressions, from %
@@ -89,17 +88,17 @@ is tricky.  A special function has to be fed to \VerbFcn{FullSimplify} to get %
 it to return useful results.  @*)
 
   Do[
-	rho$sym[k+1] = NonCommutativeMultiply`NCExpand[-I Comm[H$sym,rho$sym[k]]] 
-      // FullSimplify[#,ComplexityFunction->VisualComplexity]&,
+	rho$sym[k+1] = (-I Comm[H$sym, rho$sym[k]] /. Mult -> SortedMult)
+	      // FullSimplify[#, ComplexityFunction->VisualComplexity]&,
     {k,0,4}
   ];
 
 (*@ Print out the vector of density-operator derivatives if asked. @*)
 
-  If[OptionValue[quiet] == False, Print["\[Rho] matrix = ",rho$sym[#]& /@ {0,1,2,3,4} // MatrixForm]];
+  If[OptionValue[quiet] == False, Print["\[Rho] matrix = ", rho$sym[#]& /@ {0,1,2,3,4} // MatrixForm]];
 
-(*@ Look for an entry in $(\rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ list that is % 
-proportijonal to $\rho^{(3)}$. Stop when you find it.  Determining %
+(*@ Look for an entry in the $(\rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ list that is % 
+proportional to $\rho^{(3)}$. Stop when you find it.  Determining %
 \emph{proportional to} is tricky.  Here we use the ability of the \verb+NCALgebra+ %
 package to compute a symbolic inverse of an operator.  When %
 $(\rho^{(n)})^{-1}**\rho^{(3)}$ is a scalar, then we have found a match. % 
@@ -114,12 +113,11 @@ We do not, at present, test whether the operators in the list are Hermitian or n
   r = Null;
   r = Catch[
     Do[
+      q = Mult[
+         Divide[rho$sym[3],Mult[rho$sym[k]]]  (* Divide is a kludge *)
+       ] // FullSimplify[#, ComplexityFunction->VisualComplexity]& ;
 
-      q = NonCommutativeMultiply`NCExpand[NonCommutativeMultiply`inv[
-        rho$sym[k]] ** rho$sym[3]
-       ] // FullSimplify[#,ComplexityFunction->VisualComplexity]& ;
-
-      If[NonCommutativeMultiply`CommutativeQ[q]==True,Throw[{3-k,q}]],
+      If[ScalarQ[q]==True, Throw[{3-k, q}]],
       {k,0,2}
     ]
   ];
@@ -147,7 +145,7 @@ Set up the coupling matrix $\bm{\Omega}$ based on the matching condition. %
 If asked, spit out the coupling matrix for inspection. %
 @*)
 
-  If[OptionValue[quiet] == False,Print["\[CapitalOmega] = ", A // MatrixForm]];
+  If[OptionValue[quiet] == False, Print["\[CapitalOmega] = ", A // MatrixForm]];
 
 (*@
 Set up the four coupled equations and solve them.  Respect \emph{Mathematica} %
@@ -179,7 +177,7 @@ by public ones. %
 Return only the first element of the solution, $\lambda_1(t)$.  
 @*)
 
-  Return[x1[time]  /. sol[[1]] /. time -> t$sym];
+  Return[FullSimplify[x1[time]  /. sol[[1]] /. time -> t$sym]];
 ];
 
 
@@ -193,6 +191,9 @@ If[$VerboseLoad == True,
     Message[Evolve::usage]
     Message[Evolver::usage]
 ]
+
+
+
 
 
 

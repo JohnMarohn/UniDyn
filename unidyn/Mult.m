@@ -7,7 +7,9 @@
  ** 2016/01/05
  **)
 
-BeginPackage["Mult`",{"Global`","NC`","NCAlgebra`","OpCreate`"}]
+BeginPackage["Mult`",{"Global`","OpQ`"}]
+
+Mult::usage="Mult[a,b,c] is a function that handles non-commutative multiplication."
 
 NCSort::usage="NCSort[list] sorts the operators in list into canonical order."
 
@@ -16,6 +18,32 @@ SortedMult::usage="SortedMult[list] returns Mult[list$ordered], where list$order
 MultSort::usage="MultSort[NonCommutativeMultiplyt[list]] returns returns NonCommutativeMultiply[list$ordered], where list$ordered are the elements of list sorted into canonical order."
 
 (*~ START ~*)
+
+(*@ 
+First define bottom-out and empty cases:
+@*)
+
+Clear[Mult];
+Mult[a$sym_] := a$sym
+Mult[] := 1
+
+(*@
+Mult distributes over \VerbFcn{Plus} and is associative:
+@*)
+
+Mult[a$sym___,b$sym_Plus,c$sym___] :=
+    Plus @@ (Mult[a$sym, #, c$sym] & ) /@ List @@ b$sym
+Mult[a$sym___,Mult[b$sym__,c$sym__],d$sym___] :=
+    Mult[a$sym,b$sym,c$sym,d$sym]
+
+(*@
+Define rules for factoring out scalars:
+@*)
+
+Mult[a$sym___, b$sym_?ScalarQ, c$sym___] :=
+    Times[b$sym, Mult[a$sym,c$sym]]
+Mult[a$sym___, b$sym_?ScalarQ c$sym__, d$sym___] :=
+    Times[b$sym,Mult[a$sym,c$sym,d$sym]]
 
 (*@ 
 The function \VerbFcn{NCSort} will sort the operators in a list into % 
@@ -70,16 +98,22 @@ except that it reorders the operators in the call list by applying %
 \VerbFcn{NCSort} before passing the result to \VerbFcn{NonCommutativeMultiply}. %
 @*)
 
+(* SortedMult[a$sym__] :=
+    NonCommutativeMultiply[Sequence @@ NCSort[List[a$sym]]] <<===  jam99 === *)
+
 SortedMult[a$sym__] :=
-    NonCommutativeMultiply[Sequence @@ NCSort[List[a$sym]]]
+    Mult[Sequence @@ NCSort[List[a$sym]]]
 
 (*@ 
 The function \VerbFcn{MultSort} reorders all the operators in % 
 a \VerbFcn{NonCommutativeMultiply} call. %
 @*)
 
+(* MultSort[a$sym__] :=
+    a$sym /. NonCommutativeMultiply -> SortedMult <<===  jam99 === *)
+
 MultSort[a$sym__] :=
-    a$sym /. NonCommutativeMultiply -> SortedMult
+    a$sym /. Mult -> SortedMult
 
 (*~ END ~*)
 
@@ -90,6 +124,9 @@ If[$VerboseLoad == True,
     Message[SortedMult::usage];
     Message[MultSort::usage];
 ]
+
+
+
 
 
 

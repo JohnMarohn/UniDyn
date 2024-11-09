@@ -54,21 +54,26 @@ Clear[H, t, H1, H2, H3, Q, R, S, U, V, W, q, r, s, u, v, w];
 CreateOperator[{{Q,R},{S,U},{V,W}}]
 CreateScalar[{q,r,s,u,v,w}]
 
-vtest["01a > distribute addition", Evolve[H, t, Q + R + S] 
+vtest["01a > distribute addition", 
+	Evolve[H, t, Q + R + S] 
 	=== Evolve[H, t, Q] + Evolve[H, t, R] + Evolve[H, t, S]]
-vtest["01b > distribute multiplication", Evolve[H, t, Q**R**S] 
-	=== Evolve[H, t, Q]**Evolve[H, t, R]**Evolve[H, t, S]]
-vtest["01c > distribute complicated expression", Evolve[H, t, (Q q)**(r R)**(s S) + u U]
-    === u Evolve[H, t, U] + q r s Evolve[H, t, Q]**Evolve[H, t, R]**Evolve[H, t, S]]
+vtest["01b > distribute multiplication", 
+	Evolve[H, t, Mult[Q, R, S]] 
+	=== Mult[Evolve[H, t, Q], Evolve[H, t, R], Evolve[H, t, S]]]
+vtest["01c > distribute complicated expression", 
+	Evolve[H, t, Mult[(Q q), (r R), (s S)] + u U]
+    === u Evolve[H, t, U] + q r s Mult[Evolve[H, t, Q], Evolve[H, t, R], Evolve[H, t, S]]]
 
 (*@
 Double check that \VerbFcn{NCExpand[]} bottoms out propertly when presented % 
 an operator and a product of scalars and operators.   
 @*)
 
+(* 
 vtest["01d > NCExpand bottom-out test 1", NCExpand[Q] === Q]
 vtest["01e > NCExpand bottom-out test 2", NCExpand[Q q r] === q r Q]
 vtest["01f > NCExpand bottom-out test 3", NCExpand[Mult[U, S] w v] === v w Mult[U, S]]
+< === jam99 === *)
 
 (*@
 Make up some Hamiltonians and see if they pass the all-terms-commuting test.  %
@@ -80,8 +85,8 @@ expanded. %
 @*)
 
 H0 = Q;
-H1 = q Q**R + s S**U + U**S + V**V**W;
-H2 = q Q + s S + v Q**S;
+H1 = q Mult[Q, R] + s Mult[S, U] + Mult[U, S] + Mult[V, V, W];
+H2 = q Q + s S + v Mult[Q, S];
 
 vtest["02a > commuting test 1", AllCommutingQ[H0] === False]
 vtest["02b > commuting test 2", AllCommutingQ[H1] === False]
@@ -89,9 +94,9 @@ vtest["02c > commuting test 3", AllCommutingQ[H2] === True]
 
 vtest["03a > Evolve expand test 1", Evolve[H0, t, Q] === Evolve[Q, t, Q]]
 vtest["03b > Evolve expand test 2", Evolve[H1, t, Q] 
-	=== Evolve[q Q**R + s S**U + U**S + V**V**W, t, Q]]
+	=== Evolve[q Mult[Q,R] + s Mult[S,U] + Mult[U, S] + Mult[V, V, W], t, Q]]
 vtest["03c > Evolve expand test 3", Evolve[H2, t, Q] 
-	=== Evolve[q Q, t, Q]**Evolve[s S, t, Q]**Evolve[v Q**S, t, Q]]
+	=== Mult[Evolve[q Q, t, Q], Evolve[s S, t, Q], Evolve[v Mult[Q,S], t, Q]]]
 
 Clear[H0, H1, H2]
 Clear[Q, R, S, U, V, W, q, r, s, u, v, w]
@@ -164,8 +169,8 @@ Free evolution of $I_{+}$:
 @*)
 
 vtest["05c > free evolution of I+", 
-  FullSimplify[Expand[Evolver[\[Omega] Iz$sym, t$sym, Ix$sym, quiet -> quiet$query] 
-    + I Evolver[\[Omega] Iz$sym, t$sym, Iy$sym, quiet -> quiet$query]]]
+  FullSimplify[Evolver[\[Omega] Iz$sym, t$sym, Ix$sym, quiet -> quiet$query] 
+    + I Evolver[\[Omega] Iz$sym, t$sym, Iy$sym, quiet -> quiet$query]]
   === Exp[-I \[Omega] t$sym](Ix$sym + I Iy$sym)]
 
 (*@
@@ -173,9 +178,8 @@ Evolution under a scalar coupling:
 @*)
 
 vtest["05d > scalar-coupling evolution of Ix", 
-  Expand[ExpToTrig[FullSimplify[
-    Evolver[d$sym Iz$sym ** Sz$sym, t$sym, Ix$sym, quiet -> quiet$query]]]]
-  === Ix$sym Cos[d$sym t$sym/2]+2 Iy$sym**Sz$sym Sin[d$sym t$sym/2]]
+  Evolver[d$sym Mult[Iz$sym, Sz$sym], t$sym, Ix$sym, quiet -> quiet$query]
+  === Ix$sym Cos[d$sym t$sym/2] + 2 Mult[Iy$sym, Sz$sym] Sin[d$sym t$sym/2]]
 
 (*@
 Off-resonance nutation of $I_z$.  It is important to carefully set the assumptions used by %
@@ -217,7 +221,7 @@ Clear[aL$sym, aR$sym, \[Omega], Q$sym, P$sym, H$sym, Q, P, delta$q$sym, delta$p$
 CreateScalar[\[Omega], delta$x$sym, delta$p$sym];
 OscSingle$CreateOperators[aL$sym, aR$sym];
 
-H$sym = \[Omega] (aL$sym**aR$sym + aR$sym**aL$sym)/2;
+H$sym = \[Omega] (Mult[aL$sym, aR$sym] + Mult[aR$sym, aL$sym])/2;
 
 vtest["06a1 > free evolution of lowering operator", 
   Simplify[TrigToExp[Expand[Evolver[H$sym, t$sym, aL$sym, quiet -> quiet$query]]]]
@@ -283,22 +287,6 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

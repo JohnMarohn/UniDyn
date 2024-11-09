@@ -38,23 +38,23 @@ Clear[w, Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym];
 (*@
 If there is one operator in the requested list of three spin operators that is not defined, % 
 then create all three spin operators afresh.  Here we check that the test does what we want. %
-If one or two of the operators is defined already, the test should come out true. %
+If one of the operators is undefined, the test should come out false. %
 @*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym];
 CreateOperator[{{Ix$sym, Iy$sym}}];
-tests = NonCommutativeMultiply`CommutativeQ /@ {Ix$sym, Iy$sym, Iz$sym};
-vtest["00a", Or @@ tests == True]
+tests = OperatorQ /@ {Ix$sym, Iy$sym, Iz$sym};
+vtest["00a", And @@ tests == False]
 
 (*@
 If, on the other hand, all three spin operators have been defined already, then the % 
-test should come out false. % 
+test should come out true. % 
 @*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym];
 CreateOperator[{{Ix$sym, Iy$sym, Iz$sym}}];
-tests = NonCommutativeMultiply`CommutativeQ /@ {Ix$sym, Iy$sym, Iz$sym};
-vtest["00b", Or @@ tests == False]
+tests = OperatorQ /@ {Ix$sym, Iy$sym, Iz$sym};
+vtest["00b", And @@ tests == True]
 
 (*@
 We should also check the limiting case that *none* of the operators have been %
@@ -62,8 +62,8 @@ defined yet. %
 @*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym];
-tests = NonCommutativeMultiply`CommutativeQ /@ {Ix$sym, Iy$sym, Iz$sym};
-vtest["00c", Or @@ tests == True]
+tests = OperatorQ /@ {Ix$sym, Iy$sym, Iz$sym};
+vtest["00c", And @@ Not /@ tests == True]
 
 (*@
 Create spin angular momentum operators with the total angular momentum unspecified.  % 
@@ -117,7 +117,7 @@ CreateScalar[w];
 h = w Iz$sym;
 rho0 = Ix$sym;
 rho2 = Comm[-I h, Comm[-I h,rho0]];
-vtest["04a", rho2 == - w*w**Ix$sym]
+vtest["04a", rho2 == - Mult[w, w, Ix$sym]]
 
 (*@
 Try this test again with another spin operator on the backend.
@@ -130,10 +130,10 @@ SpinSingle$CreateOperators[Sx$sym, Sy$sym, Sz$sym];
 
 Clear[h, w, rho0, rho2];
 CreateScalar[w];
-h = w Iz$sym**Sz$sym;
+h = w Mult[Iz$sym, Sz$sym];
 rho0 = Ix$sym;
-rho2 = Comm[-I h,Comm[-I h,rho0]];
-vtest["04b", rho2 == - w*w**Ix$sym**Sz$sym**Sz$sym]
+rho2 = Comm[-I h, Comm[-I h,rho0]];
+vtest["04b", rho2 == - Mult[w, w, Ix$sym, Sz$sym, Sz$sym]]
 
 (*~ END ~*)
 
@@ -145,6 +145,9 @@ On[SpinSingle$CreateOperators::nocreate]
 On[SpinSingle$CreateOperators::comm]
 On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nosimplify]
+
+
+
 
 
 

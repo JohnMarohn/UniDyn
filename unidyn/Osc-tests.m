@@ -40,74 +40,70 @@ If[$VersionNumber < 10.,
 (*~ START ~*)
 
 (*@
-If there is one one or both of the operators in the requested list of two oscillator %
-operators that is not defined, then create both operators afresh.  Here we check % 
-that the test does what we want. If one or none of the operators is defined already, % 
-the test should come out true. %
+Create raising and lowering operators for a single harmonic oscillator. %
+Check that the ooperators are indeed created. %
+Check that they have the expected commutation relations. % 
 @*)
 
-Clear[aL$sym, aR$sym];
-tests = NonCommutativeMultiply`CommutativeQ /@ {aL$sym, aR$sym};
-vtest["00a", Or @@ tests == True]
+Clear[aL$sym, aR$sym, a$sym, Nop];
 
-Clear[aL$sym, aR$sym];
-CreateOperator[{{aL$sym}}];
-tests = NonCommutativeMultiply`CommutativeQ /@ {aL$sym, aR$sym};
-vtest["00b", Or @@ tests == True]
-
-(*@
-If, on the other hand, both harmonic oscillator operators have been defined already, % 
-then the test should come out false. % 
-@*)
-
-Clear[aL$sym, aR$sym];
-CreateOperator[{{aL$sym, aR$sym}}];
-tests = NonCommutativeMultiply`CommutativeQ /@ {aL$sym, aR$sym};
-vtest["00c", Or @@ tests == False]
-
-(*@
-Create raising and lowering operators for a single harmonic oscillator.  %
-Create a scalar and another operator 
-@*)
-   
-Clear[aL$sym, aR$sym, a, Q];
-CreateScalar[a];
-CreateOperator[{{Q}}];
+CreateScalar[{a$sym}];
 OscSingle$CreateOperators[aL$sym, aR$sym];
 
-vtest["01a", Comm[a, Q] == 0]
-vtest["01b", Comm[a, aL$sym] == 0]
-vtest["01c", Not[Comm[Q, aL$sym] === 0]]
-vtest["01d", aL$sym**Q === aL$sym**Q]
+vtest["01a", OperatorQ /@ {aL$sym, aR$sym} == {True, True}]
+vtest["01b", Comm[aL$sym, aR$sym] === 1]
+vtest["01c", Comm[aR$sym, aL$sym] === -1]
 
-Clear[aL$sym, aR$sym, a, Q];
-         
+(*@
+Check that scalars are factored out of the commutations relations %
+involving the harmonic oscillator raising and lower operators.
+@*)
+
+vtest["01d", Comm[a$sym aL$sym, aR$sym] === a$sym]
+vtest["01e", Comm[aL$sym, a$sym aR$sym] === a$sym]
+
 (*@
 Test the commutation relations by defining the number operator, % 
 Nop = $N = a^{\dagger} a$, and checking the commutation relations % 
 $[N,a^{\dagger}] = a^{\dagger}$ and $[N,a]=-a$. %
 @*)
 
+Nop = Mult[aR$sym, aL$sym];
+
+vtest["01d", Comm[Nop, aR$sym] === aR$sym]
+vtest["01e", Comm[Nop, aL$sym] === -aL$sym]
+
 Clear[aL$sym, aR$sym, a$sym, Nop];
-CreateScalar[a$sym];
+
+(*@
+Check that we can define harmonic oscillator operators ``on top of'' %
+an existing operator that commutes with the harmonic-oscillator operators.
+@*)
+   
+Clear[aL$sym, aR$sym, a, Q];
+
+CreateScalar[{a}];
+CreateOperator[{{Q},{aR$sym, aL$sym}}]
 OscSingle$CreateOperators[aL$sym, aR$sym];
-Nop = NonCommutativeMultiply[aR$sym, aL$sym];
 
 vtest["02a", Comm[aL$sym, aR$sym] === 1]
-vtest["02b", Comm[a$sym aL$sym, aR$sym] === a$sym]
-vtest["02c", Comm[Nop, aR$sym] === aR$sym]
-vtest["02d", Comm[Nop, aL$sym] === -aL$sym]
+vtest["02b", Comm[aR$sym, aL$sym] === -1]
+vtest["02c", Comm[a, Q] == 0]
+vtest["02d", Comm[a, aL$sym] == 0]
+vtest["02e", Comm[Q, aL$sym] === 0]
+vtest["02f", MultSort[Mult[aL$sym, Q]] === Mult[Q, aL$sym]]
 
-Clear[aL$sym, aR$sym, Nop, a$sym];
-
+Clear[aL$sym, aR$sym, a, Q];
+       
 (*@
 Test the commutations for the position and momentum operators. 
 @*) 
 
 Clear[aL$sym, aR$sym, Q$sym, P$sym];
+
 OscSingle$CreateOperators[aL$sym, aR$sym];
-Q$sym = (aR$sym+aL$sym)/Sqrt[2];
-P$sym = I (aR$sym-aL$sym)/Sqrt[2];
+Q$sym = (aR$sym + aL$sym)/Sqrt[2];
+P$sym = I (aR$sym - aL$sym)/Sqrt[2];
 
 vtest["03a", Comm[Q$sym, P$sym] === I]
 vtest["03b", Comm[P$sym, Q$sym] === -I]
@@ -115,7 +111,7 @@ vtest["03b", Comm[P$sym, Q$sym] === -I]
 Clear[aL$sym, aR$sym, Q$sym, P$sym];
 
 (*@
-Check that we can define harmonic oscillator operators ``on top of'' % 
+Abother check that we can define harmonic oscillator operators ``on top of'' % 
 existing operators. In the following tests we prove that an operator like %
 $I_x$ (not defined as a spin operator, just an operator) commutes with % 
 one of the harmonic oscillator operators while the harmonic oscillator %
@@ -125,11 +121,11 @@ commutation relations are retained. %
 Clear[Ix$sym, Iy$sym, Iz$sym, aL$sym, aR$sym, Nop];
 CreateOperator[{{Ix$sym, Iy$sym, Iz$sym},{aR$sym, aL$sym}}]
 OscSingle$CreateOperators[aL$sym, aR$sym];
-Nop = NonCommutativeMultiply[aR$sym, aL$sym];
+Nop = Mult[aR$sym, aL$sym];
 
 vtest["04a", Not[Comm[Ix$sym, Iy$sym] === 0]]
 vtest["04b", Comm[Ix$sym, aL$sym] == 0]
-vtest["04c", Comm[Ix$sym**Iy$sym, aL$sym] == 0]
+vtest["04c", Comm[Mult[Ix$sym, Iy$sym], aL$sym] == 0]
 vtest["04d", Comm[aL$sym, aR$sym] === 1]
 vtest["04e", Comm[Nop, aR$sym] === aR$sym]
 vtest["04f", Comm[Nop, aL$sym] === -aL$sym]
@@ -140,8 +136,8 @@ oscillator operators.  Check that \VerbFcn{MultSort} pulls the $I$ operators %
 out front as expected. %
 @*)
 
-vtest["05a", MultSort[aL$sym**Ix$sym**aR$sym**aL$sym**Iy$sym] 
-    === Ix$sym**Iy$sym**aL$sym**aR$sym**aL$sym]
+vtest["05", MultSort[Mult[aL$sym, Ix$sym, aR$sym, aL$sym, Iy$sym]] 
+    === Mult[Ix$sym, Iy$sym, aL$sym, aR$sym, aL$sym]]
 
 Clear[Ix$sym, Iy$sym, Iz$sym, aL$sym, aR$sym, Nop];
 
@@ -156,6 +152,12 @@ On[SpinSingle$CreateOperators::nocreate]
 On[SpinSingle$CreateOperators::comm]
 On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nosimplify]
+
+
+
+
+
+
 
 
 

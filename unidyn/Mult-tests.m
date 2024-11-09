@@ -39,19 +39,21 @@ CreateScalar[{a$sym, b$sym, c$sym, d$sym}];
 In the following test, the left hand side should resolve to % 
 \VerbFcn{NonCommutativeMultiply}$[I_x,I_y]$ while the % 
 right-hand side should resolve to \VerbFcn{Times}$[I_x,I_y]$. %
-These are \emph{not} the same.
+These are \emph{not} the same.  If \VerbFcn{Mult} does not properly % 
+recognize that $I_x$ and $I_y$ are operators and instead treats % 
+them as scalars, then the tests below will inadvertently pass.
 @*)
 
-vtest["01a", Not[NonCommutativeMultiply[Ix$sym,Iy$sym] === Ix$sym Iy$sym]]
+vtest["01", Not[Mult[Ix$sym,Iy$sym] === Ix$sym Iy$sym]]
 
 (*@
 Before continuing, define a shorthand:
 @*)
 
-Mult = NonCommutativeMultiply;
+(* Mult = NonCommutativeMultiply; << ==== jam99 ==== *)
 
 (*@
-Test that \VerbFcn{NonCommutativeMultiply} distributes over addition and is associative.  % 
+Test that \VerbFcn{Mult} distributes over addition and is associative.  % 
 Note how Mult handles products of scalars and products of operators % 
 differently.  Below we test for sameness (\verb+===+) instead of equality (\verb+==+).  % 
 This is because if the two sides are \emph{not} the same, then the equality % 
@@ -59,28 +61,25 @@ test (using \verb+==+) is undefined --- neither true nor false --- and the unit 
 does not fail as we wish. %
 @*)
 
-vtest["02a", Not[Mult[a$sym, b$sym + c$sym] === a$sym b$sym + a$sym c$sym]]
-vtest["02b", Not[Mult[a$sym + b$sym, c$sym] === a$sym c$sym + b$sym c$sym]]
+vtest["02a", Mult[a$sym, b$sym + c$sym] === a$sym b$sym + a$sym c$sym]
+vtest["02b", Mult[a$sym + b$sym, c$sym] === a$sym c$sym + b$sym c$sym]
 
 (*@
-Test that \VerbFcn{NCExpand[]} bottoms out propertly when presented an % 
-operator and a product of scalars and operators.   
+Test that \VerbFcn{Mult} distributes over addition and is associative.  %
+Note how \VerbFcn{Mult} handles products of scalars and products of %
+operators differently.  Below we test for sameness (===) instead of % 
+equality (==).  This is because if the two sides are \emph{not} the same, %
+then the equality test (using ==) is undefined --- neither true nor false --- % 
+and the unit test does not fail as we wish.
 @*)
 
-vtest["03a", NCExpand[Ix$sym] === Ix$sym]
-vtest["03b", NCExpand[Ix$sym a$sym b$sym] === a$sym b$sym Ix$sym]
-vtest["03c", NCExpand[Mult[Iy$sym, Ix$sym] a$sym b$sym] === a$sym b$sym Mult[Iy$sym, Ix$sym]]
+vtest["03", Mult[Iy$sym, Ix$sym] a$sym b$sym === a$sym b$sym Mult[Iy$sym, Ix$sym]]
 
-(*@
-To get \VerbFcn{NonCommutativeMultiply[]} to distribute, we first have % 
-to call \VerbFcn{NCExpand[]}.   
-@*)
+vtest["04a", Mult[a$sym, b$sym + c$sym] === a$sym b$sym + a$sym c$sym]
+vtest["04b", Mult[a$sym + b$sym, c$sym] === a$sym c$sym + b$sym c$sym]
 
-vtest["04a", NCExpand[Mult[a$sym, b$sym + c$sym]] === a$sym b$sym + a$sym c$sym]
-vtest["04b", NCExpand[Mult[a$sym + b$sym, c$sym]] === a$sym c$sym + b$sym c$sym]
-
-vtest["04c", NCExpand[Mult[Ix$sym, Iy$sym + Iz$sym]] === Mult[Ix$sym, Iy$sym] + Mult[Ix$sym, Iz$sym]]
-vtest["04d", NCExpand[Mult[Ix$sym + Iy$sym, Iz$sym]] === Mult[Ix$sym, Iz$sym] + Mult[Iy$sym, Iz$sym]]
+vtest["04c", Mult[Ix$sym, Iy$sym + Iz$sym] === Mult[Ix$sym, Iy$sym] + Mult[Ix$sym, Iz$sym]]
+vtest["04d", Mult[Ix$sym + Iy$sym, Iz$sym] === Mult[Ix$sym, Iz$sym] + Mult[Iy$sym, Iz$sym]]
 
 (*@
 Here is an example where we apparently do \emph{not} have to call \VerbFcn{NCExpand[]}.
@@ -124,17 +123,12 @@ Check that \VerbFcn{MultSort[]} works as expected when scalars are peppered into
 the list of operators being multiplied. %
 @*)
 
-vtest["09a", MultSort[NonCommutativeMultiply[a$sym Iy$sym, Sx$sym, Ix$sym]] === a$sym NonCommutativeMultiply[Sx$sym,Iy$sym, Ix$sym]]
+vtest["09a", MultSort[Mult[a$sym Iy$sym, Sx$sym, Ix$sym]] 
+	=== a$sym Mult[Sx$sym,Iy$sym, Ix$sym]]
 
-(*@
-This is a pretty fancy test showing that the \verb+NCAlgebra+ package can factor out an % 
-operator.  For the following test to work, \VerbFcn{MultSort[]}, \VerbFcn{NCExpand[]}, %
-and \VerbFcn{NCCollect[]} all have to work correctly. %
-@*)
-
-expr1 = NonCommutativeMultiply[Sx$sym, a$sym Sz$sym, Ix$sym] + NonCommutativeMultiply[Ix$sym, b$sym Sx$sym];
-expr2 = NCCollect[MultSort[NCExpand[expr1]], Ix$sym];
-expr3 = (a$sym Sx$sym**Sz$sym + b$sym**Sx$sym)**Ix$sym ;
+expr1 = Mult[Sx$sym, a$sym Sz$sym] + Mult[Ix$sym, b$sym Sx$sym];
+expr2 = MultSort[Mult[expr1, Ix$sym]];
+expr3 = a$sym Mult[Sx$sym, Sz$sym, Ix$sym] + b$sym Mult[Sx$sym, Ix$sym, Ix$sym];
 
 vtest["10a", expr2 === expr3]
 
@@ -142,6 +136,12 @@ vtest["10a", expr2 === expr3]
 
 Clear[Ix$sym, Iy$sym, Iz$sym,Sx$sym, Sy$sym, Sz$sym];
 Clear[a$sym, b$sym, c$sym, d$sym];
+
+
+
+
+
+
 
 
 
