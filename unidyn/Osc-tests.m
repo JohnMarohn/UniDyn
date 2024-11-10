@@ -155,12 +155,3 @@ On[SpinSingle$CreateOperators::nosimplify]
 
 
 
-
-
-
-
-
-
-
-
-

@@ -65,17 +65,6 @@ vtest["01c > distribute complicated expression",
     === u Evolve[H, t, U] + q r s Mult[Evolve[H, t, Q], Evolve[H, t, R], Evolve[H, t, S]]]
 
 (*@
-Double check that \VerbFcn{NCExpand[]} bottoms out propertly when presented % 
-an operator and a product of scalars and operators.   
-@*)
-
-(* 
-vtest["01d > NCExpand bottom-out test 1", NCExpand[Q] === Q]
-vtest["01e > NCExpand bottom-out test 2", NCExpand[Q q r] === q r Q]
-vtest["01f > NCExpand bottom-out test 3", NCExpand[Mult[U, S] w v] === v w Mult[U, S]]
-< === jam99 === *)
-
-(*@
 Make up some Hamiltonians and see if they pass the all-terms-commuting test.  %
 The first test is particularly important.  In test 03a and 03b below, nothing %
 happens; the Hamiltonian is either so simple that it can be broken into pieces, 03a, %
@@ -144,11 +133,6 @@ vtest["04a > DSolve test", rho$calc === rho$known]
 (*@
 Free evolution of $I_x$: 
 @*)
-
-vtest["05a > free evolution of Ix test", 
-  FullSimplify[ExpToTrig[Expand[
-    Evolver[\[Omega] Iz$sym, t$sym, Ix$sym]]]]
-  === Ix$sym Cos[\[Omega] t$sym] + Iy$sym Sin[\[Omega] t$sym]]
 
 vtest["05a > free evolution of Ix", 
   FullSimplify[ExpToTrig[Expand[
@@ -263,8 +247,8 @@ vtest["06e > free evolution of P",
     == P Cos[\[Omega] t$sym] + Q Sin[\[Omega] t$sym]]
 
 (*@
-Check that the operator $e^{-\delta q P}$ delivers a position kick and that %
-the operator $e^{-\delta p X}$ delivers a momentum kick.  These are examples %
+Check that the operator $e^{-i \delta q \, P}$ delivers a position kick and that %
+the operator $e^{-i \delta p \, X}$ delivers a momentum kick.  These are examples %
 of evolution where the commuting series terminates.  %
 @*)
 
@@ -287,6 +271,9 @@ On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
+
+
+
 
 
 

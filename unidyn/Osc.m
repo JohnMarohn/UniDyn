@@ -35,10 +35,6 @@ Module[{nonexistent},
 Test if the operators exist; if they do not already exist, then create them.
 @*)
 
-(*
-nonexistent = Or @@ (OperatorQ /@ {aL$sym, aR$sym});
-< === jam99 *)
-
 nonexistent = 
 	Not[OperatorQ[aL$sym]] ||  
     Not[OperatorQ[aR$sym]];
@@ -54,7 +50,7 @@ aR$sym /: Comm[aR$sym, aL$sym] = -1;
 
 Message[OscSingle$CreateOperators::comm]
 
-Return[{aL$sym, aR$sym}] (* <<==== IMPORTANT *)
+Return[{aL$sym, aR$sym}]
 ]
 
 (*~ END ~*)
@@ -66,12 +62,6 @@ EndPackage[]
 If[$VerboseLoad == True,
     Message[OscSingle$CreateOperators::usage]
 ]
-
-
-
-
-
-
 
 
 

@@ -114,7 +114,7 @@ We do not, at present, test whether the operators in the list are Hermitian or n
   r = Catch[
     Do[
       q = Mult[
-         Divide[rho$sym[3],Mult[rho$sym[k]]]  (* Divide is a kludge *)
+         Divide[rho$sym[3],Mult[rho$sym[k]]]
        ] // FullSimplify[#, ComplexityFunction->VisualComplexity]& ;
 
       If[ScalarQ[q]==True, Throw[{3-k, q}]],
