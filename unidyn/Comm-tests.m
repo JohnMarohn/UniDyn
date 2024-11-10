@@ -81,34 +81,99 @@ vtest["04b", ((Comm[Ix$sym, Comm[Iy$sym, Iz$sym]] +
 	=== 0] 
 
 (*@
-For other Commutator identities, see % 
+Test the table of ten identities under ``Advanced Identities'' at %
+the Wikipedia page for ``Commutator'',  
 \href{https://en.wikipedia.org/wiki/Commutator}{https://en.wikipedia.org/wiki/Commutator}. %
-Let us test one of these advanced identities.
+I find that the first equality number 9 in ``Advanced Identities'' %
+does not actually evaluate to True. 
 @*)
 
-CreateOperator[{{A$sym, B$sym, C$sym, D$sym}}];
+CreateOperator[{{A$sym, B$sym, C$sym, D$sym, E$sym}}];
 
-vtest["05a", Comm[Mult[A$sym, B$sym, C$sym], D$sym]
+vtest["05.01",
+Comm[A$sym, Mult[B$sym, C$sym]]
+	=== Mult[Comm[A$sym, B$sym], C$sym]
+	+ Mult[B$sym, Comm[A$sym, C$sym]]
+]
+
+vtest["05.02",
+Comm[A$sym, Mult[B$sym, C$sym, D$sym]]
+	=== Mult[Comm[A$sym, B$sym], C$sym, D$sym]
+	+ Mult[B$sym, Comm[A$sym, C$sym], D$sym]
+	+ Mult[B$sym, C$sym, Comm[A$sym, D$sym]]
+]
+
+vtest["05.03",
+Comm[A$sym, Mult[B$sym, C$sym, D$sym, E$sym]]
+	=== Mult[Comm[A$sym, B$sym], C$sym, D$sym, E$sym]
+	+ Mult[B$sym, Comm[A$sym, C$sym], D$sym, E$sym]
+	+ Mult[B$sym, C$sym, Comm[A$sym, D$sym], E$sym]
+	+ Mult[B$sym, C$sym, D$sym, Comm[A$sym, E$sym]]
+]
+
+vtest["05.04",
+Comm[Mult[A$sym, B$sym], C$sym]
+	=== Mult[A$sym, Comm[B$sym, C$sym]]
+	+ Mult[Comm[A$sym, C$sym], B$sym]
+]
+
+vtest["05.05", 
+Comm[Mult[A$sym, B$sym, C$sym], D$sym]
 	=== Mult[A$sym, B$sym, Comm[C$sym, D$sym]] 
-	+ Mult[A$sym, Comm[B$sym, D$sym], C$sym] + Mult[Comm[A$sym, D$sym], B$sym, C$sym]]
+	+ Mult[A$sym, Comm[B$sym, D$sym], C$sym] 
+	+ Mult[Comm[A$sym, D$sym], B$sym, C$sym]
+]
+
+vtest["05.06", 
+Comm[Mult[A$sym, B$sym, C$sym, D$sym], E$sym]
+	=== Mult[A$sym, B$sym, C$sym, Comm[D$sym, E$sym]] 
+	+ Mult[A$sym, B$sym, Comm[C$sym, E$sym], D$sym] 
+	+ Mult[A$sym, Comm[B$sym, E$sym], C$sym, D$sym]
+	+ Mult[Comm[A$sym, E$sym], B$sym, C$sym, D$sym]
+]
+
+vtest["05.07",
+Comm[A$sym, B$sym + C$sym]
+	=== Comm[A$sym, B$sym] 
+	+ Comm[A$sym, C$sym]
+]
+
+vtest["05.08",
+Comm[A$sym + B$sym, C$sym + D$sym] 
+	=== Comm[A$sym, C$sym] 
+	+ Comm[A$sym, D$sym]
+	+ Comm[B$sym, C$sym]
+	+ Comm[B$sym, D$sym]
+]
+
+vtest["05.09", 
+Comm[Mult[A$sym, B$sym], Mult[C$sym, D$sym]]
+	=== Mult[A$sym, Comm[B$sym, C$sym], D$sym]
+	+ Mult[A$sym, C$sym, Comm[B$sym, D$sym]]
+	+ Mult[Comm[A$sym, C$sym], D$sym, B$sym] 
+	+ Mult[C$sym, Comm[A$sym, D$sym], B$sym]
+]
+
+vtest["05.10", 
+Module[{left,right},
+
+	left = Comm[Comm[A$sym, C$sym], Comm[B$sym, D$sym]] 
+	//. Comm[A$sym_?OperatorQ, B$sym_?OperatorQ] -> Mult[A$sym,B$sym] - Mult[B$sym,A$sym];
+	
+	right = Comm[Comm[Comm[A$sym, B$sym], C$sym], D$sym]
+	+ Comm[Comm[Comm[B$sym, C$sym], D$sym], A$sym]
+	+ Comm[Comm[Comm[C$sym, D$sym], A$sym], B$sym]
+	+ Comm[Comm[Comm[D$sym, A$sym], B$sym], C$sym]
+	//. Comm[A$sym_?OperatorQ, B$sym_?OperatorQ] -> Mult[A$sym,B$sym] - Mult[B$sym,A$sym];
+	
+	left === right]
+]
 
 (*~ END ~*)
 
 Clear[a$sym, b$sym, c$sym, d$sym];
 Clear[Ix$sym, Iy$sym, Iz$sym, Sx$sym, Sy$sym, Sz$sym];
 Clear[A$sym, B$sym, C$sym, D$sym];
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -169,10 +169,10 @@ literate={x\$var}{{\emph{x}}}1
 \section{Operators and scalars}
 % =============================
 
-Our first task is to define functions that enable \emph{Mathematica} to distinguish between (non-commutative) operators and (commutative) scalars.  This is done in the \verb+OpCreate.m+ package, whose listing appears below.  Unit tests for the functions in this package are organized into a separate package, \verb+OpCreate-tests.m+, whose listing follows. 
+Our first task is to define functions that enable \emph{Mathematica} to distinguish between (non-commutative) operators and (commutative) scalars.  This is done in the \verb+OpQ.m+ package, whose listing appears below.  Unit tests for the functions in this package are organized into a separate package, \verb+OpQ-tests.m+, whose listing follows. 
 
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpCreate.m}
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpCreate-tests.m}
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpQ.m}
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpQ-tests.m}
 
 \section{Non-commutative multiplication}
 % ======================================
