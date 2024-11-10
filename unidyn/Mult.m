@@ -93,13 +93,10 @@ Module[{n$sym, p$sym, a$new$sym, p$new$sym},
     Return[a$new$sym]]
 
 (*@
-The function \VerbFcn{SortedMult} is the same as \VerbFcn{NonCommutativeMultiply} % 
+The function \VerbFcn{SortedMult} is the same as \VerbFcn{Mult} % 
 except that it reorders the operators in the call list by applying % 
-\VerbFcn{NCSort} before passing the result to \VerbFcn{NonCommutativeMultiply}. %
+\VerbFcn{NCSort} before passing the result to \VerbFcn{Mult}. %
 @*)
-
-(* SortedMult[a$sym__] :=
-    NonCommutativeMultiply[Sequence @@ NCSort[List[a$sym]]] <<===  jam99 === *)
 
 SortedMult[a$sym__] :=
     Mult[Sequence @@ NCSort[List[a$sym]]]
@@ -108,9 +105,6 @@ SortedMult[a$sym__] :=
 The function \VerbFcn{MultSort} reorders all the operators in % 
 a \VerbFcn{NonCommutativeMultiply} call. %
 @*)
-
-(* MultSort[a$sym__] :=
-    a$sym /. NonCommutativeMultiply -> SortedMult <<===  jam99 === *)
 
 MultSort[a$sym__] :=
     a$sym /. Mult -> SortedMult
@@ -124,9 +118,6 @@ If[$VerboseLoad == True,
     Message[SortedMult::usage];
     Message[MultSort::usage];
 ]
-
-
-
 
 
 

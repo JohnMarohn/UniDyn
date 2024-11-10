@@ -37,7 +37,7 @@ CreateScalar[{a$sym, b$sym, c$sym, d$sym}];
 
 (*@
 In the following test, the left hand side should resolve to % 
-\VerbFcn{NonCommutativeMultiply}$[I_x,I_y]$ while the % 
+\VerbFcn{Mult}$[I_x,I_y]$ while the % 
 right-hand side should resolve to \VerbFcn{Times}$[I_x,I_y]$. %
 These are \emph{not} the same.  If \VerbFcn{Mult} does not properly % 
 recognize that $I_x$ and $I_y$ are operators and instead treats % 
@@ -45,12 +45,6 @@ them as scalars, then the tests below will inadvertently pass.
 @*)
 
 vtest["01", Not[Mult[Ix$sym,Iy$sym] === Ix$sym Iy$sym]]
-
-(*@
-Before continuing, define a shorthand:
-@*)
-
-(* Mult = NonCommutativeMultiply; << ==== jam99 ==== *)
 
 (*@
 Test that \VerbFcn{Mult} distributes over addition and is associative.  % 
@@ -88,8 +82,7 @@ Here is an example where we apparently do \emph{not} have to call \VerbFcn{NCExp
 vtest["05a", Mult[Ix$sym, Mult[Sx$sym, Sy$sym], Iz$sym] === Mult[Ix$sym, Sx$sym, Sy$sym, Iz$sym]]
 
 (*@
-Test that scalars get factored out properly.  Note that we do \emph{not} have to call % 
-\VerbFcn{NCExpand[]} for \VerbFcn{NonCommutativeMultiply[]} to pull scalars out front. %
+Test that scalars get factored out properly.%
 @*)
 
 vtest["06a", Mult[Ix$sym, 2 I a$sym, Sx$sym] === a$sym 2 I Mult[Ix$sym,Sx$sym]]
@@ -103,7 +96,7 @@ vtest["07a", NCSort[{Sx$sym,Ix$sym, Iy$sym, Sz$sym}] === {Ix$sym, Iy$sym, Sx$sym
 
 (*@
 The function \VerbFcn{MultSort[]} is used to order the operators in a standing %
-\VerbFcn{NonCommutatativeMultiply[]} function. %
+\VerbFcn{Mult[]} function. %
 @*)
 
 vtest["08a", SortedMult[Iy$sym, Sx$sym, Ix$sym] === Mult[Iy$sym, Ix$sym, Sx$sym]]

@@ -75,7 +75,7 @@ Clear[Ix$sym, Iy$sym, Iz$sym]
 SpinSingle$CreateOperators[Ix$sym, Iy$sym, Iz$sym];
 
 vtest["01a", Comm[Ix$sym, Iy$sym] === I Iz$sym]
-vtest["01b", Mult[Ix$sym, Iy$sym] === Mult[Ix$sym, Iy$sym]]
+vtest["01b", Not[Mult[Ix$sym, Iy$sym] === Mult[Iy$sym, Ix$sym]]]
 vtest["01c", Not[Mult[Ix$sym, Iy$sym] === I Iz$sym/2]]
 vtest["01d", Not[Mult[Iz$sym, Iz$sym] === 1/4]]
 
@@ -145,15 +145,3 @@ On[SpinSingle$CreateOperators::nocreate]
 On[SpinSingle$CreateOperators::comm]
 On[SpinSingle$CreateOperators::simplify]
 On[SpinSingle$CreateOperators::nosimplify]
-
-
-
-
-
-
-
-
-
-
-
-

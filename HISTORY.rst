@@ -1,6 +1,21 @@
 History
 -------
 
+2024/11/09 jam99
+^^^^^^^^^^^^^^^^
+
+A major revision.  Rewrite the code to remove the dependence on the external non-commutative multiplication packages ``NC``` and ``NCAlgebra``.  The packages were giving errors and slowed down evaluation by ten fold compared to the prior implementation.
+
+* Reintroduce the ``Mult``` function, introduced in ``OpQ.m``` and ``OpQ-tests.m``.
+
+* After much coding, all units tests pass.
+
+* In the ``Evolve[]`` function replaced a non-commutative inverse, supplied by  ``NC``` and ``NCAlgebra``, with a simple ``Division``.  This change gives reasonable results, but feels like a kludge.
+
+* Rewrite ``UniDyn--Demo-01.nb`` through ``UniDyn--Demo-05.nb`` to use ``Mult`` instead of ``**`` to represent the non-commutative multiply operator.
+
+* Many, but not all, of the quantum optics evolution examples in ``UniDyn--Demo-Scratch.nb``` now work.
+
 2022/04/25 jam99
 ^^^^^^^^^^^^^^^^
 

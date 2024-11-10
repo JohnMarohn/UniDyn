@@ -21,7 +21,7 @@ SpinSingle$CreateOperators::simplify="Angular momentum L = 1/2. Adding operator 
 
 SpinSingle$CreateOperators::nosimplify="No angular momentum L defined."
 
-Begin["Private`"] (* <<==== IMPORTANT *)
+Begin["Private`"]
 
 (*~ START ~*)
 
@@ -37,10 +37,6 @@ operators, then create all three operators afresh. In the code below it is impor
 that we call \VerbFcn{Mult`CommutativeQ} and not just %
 \VerbFcn{CommutativeQ}. %
 @*)
-
-(*
-nonexistent = Or @@ (Mult`CommutativeQ /@ {Ix$sym, Iy$sym, Iz$sym});
-< ==== jam99 === *)
 
 nonexistent = 
     Not[OperatorQ[Ix$sym]] || 
@@ -103,7 +99,7 @@ Null,
 Message[SpinSingle$CreateOperators::nosimplify]
 
 ];
-Return[{Ix$sym, Iy$sym, Iz$sym}] (* <<==== IMPORTANT *)
+Return[{Ix$sym, Iy$sym, Iz$sym}]
 ]
 
 (*~ END ~*)
@@ -115,11 +111,6 @@ EndPackage[]
 If[$VerboseLoad == True,
     Message[SpinSingle$CreateOperators::usage]
 ]
-
-
-
-
-
 
 
 
