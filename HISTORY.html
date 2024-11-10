@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<title>History</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/*
+ * Stylesheet overrides for ReSTview
+ */
+
+/* Some breathing space for the text */
+
+body {
+    margin: 3em;
+    max-width: 50em;
+}
+
+/* Monospace text */
+
+tt {
+    color: #234F32;
+}
+
+/* Doctest blocks */
+
+blockquote > pre.doctest-block {
+    margin-left: 0;
+}
+
+/* Literal blocks */
+
+pre.literal-block {
+    color: #AA4400;
+}
+
+/* Block quotations */
+
+blockquote {
+    margin-left: 2em;  /* to match with pre.code et al */
+    margin-right: 2em;
+}
+
+/* Code blocks */
+
+pre.code {
+    background: inherit;
+}
+
+/* Footnotes */
+
+a.footnote-reference,
+a.fn-backref {
+    font-size: xx-small;
+    vertical-align: super;
+    line-height: normal;
+    text-decoration: none;
+}
+a.footnote-reference:hover,
+a.fn-backref:hover {
+    text-decoration: underline;
+}
+
+table.footnote {
+    border: none;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 20px;
+    margin-right: 0.5em;
+    font-size: small;
+}
+table.footnote td {
+    border: none;
+    padding-top: 1em;
+    padding-left: 0px;
+}
+table.footnote tr:first-child > td.label {
+    border-top: 1px solid #eee;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+table.footnote + table.footnote {
+    margin-top: 0;
+}
+table.footnote + table.footnote td {
+    border: none;
+    padding-top: 0;
+}
+
+/* System messages (aka errors) */
+
+div.system-messages h1 {
+    color: red;
+}
+div.system-message {
+    border: none;
+    border-left: 1ex solid red;
+    margin-left: -3em;
+    margin-top: 0;
+    padding-left: 4.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    color: red;
+    background: #fff8f8;
+}
+div.system-message p.system-message-title {
+    margin-top: 0;
+    font-weight: bold;
+}
+
+</style>
+<style type="text/css">
+
+/*
+*   math2html: convert LaTeX equations to HTML output.
+*
+*   Copyright (C) 2009,2010 Alex Fernández
+*
+*   Released under the terms of the `2-Clause BSD license'_, in short:
+*   Copying and distribution of this file, with or without modification,
+*   are permitted in any medium without royalty provided the copyright
+*   notice and this notice are preserved.
+*   This file is offered as-is, without any warranty.
+*
+* .. _2-Clause BSD license: http://www.spdx.org/licenses/BSD-2-Clause
+*
+*   Based on eLyXer: convert LyX source files to HTML output.
+*   http://elyxer.nongnu.org/
+*/
+/* --end--
+* CSS file for LaTeX formulas.
+*/
+
+/* Formulas */
+.formula {
+	text-align: center;
+	font-family: "Droid Serif", "DejaVu Serif", "STIX", serif;
+	margin: 1.2em 0;
+}
+span.formula {
+	white-space: nowrap;
+}
+div.formula {
+	padding: 0.5ex;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Basic features */
+a.eqnumber {
+	display: inline-block;
+	float: right;
+	clear: right;
+	font-weight: bold;
+}
+span.unknown {
+	color: #800000;
+}
+span.ignored, span.arraydef {
+	display: none;
+}
+.formula i {
+	letter-spacing: 0.1ex;
+}
+
+/* Alignment */
+.align-left, .align-l {
+	text-align: left;
+}
+.align-right, .align-r {
+	text-align: right;
+}
+.align-center, .align-c {
+	text-align: center;
+}
+
+/* Structures */
+span.overline, span.bar {
+	text-decoration: overline;
+}
+.fraction, .fullfraction {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+}
+.fraction .fraction {
+	font-size: 80%;
+	line-height: 100%;
+}
+span.numerator {
+	display: block;
+}
+span.denominator {
+	display: block;
+	padding: 0ex;
+	border-top: thin solid;
+}
+sup.numerator, sup.unit {
+	font-size: 70%;
+	vertical-align: 80%;
+}
+sub.denominator, sub.unit {
+	font-size: 70%;
+	vertical-align: -20%;
+}
+span.sqrt {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0.1ex;
+}
+sup.root {
+	font-size: 70%;
+	position: relative;
+	left: 1.4ex;
+}
+span.radical {
+	display: inline-block;
+	padding: 0ex;
+	font-size: 150%;
+	vertical-align: top;
+}
+span.root {
+	display: inline-block;
+	border-top: thin solid;
+	padding: 0ex;
+	vertical-align: middle;
+}
+span.symbol {
+	line-height: 125%;
+	font-size: 125%;
+}
+span.bigsymbol {
+	line-height: 150%;
+	font-size: 150%;
+}
+span.largesymbol {
+	font-size: 175%;
+}
+span.hugesymbol {
+	font-size: 200%;
+}
+span.scripts {
+	display: inline-table;
+	vertical-align: middle;
+}
+.script {
+	display: table-row;
+	text-align: left;
+	line-height: 150%;
+}
+span.limits {
+	display: inline-table;
+	vertical-align: middle;
+}
+.limit {
+	display: table-row;
+	line-height: 99%;
+}
+sup.limit, sub.limit {
+	line-height: 100%;
+}
+span.symbolover {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	float: right;
+	right: 100%;
+	bottom: 0.5em;
+	width: 0px;
+}
+span.withsymbol {
+	display: inline-block;
+}
+span.symbolunder {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	float: right;
+	right: 80%;
+	top: 0.3em;
+	width: 0px;
+}
+
+/* Environments */
+span.array, span.bracketcases, span.binomial, span.environment {
+	display: inline-table;
+	text-align: center;
+	border-collapse: collapse;
+	margin: 0em;
+	vertical-align: middle;
+}
+span.arrayrow, span.binomrow {
+	display: table-row;
+	padding: 0ex;
+	border: 0ex;
+}
+span.arraycell, span.bracket, span.case, span.binomcell, span.environmentcell {
+	display: table-cell;
+	padding: 0ex 0.2ex;
+	line-height: 99%;
+	border: 0ex;
+}
+/*
+* CSS file for LaTeX formulas, extra stuff:
+* binomials, vertical braces, stackrel, fonts and colors.
+*/
+
+/* Inline binomials */
+span.binom {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 80%;
+}
+span.binomstack {
+	display: block;
+	padding: 0em;
+}
+
+/* Over- and underbraces */
+span.overbrace {
+	border-top: 2pt solid;
+}
+span.underbrace {
+	border-bottom: 2pt solid;
+}
+
+/* Stackrel */
+span.stackrel {
+	display: inline-block;
+	text-align: center;
+}
+span.upstackrel {
+	display: block;
+	padding: 0em;
+	font-size: 80%;
+	line-height: 64%;
+	position: relative;
+	top: 0.15em;
+
+}
+span.downstackrel {
+	display: block;
+	vertical-align: bottom;
+	padding: 0em;
+}
+
+/* Fonts */
+span.mathsf, span.textsf {
+	font-style: normal;
+	font-family: sans-serif;
+}
+span.mathrm, span.textrm {
+	font-style: normal;
+	font-family: serif;
+}
+span.text, span.textnormal {
+	font-style: normal;
+}
+span.textipa {
+	color: #008080;
+}
+span.fraktur {
+	font-family: "Lucida Blackletter", eufm10, blackletter;
+}
+span.blackboard {
+	font-family: Blackboard, msbm10, serif;
+}
+span.scriptfont {
+	font-family: "Monotype Corsiva", "Apple Chancery", "URW Chancery L", cursive;
+	font-style: italic;
+}
+
+/* Colors */
+span.colorbox {
+	display: inline-block;
+	padding: 5px;
+}
+span.fbox {
+	display: inline-block;
+	border: thin solid black;
+	padding: 2px;
+}
+span.boxed, span.framebox {
+	display: inline-block;
+	border: thin solid black;
+	padding: 5px;
+}
+
+
+</style>
+<style type="text/css">
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+pre .hll { background-color: #ffffcc }
+pre { background: #ffffff; }
+pre .c { color: #888888 } /* Comment */
+pre .err { color: #FF0000; background-color: #FFAAAA } /* Error */
+pre .k { color: #008800; font-weight: bold } /* Keyword */
+pre .o { color: #333333 } /* Operator */
+pre .ch { color: #888888 } /* Comment.Hashbang */
+pre .cm { color: #888888 } /* Comment.Multiline */
+pre .cp { color: #557799 } /* Comment.Preproc */
+pre .cpf { color: #888888 } /* Comment.PreprocFile */
+pre .c1 { color: #888888 } /* Comment.Single */
+pre .cs { color: #cc0000; font-weight: bold } /* Comment.Special */
+pre .gd { color: #A00000 } /* Generic.Deleted */
+pre .ge { font-style: italic } /* Generic.Emph */
+pre .gr { color: #FF0000 } /* Generic.Error */
+pre .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+pre .gi { color: #00A000 } /* Generic.Inserted */
+pre .go { color: #888888 } /* Generic.Output */
+pre .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+pre .gs { font-weight: bold } /* Generic.Strong */
+pre .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+pre .gt { color: #0044DD } /* Generic.Traceback */
+pre .kc { color: #008800; font-weight: bold } /* Keyword.Constant */
+pre .kd { color: #008800; font-weight: bold } /* Keyword.Declaration */
+pre .kn { color: #008800; font-weight: bold } /* Keyword.Namespace */
+pre .kp { color: #003388; font-weight: bold } /* Keyword.Pseudo */
+pre .kr { color: #008800; font-weight: bold } /* Keyword.Reserved */
+pre .kt { color: #333399; font-weight: bold } /* Keyword.Type */
+pre .m { color: #6600EE; font-weight: bold } /* Literal.Number */
+pre .s { background-color: #fff0f0 } /* Literal.String */
+pre .na { color: #0000CC } /* Name.Attribute */
+pre .nb { color: #007020 } /* Name.Builtin */
+pre .nc { color: #BB0066; font-weight: bold } /* Name.Class */
+pre .no { color: #003366; font-weight: bold } /* Name.Constant */
+pre .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+pre .ni { color: #880000; font-weight: bold } /* Name.Entity */
+pre .ne { color: #FF0000; font-weight: bold } /* Name.Exception */
+pre .nf { color: #0066BB; font-weight: bold } /* Name.Function */
+pre .nl { color: #997700; font-weight: bold } /* Name.Label */
+pre .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+pre .nt { color: #007700 } /* Name.Tag */
+pre .nv { color: #996633 } /* Name.Variable */
+pre .ow { color: #000000; font-weight: bold } /* Operator.Word */
+pre .w { color: #bbbbbb } /* Text.Whitespace */
+pre .mb { color: #6600EE; font-weight: bold } /* Literal.Number.Bin */
+pre .mf { color: #6600EE; font-weight: bold } /* Literal.Number.Float */
+pre .mh { color: #005588; font-weight: bold } /* Literal.Number.Hex */
+pre .mi { color: #0000DD; font-weight: bold } /* Literal.Number.Integer */
+pre .mo { color: #4400EE; font-weight: bold } /* Literal.Number.Oct */
+pre .sa { background-color: #fff0f0 } /* Literal.String.Affix */
+pre .sb { background-color: #fff0f0 } /* Literal.String.Backtick */
+pre .sc { color: #0044DD } /* Literal.String.Char */
+pre .dl { background-color: #fff0f0 } /* Literal.String.Delimiter */
+pre .sd { color: #DD4422 } /* Literal.String.Doc */
+pre .s2 { background-color: #fff0f0 } /* Literal.String.Double */
+pre .se { color: #666666; font-weight: bold; background-color: #fff0f0 } /* Literal.String.Escape */
+pre .sh { background-color: #fff0f0 } /* Literal.String.Heredoc */
+pre .si { background-color: #eeeeee } /* Literal.String.Interpol */
+pre .sx { color: #DD2200; background-color: #fff0f0 } /* Literal.String.Other */
+pre .sr { color: #000000; background-color: #fff0ff } /* Literal.String.Regex */
+pre .s1 { background-color: #fff0f0 } /* Literal.String.Single */
+pre .ss { color: #AA6600 } /* Literal.String.Symbol */
+pre .bp { color: #007020 } /* Name.Builtin.Pseudo */
+pre .fm { color: #0066BB; font-weight: bold } /* Name.Function.Magic */
+pre .vc { color: #336699 } /* Name.Variable.Class */
+pre .vg { color: #dd7700; font-weight: bold } /* Name.Variable.Global */
+pre .vi { color: #3333BB } /* Name.Variable.Instance */
+pre .vm { color: #996633 } /* Name.Variable.Magic */
+pre .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
+</style>
+</head>
+<body>
+<div class="document" id="history">
+<h1 class="title">History</h1>
+
+<div class="section" id="jam99">
+<h1>2024/11/09 jam99</h1>
+<p>A major revision.  Rewrite the code to remove the dependence on the external non-commutative multiplication packages <tt class="docutils literal">NCAlgebra</tt>.  The package was giving errors, and slowing down <tt class="docutils literal">Evolver</tt> evaluation by ten fold compared to my prior <tt class="docutils literal">NCAlgebra</tt>-free implementation.</p>
+<ul class="simple">
+<li>Reintroduce the <tt class="docutils literal">Mult</tt> function, introduced in <tt class="docutils literal">OpQ.m</tt> and <tt class="docutils literal"><span class="pre">OpQ-tests.m</span></tt>.</li>
+<li>After much coding, all units tests pass!</li>
+<li>Replaced a non-commutative inverse function, supplied by  <tt class="docutils literal">NC</tt> and <tt class="docutils literal">NCAlgebra</tt>, in <tt class="docutils literal">Evolve</tt> with a simple <tt class="docutils literal">Division</tt>.  This change gives reasonable results, but feels like a kludge.</li>
+<li>Rewrite <tt class="docutils literal"><span class="pre">UniDyn--Demo-01.nb</span></tt> through <tt class="docutils literal"><span class="pre">UniDyn--Demo-05.nb</span></tt> to use <tt class="docutils literal">Mult</tt> instead of <tt class="docutils literal">**</tt> to represent the non-commutative multiply operator.  Regenerate all the associated <tt class="docutils literal">.pdf</tt> files.  Clear the outputs in each of the <tt class="docutils literal">.nb</tt> files to save space.</li>
+<li>Many, but not all, of the quantum optics evolution examples in <tt class="docutils literal"><span class="pre">UniDyn--Demo-Scratch.nb</span></tt> now work.</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1>2022/04/25 jam99</h1>
+<ul class="simple">
+<li>Rewrite <tt class="docutils literal"><span class="pre">UniDyn--Demo-02.nb</span></tt> through <tt class="docutils literal"><span class="pre">UniDyn--Demo-05.nb</span></tt>.  See the commit messages for a short summary of major code revisions required for each file.</li>
+<li>Regenerate all the associated <tt class="docutils literal">.pdf</tt> files.  Clear the outputs in each of the <tt class="docutils literal">.nb</tt> files to save space.</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h1>2022/03/07 jam99</h1>
+<ul class="simple">
+<li>Upgrade from Mathematica 12.3.1 to 13.0.0.0.  Rewrite <tt class="docutils literal"><span class="pre">UniDyn--Demo-01.nb</span></tt> and <tt class="docutils literal"><span class="pre">UniDyn--Demo-Scratch.nb</span></tt> to replace the reserved name <tt class="docutils literal">tr</tt> with <tt class="docutils literal">test$report</tt>.</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1>2022/03/05 jam99</h1>
+<ul class="simple">
+<li>Rebooting this package, after a long hiatus, now that I am teaching graduate quantum mechanics again.</li>
+<li>Upgraded to <em>Mathematica</em> version 12.3.0.1 and <tt class="docutils literal">NCAlgebra 5.0.6</tt>.  These upgrades broke (a) one unit test in <tt class="docutils literal"><span class="pre">OpCreate-tests.m</span></tt> and (b) all the operator rotations (half the tests) in <tt class="docutils literal"><span class="pre">Evolve-tests.m</span></tt>.  The failure in (a) was patched by explicitly declaring a variable to be non-commutative. It seems like lower-case variables are not defaulting, as expected, to be non-commutative in the <tt class="docutils literal">NCAlgebra</tt> package; the patch is a workaround.  The failure in (b) was fixed by replacing <tt class="docutils literal">NCExpand</tt> with <tt class="docutils literal">NonCommutativeMultiply`NCExpand</tt> in <tt class="docutils literal">Evolve.m</tt>.  I note that I had previously figured out that <tt class="docutils literal">CommutativeQ</tt> needs to be called as <tt class="docutils literal">NonCommutativeMultiply`CommutativeQ</tt> inside the private part of my package, so I am puzzled why I didn't wrap the call to <tt class="docutils literal">NCExpand</tt> similarly.</li>
+<li>Rewrote the Demo notebooks <tt class="docutils literal"><span class="pre">UniDyn--Demo-01.nb</span></tt> and <tt class="docutils literal"><span class="pre">UniDyn--Demo-Scratch.nb</span></tt> so that you now have to input the filepath for both the <tt class="docutils literal">NCAlgebra</tt> and <tt class="docutils literal">UniDyn</tt> installation locations.</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>2016/09/14 jam99</h1>
+<ul class="simple">
+<li>One of the unit tests in <tt class="docutils literal"><span class="pre">Evolve-tests.m</span></tt> broke when I upgraded from <em>Mathematica</em> version 10 to 11.  Tweak <tt class="docutils literal"><span class="pre">Evolve-tests.m</span></tt> so the &quot;off-resonance evolution of Iz&quot; test case passes in <em>Mathematica</em> version 11.</li>
+<li>Fix a bug in the definition of the rules for simplifying harmonic oscillator <span class="formula"><i>Q</i></span> and <span class="formula"><i>P</i></span> operators.  The symptom of the bug was that when <span class="formula"><i>P</i></span> was rewritten in terms of raising and lowering operators and then converted back to position and momentum operators, the result was <span class="formula"> − <i>P</i></span> and not <span class="formula"><i>P</i></span>.  Add a unit test to <tt class="docutils literal"><span class="pre">Evolve-tests.m</span></tt> to check that the conversion and back-conversion returns <span class="formula"><i>Q</i></span> and <span class="formula"><i>P</i></span> as expected.</li>
+<li>Added unit tests covering harmonic oscillator &quot;postion kick&quot; and &quot;momentum kick&quot; Hamiltonians.</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h1>2016/05/11 jam99</h1>
+<p>Notebook <tt class="docutils literal"><span class="pre">UniDyn--Demo-05.nb</span></tt> added to illustrate, for two weakly coupled spins, the 1D spectrum, the INEPT experiment, the heteronuclear COSY, and the homonuclear COSY.</p>
+</div>
+<div class="section" id="id6">
+<h1>2016/05/05 jam99</h1>
+<ul class="simple">
+<li>Add a notebook <tt class="docutils literal"><span class="pre">UniDyn--Demo-03.nb</span></tt> that illustrates how to take the digital Fourier transform of data in <em>Mathematica</em>.</li>
+<li>Add a notebook <tt class="docutils literal"><span class="pre">UniDyn--Demo-04.nb</span></tt> that calculates the signal analytically for two weakly coupled spins, calculates a numerical signal, and Fourier transforms it.</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h1>2016/01/11 jam99</h1>
+<p>Tweaks to make the package more compatible with <em>Mathematica</em> ver 8.</p>
+<ul class="simple">
+<li>Modify how equations are passed to <tt class="docutils literal">DSolve[]</tt> so that <tt class="docutils literal">Evolver[]</tt> works in <em>Mathematica</em> version 8.</li>
+<li>Unit-testing functions are new in <em>Mathematica</em> version 10; consequently, the unit tests in the <tt class="docutils literal"><span class="pre">*-tests.nb</span></tt> files and in <tt class="docutils literal"><span class="pre">UniDyn--Demo-01.nb</span></tt> will not run correctly in a <em>Mathematica</em> version below 10.  In each testing file, modify the unit-testing function so that the function created  depends on the <em>Mathematica</em> version.  When the unit-testing files are executed in a <em>Mathematica</em> version below 10, the unit tests will now print a <tt class="docutils literal">Pass</tt> or <tt class="docutils literal">Fail</tt> message.  For now, the unit tests in <tt class="docutils literal"><span class="pre">UniDyn--Demo-01.nb</span></tt> still only work in <em>Mathematica</em> version 10; in versions below 10, the only way to do unit testing is to open up each of the <tt class="docutils literal"><span class="pre">*-tests.nb</span></tt> files and run them one at a time.</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h1>2016/01/10 jam99</h1>
+<p>Minimal working version of <tt class="docutils literal">Evolver</tt> with unit tests and two example notebooks.</p>
+</div>
+</div>
+
+<script type="text/javascript">
+var mtime = '1731214704.6186867';
+var poll = null;
+window.onload = function () {
+    setTimeout(function () {
+        poll = new XMLHttpRequest();
+        poll.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var reload = new XMLHttpRequest();
+                reload.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.title = this.responseXML.title;
+                        document.body.innerHTML = this.responseXML.body.innerHTML;
+                        var old_styles = document.getElementsByTagName('style');
+                        var new_styles = this.responseXML.getElementsByTagName('style');
+                        for (var i = old_styles.length - 1; i >= 0; i--) {
+                            old_styles[i].remove();
+                        }
+                        // convert HTMLCollection to an array so that
+                        // items don't disappear from under us when I append
+                        // them to a different DOM tree
+                        new_styles = [].slice.call(new_styles);
+                        for (var i = 0; i < new_styles.length; i++) {
+                            document.head.appendChild(new_styles[i]);
+                        }
+                        mtime = this.getResponseHeader('X-Restview-Mtime');
+                        if (mtime) {
+                            poll.open('HEAD', '/polling?pathname=' + location.pathname + '&mtime=' + mtime, true);
+                            poll.send();
+                        }
+                    }
+                }
+                reload.open('GET', location.pathname, true);
+                reload.responseType = 'document';
+                reload.send();
+            }
+        }
+        poll.open('HEAD', '/polling?pathname=' + location.pathname + '&mtime=' + mtime, true);
+        poll.send(null);
+    }, 0);
+}
+window.onbeforeunload = function () {
+    poll.abort();
+}
+</script>
+</body>
+</html>
