@@ -1,33 +1,77 @@
-% BibTeX bibliography style `pccp' for Phys. Chem. Chem. Phys.
-%   5/5/00 Joerg-R. Hill
-%   no output of 'title' for 'article', 'book', 'inbook', 'incollection'
-%   no output of 'note' except in 'unpublished'
+% Based on
+% pccp-bibtex-nomonth-title-nonhttpurl-conf-nonote.bst
+% 
+% Help from:
 %
-% version 0.99a for BibTeX versions 0.99a or later, LaTeX version 2.09.
-% Copyright (C) 1985, all rights reserved.
-% Copying of this file is authorized only if either
-% (1) you make absolutely no changes to your copy, including name, or
-% (2) if you do make changes, you name it something other than
-% btxbst.doc, plain.bst, unsrt.bst, alpha.bst, and abbrv.bst.
-% This restriction helps ensure that all standard styles are identical.
-% The file btxbst.doc has the documentation for this style.
+% https://chenfuture.wordpress.com/2007/09/24/diy-your-bibtex-style-file/
+% Tame the BeaST: The B to X of BibTEX by Nicolas Markey
+% 	ftp://ftp.tex.ac.uk/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
+% Designing BIBTEX Styles by Oren Patashnik
+% 	http://www.tex.ac.uk/tex-archive/biblio/bibtex/contrib/doc/btxhak.pdf
+% http://www.tex.ac.uk/tex-archive/biblio/bibtex/contrib/doc/btxFAQ.pdf
 %
-%	Fixed article, book references	11/10/92---CLF
+% EXAMPLE INPUT:
 %
-% File modified by the RSC to use RSC-compliant journal references
-% JRW -  08/07/05
+%@Booklet(MarohnNSFgrant,
+%Title = {Scanned-Probe Characterization of Degradation and Charge Generation in Organic Semiconductors},
+%Author = {Marohn, John A.},
+%Agency = {National Science Foundation},
+%Duration = {08/01/13 -- 07/31/16},
+%Amount = {417000},
+%Institution = {Cornell University},
+%Address = {Ithaca, New York},
+%Commitment = {Cal: 0.00, Acad: 1.0, Sumr: 1.0},
+%Grant = {DMR-1006633},
+%Funds = {one postdoc for 2.5 years and one graduate student for 1 year.},
+%Abstract = {},
+%Keywords = {grant-Marohn-NSF-DMR-1006633},
+%Owner = {jam99},
+%Timestamp = {2015.03.22},
+%Url = {http://www.nsf.gov/awardsearch/showAward?AWD_ID=1309540&HistoricalAwards=false}
+%)
+%
+% EXAMPLE OUTPUT
+%
+% ``Scanned-Probe Characterization Of Degradation And Charge Generation In Organic Semiconductors'' (P.I.: John A. Marohn, Cornell Univ.; National Science Foundation; 8/1/13 -- 7/31/16; \$417,000).  This proposal funds time-resolved scanning Kelvin probe microscope (SPKM) studies of (1) charge trapping in $n$-type organic semiconductors and (2) charge photogeneration in organic semiconductor blends. {\bf Ongoing}
+% 
+
+% ADDED:
+%
+%  abstract
+%  agency
+%  amount
+%  commitment
+%  duration
+%  grant
+%  submitted
+%  funds
+%
+%  with the following internal variable
+%
+%  keywords
+%  owner
+%  timestamp
+
 
 ENTRY
-  { address
+  { abstract
+  	address
+  	agency
+	amount
     author
     booktitle
     chapter
+    commitment
+    duration
     edition
     editor
+    funds
+    grant
     howpublished
     institution
     journal
     key
+    keywords
     month
     note
     number
@@ -36,13 +80,20 @@ ENTRY
     publisher
     school
     series
+    submitted
     title
     type
     volume
     year
+    url
+    doi
+    pmcid
+    location
   }
   {}
   { label }
+
+% ====== START COPIED ========
 
 INTEGERS { output.state before.all mid.sentence after.sentence after.block after.item author.or.editor }
 
@@ -318,6 +369,26 @@ FUNCTION {n.dashify}
   while$
 }
 
+%FUNCTION {format.date}
+%{ year empty$
+%    { month empty$
+%	{ "" }
+%	{ "there's a month but no year in " cite$ * warning$
+%	  month
+%	}
+%      if$
+%    }
+%    { month empty$
+%	{ year }
+%	{ year }
+%	{ month " " * year }
+%      if$
+%    }
+%  if$
+%}
+% Replaced w/ the following 
+% John Marohn 2009/01/13
+
 FUNCTION {format.date}
 { year empty$
     { month empty$
@@ -328,8 +399,9 @@ FUNCTION {format.date}
       if$
     }
     { month empty$
-	{ year }
-	{ month " " * year }
+	{ year boldface }
+	{ year boldface }
+%	{ month " " * year }
       if$
     }
   if$
@@ -438,17 +510,32 @@ FUNCTION {format.pages}
   if$
 }
 
+%FUNCTION {format.vol.num.pages}
+%{ volume boldface field.or.null
+%  number empty$
+%    'skip$
+%    { "(" number * ")" * *
+%      volume empty$
+%	{ "there's a number but no volume in " cite$ * warning$ }
+%	'skip$
+%      if$
+%    }
+%  if$
+%  pages empty$
+%    'skip$
+%    { duplicate$ empty$
+%	{ pop$ format.pages }
+%	{ ", " * pages n.dashify * }
+%      if$
+%    }
+%  if$
+%}
+%
+% Replaced with function below 
+%  by John Marohn 2009/01/12
+
 FUNCTION {format.vol.num.pages}
-{ volume boldface field.or.null
-  number empty$
-    'skip$
-    { "(" number * ")" * *
-      volume empty$
-	{ "there's a number but no volume in " cite$ * warning$ }
-	'skip$
-      if$
-    }
-  if$
+{ volume emphasize field.or.null
   pages empty$
     'skip$
     { duplicate$ empty$
@@ -458,6 +545,7 @@ FUNCTION {format.vol.num.pages}
     }
   if$
 }
+
 
 FUNCTION {format.chapter.pages}
 { chapter empty$
@@ -619,9 +707,136 @@ FUNCTION {format.incoll.inproc.crossref}
   " \cite{" * crossref * "}" *
 }
 
+%% OLD
+%FUNCTION {format.url}
+%{ url empty$
+%    { "" }
+%    { "\href{" url * "}{[url]}" * }
+%  if$
+%}
+
+%% jam99 -- try to add DOI number if it's present, and if it's not, add URL; if no URL, do nothing
+%FUNCTION {format.url}
+%{ url empty$
+%    { "" }
+%    { doi empty$
+%    	{ "\href{" url * "}{[url]}" * }
+%    	{ "\href{" url * "}{[doi:" * doi * "]}" * }
+%     if$
+%     }
+%  if$
+%}
+
+% jam99 -- try to add DOI number if it's present, and if it's not, add URL; if no URL, do nothing
+% the opening "[" and closing "]" should not be part of the hyperlink
+% 2016/01/22 -- For NIH grant, want doi numbers to appear as 
+%  URL http://dx.doi.org/10.1021/nn300941f
+% and hyperlinks to appear as
+%  URL http://www.google.com
+% 
+% obsolete:
+%FUNCTION {format.url}
+%{ url empty$
+%    { "" }
+%    { doi empty$
+%    	{ "URL " "\href{" * url * "}{url}" * }
+%    	{ "URL " "\href{" * url * "}{" * url * "}" * }
+%     if$
+%     }
+%  if$
+%}
+%
+% NEW:
+%
+% Replace on 2018.03.07 
+%FUNCTION {format.url}
+%{ url empty$
+%    { "" }
+%    { doi empty$
+%    	{ "URL " "\href{" * url * "}{" * url * "}" * }
+%		{ "URL " "\href{http://dx.doi.org/" * doi * "}{http://dx.doi.org/" * doi * "}" * }
+%     if$
+%     }
+%  if$
+%}
+
+% 2023/02/28 jam99
+% Rewrite the function below
+% 
+% If there is a doi, use it to create a URL entry using the new doi.org standard.
+% If there is no doi, use the URL.
+% If there is no URL, do nothing.
+%
+%FUNCTION {format.url}
+%{ url empty$
+%    { "" }
+%    { doi empty$
+%        { "URL " "\url{" * url * "}" * }
+%        { "URL " "\url{http://dx.doi.org/" * doi * "}" * }
+%     if$
+%     }
+%  if$
+%}
+
+FUNCTION {format.url}
+{ doi empty$
+  { url empty$
+    { "" }
+    { "URL " "\url{" * url * "}" * }
+  if$
+  }
+  { "URL " "\url{https://doi.org/" * doi * "}" * }
+if$
+}
+
+% Replace on 2018.03.07
+%FUNCTION {format.pmcid}
+%{ pmcid empty$
+%    { "" }
+%    { "\href{http://www.ncbi.nlm.nih.gov/pmc/articlerender.fcgi?artid=PMC" pmcid * "}{PMC" * pmcid * ".}" * }
+%if$s
+
+%}
+
+FUNCTION {format.pmcid}
+{ pmcid empty$
+    { "" }
+    { "PMC \url{http://www.ncbi.nlm.nih.gov/pmc/articlerender.fcgi?artid=PMC" pmcid * "}" * }
+if$
+}
+
+% jam99 -- added, in case note is empty
+FUNCTION {format.note}
+{ note empty$
+    { "" }
+    {note}
+    if$
+}
+
+%% OLD
+%FUNCTION {article}
+%{ output.bibitem
+%  format.authors "author" output.check
+%  format.title "title" output.check
+%  crossref missing$
+%    { journal emphasize "journal" output.check
+%      format.date "year" output.check
+%      format.vol.num.pages output
+%    }
+%    { format.article.crossref output.nonnull
+%      format.pages output
+%    }
+%  if$
+%  format.url output
+%  fin.entry
+%}
+
+% jam99 -- Added note line
+% jam99 -- Removed note line
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
+  format.title "title" output.check
   crossref missing$
     { journal emphasize "journal" output.check
       format.date "year" output.check
@@ -631,6 +846,8 @@ FUNCTION {article}
       format.pages output
     }
   if$
+  format.url output
+  format.pmcid output
   fin.entry
 }
 
@@ -659,17 +876,20 @@ FUNCTION {book}
   fin.entry
 }
 
-FUNCTION {booklet}
-{ output.bibitem
-  format.authors output new.item
-  format.title "title" output.check
-  howpublished address new.block.checkb
-  howpublished output
-  address output
-  format.date output
-  new.block
-  fin.entry
-}
+% We are going to hijack this to format grants.
+% See below.
+% 
+%FUNCTION {booklet}
+%{ output.bibitem
+%  format.authors output new.item
+%  format.title "title" output.check
+%  howpublished address new.block.checkb
+%  howpublished output
+%  address output
+%  format.date output
+%  new.block
+%  fin.entry
+%}
 
 FUNCTION {inbook}
 { output.bibitem
@@ -719,9 +939,12 @@ FUNCTION {incollection}
   fin.entry
 }
 
+% JAM: added the line "format.title "title" output.check new.sentence" after the author line
+
 FUNCTION {inproceedings}
 { output.bibitem
   format.authors "author" output.check new.item
+  format.title "title" output.check new.sentence
   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check
       format.bvolume output
@@ -745,6 +968,7 @@ FUNCTION {inproceedings}
       format.pages output
     }
   if$
+  format.url output
   new.block
   fin.entry
 }
@@ -807,6 +1031,7 @@ FUNCTION {misc}
   empty.misc.check
 }
 
+% JAM: added "format.url output" line before "new.block" line
 FUNCTION {phdthesis}
 { output.bibitem
   format.authors "author" output.check new.item
@@ -815,10 +1040,12 @@ FUNCTION {phdthesis}
   school "school" output.check
   address output
   format.date "year" output.check
+  format.url output
   new.block
   fin.entry
 }
 
+% JAM: added "format.url output" line before "new.block" line
 FUNCTION {proceedings}
 { output.bibitem
   editor empty$
@@ -849,6 +1076,7 @@ FUNCTION {proceedings}
       publisher output
     }
   if$
+  format.url output
   new.block
   fin.entry
 }
@@ -865,83 +1093,115 @@ FUNCTION {techreport}
   fin.entry
 }
 
+% JAM: Old
+%FUNCTION {unpublished}
+%{ output.bibitem
+%  format.authors "author" output.check
+%%  format.title "title" output.check new.item
+%  format.btitle "title" output.check
+%  note "note" output.check
+%  format.date output
+%  fin.entry
+%}
+
+%JAM: New -- added "format.url output" line before "new.block" line
 FUNCTION {unpublished}
 { output.bibitem
   format.authors "author" output.check
-% format.title "title" output.check new.item
+%  format.title "title" output.check new.item
+  format.btitle "title" output.check
   note "note" output.check
   format.date output
+  format.url output
   fin.entry
 }
 
 FUNCTION {default.type} { misc }
 
-MACRO {jan} {"January"}
+% ======= END COPIED =========
 
-MACRO {feb} {"February"}
+% == jam99 START NEW STUFF ===
 
-MACRO {mar} {"March"}
+% We are going to hijack booklet because that is a bib style that I seldom use.
+% I am aiming for something approximately like this:
+%
+% ``Scanned-Probe Characterization Of Degradation And Charge Generation In Organic Semiconductors'' (P.I.: John A. Marohn, Cornell Univ.; National Science Foundation; 8/1/13 -- 7/31/16; \$417,000).  This proposal funds time-resolved scanning Kelvin probe microscope (SPKM) studies of (1) charge trapping in $n$-type organic semiconductors and (2) charge photogeneration in organic semiconductor blends.
 
-MACRO {apr} {"April"}
+FUNCTION {format.institution}
+{ institution 
+}
 
-MACRO {may} {"May"}
+FUNCTION {format.agency}
+{ agency
+}
 
-MACRO {jun} {"June"}
+FUNCTION {format.grant}
+{ grant empty$
+	{""}
+	{"grant number " grant *}
+  if$
+}
 
-MACRO {jul} {"July"}
+FUNCTION {format.submitted}
+{  submitted empty$
+	{""}
+	{"submitted " submitted *}
+  if$
+}
 
-MACRO {aug} {"August"}
+FUNCTION {format.duration}
+{  duration 
+}
 
-MACRO {sep} {"September"}
+FUNCTION {format.commitment}
+{  commitment 
+}
 
-MACRO {oct} {"October"}
+FUNCTION {format.amount}
+{ amount empty$
+	{""}
+	{"\$" amount *}
+  if$
+}
 
-MACRO {nov} {"November"}
+FUNCTION {format.location}
+{ amount empty$
+	{""}
+	{"location: " location *}
+  if$
+}
 
-MACRO {dec} {"December"}
 
-MACRO {bbrc} {"Biochem. Biophys. Res. Commun."}
+FUNCTION {booklet}
+{ output.bibitem
+  "``" format.title * "'' " * output
+  new.item
+  "(" format.authors * output
+  new.block
+  format.institution output
+  new.block
+  format.grant output
+  new.item
+  format.url output
+  new.block
+  format.location output
+  new.block
+  format.agency output
+  new.block
+  format.submitted output
+  new.block
+  format.duration output
+  new.block
+  format.amount ")" * output
+  new.sentence 
+  format.note output
+  new.sentence
+  format.commitment output
+  fin.entry
+}
 
-MACRO {jacs} {"J. Am. Chem. Soc."}
-
-MACRO {jbc} {"J. Biol. Chem."}
-
-MACRO {pnas} {"Proc. Natl. Acad. Sci."}
-
-MACRO {jmb} {"J. Mol. Biol."}
-
-MACRO {embo} {"EMBO J."}
-
-MACRO {tibs} {"Trends Biochem. Sci."}
-
-MACRO {protsfg} {"Proteins: Struct. Func. Genet."}
-
-MACRO {ieeetcad}
- {"IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems"}
-
-MACRO {ipl} {"Inform. Process. Lett."}
-
-MACRO {jacm} {"J. Assoc. Comput. Mach."}
-
-MACRO {jcss} {"J. Comput. System Sci."}
-
-MACRO {scp} {"Sci. Comput. Program."}
-
-MACRO {sicomp} {"SIAM J. Comput."}
-
-MACRO {tocs} {"Trans. Comput. Syst."}
-
-MACRO {tods} {"Trans. Database Syst."}
-
-MACRO {tog} {"Trans. Graphics"}
-
-MACRO {toms} {"Trans. Math. Software"}
-
-MACRO {toois} {"Trans. Office Inf. Syst."}
-
-MACRO {toplas} {"Trans. Program. Languages Syst."}
-
-MACRO {tcs} {"Theor. Comput. Sci."}
+% === jam99 END NEW STUFF ====
+% ====== START COPIED ========
 
 READ
 
@@ -990,3 +1250,7 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
+
+% ======= END COPIED =========
+
+

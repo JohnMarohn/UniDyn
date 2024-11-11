@@ -1,96 +1,73 @@
 %!TEX root = UniDyn-doc.tex
 
-% \cite{Slichter1990}
-%
-%   Differential equation approach.
-%
-% ====================
-%
-% \cite{Shriver1991oct} = NMR product operator calculations ... 
-% \cite{Guntert1993jan} = POMA = Product operator ...
-% \cite{Guntert2006aug} = Symbolic NMR Product Operator Calculations 
-%
-%   Repeated application of a small number of rules for weakly-coupled I = 1/2 spins.
-
-
-% \cite{Rodriguez2001oct} = Density matrix calculations in Mathematica
-%
-%   Two spin 1/2 particles, 4 x 4 matrix, added gradient
-%
-% \cite{Anand2007dec} = Simulation of steady-state {NMR} of coupled systems using Liouville
-%	space and computer algebra methods
-%
-%   Multiple spins, steady-state solutions of LvN equation with relaxation.
-%
-% \cite{Jerschow2005sep} = MathNMR: Spin and spatial tensor manipulations in Mathematica
-%
-%   Significant extension; move beyond weakly coupled spins and introduce spatial rotations
-%   as well.  Must specify total spin angular momentum for each spin.  "Semi-symbolic".
-%
-% \cite{Filip2010nov} = SD-CAS: Spin Dynamics by Computer Algebra Systems
-%
-%   Algorithms developed for algebraically calculating products and commutators of expressions 
-%   involving products of many spin operators.  
-%
-% \cite{Loke2011oct} = An efficient quantum circuit analyser on qubits and qudits
-%
-%  "The CUGates notebook simulates arbitrarily complex quantum circuits comprised of
-%  single/multiple qubit and qudit quantum gates.  It utilizes an irreducible form of
-%  matrix decomposition for a general controlled gate with multiple conditionals and
-%  is highly efficient in simulating complex quantum circuits." 
-%
-% ====================
-% 
-% \cite{Untidt2002jan} = Closed solution to the Baker-Campbell-Hausdorff problem: Exact 
-% effective Hamiltonian theory for analysis of nuclear-magnetic-resonance experiments
-%
-%   For spins, the matrices appearing in the propagator are finite and the propagator can be
-%   expanded using the Cayley-Hamilton theorem.  Products of propagators can be combined using
-%   the Baker-Campbell-Hausdorff, which for small numbers of spins also contains only a finite 
-%   number of terms.   Goal: an effective Hamiltonian.
-%
-% \cite{Weyrauch2009sep} = Computing the Baker-Campbell-Hausdorff series and the Zassenhaus product
-%
-%.  Evaluate different algorithms for writing the propagator.
-%
-% ====================
-%
-% \cite{Beskrovnyi1998jun} = Applying Mathematica to the analytical solution of the 
-% nonlinear Heisenberg operator equations
-%
-% \cite{Nguyen1998dec} = Symbolic calculations of unitary transformations in quantum dynamics
-%
-%   Unitary transformations are represented by a truncated, finite series of nested commutators 
-%   involving the generator.  Nguyen et al. described a procedure for resumming the subseries
-%   to give a closed-form expression; we have tried this approach and find it to fail when the
-%   arguments of the sines, cosines, and exponentials involve non-simple expressions such as
-%   fractions.  Beskrovnyi1 was interested in a few coupled multiple oscillators, field modes. 
-%   Same approach, but with multiple modes. 
-%
-% ==============
-%
-% \cite{Weatherford2004oct} = Symbolic calculation in chemistry: Selected examples
-%
-% A wide but shallow review
-%
-% ==============
-%
-% Large packages:
-%
-% \cite{Helton2015feb} = NCAlgebra; impressive 
-%
-% \cite{Levitt2015mar} = SpinDynamica; wow ...
-%
-% ==============
-
-Given a time-independent Hamiltonian ${\cal H}$ and an initial (density) operator $\rho(0)$, the \VerbFcn{Evolver} algorithm described below implements the following unitary rotation:
+Given a time-independent Hamiltonian ${\cal H}$ and an initial (density) operator $\rho(0)$, the \VerbFcn{Evolver} algorithm described below computes the (density) operator at time $t$ by implementing the following unitary rotation
 \begin{equation}
 \rho(t) 
 	= e^{-i {\cal H} t} \: \rho(0) \: e^{+i {\cal H} t}
 	\equiv \text{\VerbFcn{Evolver}}[{\cal H},t,\rho(0)]
 	\label{Eq:Evolve}
 \end{equation}
-Knowing the commutation relations among the operators comprising ${\cal H}$ and $\rho(0)$, it is often possible to obtain a closed-form algebraic solution to Eq.~\ref{Eq:Evolve}.  The \VerbFcn{Evolver} algorithm obtains a closed-form solution to Eq.~\ref{Eq:Evolve} by extending an approach introduced by Slichter in Section 2.3 of his \emph{Principles of Magnetic Resonance} text \cite{Slichter1990}.
+Consider two representative examples.  The time evolution of transverse spin magnetization in a longitudinal magnetic field is described by the rotation
+\begin{equation}
+e^{-i \, \omega t \, I_z} \: 
+  I_x \: 
+  e^{+i \, \omega t \, I_z} 
+   = I_x \, \sin{(\omega t)} + I_y \, \cos{(\omega t)}
+   \label{eq:example-spin}
+\end{equation}
+where $\omega$ is the Larmor frequency and $I_x$, $I_y$, and $I_z$ are the spin angular-momentum operators.  The harmonic oscillator's creation operator $a^{\dagger}$ evolves in time under the harmonic oscillator's Hamiltonian as follows:
+ \begin{equation}
+ e^{- i \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})} 
+   a^{\dagger}
+   e^{+ i \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})} 
+   =  a^{\dagger} e^{-i \omega t}
+   \label{eq:example-ho}
+\end{equation}
+where $a$ is the annihilation operator and $\omega$ is the harmonic-oscillator's resonance frequency.
+Knowing the commutation relations among the operators comprising ${\cal H}$ and $\rho(0)$, it is often possible to obtain a closed-form algebraic solution to Eq.~\ref{Eq:Evolve}.  
+The \VerbFcn{Evolver} algorithm obtains a closed-form solution to Eq.~\ref{Eq:Evolve} by extending an approach introduced by Slichter in Section 2.3 of his \emph{Principles of Magnetic Resonance} text \cite{Slichter1990}.
 The only input to the algorithm is the commutation relations for the relevant operators.
 
-Slichter was interested in calculating the unitary evolution of angular momentum operators arising in spin-physics problems.  Below we introduce the Slichter procedure by considering a few representative examples.  We show that his procedure works well for harmonic oscillator problems as well, including problems involving the coupling of a harmonic oscillator with a two-level system, a minimum model for describing electron transfer in chemical reactions.  It will become apparent that automating Slichter's procedure in a computer algebra program like \emph{Mathematica} is possible but challenging.  We introduce a generalization of the Slichter algorithm that is well suited for automation by a computer algebra program.  We have implemented this algorithm as a \emph{Mathematica} function, \VerbFcn{Evolver}.  This function evaluates Eq.~\ref{Eq:Evolve} given an ${\cal H}$, a $\rho(0)$, and the commutation relations between the operators comprising ${\cal H}$ and $\rho(0)$.
+\section{Background}
+
+Numerous software programs exist for computing eq.~\ref{Eq:Evolve} dynamics numerically.
+In order to gain physical understanding, researchers want to compute the dynamics symbolically, using computer algebra programs.
+This effort has been motivated by applications in magnetic resonance \cite{Shriver1991oct,Kanters1993jan,Guntert1993jan,Isbister1995dec,Rodriguez2001jan,Guntert2006aug,Anand2007dec,Kuprov2007feb,Filip2010nov}, 
+quantum computing \cite{Loke2011oct,Chen2013mar,Loke2013dec},
+electronic structure \cite{Zitko2011oct},
+vibrational dynamics \cite{Aleixo2011aug}, and 
+quantum optics \cite{Beskrovnyi1998jun,Nguyen1998dec}.
+Unitary rotations like eq.~\ref{Eq:Evolve} occur in exact effective Hamiltonian theory \cite{Untidt2002jan,Siminovitch2004jan}, 
+the Baker-Campbell-Hausdorff formula \cite{Weyrauch2009sep,Aleixo2011aug},
+the Zassenhaus product formula \cite{Weyrauch2009sep,Aleixo2011aug, Casas2012nov}, 
+the Hadamard lemma \cite{Aleixo2011aug}, and 
+simplifications of exponential operators involving raising and lower operators that are possible if the underlying potential has certain symmetries \cite{Aleixo2011aug}.
+
+Most eq.~\ref{Eq:Evolve} work to date, motivated by applications in magnetic resonance 
+% \cite{Isbister1995dec,Rodriguez2001jan,Jerschow2005sep,Kuprov2007feb,Anand2007dec,Bengs2017sep} 
+and quantum computing% 
+% \cite{Loke2011oct,Chen2013mar,Loke2013dec}%
+, has been semi-symbolic.
+Spins and few-level electron systems have a finite Hilbert space and can be represented by finite-dimensional matrices.
+In the semi-symbolic approaches, spin-angular momentum operators are expressed as matrices \cite{Isbister1995dec,Rodriguez2001jan,Loke2011oct,Chen2013mar,Loke2013dec,Bengs2017sep}
+or irreducible spherical tensors \cite{Jerschow2005sep,Kuprov2007feb,Anand2007dec,Bengs2017sep},
+while Hamiltonian and irradiation parameters remain symbolic. 
+This semi-symbolic approach has led to powerful \emph{Mathematica} packages like \emph{MathNMR} \cite{Jerschow2005sep} and \emph{SpinDynamica} \cite{Bengs2017sep}.
+
+Vibrations and photons have an infinite (or near-infinite) Hilbert space and consequently the associated creation and annihilation operators do not have a matrix representation.
+Evolving creation and annihilation operators requires purely symbolic approaches.
+
+There are fewer examples of purely symbolic approaches to computing eq.~\ref{Eq:Evolve} dynamics.
+In magnetic resonance, spin angular momenta have been described using non-commuting product operators, with evolution under pulsed irradiation and free evolution implemented either approximately, using a Baker-Campbell-Hausdorff (BCH) expansion \cite{Filip2010nov}, or exactly using operator substitution rules \cite{Shriver1991oct,Kanters1993jan,Guntert1993jan,Guntert2006aug}.
+Computer algebra programs have been used to carry out the multiplication and commutation of harmonic-oscillator (\emph{i.e.}\ boson) operators symbolically \cite{Beskrovnyi1998jun,Nguyen1998dec,Zitko2011oct}, but eq.~\ref{Eq:Evolve} dynamics was only computed approximately using a BCH expansion, with the unitary transformation represented by a truncated, finite series of nested commutators.
+Nguyen and workers described a promising procedure for resumming the resulting finite series to give a closed-form expression \cite{Nguyen1998dec}.
+We found that this approach fails when the arguments of the associated sines, cosines, and exponentials involve non-trivial expressions such as fractions.
+We know of only one example, Ref.~\citenum{Zitko2011oct}, which attempted to calculate the joint evolution of spin- and harmonic-oscillator operators in a purely symbolic way.
+
+Slichter was interested in calculating the unitary evolution of angular momentum operators arising in spin-physics problems \cite{Slichter1990}, like the rotation in eq.~\ref{eq:example-spin}.  In the following section we introduce the Slichter procedure by considering example cases.  We show that his procedure works well for harmonic oscillator problems as well, including problems involving the coupling of a harmonic oscillator with a two-level system, a minimum model for describing electron transfer in chemical reactions.  It will become apparent that automating Slichter's procedure in a computer algebra program like \emph{Mathematica} is possible but challenging.  We introduce a generalization of the Slichter algorithm that is well suited for automation by a computer algebra program.  We have implemented this algorithm as a \emph{Mathematica} function, \VerbFcn{Evolver}.  This function evaluates Eq.~\ref{Eq:Evolve} given an ${\cal H}$, an initial operator $\rho(0)$, and the commutation relations between the operators comprising ${\cal H}$ and $\rho(0)$.
+
+% An exponentiated spin operator $A$ of the form $e^{i A}$ can be written, using the Cayley-Hamilton theorem, as a polynomial function of $A$ \cite{DeZela2014jun,Curtright2014aug}.
+
+% Spin $I = 1/2$ operators, Pauli matrices.
+
+% Spin $I = 1$ operators, the eight Gell-Mann matrices \cite{Gell-Mann1962feb,Bertlmann2008may,Curtright2015dec}

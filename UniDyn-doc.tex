@@ -24,7 +24,7 @@
 \renewcommand{\footrulewidth}{0.4pt} % line at bottom of page; 0.4pt typical
 \newcommand{\myparagraph}[1]{\paragraph{#1 ---\hspace{-0.125in}}}
 
-\newcommand{\VerbFcn}[1]{{#1}}
+\newcommand{\VerbFcn}[1]{{\texttt{#1}}}
 \newcommand{\VerbCmd}[1]{{\bf #1}}
 
 \setlength{\parindent}{0.25in}
@@ -174,13 +174,15 @@ literate={x\$var}{{\emph{x}}}1
 % ============
 
 The code consists of \verb+.m+ files and \emph{Mathematica} notebooks.
-The code was created in the literate-programming style, with \LaTeX{}-style text, equations, and tables interspersed with code in the form of commented-out text.
-We use \LaTeX{}'s \verb+lstinputlisting+ package to import the code and typeset it nicely.
+Each modular \verb+.m+ file implements a desired function, like non-commutative multiplication or commutation.
+Associated with each \verb+.m+ file is a second \verb+.m+ file containing \emph{units tests}.
+The code, at the time of writing, includes over 120 unit tests covering all the functions defined below.
+More detailed applications of the code are given in separate \emph{Mathematica} notebooks and will be discussed in the next section.
+
+Code was written in the literate-programming style, with \LaTeX{}-style text, equations, and tables interspersed with code in the form of commented-out text.
+In this section we use \LaTeX{}'s \verb+lstinputlisting+ package to import the code and typeset it nicely.
 This package also takes care of importing and un-commenting the embedded comments so they can be processed in \LaTeX.
 The package moreover implements a long list of character substitutions, allowing the code listings below to have variables appear with subscripts and superscripts.
-
-The code, at the time of writing, includes over 120 \emph{unit tests} covering all the functions defined below.
-More detailed applications of the code are given in separate \emph{Mathematica} notebooks and will be highlighted separately below.
 
 \subsection{Operators and scalars}
 % ------------------------------------------
@@ -289,7 +291,7 @@ We test the following cases of unitary evolution in the rotating frame:
 \item $e^{-i \delta q \, Q }  P e^{+i \delta q \, Q }$ \\
   a momentum kick
 \end{enumerate}
-The spin off-resonance nutation, case~\ref{item:nutation},  is an especially demanding test because it generates terms involving $I_x$, $I_y$, and $I_z$ operators from solutions to a third-order differential equation.
+The off-resonance spin nutation, case~\ref{item:nutation},  is an especially demanding test because it generates terms involving $I_x$, $I_y$, and $I_z$ operators from solutions to a third-order differential equation.
 
 \lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Evolve-tests.m}
 
@@ -298,7 +300,7 @@ The spin off-resonance nutation, case~\ref{item:nutation},  is an especially dem
 
 \clearpage
 \renewcommand*{\bibfont}{\raggedright\normalfont\small}
-\bibliographystyle{bst/nsf}
+\bibliographystyle{bib/grants-CV}
 \bibliography{bib/UniDyn-doc}
 
 
