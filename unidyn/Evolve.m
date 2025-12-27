@@ -180,7 +180,6 @@ Return only the first element of the solution, $\lambda_1(t)$.
   Return[FullSimplify[x1[time]  /. sol[[1]] /. time -> t$sym]];
 ];
 
-
 (*~ END ~*)
 
 End[]
@@ -191,9 +190,6 @@ If[$VerboseLoad == True,
     Message[Evolve::usage]
     Message[Evolver::usage]
 ]
-
-
-
 
 
 

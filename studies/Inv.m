@@ -40,18 +40,16 @@ Inv[Times[a$sym_?ScalarQ, b$sym_?OperatorQ]] := Times[Inv[a$sym], Inv[b$sym]]
 Inv[Times[a$sym_?OperatorQ, b$sym_?ScalarQ]] := Times[Inv[b$sym], Inv[a$sym]]
 
 (*@ 
-Distribute the inverse over addition.
-@*)
-
-Inv[a$sym___, b$sym_Plus, c$sym___]:=Plus@@(Inv[a$sym, #, c$sym]&)/@List@@b$sym
-
-(*@ 
 The inverse applied to a \VerbCmd{Mult[]} of operators should % 
 give a list of \VerbCmd{Inv[]} operators multiplied together, %
 with the list order \emph{reversed}.
 @*)
 
 Inv[a$sym___, b$sym_Mult, c$sym___]:=Mult@@(Inv[a$sym, #, c$sym]&)/@ Reverse[List@@b$sym]
+
+(*@ 
+The inverse \emph{does not} distribute over addition.
+@*)
 
 (*~ END ~*)
 

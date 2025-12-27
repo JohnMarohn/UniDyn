@@ -81,30 +81,24 @@ vtest["08b", Mult[Inv[Ix$sym], \[Omega] Ix$sym] == \[Omega]]
 vtest["08c", Mult[Inv[\[Omega] Ix$sym], \[Omega] Ix$sym] == 1]
 
 (*@ 
-Distribute the inverse over addition.
-@*)
-
-vtest["09", Inv[\[Omega] Ix$sym + \[CapitalDelta] Iy$sym] == Inv[Ix$sym]/\[Omega] + Inv[Iy$sym]/\[CapitalDelta]]
-
-(*@ 
 The inverse applied to a \VerbCmd{Mult[]} of operators should give % 
 a list of \VerbCmd{Inv[]} operators multiplied together, %
 with the list order reversed.
 @*)
 
-vtest["10", Inv[Mult[Iy$sym, aL$sym]] == Mult[Inv[aL$sym], Inv[Iy$sym]]]
-vtest["11", Inv[Mult[\[Omega] Iy$sym, \[CapitalDelta] aL$sym]] == Mult[Inv[aL$sym], Inv[Iy$sym]]/(\[Omega] \[CapitalDelta])]
-vtest["12", Mult[Inv[Mult[aL$sym, Iy$sym]], aL$sym, Iy$sym] == 1]
+vtest["09", Inv[Mult[Iy$sym, aL$sym]] == Mult[Inv[aL$sym], Inv[Iy$sym]]]
+vtest["10", Inv[Mult[\[Omega] Iy$sym, \[CapitalDelta] aL$sym]] == Mult[Inv[aL$sym], Inv[Iy$sym]]/(\[Omega] \[CapitalDelta])]
+vtest["11", Mult[Inv[Mult[aL$sym, Iy$sym]], aL$sym, Iy$sym] == 1]
 
 (*@ 
 The inverse of product of operators times the operators is 1. %
 @*)
 
-vtest["13", Mult[Inv[Mult[aL$sym, Iz$sym]], Mult[aL$sym, Iz$sym]] == 1]
-vtest["14", Mult[Inv[Mult[aL$sym, Iz$sym]], aL$sym, Iz$sym] == 1]
+vtest["12", Mult[Inv[Mult[aL$sym, Iz$sym]], Mult[aL$sym, Iz$sym]] == 1]
+vtest["13", Mult[Inv[Mult[aL$sym, Iz$sym]], aL$sym, Iz$sym] == 1]
 
-vtest["15", Mult[Mult[aL$sym, Iz$sym], Inv[Mult[aL$sym, Iz$sym]]] == 1]
-vtest["16", Mult[Inv[Mult[aL$sym, Iz$sym]], aL$sym, Iz$sym] == 1]
+vtest["14", Mult[Mult[aL$sym, Iz$sym], Inv[Mult[aL$sym, Iz$sym]]] == 1]
+vtest["15", Mult[Inv[Mult[aL$sym, Iz$sym]], aL$sym, Iz$sym] == 1]
 
 
 (*~ END ~*)
