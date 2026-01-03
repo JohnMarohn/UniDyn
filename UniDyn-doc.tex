@@ -165,7 +165,7 @@ literate={x\$var}{{\emph{x}}}1
 
 \input{UniDyn-doc--intro.tex}
 
-\section{The algorithm}
+\section{Background}
 % ===============
 
 \input{UniDyn-doc--algorithm.tex}
@@ -175,7 +175,7 @@ literate={x\$var}{{\emph{x}}}1
 
 The code consists of \verb+.m+ files and \emph{Mathematica} notebooks.
 Each modular \verb+.m+ file implements a desired function, like non-commutative multiplication or commutation.
-Associated with each \verb+.m+ file is a second \verb+.m+ file containing \emph{units tests}.
+Associated with each \verb+.m+ file is a second \verb+.m+ file containing \emph{units test}.
 The code, at the time of writing, includes over 120 unit tests covering all the functions defined below.
 More detailed applications of the code are given in separate \emph{Mathematica} notebooks and will be discussed in the next section.
 
@@ -192,7 +192,7 @@ This is done in the \verb+OpQ.m+ package, whose listing appears below.
 A variable is either a commutative \emph{scalar} or non-commutative \emph{operator}.
 Operators have a \emph{phylum} and an \emph{order}.
 Operators of different phyla commute.
-The operator order is used for sorting.
+The operator \emph{order} is used for sorting.
 
 \lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpQ.m}
 

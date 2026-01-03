@@ -95,7 +95,7 @@ While both these approaches yield closed-form solutions, each is hardly extensib
 		\label{Eq:I+rot-(b)}
 \end{align}
 \end{subequations} 
-As before we have used $[I_z,I_{+}] = I_{+}$ to reduce the commutator in Eq.~\ref{Eq:I+rot-(a)}.  The key insight in the Slichter procedure is that the term in parenthesis in Eq.~\ref{Eq:I+rot-(b)} is nothing more than the original time dependent density operator, $\rho(t)$.  This insight allows us to write Equation~\ref{Eq:I+rot-(b)} as
+As before we have used $[I_z,I_{+}] = I_{+}$ to reduce the commutator in Eq.~\ref{Eq:I+rot-(a)}.  The key insight in the Slichter procedure is that the term in parenthesis in Eq.~\ref{Eq:I+rot-(b)} is nothing more than the original time-dependent density operator, $\rho(t)$.  This insight allows us to write Equation~\ref{Eq:I+rot-(b)} as
 \begin{equation}
 \dot{\rho}(t) 
 	= -i \, \omega \, \rho(t)
@@ -110,7 +110,7 @@ In this differential equation, $\omega$ is a \emph{number}, while $\rho(t)$ is a
 \end{equation}
 which is easily verified by back substitution. 
 
-\myparagraph{Example 2} An analogous calculation arises in a harmonic oscillator problem where the Hamiltonian is ${\cal H} = \omega (a^{\dagger} a + 1/2)$ and the initial operator is $\rho(0) = a^{\dagger}$: 
+\myparagraph{Method 3, Example 2} An analogous calculation arises in a harmonic oscillator problem where the Hamiltonian is ${\cal H} = \omega (a^{\dagger} a + 1/2)$ and the initial operator is $\rho(0) = a^{\dagger}$: 
 \begin{equation}
 \rho(t) 
 	= e^{-i \omega t (a^{\dagger} a + 1/2)} 
@@ -159,7 +159,7 @@ where we have used $[I_z,I_x] = i \, I_y$ to reduce the commutator in Eq.~\ref{E
 		\label{Eq:Ixrot-(d)}
 \end{align}
 \end{subequations} 
-where we have used $[I_z,I_y] = -i \, I_x$ to reduce the commutator in Eq.~\ref{Eq:Ixrot-(a)}. The term in parenthesis in Eq.~\ref{Eq:Ixrot-(d)} is proportional to $\rho(t)$ and consequently
+where we have used $[I_z,I_y] = -i \, I_x$ to reduce the commutator in Eq.~\ref{Eq:Ixrot-(c)}. The term in parenthesis in Eq.~\ref{Eq:Ixrot-(d)} is proportional to $\rho(t)$ and, consequently,
 \begin{equation}
 \ddot{\rho}(t) = - \omega^2 \, \rho(t). \label{Eq:Ixrot-ODE}
 \end{equation}
@@ -175,10 +175,13 @@ We are given that $\rho(0) = I_x$ and we see from Eq.~\ref{Eq:Ixrot-(b)} that $\
 \end{equation}
 as the solution to Eq.~\ref{Eq:Ixrot}.
 
-We can imagine automating the steps leading to Eqs.~\ref{Eq:I+rot-soln}, \ref{Eq:adaggerrot-soln}, and \ref{Eq:Ixrot-soln}.   What is required is the ability to
+\section{The algorithm}
+
+To automate the steps leading to Eqs.~\ref{Eq:I+rot-soln}, \ref{Eq:adaggerrot-soln}, and \ref{Eq:Ixrot-soln} we require the ability to
 \begin{enumerate}
   \item perform non-commutative algebra, 
-  \item evaluate commutators, and
+  \item evaluate commutators,
+  \item divide operators, and 
   \item determine which differential equation an evolved operator satisfies.
 \end{enumerate}
 \emph{Mathematica} has a native function for carrying out non-commutative multiplication, but this function has essentially no simplification rules associated with it; for example,
@@ -186,7 +189,11 @@ We can imagine automating the steps leading to Eqs.~\ref{Eq:I+rot-soln}, \ref{Eq
 In[1] := a ** (2 b) // Simplify
 Out[1] = a ** (2 b)
 \end{Verbatim}
-This limitation was resolved by Helton and co-workers, whose \verb+NCALgebra+ package \cite{Helton2015feb} gives \emph{Mathematica} the ability to manipulate non-commuting algebraic expressions.  This package allows the user to define variables as either commuting (e.g., $\omega$) or non-commuting (e.g., $I_+$, $I_x$, $a^{\dagger}$, and so on).  This package forms an excellent starting point for implementing non-commutative multiplication, and expanding and simplifying commutators. We find, however, that using the package adds significant computational overhead, increasing computation time over ten-fold.  In the code below, we instead introduce our own non-commutative multiplication function and accompanying simplification rules. 
+This limitation was resolved by Helton and co-workers, whose \verb+NCALgebra+ package \cite{Helton2015feb} gives \emph{Mathematica} the ability to manipulate non-commuting algebraic expressions.
+This package allows the user to define variables as either commuting (e.g., $\omega$) or non-commuting (e.g., $I_+$, $I_x$, $a^{\dagger}$, and so on). 
+This package forms an excellent starting point for implementing non-commutative multiplication, and expanding and simplifying commutators. 
+We find, however, that using the package adds significant computational overhead, increasing computation time over ten-fold.  
+We instead created our own non-commutative multiplication function and accompanying simplification rules. 
 
 Based on our experience so far, developing an algorithm capable of self-deriving Eqs.~\ref{Eq:I+rot-soln}, \ref{Eq:adaggerrot-soln}, and \ref{Eq:Ixrot-soln} would now seem to be a matter of calculating
 \begin{align}
@@ -323,11 +330,55 @@ Plugging this integration constant into Eq.~\ref{Eq:Example4-temp} we obtain the
 	\label{Eq:example4-soln}	
 \end{multline}
 
-We see in this example an answer for $\rho(t)$ that is markedly more complicated that in the previous examples, the solution to (essentially) a third order differential equation.  To uncover this differential equation, is was necessary to compare subsequent derivatives of $\rho(t)$ not to $\rho(0)$ but to $\dot{\rho}(0)$ instead.
+We see in this example an answer for $\rho(t)$ that is markedly more complicated that in the previous examples, the solution to a third order differential equation.  To uncover this differential equation, is was necessary to compare subsequent derivatives of $\rho(t)$ not to $\rho(0)$ but to $\dot{\rho}(0)$ instead.
 
-Considering in total the four examples of unitary evolution considered so far, it would seem that any algorithm we develop needs to consider the possibility that the density operator satisfies a first, second, or even third-order differential equation. 
+Considering in total the four examples of unitary evolution enumerated so far, it would seem that any algorithm we develop needs to consider the possibility that the density operator satisfies a first, second, or even third-order differential equation.  
+Before continuing, there is another case to consider.
 
-\myparagraph{Method 4} We now show by example that the single differential equation in each of these four cases can be reduced to a set of \emph{coupled first-order} differential equations --- a significant step towards making a simple automated, unitary evolution algorithm.  We would expect the four cases to each still require a decision on the number of coupled of equations required to solve for $\rho$ in each case.  Surprisingly, no decision is needed.  We will show that all the cases we have discussed so far can be handled by a set of four coupled differential equations.  This is the essential new insight implemented here in the \VerbFcn{Evolver} algorithm. 
+\myparagraph{Example 5} Consider the unitary rotation
+\begin{equation}
+x^{\prime}  = 
+  e^{-i \hbar^{-1} \, \delta x \, p}
+  \, x \,
+  e^{+i \hbar^{-1} \, \delta x \, p}
+\end{equation}
+which we can obtain from
+\begin{equation}
+\rho(\tau) = 
+   e^{-i \hbar^{-1} \, \tau \, \delta x \, p}
+     \, x \,
+     e^{+i \hbar^{-1} \, \tau \, \delta x \, p}
+\end{equation}
+by setting the unitless parameter $\tau$ equal to $1$.
+Computing the first two derivatives of $\rho$ with respect to $\tau$ we find
+\begin{subequations}
+\begin{align}
+\dot{\rho} & =
+  e^{-i \hbar^{-1} \, \tau \, \delta x \, p} 
+  \left( -i \hbar^{-1} \, \delta x \, [p, x] \right) 
+  e^{+i \hbar^{-1} \, \tau \, \delta x \, p} \\
+  & = - \delta x \\
+\ddot{\rho} & = 0 
+\end{align}
+\end{subequations}
+where we have used that $[p, x] = -i \, \hbar$.
+As in Examples 1 and 2, we have a first-order differential equation.
+Here the relevant differential equation is simply $\dot{\rho}(\tau) = - \delta x$, with initial condition $\rho(0) = x$.
+It follows that $\rho = x + \tau \, \delta{x}$ and
+\begin{equation}
+x^{\prime}  = x - \delta x.  \label{eq:translate-x}
+\end{equation}
+In a similar manner, we can obtain
+\begin{equation}
+p^{\prime}  = 
+  e^{-i \hbar^{-1} \, \delta p \, x}
+  \, p \,
+  e^{+i \hbar^{-1} \, \delta p \, x}
+  = p + \delta p
+\end{equation}
+From these examples, we recognize $\exp\!{\left( -i \hbar^{-1} \, \delta x \, p \right)}$ as the unitary transformation inducing a translation and $\exp\!{\left( -i \hbar^{-1} \, \delta p \, x \right)}$ as the unitary transformation inducing a momentum kick.
+
+\myparagraph{Method 4} We now show by example that the single differential equation in each of these five cases can be reduced to a set of \emph{coupled first-order} differential equations --- a significant step towards making a simple automated, unitary evolution algorithm.  We would expect the four cases to each still require a decision on the number of coupled of equations required to solve for $\rho$ in each case.  Surprisingly, no decision is needed.  We will show that all the cases we have discussed so far can be handled by a set of four coupled differential equations.  This is the essential new insight implemented here in the first \VerbFcn{Evolver} algorithm. 
 
 To understand the new method, consider transforming the second-order differential equation in Eq.~\ref{Eq:Ixrot-ODE} into two coupled first-order equations.  Let the two new variables be 
 \begin{equation}
@@ -369,7 +420,7 @@ and taking the time derivative gives
 	& = - \omega^2 \, x_2.
 \end{align}
 \end{subequations}
-In writing $\dot{x}_3$ we have used the shorthand $U(t) \equiv \exp{[i \, \omega t \, I_z]}$ and employed Eq.~\ref{Eq:Ixrot-(b)} to simplify the result.  The three variables satisfy the following set of coupled first-order differential equations
+In writing $\dot{x}_3$ we have used the shorthand $U(t) \equiv \exp\!{\left( i \, \omega \, t \, I_z \right)}$ and employed Eq.~\ref{Eq:Ixrot-(b)} to simplify the result.  The three variables satisfy the following set of coupled first-order differential equations
 \begin{equation}
 \frac{d}{dt} \begin{bmatrix} x_3 \\ x_2 \\ x_1 \end{bmatrix}
 	= \begin{bmatrix} 
@@ -415,7 +466,7 @@ U
 \end{equation}
 with $\rho^{(n)}$ the $n^{\text{th}}$ derivative of $\rho$ with respect to time and
 \begin{equation}
-U \equiv \exp{[i \, (\Delta \omega I_z + \omega_1 I_x) \, t]}.
+U \equiv \exp\!{\left( i \, (\Delta \omega I_z + \omega_1 I_x) \, t \right)}.
 \end{equation}
 We see that $\rho^{(3)} = - (\Delta\omega^2 + \omega_1^2) \, \rho^{(1)}$, as we showed before.  Defining $x_n = \rho^{(n-1)}$ for $n = 1$ through $4$, we obtain the following set of four coupled equations describing the time evolution of the density operator:
 \begin{equation}
@@ -448,8 +499,24 @@ x_4(0) \\ x_3(0) \\ x_2(0) \\ x_1(0)
 \end{bmatrix}
 \end{equation}
 Solving these coupled equations, we obtain Eq.~\ref{Eq:example4-soln} for $x_1 = \rho(t)$.  
+What about Example 5?  In this case we have simply
+\begin{equation}
+\bm{\Omega} = 
+  \begin{bmatrix}
+  0 & 0 & 0 & 0 \\
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 1 & 0
+  \end{bmatrix}
+\text{ and }
+{\bm{\lambda}}_0 = 
+  \begin{bmatrix}
+  0 \\ 0 \\ -\delta x \\ x
+  \end{bmatrix}
+\end{equation}
+Solving these equations, we recover Eq.~\ref{eq:translate-x}, the expected result.
 
-In the above equations we have defined $\bm{\lambda}$ as the vector of $x_n$'s we are interested in and $\bm{\Omega}$ as the matrix of coefficients coupling $\bm{\lambda}$ to $\dot{\bm{\lambda}}$.  The coupled equations are summarized as
+In the above equations we have defined $\bm{\lambda}$ as the vector of $x_n$'s that we are interested in and $\bm{\Omega}$ as the matrix of coefficients coupling $\bm{\lambda}$ to $\dot{\bm{\lambda}}$.  The coupled equations are summarized as
 \begin{equation}
 \frac{d \bm{\lambda}}{d t} 
 	- \bm{\Omega} \cdot \bm{\lambda} 
@@ -466,8 +533,70 @@ with $\bm{\lambda}_0$ given.  The \VerbFcn{Evolver} algorithm proceeds as follow
   \item  Look for an entry in the list $(\rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ that is proportional to $\rho^{(3)}$, starting with the $\rho^{(2)}$ (entry $n = 3$) and working towards $\rho^{(0)}$ (entry $n = 1$). Call the entry where the match occurs $n_{\text{match}}$. Call the ratio between $\rho^{(3)}$ and the matching entry $r$.
   
   \item Fill in the upper row of $\bm{\Omega}$ with zeros.  Assign the value $r$ to the entry in the $n_{\text{match}}$ column of the upper row of $\bm{\Omega}$, counting from the right to the left.  
+If no match can be found, declare the problem unsolvable.
   
   \item Feed Eq.~\ref{Eq:big-equation}, including the initial condition, to \emph{Mathematica} to solve.  The time-dependent density operator is $\rho(t) = \lambda_{1}(t)$. 
 
 \end{enumerate}
 	
+\myparagraph{Method 5} An alternative approach is to figure out, on a case-by-case basis, which differential equation $\rho(t)$ is governed by and write out the differential-equation solution by hand.
+This alternative approach constitutes the \VerbFcn{Evolver2} algorithm. 
+The algorithm proceeds by testing the following cases, stopping if the case is true.
+The cases are labelled 0, 1, 2, or 3, according the order of differential equation governing $\rho$, and are given the designation L for linear and E for exponential, depending on the kind of solution. 
+
+\begin{enumerate}
+
+\item As above, evaluate the derivatives $\rho^{(1)}$ through $\rho^{(3)}$ .
+
+\item (Case 0) If $\rho^{(1)} = 0$ then the Hamiltonian commutes with the initial density operator and
+\begin{equation}
+\rho(t) = \rho(0)
+\end{equation}
+
+\item (Case 1L) If $[\rho^{(1)}, H] = 0$ then
+\begin{equation}
+\rho(t) = \rho^{(0)} + \rho^{(1)} t
+\end{equation}
+
+\item Compute $c_1 =  \rho^{(1)}$ and the commutators 
+\begin{subequations}
+\begin{align}
+c_2 &= [\rho^{(0)}, \rho^{(1)}] \\
+c_3 &= [\rho^{(0)}, \rho^{(2)}] \\
+c_4 &= [\rho^{(1)}, \rho^{(3)}]
+\end{align}
+\end{subequations}
+
+\item Compute the ratios
+\begin{subequations}
+\begin{align} 
+d_1 = {\mathrm{Inv}}[\rho^{(0)}] \, \rho^{(1)} \\
+d_2 = {\mathrm{Inv}}[\rho^{(0)}] \, \rho^{(2)} \\
+d_3 = {\mathrm{Inv}}[\rho^{(1)}] \, \rho^{(3)}
+ \end{align}
+\end{subequations}
+
+\item (Case 1E) If $c_2 = 0$ then
+\begin{equation}
+\rho(t) = 
+  e^{d_1 t} \rho^{(0)}
+\end{equation}  
+
+\item (Case 2E) If $c_3 = 0$ then define $\omega = \sqrt{-d_2}$ and compute
+\begin{equation}
+\rho(t) = 
+  \cos{(\omega \, t)} \, \rho^{(0)}
+  + \frac{1}{\omega} \sin{(\omega \, t)} \, c_1
+\end{equation}
+
+\item (Case 3E) If $c_4 = 0$ then define $\omega = \sqrt{-d_3}$ and compute
+\begin{equation}
+\rho(t) = 
+  \rho^{(0)}
+  + \frac{1}{\omega} \sin{(\omega \, t)} \, \rho^{(1)} 
+  + \frac{1}{\omega^2} \left( 1 -  \cos{(\omega \, t)} \right) \, \rho^{(2)} 
+\end{equation}
+
+\item If none of these cases are satisfied, declare the problem unsolvable.
+
+\end{enumerate}

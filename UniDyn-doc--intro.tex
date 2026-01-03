@@ -1,13 +1,17 @@
 %!TEX root = UniDyn-doc.tex
 
-Given a time-independent Hamiltonian ${\cal H}$ and an initial (density) operator $\rho(0)$, the \VerbFcn{Evolver} algorithm described below computes the (density) operator at time $t$ by implementing the following unitary rotation
+
+Given a time-independent Hamiltonian ${\cal H}$ and an initial density operator $\rho(0)$ evolving in the Schr\"{o}dinger represenation, the \VerbFcn{Evolver} algorithm described below computes the density operator at time $t$ by implementing the following unitary rotation
 \begin{equation}
 \rho(t) 
 	= e^{-i {\cal H} t} \: \rho(0) \: e^{+i {\cal H} t}
 	\equiv \text{\VerbFcn{Evolver}}[{\cal H},t,\rho(0)]
 	\label{Eq:Evolve}
 \end{equation}
-Consider two representative examples.  The time evolution of transverse spin magnetization in a longitudinal magnetic field is described by the rotation
+The same algorithm can be used to compute the time dependence of an operator evolving in the Heinsenberg representation by replacing $t$ with $-t$ and $\rho(0)$ with the operator of interest. 
+
+Consider two representative examples.
+In the Schr\"{o}dinger representation, the time evolution of transverse spin magnetization in a longitudinal magnetic field is described by the rotation
 \begin{equation}
 e^{-i \, \omega t \, I_z} \: 
   I_x \: 
@@ -15,20 +19,21 @@ e^{-i \, \omega t \, I_z} \:
    = I_x \, \sin{(\omega t)} + I_y \, \cos{(\omega t)}
    \label{eq:example-spin}
 \end{equation}
-where $\omega$ is the Larmor frequency and $I_x$, $I_y$, and $I_z$ are the spin angular-momentum operators.  The harmonic oscillator's creation operator $a^{\dagger}$ evolves in time under the harmonic oscillator's Hamiltonian as follows:
+where $\omega$ is the Larmor frequency and $I_x$, $I_y$, and $I_z$ are the spin angular-momentum operators.  In the Heisenberg representation, the harmonic oscillator's creation operator $a^{\dagger}$ evolves in time under the harmonic oscillator's Hamiltonian as follows:
  \begin{equation}
- e^{- i \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})} 
+ e^{+ i \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})} 
    a^{\dagger}
-   e^{+ i \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})} 
-   =  a^{\dagger} e^{-i \omega t}
+   e^{- i \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})} 
+   =  a^{\dagger} e^{+i \omega t}
    \label{eq:example-ho}
 \end{equation}
 where $a$ is the annihilation operator and $\omega$ is the harmonic-oscillator's resonance frequency.
 Knowing the commutation relations among the operators comprising ${\cal H}$ and $\rho(0)$, it is often possible to obtain a closed-form algebraic solution to Eq.~\ref{Eq:Evolve}.  
-The \VerbFcn{Evolver} algorithm obtains a closed-form solution to Eq.~\ref{Eq:Evolve} by extending an approach introduced by Slichter in Section 2.3 of his \emph{Principles of Magnetic Resonance} text \cite{Slichter1990}.
+The \VerbFcn{Evolver} algorithm obtains closed-form solutions to Eq.~\ref{Eq:Evolve} by extending an approach introduced by Slichter in Section 2.3 of his \emph{Principles of Magnetic Resonance} text \cite{Slichter1990}.
+In this approach, one infers the differential equation that $\rho(t)$ satisfies.
 The only input to the algorithm is the commutation relations for the relevant operators.
 
-\section{Background}
+\section{Prior work}
 
 Numerous software programs exist for computing eq.~\ref{Eq:Evolve} dynamics numerically.
 In order to gain physical understanding, researchers want to compute the dynamics symbolically, using computer algebra programs.
@@ -55,16 +60,27 @@ while Hamiltonian and irradiation parameters remain symbolic.
 This semi-symbolic approach has led to powerful \emph{Mathematica} packages like \emph{MathNMR} \cite{Jerschow2005sep} and \emph{SpinDynamica} \cite{Bengs2017sep}.
 
 Vibrations and photons have an infinite (or near-infinite) Hilbert space and consequently the associated creation and annihilation operators do not have a matrix representation.
-Evolving creation and annihilation operators requires purely symbolic approaches.
+Evolving creation and annihilation operators requires a purely symbolic approach.
 
 There are fewer examples of purely symbolic approaches to computing eq.~\ref{Eq:Evolve} dynamics.
+We know of only one algorithm that attempted to calculate commutators of spin- and harmonic-oscillator operators using a purely symbolic approach \cite{Zitko2011oct}, and this algorithm stopped short of considering unitary evolution.
 In magnetic resonance, spin angular momenta have been described using non-commuting product operators, with evolution under pulsed irradiation and free evolution implemented either approximately, using a Baker-Campbell-Hausdorff (BCH) expansion \cite{Filip2010nov}, or exactly using operator substitution rules \cite{Shriver1991oct,Kanters1993jan,Guntert1993jan,Guntert2006aug}.
 Computer algebra programs have been used to carry out the multiplication and commutation of harmonic-oscillator (\emph{i.e.}\ boson) operators symbolically \cite{Beskrovnyi1998jun,Nguyen1998dec,Zitko2011oct}, but eq.~\ref{Eq:Evolve} dynamics was only computed approximately using a BCH expansion, with the unitary transformation represented by a truncated, finite series of nested commutators.
 Nguyen and workers described a promising procedure for resumming the resulting finite series to give a closed-form expression \cite{Nguyen1998dec}.
-We found that this approach fails when the arguments of the associated sines, cosines, and exponentials involve non-trivial expressions such as fractions.
-We know of only one example, Ref.~\citenum{Zitko2011oct}, which attempted to calculate the joint evolution of spin- and harmonic-oscillator operators in a purely symbolic way.
+We find that this approach fails when the arguments of the associated sines, cosines, and exponentials involve non-trivial expressions such as fractions.
 
-Slichter was interested in calculating the unitary evolution of angular momentum operators arising in spin-physics problems \cite{Slichter1990}, like the rotation in eq.~\ref{eq:example-spin}.  In the following section we introduce the Slichter procedure by considering example cases.  We show that his procedure works well for harmonic oscillator problems as well, including problems involving the coupling of a harmonic oscillator with a two-level system, a minimum model for describing electron transfer in chemical reactions.  It will become apparent that automating Slichter's procedure in a computer algebra program like \emph{Mathematica} is possible but challenging.  We introduce a generalization of the Slichter algorithm that is well suited for automation by a computer algebra program.  We have implemented this algorithm as a \emph{Mathematica} function, \VerbFcn{Evolver}.  This function evaluates Eq.~\ref{Eq:Evolve} given an ${\cal H}$, an initial operator $\rho(0)$, and the commutation relations between the operators comprising ${\cal H}$ and $\rho(0)$.
+Slichter was interested in calculating the unitary evolution of angular momentum operators arising in spin-physics problems \cite{Slichter1990}, like the rotation in eq.~\ref{eq:example-spin}.
+In the following section we introduce the Slichter procedure by considering example cases.
+We show that his procedure works well for harmonic oscillator problems too, including problems involving the coupling of a harmonic oscillator with a two-level system, a minimum model for describing electron transfer in chemical reactions and radiation-matter interactions in the strong-coupling limit.
+
+It will become apparent that automating Slichter's procedure in a computer algebra program like \emph{Mathematica} is possible but challenging.
+There are two challenges.
+The first is implementing non-commutative algebra in \emph{Mathematica} in a useful way. 
+The second is defining an operator inverse.
+We address these problems below.
+We then introduce two generalizations of the Slichter algorithm that are well suited for automation by a computer algebra program.
+We have implemented these algorithm as a \emph{Mathematica} function, \VerbFcn{Evolver}.
+This function evaluates Eq.~\ref{Eq:Evolve} given an ${\cal H}$, an initial operator $\rho(0)$, and the commutation relations between the operators comprising ${\cal H}$ and $\rho(0)$.
 
 % An exponentiated spin operator $A$ of the form $e^{i A}$ can be written, using the Cayley-Hamilton theorem, as a polynomial function of $A$ \cite{DeZela2014jun,Curtright2014aug}.
 
