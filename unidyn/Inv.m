@@ -22,12 +22,13 @@ Inv[a$sym_?ScalarQ]:=1/a$sym
 Inv[]:=1
 
 (*@ 
-\VerbCmd{Inv[b] b} and \VerbCmd{b Inv[b]} in an expression should reduce to 1 if \VerbCmd{b} is an operator. %
-In the following expressions, the \VerbCmd{HoldPattern[]} is important; %
-without it, \VerbCmd{Inv[]} will get evaluated before the pattern is defined.
+\VerbCmd{Inv[b] b} and \VerbCmd{b Inv[b]} in an expression should reduce %
+to 1 if \VerbCmd{b} is an operator. In the following expressions, the % 
+\VerbCmd{HoldPattern[]} is important; without it, \VerbCmd{Inv[]} will %
+get evaluated before the pattern is defined.
 @*)
 
-HoldPattern[ Mult[a$sym___, Inv[b$sym_?OperatorQ], b$sym_?OperatorQ, c$sym___]] := Mult[a$sym, c$sym]
+HoldPattern[Mult[a$sym___, Inv[b$sym_?OperatorQ], b$sym_?OperatorQ, c$sym___]] := Mult[a$sym, c$sym]
 HoldPattern[Mult[a$sym___, b$sym_?OperatorQ, Inv[b$sym_?OperatorQ], c$sym___] ] := Mult[a$sym, c$sym]
 
 (*@ 
@@ -58,6 +59,12 @@ EndPackage[]
 If[$VerboseLoad == True,
     Message[Inv::usage];
 ]
+
+
+
+
+
+
 
 
 

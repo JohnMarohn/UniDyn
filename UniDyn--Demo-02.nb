@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     40492,        974]
-NotebookOptionsPosition[     35879,        897]
-NotebookOutlinePosition[     36332,        915]
-CellTagsIndexPosition[     36289,        912]
+NotebookDataLength[    101789,       2593]
+NotebookOptionsPosition[     95441,       2480]
+NotebookOutlinePosition[     95888,       2498]
+CellTagsIndexPosition[     95845,       2495]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -40,7 +40,7 @@ Cell[TextData[{
  "  Use the ",
  StyleBox["UniDyn",
   FontWeight->"Bold"],
- " Evolver function to calculate the evolution of the magnetization of a \
+ " Evolver2 function to calculate the evolution of the magnetization of a \
 single spin 1/2 particle under off-resonance, variable-phase irradiation.  \
 Plot the evolving magnetization for various combinations of resonance offset \
 and irradiation phase."
@@ -48,7 +48,8 @@ and irradiation phase."
  CellChangeTimes->{{3.6352698622319117`*^9, 3.635269926908793*^9}, {
    3.6352701305950613`*^9, 3.635270138669529*^9}, {3.6614336154747458`*^9, 
    3.661433666560676*^9}, {3.661433776071369*^9, 3.6614337761699266`*^9}, {
-   3.6614620415959*^9, 3.66146210493357*^9}, 3.859897027180781*^9},
+   3.6614620415959*^9, 3.66146210493357*^9}, 3.859897027180781*^9, 
+   3.976481279879998*^9},
  FontSize->18,ExpressionUUID->"06f4ce1c-b841-4757-8def-0bcfef6e6d1f"],
 
 Cell[CellGroupData[{
@@ -84,7 +85,7 @@ Cell[BoxData[
    3.660918590921587*^9, 3.660918600403768*^9}, 3.859897066393388*^9, 
    3.9401813644960327`*^9},
  FontSize->16,
- CellLabel->"In[1]:=",ExpressionUUID->"69d76d11-3be0-4f4b-8175-4ecb94e003b7"],
+ CellLabel->"In[31]:=",ExpressionUUID->"69d76d11-3be0-4f4b-8175-4ecb94e003b7"],
 
 Cell["YOU SHOULD NOT NEED TO EDIT ANYTHING FROM HERE ONWARDS.", "Text",
  CellChangeTimes->{{3.635270073196437*^9, 3.635270077357624*^9}},
@@ -115,6 +116,8 @@ system path to the UniDyn.m file.   "
    3.6352701131658497`*^9}, {3.660918102499856*^9, 3.6609181035465183`*^9}},
  FontSize->18,ExpressionUUID->"fa22e656-7282-4b34-8fb8-9fc01f941d8c"],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[{
  RowBox[{
   RowBox[{"$Path", " ", "=", " ", 
@@ -128,7 +131,15 @@ Cell[BoxData[{
    3.859897078324489*^9, 3.8598970853975677`*^9}, 3.8598971531428223`*^9, {
    3.940181368955099*^9, 3.940181372281011*^9}},
  FontSize->16,
- CellLabel->"In[2]:=",ExpressionUUID->"2de83763-a67c-4565-9352-3b68249d64e5"],
+ CellLabel->"In[32]:=",ExpressionUUID->"2de83763-a67c-4565-9352-3b68249d64e5"],
+
+Cell[BoxData["\<\"/Users/jam99/Dropbox/MarohnGroup__Software_Library/UniDyn/\
+unidyn/UniDyn.m\"\>"], "Output",
+ CellChangeTimes->{
+  3.976481291034218*^9, {3.9764814436703997`*^9, 3.9764814606060057`*^9}, 
+   3.976487340266567*^9, 3.976489042595687*^9},
+ CellLabel->"Out[33]=",ExpressionUUID->"167cf710-9a35-4d5a-ada0-6a79194cfa67"]
+}, Open  ]],
 
 Cell["\<\
 Now that we are confident that the path is set correctly, load the package.  \
@@ -153,7 +164,7 @@ XnQt//l3t9eOqzNZX4DoFiF11h9A+sM0WzCtqnCwYKH7a8c9B1ULQTQAyl6Q
 EA==
   "],
  FontSize->16,
- CellLabel->"In[4]:=",ExpressionUUID->"040a79b4-1eb2-4cbd-b38d-08741e01bd05"]
+ CellLabel->"In[34]:=",ExpressionUUID->"040a79b4-1eb2-4cbd-b38d-08741e01bd05"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -395,7 +406,7 @@ OgWyPeIyYFFGAwteUZLYkLWbkguDNHtc2NVSz4OmAkYl9NlR8aH/uq4Drk0P
 i+CQwLcPSjylP3BposIAr/nldstGzRR8QsW8wg9SpQ/x8B8YrB4O
   "],
  FontSize->16,
- CellLabel->"In[6]:=",ExpressionUUID->"6ee73c83-4b14-471b-aa6c-d4c7ad6c8361"]
+ CellLabel->"In[36]:=",ExpressionUUID->"6ee73c83-4b14-471b-aa6c-d4c7ad6c8361"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -440,6 +451,8 @@ and not just \[GreaterSlantEqual] 0."
    3.661455238939184*^9}, {3.6614552751916943`*^9, 3.6614553005499*^9}, 
    3.66169791700492*^9},
  FontSize->18,ExpressionUUID->"77da6aa8-fdb0-48b2-ae2f-064ed48122f1"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -507,7 +520,48 @@ Cell[BoxData[{
    3.6614552141564493`*^9, 3.661455268214559*^9}, {3.8598975287957563`*^9, 
    3.859897599934474*^9}},
  FontSize->16,
- CellLabel->"In[9]:=",ExpressionUUID->"cb060012-c97e-4f6b-97db-610ad428555c"]
+ CellLabel->"In[39]:=",ExpressionUUID->"cb060012-c97e-4f6b-97db-610ad428555c"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "SpinSingle$CreateOperators", "create", "\"Creating spin operators.\"", 2, 
+   41, 26, 20409497804068919846, "Local", "Spins`SpinSingle$CreateOperators"},
+  
+  "MessageTemplate2"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.976481291095574*^9, {3.9764814436856537`*^9, 3.976481460623659*^9}, 
+   3.9764873402833767`*^9, 3.976489042611902*^9},
+ CellLabel->
+  "During evaluation of \
+In[39]:=",ExpressionUUID->"32378978-51f6-466d-8dd9-12ce8b1adc1c"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "SpinSingle$CreateOperators", "comm", 
+   "\"Adding spin commutations relations.\"", 2, 41, 27, 20409497804068919846,
+    "Local", "Spins`SpinSingle$CreateOperators"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.976481291095574*^9, {3.9764814436856537`*^9, 3.976481460623659*^9}, 
+   3.9764873402833767`*^9, 3.9764890426148252`*^9},
+ CellLabel->
+  "During evaluation of \
+In[39]:=",ExpressionUUID->"b5b1ed47-0b7b-4871-aa65-44cfd95a7e55"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "SpinSingle$CreateOperators", "simplify", 
+   "\"Angular momentum L = 1/2. Adding operator simplification rules.\"", 2, 
+   41, 28, 20409497804068919846, "Local", "Spins`SpinSingle$CreateOperators"},
+  
+  "MessageTemplate2"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.976481291095574*^9, {3.9764814436856537`*^9, 3.976481460623659*^9}, 
+   3.9764873402833767`*^9, 3.9764890426200113`*^9},
+ CellLabel->
+  "During evaluation of \
+In[39]:=",ExpressionUUID->"a0c099bc-f17e-4611-ba41-707858a17398"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -518,7 +572,7 @@ Cell["Off-resonance variable-phase nutation", "Subsection",
 
 Cell[TextData[{
  "Irradiation Hamiltonian written in the interaction representation.  The \
-intial density operator is parallel to ",
+intitial density operator is parallel to ",
  Cell[BoxData[
   FormBox[
    SubscriptBox["I", "z"], TraditionalForm]],ExpressionUUID->
@@ -526,7 +580,8 @@ intial density operator is parallel to ",
  "."
 }], "Text",
  CellChangeTimes->{{3.66145534764102*^9, 3.661455424815099*^9}, 
-   3.8598972880237627`*^9},
+   3.8598972880237627`*^9, 3.9764813485379467`*^9, {3.9764890370758266`*^9, 
+   3.976489038130982*^9}},
  FontSize->18,ExpressionUUID->"6a081577-3dc4-4cdf-8a1b-0dd2bf8d719a"],
 
 Cell[BoxData[{
@@ -546,7 +601,78 @@ Cell[BoxData[{
   RowBox[{"\[Rho]$0", " ", "=", " ", "Iz"}], ";"}]}], "Input",
  CellChangeTimes->{{3.661435227848398*^9, 3.6614352284068127`*^9}},
  FontSize->18,
- CellLabel->"In[13]:=",ExpressionUUID->"df6a6e30-a247-4f85-ac4d-acd947a03247"],
+ CellLabel->"In[43]:=",ExpressionUUID->"df6a6e30-a247-4f85-ac4d-acd947a03247"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Evolver2", "[", 
+  RowBox[{"H", ",", " ", "t", ",", " ", "\[Rho]$0"}], "]"}]], "Input",
+ CellChangeTimes->{{3.976481553765931*^9, 3.976481562506876*^9}, {
+  3.976488188557616*^9, 3.976488188821731*^9}},
+ FontSize->16,
+ CellLabel->"In[45]:=",ExpressionUUID->"7c9f764c-8bae-4eec-bf32-bdba398ee5ff"],
+
+Cell[BoxData[
+ RowBox[{"Iz", "-", 
+  FractionBox[
+   RowBox[{"\[Omega]", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Iz", " ", "\[Omega]"}], "-", 
+      RowBox[{"\[CapitalDelta]", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Ix", " ", 
+          RowBox[{"Cos", "[", "\[Phi]", "]"}]}], "+", 
+         RowBox[{"Iy", " ", 
+          RowBox[{"Sin", "[", "\[Phi]", "]"}]}]}], ")"}]}]}], ")"}]}], 
+   RowBox[{
+    SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+    SuperscriptBox["\[Omega]", "2"]}]], "+", 
+  FractionBox[
+   RowBox[{"\[Omega]", " ", 
+    RowBox[{"Cos", "[", 
+     RowBox[{"t", " ", 
+      SqrtBox[
+       RowBox[{
+        SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+        SuperscriptBox["\[Omega]", "2"]}]]}], "]"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Iz", " ", "\[Omega]"}], "-", 
+      RowBox[{"\[CapitalDelta]", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Ix", " ", 
+          RowBox[{"Cos", "[", "\[Phi]", "]"}]}], "+", 
+         RowBox[{"Iy", " ", 
+          RowBox[{"Sin", "[", "\[Phi]", "]"}]}]}], ")"}]}]}], ")"}]}], 
+   RowBox[{
+    SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+    SuperscriptBox["\[Omega]", "2"]}]], "-", 
+  FractionBox[
+   RowBox[{"\[Omega]", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Iy", " ", 
+       RowBox[{"Cos", "[", "\[Phi]", "]"}]}], "-", 
+      RowBox[{"Ix", " ", 
+       RowBox[{"Sin", "[", "\[Phi]", "]"}]}]}], ")"}], " ", 
+    RowBox[{"Sin", "[", 
+     RowBox[{"t", " ", 
+      SqrtBox[
+       RowBox[{
+        SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+        SuperscriptBox["\[Omega]", "2"]}]]}], "]"}]}], 
+   SqrtBox[
+    RowBox[{
+     SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+     SuperscriptBox["\[Omega]", "2"]}]]]}]], "Output",
+ CellChangeTimes->{3.9764815755520563`*^9, 3.976487340438624*^9, 
+  3.976489042729294*^9},
+ CellLabel->"Out[45]=",ExpressionUUID->"8a1fa093-a5c0-44cd-a117-bc60eb84e63f"]
+}, Open  ]],
 
 Cell["\<\
 Calculating the time-dependent density operator might take as long as 10 to \
@@ -571,7 +697,7 @@ Cell[BoxData[
        RowBox[{
         RowBox[{
          RowBox[{
-          RowBox[{"Evolver", "[", 
+          RowBox[{"Evolver1", "[", 
            RowBox[{"H", ",", " ", "t", ",", " ", "\[Rho]$0"}], "]"}], "//", 
           "Simplify"}], "//", " ", "ExpToTrig"}], " ", "//", " ", 
         "FullSimplify"}], ")"}], ",", " ", "\[IndentingNewLine]", "\t", 
@@ -584,9 +710,12 @@ Cell[BoxData[
    3.661435106977956*^9, 3.661435116198124*^9}, {3.6614351828003273`*^9, 
    3.661435197915441*^9}, 3.661455661961378*^9, {3.6614557085212173`*^9, 
    3.6614557978065453`*^9}, {3.661455834919834*^9, 3.6614558778332987`*^9}, 
-   3.859897483478348*^9},
+   3.859897483478348*^9, 3.976481284850349*^9, {3.9764814282589617`*^9, 
+   3.9764814284587507`*^9}},
  FontSize->18,
- CellLabel->"In[15]:=",ExpressionUUID->"5a3b56d6-e734-41ef-b80c-1c7b2a6069a0"],
+ CellLabel->"In[46]:=",ExpressionUUID->"5a3b56d6-e734-41ef-b80c-1c7b2a6069a0"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
@@ -612,7 +741,99 @@ Cell[BoxData[
    3.6614557978065453`*^9}, {3.661455834919834*^9, 3.6614558778332987`*^9}, 
    3.859897483478348*^9},
  FontSize->18,
- CellLabel->"In[16]:=",ExpressionUUID->"c1927ee8-d5d0-4ab0-aa6c-23d543413e21"],
+ CellLabel->"In[47]:=",ExpressionUUID->"c1927ee8-d5d0-4ab0-aa6c-23d543413e21"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{"Iz", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      SubsuperscriptBox["\[Omega]", "0", "2"], "+", 
+      RowBox[{
+       RowBox[{"Cos", "[", 
+        RowBox[{"t", " ", 
+         SqrtBox[
+          RowBox[{
+           SubsuperscriptBox["\[Omega]", "0", "2"], "+", 
+           SubsuperscriptBox["\[Omega]", "1", "2"]}]]}], "]"}], " ", 
+       SubsuperscriptBox["\[Omega]", "1", "2"]}]}], ")"}]}], 
+   RowBox[{
+    SubsuperscriptBox["\[Omega]", "0", "2"], "+", 
+    SubsuperscriptBox["\[Omega]", "1", "2"]}]], "+", 
+  FractionBox[
+   RowBox[{"Iy", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Sin", "[", "\[Phi]", "]"}], " ", 
+       SubscriptBox["\[Omega]", "0"], " ", 
+       SubscriptBox["\[Omega]", "1"]}], "-", 
+      RowBox[{
+       RowBox[{"Cos", "[", 
+        RowBox[{"t", " ", 
+         SqrtBox[
+          RowBox[{
+           SubsuperscriptBox["\[Omega]", "0", "2"], "+", 
+           SubsuperscriptBox["\[Omega]", "1", "2"]}]]}], "]"}], " ", 
+       RowBox[{"Sin", "[", "\[Phi]", "]"}], " ", 
+       SubscriptBox["\[Omega]", "0"], " ", 
+       SubscriptBox["\[Omega]", "1"]}], "-", 
+      RowBox[{
+       RowBox[{"Cos", "[", "\[Phi]", "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"t", " ", 
+         SqrtBox[
+          RowBox[{
+           SubsuperscriptBox["\[Omega]", "0", "2"], "+", 
+           SubsuperscriptBox["\[Omega]", "1", "2"]}]]}], "]"}], " ", 
+       SubscriptBox["\[Omega]", "1"], " ", 
+       SqrtBox[
+        RowBox[{
+         SubsuperscriptBox["\[Omega]", "0", "2"], "+", 
+         SubsuperscriptBox["\[Omega]", "1", "2"]}]]}]}], ")"}]}], 
+   RowBox[{
+    SubsuperscriptBox["\[Omega]", "0", "2"], "+", 
+    SubsuperscriptBox["\[Omega]", "1", "2"]}]], "+", 
+  FractionBox[
+   RowBox[{"Ix", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Cos", "[", "\[Phi]", "]"}], " ", 
+       SubscriptBox["\[Omega]", "0"], " ", 
+       SubscriptBox["\[Omega]", "1"]}], "-", 
+      RowBox[{
+       RowBox[{"Cos", "[", "\[Phi]", "]"}], " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"t", " ", 
+         SqrtBox[
+          RowBox[{
+           SubsuperscriptBox["\[Omega]", "0", "2"], "+", 
+           SubsuperscriptBox["\[Omega]", "1", "2"]}]]}], "]"}], " ", 
+       SubscriptBox["\[Omega]", "0"], " ", 
+       SubscriptBox["\[Omega]", "1"]}], "+", 
+      RowBox[{
+       RowBox[{"Sin", "[", "\[Phi]", "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"t", " ", 
+         SqrtBox[
+          RowBox[{
+           SubsuperscriptBox["\[Omega]", "0", "2"], "+", 
+           SubsuperscriptBox["\[Omega]", "1", "2"]}]]}], "]"}], " ", 
+       SubscriptBox["\[Omega]", "1"], " ", 
+       SqrtBox[
+        RowBox[{
+         SubsuperscriptBox["\[Omega]", "0", "2"], "+", 
+         SubsuperscriptBox["\[Omega]", "1", "2"]}]]}]}], ")"}]}], 
+   RowBox[{
+    SubsuperscriptBox["\[Omega]", "0", "2"], "+", 
+    SubsuperscriptBox["\[Omega]", "1", "2"]}]]}]], "Output",
+ CellChangeTimes->{
+  3.976481306697844*^9, {3.976481434950231*^9, 3.97648146357375*^9}, 
+   3.976487343193164*^9, 3.976489045439002*^9},
+ CellLabel->"Out[47]=",ExpressionUUID->"c654f47d-8daf-4e4c-9054-9e95480c6dec"]
+}, Open  ]],
 
 Cell[TextData[{
  "Below we want a function that returns a triple of numbers describing the \
@@ -627,6 +848,8 @@ what we want."
  CellChangeTimes->{{3.661456225990507*^9, 3.66145635020822*^9}, 
    3.661697941532072*^9, 3.8598972587929153`*^9},
  FontSize->18,ExpressionUUID->"3989c68d-dc8b-44f2-8ed3-94938d0ad7b2"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{" ", 
@@ -649,7 +872,92 @@ Cell[BoxData[
 
  CellChangeTimes->{{3.6614561412281027`*^9, 3.6614561982630243`*^9}},
  FontSize->18,
- CellLabel->"In[17]:=",ExpressionUUID->"fb5f8160-1748-4220-8900-b66c49becac7"]
+ CellLabel->"In[48]:=",ExpressionUUID->"fb5f8160-1748-4220-8900-b66c49becac7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"\[Omega]", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Phi]", "]"}], " ", 
+        RowBox[{"(", 
+         RowBox[{"\[CapitalDelta]", "-", 
+          RowBox[{"\[CapitalDelta]", " ", 
+           RowBox[{"Cos", "[", 
+            RowBox[{"t", " ", 
+             SqrtBox[
+              RowBox[{
+               SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+               SuperscriptBox["\[Omega]", "2"]}]]}], "]"}]}]}], ")"}]}], "+", 
+       
+       RowBox[{
+        SqrtBox[
+         RowBox[{
+          SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+          SuperscriptBox["\[Omega]", "2"]}]], " ", 
+        RowBox[{"Sin", "[", "\[Phi]", "]"}], " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"t", " ", 
+          SqrtBox[
+           RowBox[{
+            SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+            SuperscriptBox["\[Omega]", "2"]}]]}], "]"}]}]}], ")"}]}], 
+    RowBox[{
+     SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+     SuperscriptBox["\[Omega]", "2"]}]], ",", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"\[Omega]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"\[CapitalDelta]", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"-", "1"}], "+", 
+           RowBox[{"Cos", "[", 
+            RowBox[{"t", " ", 
+             SqrtBox[
+              RowBox[{
+               SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+               SuperscriptBox["\[Omega]", "2"]}]]}], "]"}]}], ")"}], " ", 
+         RowBox[{"Sin", "[", "\[Phi]", "]"}]}], "+", 
+        RowBox[{
+         SqrtBox[
+          RowBox[{
+           SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+           SuperscriptBox["\[Omega]", "2"]}]], " ", 
+         RowBox[{"Cos", "[", "\[Phi]", "]"}], " ", 
+         RowBox[{"Sin", "[", 
+          RowBox[{"t", " ", 
+           SqrtBox[
+            RowBox[{
+             SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+             SuperscriptBox["\[Omega]", "2"]}]]}], "]"}]}]}], ")"}]}], 
+     RowBox[{
+      SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+      SuperscriptBox["\[Omega]", "2"]}]]}], ",", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+     RowBox[{
+      SuperscriptBox["\[Omega]", "2"], " ", 
+      RowBox[{"Cos", "[", 
+       RowBox[{"t", " ", 
+        SqrtBox[
+         RowBox[{
+          SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+          SuperscriptBox["\[Omega]", "2"]}]]}], "]"}]}]}], 
+    RowBox[{
+     SuperscriptBox["\[CapitalDelta]", "2"], "+", 
+     SuperscriptBox["\[Omega]", "2"]}]]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.976481306718081*^9, {3.9764814465865793`*^9, 3.976481463638731*^9}, 
+   3.976487343255691*^9, 3.976489045503765*^9},
+ CellLabel->"Out[48]=",ExpressionUUID->"07f17e99-002f-47f4-80b3-fae56def3987"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -670,6 +978,8 @@ oscillate sinusoidally.\
    3.859897337651609*^9},
  FontSize->18,ExpressionUUID->"2eea17c6-998a-456b-9775-5827f8ed9d2f"],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{
   RowBox[{
@@ -680,7 +990,28 @@ Cell[BoxData[
   3.661445228335499*^9, 3.6614452460563383`*^9}, {3.6614559115613832`*^9, 
   3.661455913330413*^9}},
  FontSize->18,
- CellLabel->"In[18]:=",ExpressionUUID->"402420b7-4c3a-479a-ac92-27c59247adc0"],
+ CellLabel->"In[49]:=",ExpressionUUID->"402420b7-4c3a-479a-ac92-27c59247adc0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Iz", " ", 
+   RowBox[{"Cos", "[", 
+    RowBox[{"t", " ", "\[Omega]"}], "]"}]}], "+", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "Iy"}], " ", 
+      RowBox[{"Cos", "[", "\[Phi]", "]"}]}], "+", 
+     RowBox[{"Ix", " ", 
+      RowBox[{"Sin", "[", "\[Phi]", "]"}]}]}], ")"}], " ", 
+   RowBox[{"Sin", "[", 
+    RowBox[{"t", " ", "\[Omega]"}], "]"}]}]}]], "Output",
+ CellChangeTimes->{
+  3.976481306982649*^9, {3.9764814466239433`*^9, 3.976481463676078*^9}, 
+   3.976487343291465*^9, 3.976489045540217*^9},
+ CellLabel->"Out[49]=",ExpressionUUID->"bf1bb80a-ead0-419b-89f0-1e6c7fd79315"]
+}, Open  ]],
 
 Cell["\<\
 Apply a \[Pi] pulse.  Observe that the magnetization is indeed inverted.\
@@ -688,6 +1019,8 @@ Apply a \[Pi] pulse.  Observe that the magnetization is indeed inverted.\
  CellChangeTimes->{{3.6614453092819777`*^9, 3.66144535098521*^9}, {
   3.661454779672694*^9, 3.661454786158607*^9}},
  FontSize->18,ExpressionUUID->"22933d09-e88f-41f4-98c1-a70eb409b1fb"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
@@ -699,7 +1032,15 @@ Cell[BoxData[
   3.6614451120833187`*^9, 3.661445122595236*^9}, {3.661455920740048*^9, 
   3.661455944740162*^9}},
  FontSize->18,
- CellLabel->"In[19]:=",ExpressionUUID->"6e465590-8aad-4a5f-b374-842d3fbeab3b"],
+ CellLabel->"In[50]:=",ExpressionUUID->"6e465590-8aad-4a5f-b374-842d3fbeab3b"],
+
+Cell[BoxData[
+ RowBox[{"-", "Iz"}]], "Output",
+ CellChangeTimes->{
+  3.976481306985223*^9, {3.976481446626087*^9, 3.976481463678323*^9}, 
+   3.976487343293838*^9, 3.9764890455428667`*^9},
+ CellLabel->"Out[50]=",ExpressionUUID->"f88d4910-cf90-49b0-8142-c4b0a96a5d68"]
+}, Open  ]],
 
 Cell["\<\
 Now apply a \[Pi]/2 pulse.  Appying an \[OpenCurlyDoubleQuote]x\
@@ -710,6 +1051,8 @@ the magnetization along the -y axis.  A \[OpenCurlyDoubleQuote]y\
 \>", "Text",
  CellChangeTimes->{{3.661454789358259*^9, 3.661454880990548*^9}},
  FontSize->18,ExpressionUUID->"1c33cc67-03a3-4f74-a268-87bfcf9ee211"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
@@ -727,7 +1070,17 @@ Cell[BoxData[
   "PowerExpand"}]], "Input",
  CellChangeTimes->{{3.661455950795164*^9, 3.6614560706602993`*^9}},
  FontSize->18,
- CellLabel->"In[20]:=",ExpressionUUID->"c87a60b8-421f-4086-ab0e-db403e83b573"]
+ CellLabel->"In[51]:=",ExpressionUUID->"c87a60b8-421f-4086-ab0e-db403e83b573"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "Iy"}], ",", "Ix"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.9764813069914093`*^9, {3.9764814466325407`*^9, 3.976481463682832*^9}, 
+   3.97648734329893*^9, 3.976489045548253*^9},
+ CellLabel->"Out[51]=",ExpressionUUID->"c60a84d4-b1cc-4d51-bec3-e48e8318d636"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -764,6 +1117,8 @@ field."
    3.859897725189808*^9},
  FontSize->16,ExpressionUUID->"df129454-f1be-436a-86d1-2b160c0dc454"],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{"Show", "[", 
   RowBox[{
@@ -779,7 +1134,211 @@ Cell[BoxData[
   3.661462307266276*^9, 3.661462310232806*^9}, {3.661540782826396*^9, 
   3.661540790387157*^9}},
  FontSize->16,
- CellLabel->"In[21]:=",ExpressionUUID->"c5a6e0e9-458c-40a2-bfb3-977a0b93e2e5"],
+ CellLabel->"In[52]:=",ExpressionUUID->"c5a6e0e9-458c-40a2-bfb3-977a0b93e2e5"],
+
+Cell[BoxData[
+ Graphics3DBox[{
+   {GrayLevel[1.], 
+    {Arrowheads[0.015], Arrow3DBox[TubeBox[{{0, 0, 0}, {0., 0., 1.}}]]}}, 
+   {GrayLevel[0.9714285714285714], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.006076898795116793, -0.0776578258864434, 
+       0.9969615506024416}}]]}}, 
+   {GrayLevel[0.9428571428571428], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.02412295168563663, -0.15295605803008325`, 
+       0.9879385241571819}}]]}}, 
+   {GrayLevel[0.9142857142857143], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.05358983848622456, -0.22360679774997896`, 
+       0.9732050807568877}}]]}}, 
+   {GrayLevel[0.8857142857142857], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.0935822227524088, -0.2874633580707408, 
+       0.9532088886237956}}]]}}, 
+   {GrayLevel[0.8571428571428572], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.1428849561253843, -0.34258548972000114`, 
+       0.928557521937308}}]]}}, 
+   {GrayLevel[0.8285714285714285], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.19999999999999996`, -0.38729833462074165`, 
+       0.9}}]]}}, 
+   {GrayLevel[0.8], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.26319194266973245`, -0.42024331560644457`, 
+       0.8684040286651338}}]]}}, 
+   {GrayLevel[0.7714285714285715], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.3305407289332278, -0.4404194161008241, 
+       0.8347296355333862}}]]}}, 
+   {GrayLevel[0.7428571428571429], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.3999999999999999, -0.4472135954999579, 0.8}}]]}}, 
+   {GrayLevel[0.7142857142857143], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.46945927106677215`, -0.4404194161008241, 
+       0.7652703644666139}}]]}}, 
+   {GrayLevel[0.6857142857142857], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.5368080573302675, -0.4202433156064446, 
+       0.7315959713348663}}]]}}, 
+   {GrayLevel[0.657142857142857], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.6, -0.3872983346207417, 0.7000000000000001}}]]}}, 
+   {GrayLevel[0.6285714285714286], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.6571150438746156, -0.3425854897200013, 
+       0.6714424780626923}}]]}}, 
+   {GrayLevel[0.6000000000000001], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.7064177772475912, -0.2874633580707409, 
+       0.6467911113762045}}]]}}, 
+   {GrayLevel[0.5714285714285714], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.7464101615137755, -0.22360679774997896`, 
+       0.6267949192431124}}]]}}, 
+   {GrayLevel[0.5428571428571428], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.7758770483143634, -0.15295605803008333`, 
+       0.6120614758428183}}]]}}, 
+   {GrayLevel[0.5142857142857142], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.7939231012048833, -0.07765782588644339, 
+       0.6030384493975585}}]]}}, 
+   {GrayLevel[0.48571428571428565`], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.8, -5.476786982642026*^-17, 
+       0.6000000000000001}}]]}}, 
+   {GrayLevel[0.4571428571428571], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.7939231012048833, 0.07765782588644347, 
+       0.6030384493975585}}]]}}, 
+   {GrayLevel[0.4285714285714286], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.7758770483143634, 0.15295605803008325`, 
+       0.6120614758428183}}]]}}, 
+   {GrayLevel[0.3999999999999999], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.7464101615137756, 0.22360679774997885`, 
+       0.6267949192431123}}]]}}, 
+   {GrayLevel[0.37142857142857133`], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.7064177772475912, 0.2874633580707408, 
+       0.6467911113762045}}]]}}, 
+   {GrayLevel[0.34285714285714275`], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.6571150438746158, 0.34258548972000114`, 
+       0.6714424780626921}}]]}}, 
+   {GrayLevel[0.31428571428571417`], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.6000000000000002, 0.38729833462074154`, 
+       0.7}}]]}}, 
+   {GrayLevel[0.2857142857142857], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.5368080573302675, 0.4202433156064446, 
+       0.7315959713348663}}]]}}, 
+   {GrayLevel[0.257142857142857], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.46945927106677215`, 0.4404194161008241, 
+       0.7652703644666139}}]]}}, 
+   {GrayLevel[0.22857142857142843`], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.40000000000000013`, 0.4472135954999579, 
+       0.8}}]]}}, 
+   {GrayLevel[0.19999999999999984`], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.33054072893322767`, 0.4404194161008241, 
+       0.8347296355333862}}]]}}, 
+   {GrayLevel[0.17142857142857137`], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.2631919426697324, 0.42024331560644457`, 
+       0.8684040286651339}}]]}}, 
+   {GrayLevel[0.1428571428571429], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[TubeBox[{{0, 0, 0}, {0.2, 0.3872983346207417, 0.9}}]]}}, 
+   {GrayLevel[0.11428571428571421`], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.1428849561253843, 0.3425854897200012, 
+       0.928557521937308}}]]}}, 
+   {GrayLevel[0.08571428571428563], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.09358222275240889, 0.28746335807074097`, 
+       0.9532088886237956}}]]}}, 
+   {GrayLevel[0.05714285714285705], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.05358983848622448, 0.22360679774997883`, 
+       0.9732050807568879}}]]}}, 
+   {GrayLevel[0.02857142857142847], 
+    {Arrowheads[0.015], 
+     Arrow3DBox[
+      TubeBox[{{0, 0, 0}, {0.02412295168563663, 0.1529560580300832, 
+       0.9879385241571819}}]]}}, 
+   {GrayLevel[0.], 
+    StyleBox[
+     {Arrowheads[0.015], 
+      Arrow3DBox[
+       TubeBox[{{0, 0, 0}, {0.006076898795116793, 0.0776578258864434, 
+        0.9969615506024416}}]]},
+     FontColor->GrayLevel[0.]]}, 
+   {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, 1.25}}]]}, 
+   {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 1.25, 0}}]]}, 
+   {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {1.25, 0, 0}}]]}, 
+   {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, -1.25}}]]}, 
+   {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, -1.25, 0}}]]}, 
+   {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {-1.25, 0, 0}}]]}, 
+   Text3DBox[
+    StyleBox["z",
+     StripOnInput->False,
+     FontSize->Large], {0, 0, 1.35}], Text3DBox[
+    StyleBox["y",
+     StripOnInput->False,
+     FontSize->Large], {0, 1.35, 0}], Text3DBox[
+    StyleBox["x",
+     StripOnInput->False,
+     FontSize->Large], {1.35, 0, 0}]},
+  Boxed->False,
+  ImageSize->Full,
+  Lighting->"Neutral",
+  ViewPoint->{2., -1., 1.},
+  ViewVertical->{0, 0, 1}]], "Output",
+ CellChangeTimes->{
+  3.976481307004518*^9, {3.976481446639257*^9, 3.976481463689507*^9}, 
+   3.976487343307019*^9, 3.976489045558999*^9},
+ CellLabel->"Out[52]=",ExpressionUUID->"b50f47a3-4d6a-4a9b-a13d-7a2e928db398"]
+}, Open  ]],
 
 Cell["\<\
 Set the rf phase to \[Phi] = 0, set the Rabi frequency to \[Omega] = 1, and \
@@ -790,6 +1349,8 @@ offset and plot the magnetization. \
    3.661461367913107*^9, 3.661461369017161*^9}, {3.6614625161410723`*^9, 
    3.661462539093068*^9}, 3.859897757554124*^9},
  FontSize->18,ExpressionUUID->"898d6f7d-7daa-47c5-a803-020d5ecafc84"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Show", "[", 
@@ -821,7 +1382,469 @@ Cell[BoxData[
    3.6614611032299643`*^9}, {3.661461489360958*^9, 3.66146151236849*^9}, 
    3.661461568373617*^9},
  FontSize->18,
- CellLabel->"In[22]:=",ExpressionUUID->"0ea7aa7f-81fc-483f-9da9-12235b0c711e"],
+ CellLabel->"In[53]:=",ExpressionUUID->"0ea7aa7f-81fc-483f-9da9-12235b0c711e"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {InsetBox[
+     Graphics3DBox[{
+       {GrayLevel[1.], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., 0., 1.}}]]}}, 
+       {GrayLevel[0.9411764705882353], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.08715574274765817, 
+           0.9961946980917455}}]]}}, 
+       {GrayLevel[0.8823529411764706], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.17364817766693033`, 
+           0.984807753012208}}]]}}, 
+       {GrayLevel[0.8235294117647058], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.25881904510252074`, 
+           0.9659258262890683}}]]}}, 
+       {GrayLevel[0.7647058823529411], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.3420201433256687, 
+           0.9396926207859084}}]]}}, 
+       {GrayLevel[0.7058823529411764], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.42261826174069944`, 
+           0.9063077870366499}}]]}}, 
+       {GrayLevel[0.6470588235294117], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.49999999999999994`, 
+           0.8660254037844387}}]]}}, 
+       {GrayLevel[0.5882352941176471], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.573576436351046, 
+           0.8191520442889918}}]]}}, 
+       {GrayLevel[0.5294117647058824], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.6427876096865393, 
+           0.766044443118978}}]]}}, 
+       {GrayLevel[0.47058823529411764`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.7071067811865475, 
+           0.7071067811865476}}]]}}, 
+       {GrayLevel[0.4117647058823529], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.766044443118978, 
+           0.6427876096865394}}]]}}, 
+       {GrayLevel[0.3529411764705882], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.8191520442889918, 
+           0.573576436351046}}]]}}, 
+       {GrayLevel[0.2941176470588235], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.8660254037844386, 
+           0.5000000000000001}}]]}}, 
+       {GrayLevel[0.23529411764705888`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.9063077870366499, 
+           0.42261826174069944`}}]]}}, 
+       {GrayLevel[0.17647058823529416`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.9396926207859083, 
+           0.3420201433256688}}]]}}, 
+       {GrayLevel[0.11764705882352944`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.9659258262890683, 
+           0.25881904510252074`}}]]}}, 
+       {GrayLevel[0.05882352941176472], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.984807753012208, 
+           0.17364817766693041`}}]]}}, 
+       {GrayLevel[0.], 
+        StyleBox[
+         {Arrowheads[0.015], 
+          Arrow3DBox[
+           TubeBox[{{0, 0, 0}, {0., -0.9961946980917455, 
+            0.08715574274765836}}]]},
+         FontColor->GrayLevel[0.]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, 1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {1.25, 0, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, -1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, -1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {-1.25, 0, 0}}]]}, 
+       Text3DBox[
+        StyleBox["z",
+         StripOnInput->False,
+         FontSize->Large], {0, 0, 1.35}], Text3DBox[
+        StyleBox["y",
+         StripOnInput->False,
+         FontSize->Large], {0, 1.35, 0}], Text3DBox[
+        StyleBox["x",
+         StripOnInput->False,
+         FontSize->Large], {1.35, 0, 0}]},
+      Boxed->False,
+      Lighting->"Neutral",
+      ViewPoint->{2., -1., 1.},
+      ViewVertical->{0, 0, 1}], {189., -200.34}, ImageScaled[{0.5, 0.5}], {360, 371},
+     
+     ContentSelectable->True], InsetBox[
+     Graphics3DBox[{
+       {GrayLevel[1.], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., 0., 1.}}]]}}, 
+       {GrayLevel[0.9411764705882353], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.0038028872954971593`, -0.08704510719982958, 
+           0.9961971127045028}}]]}}, 
+       {GrayLevel[0.8823529411764706], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.015153701374859663`, -0.1727661234704375, 
+           0.9848462986251403}}]]}}, 
+       {GrayLevel[0.8235294117647058], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.03387977877146359, -0.2558590993568933, 
+           0.9661202212285365}}]]}}, 
+       {GrayLevel[0.7647058823529411], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.059696266838004886`, -0.3350600619698224, 
+           0.9403037331619951}}]]}}, 
+       {GrayLevel[0.7058823529411764], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.0922104567965531, -0.40916424197117746`, 
+           0.9077895432034468}}]]}}, 
+       {GrayLevel[0.6470588235294117], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.13092775744744117`, -0.4770443999822767, 
+           0.8690722425525588}}]]}}, 
+       {GrayLevel[0.5882352941176471], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.17525921866762445`, -0.5376679736410535, 
+           0.8247407813323755}}]]}}, 
+       {GrayLevel[0.5294117647058824], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.22453049025444238`, -0.5901127844752089, 
+           0.7754695097455576}}]]}}, 
+       {GrayLevel[0.47058823529411764`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.27799207983689334`, -0.6335810656653996, 
+           0.7220079201631067}}]]}}, 
+       {GrayLevel[0.4117647058823529], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.3348307538156965, -0.6674115973144443, 
+           0.6651692461843035}}]]}}, 
+       {GrayLevel[0.3529411764705882], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.39418190790618407`, -0.6910897646263107, 
+           0.605818092093816}}]]}}, 
+       {GrayLevel[0.2941176470588235], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.4551427191089008, -0.7042553859943949, 
+           0.5448572808910992}}]]}}, 
+       {GrayLevel[0.23529411764705888`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.516785879046063, -0.706708191921745, 
+           0.483214120953937}}]]}}, 
+       {GrayLevel[0.17647058823529416`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.5781736997585529, -0.6984108714303632, 
+           0.42182630024144707`}}]]}}, 
+       {GrayLevel[0.11764705882352944`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.6383723773924276, -0.6794896396189829, 
+           0.3616276226075724}}]]}}, 
+       {GrayLevel[0.05882352941176472], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.6964661968021686, -0.6502323177358867, 
+           0.3035338031978314}}]]}}, 
+       {GrayLevel[0.], 
+        StyleBox[
+         {Arrowheads[0.015], 
+          Arrow3DBox[
+           TubeBox[{{0, 0, 0}, {0.7515714609966554, -0.6110839549718325, 
+            0.2484285390033446}}]]},
+         FontColor->GrayLevel[0.]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, 1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {1.25, 0, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, -1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, -1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {-1.25, 0, 0}}]]}, 
+       Text3DBox[
+        StyleBox["z",
+         StripOnInput->False,
+         FontSize->Large], {0, 0, 1.35}], Text3DBox[
+        StyleBox["y",
+         StripOnInput->False,
+         FontSize->Large], {0, 1.35, 0}], Text3DBox[
+        StyleBox["x",
+         StripOnInput->False,
+         FontSize->Large], {1.35, 0, 0}]},
+      Boxed->False,
+      Lighting->"Neutral",
+      ViewPoint->{2., -1., 1.},
+      ViewVertical->{0, 0, 1}], {189., -601.02}, ImageScaled[{0.5, 0.5}], {360, 371},
+     
+     ContentSelectable->True], InsetBox[
+     Graphics3DBox[{
+       {GrayLevel[1.], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., 0., 1.}}]]}}, 
+       {GrayLevel[0.9411764705882353], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.00759130162031223, -0.08671370592327965, 
+           0.9962043491898438}}]]}}, 
+       {GrayLevel[0.8823529411764706], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.03007706717979608, -0.17013606236516599`, 
+           0.9849614664101021}}]]}}, 
+       {GrayLevel[0.8235294117647058], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.06660381553582329, -0.24710064797752118`, 
+           0.9666980922320884}}]]}}, 
+       {GrayLevel[0.7647058823529411], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.11578511886849455`, -0.3146861558430165, 
+           0.9421074405657528}}]]}}, 
+       {GrayLevel[0.7058823529411764], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.17575422663941806`, -0.37032727608480737`, 
+           0.912122886680291}}]]}}, 
+       {GrayLevel[0.6470588235294117], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.2442349209236433, -0.4119120660716562, 
+           0.8778825395381784}}]]}}, 
+       {GrayLevel[0.5882352941176471], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.31862791369377064`, -0.4378621123855254, 
+           0.8406860431531147}}]]}}, 
+       {GrayLevel[0.5294117647058824], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.39610950671702116`, -0.4471924418832668, 
+           0.8019452466414894}}]]}}, 
+       {GrayLevel[0.47058823529411764`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.4737387692800863, -0.43954890783770906`, 
+           0.763130615359957}}]]}}, 
+       {GrayLevel[0.4117647058823529], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.5485691656495727, -0.4152216321107769, 
+           0.7257154171752137}}]]}}, 
+       {GrayLevel[0.3529411764705882], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.6177603952794388, -0.3751339931406887, 
+           0.6911198023602806}}]]}}, 
+       {GrayLevel[0.2941176470588235], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.6786862007016817, -0.32080757772078505`, 
+           0.6606568996491592}}]]}}, 
+       {GrayLevel[0.23529411764705888`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.729034051089198, -0.2543044268780802, 
+           0.635482974455401}}]]}}, 
+       {GrayLevel[0.17647058823529416`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.7668929178508579, -0.17814876799631438`, 
+           0.6165535410745712}}]]}}, 
+       {GrayLevel[0.11764705882352944`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.790825810603706, -0.09523120395881365, 
+           0.6045870946981471}}]]}}, 
+       {GrayLevel[0.05882352941176472], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.7999243203100755, -0.008698995956728817, 
+           0.6000378398449624}}]]}}, 
+       {GrayLevel[0.], 
+        StyleBox[
+         {Arrowheads[0.015], 
+          Arrow3DBox[
+           TubeBox[{{0, 0, 0}, {0.7938430993125843, 0.07816339555586305, 
+            0.6030784503437079}}]]},
+         FontColor->GrayLevel[0.]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, 1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {1.25, 0, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, -1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, -1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {-1.25, 0, 0}}]]}, 
+       Text3DBox[
+        StyleBox["z",
+         StripOnInput->False,
+         FontSize->Large], {0, 0, 1.35}], Text3DBox[
+        StyleBox["y",
+         StripOnInput->False,
+         FontSize->Large], {0, 1.35, 0}], Text3DBox[
+        StyleBox["x",
+         StripOnInput->False,
+         FontSize->Large], {1.35, 0, 0}]},
+      Boxed->False,
+      Lighting->"Neutral",
+      ViewPoint->{2., -1., 1.},
+      ViewVertical->{0, 0, 1}], {189., -1001.7}, ImageScaled[{0.5, 0.5}], {360, 371},
+     
+     ContentSelectable->True], InsetBox[
+     Graphics3DBox[{
+       {GrayLevel[1.], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., 0., 1.}}]]}}, 
+       {GrayLevel[0.9411764705882353], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.011350843443117499`, -0.08616305227106939, 
+           0.9962163855189609}}]]}}, 
+       {GrayLevel[0.8823529411764706], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.04454442946000219, -0.16580594909607174`, 
+           0.985151856846666}}]]}}, 
+       {GrayLevel[0.8235294117647058], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.09706892339603211, -0.23290193012022728`, 
+           0.9676436922013226}}]]}}, 
+       {GrayLevel[0.7647058823529411], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.16494967653389475`, -0.28237368883508557`, 
+           0.9450167744887019}}]]}}, 
+       {GrayLevel[0.7058823529411764], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.243049996862465, -0.3104775839871263, 
+           0.9189833343791783}}]]}}, 
+       {GrayLevel[0.6470588235294117], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.3254598543223634, -0.3150869294829322, 
+           0.8915133818925457}}]]}}, 
+       {GrayLevel[0.5882352941176471], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.4059431063122769, -0.2958529255951822, 
+           0.864685631229241}}]]}}, 
+       {GrayLevel[0.5294117647058824], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.4784094008780024, -0.2542310534366377, 
+           0.8405301997073326}}]]}}, 
+       {GrayLevel[0.47058823529411764`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.5373750475894171, -0.19337093537183905`, 
+           0.820874984136861}}]]}}, 
+       {GrayLevel[0.4117647058823529], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.5783779809508983, -0.11787799588134083`, 
+           0.8072073396830339}}]]}}, 
+       {GrayLevel[0.3529411764705882], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.5983154151138144, -0.033464958546592254`, 
+           0.8005615282953953}}]]}}, 
+       {GrayLevel[0.2941176470588235], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.5956786387858936, 0.05348044882344155, 
+           0.8014404537380355}}]]}}, 
+       {GrayLevel[0.23529411764705888`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.5706671828690877, 0.1363788681810584, 
+           0.8097776057103041}}]]}}, 
+       {GrayLevel[0.17647058823529416`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.5251737214993707, 0.2089571863275236, 
+           0.8249420928335431}}]]}}, 
+       {GrayLevel[0.11764705882352944`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.46264084906136366`, 0.2657232357518684, 
+           0.8457863836462121}}]]}}, 
+       {GrayLevel[0.05882352941176472], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.38780057118901523`, 0.3023813995214262, 
+           0.870733142936995}}]]}}, 
+       {GrayLevel[0.], 
+        StyleBox[
+         {Arrowheads[0.015], 
+          Arrow3DBox[
+           TubeBox[{{0, 0, 0}, {0.3063162230647814, 0.3161576704504608, 
+            0.8978945923117396}}]]},
+         FontColor->GrayLevel[0.]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, 1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {1.25, 0, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, -1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, -1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {-1.25, 0, 0}}]]}, 
+       Text3DBox[
+        StyleBox["z",
+         StripOnInput->False,
+         FontSize->Large], {0, 0, 1.35}], Text3DBox[
+        StyleBox["y",
+         StripOnInput->False,
+         FontSize->Large], {0, 1.35, 0}], Text3DBox[
+        StyleBox["x",
+         StripOnInput->False,
+         FontSize->Large], {1.35, 0, 0}]},
+      Boxed->False,
+      Lighting->"Neutral",
+      ViewPoint->{2., -1., 1.},
+      ViewVertical->{0, 0, 1}], {189., -1402.38}, ImageScaled[{0.5, 0.5}], {360, 371},
+     
+     ContentSelectable->True]}, {}},
+  ImageSize->Full,
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{
+  3.97648130719092*^9, {3.976481446755896*^9, 3.9764814638011017`*^9}, 
+   3.97648734342607*^9, 3.976489045684031*^9},
+ CellLabel->"Out[53]=",ExpressionUUID->"6376bdc6-ce5f-4cdb-b1b5-fd9297552bdb"]
+}, Open  ]],
 
 Cell["\<\
 Set the resonance offset d \[CapitalDelta] = 0, set the Rabi frequency to \
@@ -832,6 +1855,8 @@ the rf phase and plot the magnetization.\
   3.661462550241778*^9, 3.661462550904059*^9}, {3.859897773611088*^9, 
   3.859897792296879*^9}},
  FontSize->18,ExpressionUUID->"e550e490-59de-4d5c-a778-728094967acc"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Show", "[", 
@@ -867,7 +1892,565 @@ Cell[BoxData[
    3.6614611032299643`*^9}, {3.6614613756774282`*^9, 3.661461430361413*^9}, {
    3.66146153004705*^9, 3.6614616290756187`*^9}},
  FontSize->18,
- CellLabel->"In[23]:=",ExpressionUUID->"4fb489fc-d733-41b3-831a-2778d839f1e2"]
+ CellLabel->"In[54]:=",ExpressionUUID->"4fb489fc-d733-41b3-831a-2778d839f1e2"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {InsetBox[
+     Graphics3DBox[{
+       {GrayLevel[1.], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., 0., 1.}}]]}}, 
+       {GrayLevel[0.9411764705882353], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.08715574274765817, 
+           0.9961946980917455}}]]}}, 
+       {GrayLevel[0.8823529411764706], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.17364817766693033`, 
+           0.984807753012208}}]]}}, 
+       {GrayLevel[0.8235294117647058], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.2588190451025207, 
+           0.9659258262890682}}]]}}, 
+       {GrayLevel[0.7647058823529411], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.3420201433256687, 
+           0.9396926207859084}}]]}}, 
+       {GrayLevel[0.7058823529411764], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.42261826174069944`, 
+           0.9063077870366499}}]]}}, 
+       {GrayLevel[0.6470588235294117], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., -0.5, 0.8660254037844386}}]]}}, 
+       {GrayLevel[0.5882352941176471], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.573576436351046, 
+           0.8191520442889918}}]]}}, 
+       {GrayLevel[0.5294117647058824], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.6427876096865393, 
+           0.766044443118978}}]]}}, 
+       {GrayLevel[0.47058823529411764`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.7071067811865475, 
+           0.7071067811865475}}]]}}, 
+       {GrayLevel[0.4117647058823529], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.766044443118978, 
+           0.6427876096865393}}]]}}, 
+       {GrayLevel[0.3529411764705882], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.8191520442889918, 
+           0.573576436351046}}]]}}, 
+       {GrayLevel[0.2941176470588235], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., -0.8660254037844386, 0.5}}]]}}, 
+       {GrayLevel[0.23529411764705888`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.9063077870366499, 
+           0.42261826174069944`}}]]}}, 
+       {GrayLevel[0.17647058823529416`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.9396926207859084, 
+           0.3420201433256687}}]]}}, 
+       {GrayLevel[0.11764705882352944`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.9659258262890682, 
+           0.2588190451025207}}]]}}, 
+       {GrayLevel[0.05882352941176472], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., -0.984807753012208, 
+           0.17364817766693033`}}]]}}, 
+       {GrayLevel[0.], 
+        StyleBox[
+         {Arrowheads[0.015], 
+          Arrow3DBox[
+           TubeBox[{{0, 0, 0}, {0., -0.9961946980917455, 
+            0.08715574274765817}}]]},
+         FontColor->GrayLevel[0.]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, 1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {1.25, 0, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, -1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, -1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {-1.25, 0, 0}}]]}, 
+       Text3DBox[
+        StyleBox["z",
+         StripOnInput->False,
+         FontSize->Large], {0, 0, 1.35}], Text3DBox[
+        StyleBox["y",
+         StripOnInput->False,
+         FontSize->Large], {0, 1.35, 0}], Text3DBox[
+        StyleBox["x",
+         StripOnInput->False,
+         FontSize->Large], {1.35, 0, 0}]},
+      Boxed->False,
+      Lighting->"Neutral",
+      ViewPoint->{2., -1., 1.},
+      ViewVertical->{0, 0, 1}], {189., -200.95833333333334}, 
+     ImageScaled[{0.5, 0.5}], {360, 371},
+     ContentSelectable->True], InsetBox[
+     Graphics3DBox[{
+       {GrayLevel[1.], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., 0., 1.}}]]}}, 
+       {GrayLevel[0.9411764705882353], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.061628416716219346`, -0.061628416716219346`, 
+           0.9961946980917455}}]]}}, 
+       {GrayLevel[0.8823529411764706], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.12278780396897282`, -0.12278780396897282`, 
+           0.984807753012208}}]]}}, 
+       {GrayLevel[0.8235294117647058], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.1830127018922193, -0.1830127018922193, 
+           0.9659258262890682}}]]}}, 
+       {GrayLevel[0.7647058823529411], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.24184476264797522`, -0.24184476264797522`, 
+           0.9396926207859084}}]]}}, 
+       {GrayLevel[0.7058823529411764], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.29883623873011983`, -0.29883623873011983`, 
+           0.9063077870366499}}]]}}, 
+       {GrayLevel[0.6470588235294117], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.35355339059327373`, -0.35355339059327373`, 
+           0.8660254037844386}}]]}}, 
+       {GrayLevel[0.5882352941176471], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.4055797876726388, -0.4055797876726388, 
+           0.8191520442889918}}]]}}, 
+       {GrayLevel[0.5294117647058824], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.4545194776720436, -0.4545194776720436, 
+           0.766044443118978}}]]}}, 
+       {GrayLevel[0.47058823529411764`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.5, -0.5, 0.7071067811865475}}]]}}, 
+       {GrayLevel[0.4117647058823529], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.5416752204197018, -0.5416752204197018, 
+           0.6427876096865393}}]]}}, 
+       {GrayLevel[0.3529411764705882], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.5792279653395691, -0.5792279653395691, 
+           0.573576436351046}}]]}}, 
+       {GrayLevel[0.2941176470588235], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.6123724356957945, -0.6123724356957945, 
+           0.5}}]]}}, 
+       {GrayLevel[0.23529411764705888`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.6408563820557884, -0.6408563820557884, 
+           0.42261826174069944`}}]]}}, 
+       {GrayLevel[0.17647058823529416`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.6644630243886747, -0.6644630243886747, 
+           0.3420201433256687}}]]}}, 
+       {GrayLevel[0.11764705882352944`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.6830127018922193, -0.6830127018922193, 
+           0.2588190451025207}}]]}}, 
+       {GrayLevel[0.05882352941176472], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.6963642403200189, -0.6963642403200189, 
+           0.17364817766693033`}}]]}}, 
+       {GrayLevel[0.], 
+        StyleBox[
+         {Arrowheads[0.015], 
+          Arrow3DBox[
+           TubeBox[{{0, 0, 0}, {0.7044160264027586, -0.7044160264027586, 
+            0.08715574274765817}}]]},
+         FontColor->GrayLevel[0.]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, 1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {1.25, 0, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, -1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, -1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {-1.25, 0, 0}}]]}, 
+       Text3DBox[
+        StyleBox["z",
+         StripOnInput->False,
+         FontSize->Large], {0, 0, 1.35}], Text3DBox[
+        StyleBox["y",
+         StripOnInput->False,
+         FontSize->Large], {0, 1.35, 0}], Text3DBox[
+        StyleBox["x",
+         StripOnInput->False,
+         FontSize->Large], {1.35, 0, 0}]},
+      Boxed->False,
+      Lighting->"Neutral",
+      ViewPoint->{2., -1., 1.},
+      ViewVertical->{0, 0, 1}], {189., -602.875}, ImageScaled[{0.5, 0.5}], {360, 371},
+     
+     ContentSelectable->True], InsetBox[
+     Graphics3DBox[{
+       {GrayLevel[1.], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., 0., 1.}}]]}}, 
+       {GrayLevel[0.9411764705882353], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.08715574274765817, 0., 
+           0.9961946980917455}}]]}}, 
+       {GrayLevel[0.8823529411764706], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.17364817766693033`, 0., 
+           0.984807753012208}}]]}}, 
+       {GrayLevel[0.8235294117647058], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.2588190451025207, 0., 
+           0.9659258262890682}}]]}}, 
+       {GrayLevel[0.7647058823529411], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.3420201433256687, 0., 
+           0.9396926207859084}}]]}}, 
+       {GrayLevel[0.7058823529411764], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.42261826174069944`, 0., 
+           0.9063077870366499}}]]}}, 
+       {GrayLevel[0.6470588235294117], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0.5, 0., 0.8660254037844386}}]]}}, 
+       {GrayLevel[0.5882352941176471], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.573576436351046, 0., 
+           0.8191520442889918}}]]}}, 
+       {GrayLevel[0.5294117647058824], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.6427876096865393, 0., 
+           0.766044443118978}}]]}}, 
+       {GrayLevel[0.47058823529411764`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.7071067811865475, 0., 
+           0.7071067811865475}}]]}}, 
+       {GrayLevel[0.4117647058823529], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.766044443118978, 0., 
+           0.6427876096865393}}]]}}, 
+       {GrayLevel[0.3529411764705882], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.8191520442889918, 0., 
+           0.573576436351046}}]]}}, 
+       {GrayLevel[0.2941176470588235], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0.8660254037844386, 0., 0.5}}]]}}, 
+       {GrayLevel[0.23529411764705888`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.9063077870366499, 0., 
+           0.42261826174069944`}}]]}}, 
+       {GrayLevel[0.17647058823529416`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.9396926207859084, 0., 
+           0.3420201433256687}}]]}}, 
+       {GrayLevel[0.11764705882352944`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.9659258262890682, 0., 
+           0.2588190451025207}}]]}}, 
+       {GrayLevel[0.05882352941176472], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0.984807753012208, 0., 
+           0.17364817766693033`}}]]}}, 
+       {GrayLevel[0.], 
+        StyleBox[
+         {Arrowheads[0.015], 
+          Arrow3DBox[
+           TubeBox[{{0, 0, 0}, {0.9961946980917455, 0., 
+            0.08715574274765817}}]]},
+         FontColor->GrayLevel[0.]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, 1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {1.25, 0, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, -1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, -1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {-1.25, 0, 0}}]]}, 
+       Text3DBox[
+        StyleBox["z",
+         StripOnInput->False,
+         FontSize->Large], {0, 0, 1.35}], Text3DBox[
+        StyleBox["y",
+         StripOnInput->False,
+         FontSize->Large], {0, 1.35, 0}], Text3DBox[
+        StyleBox["x",
+         StripOnInput->False,
+         FontSize->Large], {1.35, 0, 0}]},
+      Boxed->False,
+      Lighting->"Neutral",
+      ViewPoint->{2., -1., 1.},
+      ViewVertical->{0, 0, 1}], {189., -1004.7916666666667}, 
+     ImageScaled[{0.5, 0.5}], {360, 371},
+     ContentSelectable->True], InsetBox[
+     Graphics3DBox[{
+       {GrayLevel[1.], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., 0., 1.}}]]}}, 
+       {GrayLevel[0.9411764705882353], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.08715574274765817, 
+           0.9961946980917455}}]]}}, 
+       {GrayLevel[0.8823529411764706], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.17364817766693033`, 
+           0.984807753012208}}]]}}, 
+       {GrayLevel[0.8235294117647058], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.2588190451025207, 
+           0.9659258262890682}}]]}}, 
+       {GrayLevel[0.7647058823529411], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.3420201433256687, 
+           0.9396926207859084}}]]}}, 
+       {GrayLevel[0.7058823529411764], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.42261826174069944`, 
+           0.9063077870366499}}]]}}, 
+       {GrayLevel[0.6470588235294117], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., 0.5, 0.8660254037844386}}]]}}, 
+       {GrayLevel[0.5882352941176471], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.573576436351046, 
+           0.8191520442889918}}]]}}, 
+       {GrayLevel[0.5294117647058824], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.6427876096865393, 
+           0.766044443118978}}]]}}, 
+       {GrayLevel[0.47058823529411764`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.7071067811865475, 
+           0.7071067811865475}}]]}}, 
+       {GrayLevel[0.4117647058823529], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.766044443118978, 
+           0.6427876096865393}}]]}}, 
+       {GrayLevel[0.3529411764705882], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.8191520442889918, 
+           0.573576436351046}}]]}}, 
+       {GrayLevel[0.2941176470588235], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., 0.8660254037844386, 0.5}}]]}}, 
+       {GrayLevel[0.23529411764705888`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.9063077870366499, 
+           0.42261826174069944`}}]]}}, 
+       {GrayLevel[0.17647058823529416`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.9396926207859084, 
+           0.3420201433256687}}]]}}, 
+       {GrayLevel[0.11764705882352944`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.9659258262890682, 
+           0.2588190451025207}}]]}}, 
+       {GrayLevel[0.05882352941176472], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {0., 0.984807753012208, 
+           0.17364817766693033`}}]]}}, 
+       {GrayLevel[0.], 
+        StyleBox[
+         {Arrowheads[0.015], 
+          Arrow3DBox[
+           TubeBox[{{0, 0, 0}, {0., 0.9961946980917455, 
+            0.08715574274765817}}]]},
+         FontColor->GrayLevel[0.]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, 1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {1.25, 0, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, -1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, -1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {-1.25, 0, 0}}]]}, 
+       Text3DBox[
+        StyleBox["z",
+         StripOnInput->False,
+         FontSize->Large], {0, 0, 1.35}], Text3DBox[
+        StyleBox["y",
+         StripOnInput->False,
+         FontSize->Large], {0, 1.35, 0}], Text3DBox[
+        StyleBox["x",
+         StripOnInput->False,
+         FontSize->Large], {1.35, 0, 0}]},
+      Boxed->False,
+      Lighting->"Neutral",
+      ViewPoint->{2., -1., 1.},
+      ViewVertical->{0, 0, 1}], {189., -1406.7083333333335}, 
+     ImageScaled[{0.5, 0.5}], {360, 371},
+     ContentSelectable->True], InsetBox[
+     Graphics3DBox[{
+       {GrayLevel[1.], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {0., 0., 1.}}]]}}, 
+       {GrayLevel[0.9411764705882353], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.08715574274765817, 0., 
+           0.9961946980917455}}]]}}, 
+       {GrayLevel[0.8823529411764706], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.17364817766693033`, 0., 
+           0.984807753012208}}]]}}, 
+       {GrayLevel[0.8235294117647058], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.2588190451025207, 0., 
+           0.9659258262890682}}]]}}, 
+       {GrayLevel[0.7647058823529411], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.3420201433256687, 0., 
+           0.9396926207859084}}]]}}, 
+       {GrayLevel[0.7058823529411764], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.42261826174069944`, 0., 
+           0.9063077870366499}}]]}}, 
+       {GrayLevel[0.6470588235294117], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {-0.5, 0., 0.8660254037844386}}]]}}, 
+       {GrayLevel[0.5882352941176471], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.573576436351046, 0., 
+           0.8191520442889918}}]]}}, 
+       {GrayLevel[0.5294117647058824], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.6427876096865393, 0., 
+           0.766044443118978}}]]}}, 
+       {GrayLevel[0.47058823529411764`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.7071067811865475, 0., 
+           0.7071067811865475}}]]}}, 
+       {GrayLevel[0.4117647058823529], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.766044443118978, 0., 
+           0.6427876096865393}}]]}}, 
+       {GrayLevel[0.3529411764705882], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.8191520442889918, 0., 
+           0.573576436351046}}]]}}, 
+       {GrayLevel[0.2941176470588235], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[TubeBox[{{0, 0, 0}, {-0.8660254037844386, 0., 0.5}}]]}}, 
+       {GrayLevel[0.23529411764705888`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.9063077870366499, 0., 
+           0.42261826174069944`}}]]}}, 
+       {GrayLevel[0.17647058823529416`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.9396926207859084, 0., 
+           0.3420201433256687}}]]}}, 
+       {GrayLevel[0.11764705882352944`], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.9659258262890682, 0., 
+           0.2588190451025207}}]]}}, 
+       {GrayLevel[0.05882352941176472], 
+        {Arrowheads[0.015], 
+         Arrow3DBox[
+          TubeBox[{{0, 0, 0}, {-0.984807753012208, 0., 
+           0.17364817766693033`}}]]}}, 
+       {GrayLevel[0.], 
+        StyleBox[
+         {Arrowheads[0.015], 
+          Arrow3DBox[
+           TubeBox[{{0, 0, 0}, {-0.9961946980917455, 0., 
+            0.08715574274765817}}]]},
+         FontColor->GrayLevel[0.]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, 1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {1.25, 0, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, 0, -1.25}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {0, -1.25, 0}}]]}, 
+       {GrayLevel[0], Arrow3DBox[TubeBox[{{0, 0, 0}, {-1.25, 0, 0}}]]}, 
+       Text3DBox[
+        StyleBox["z",
+         StripOnInput->False,
+         FontSize->Large], {0, 0, 1.35}], Text3DBox[
+        StyleBox["y",
+         StripOnInput->False,
+         FontSize->Large], {0, 1.35, 0}], Text3DBox[
+        StyleBox["x",
+         StripOnInput->False,
+         FontSize->Large], {1.35, 0, 0}]},
+      Boxed->False,
+      Lighting->"Neutral",
+      ViewPoint->{2., -1., 1.},
+      ViewVertical->{0, 0, 1}], {189., -1808.625}, ImageScaled[{0.5, 0.5}], {360, 371},
+     
+     ContentSelectable->True]}, {}},
+  ImageSize->Full,
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{
+  3.976481307342052*^9, {3.97648144689863*^9, 3.976481463954267*^9}, 
+   3.9764873435800877`*^9, 3.9764890458335342`*^9},
+ CellLabel->"Out[54]=",ExpressionUUID->"a91abe31-b623-4fd1-8ff9-197a23ad351d"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -891,15 +2474,15 @@ Cell[BoxData[
   3.661434766309744*^9}, {3.661439580768929*^9, 3.661439585503661*^9}, {
   3.859897802591381*^9, 3.859897803030715*^9}},
  FontSize->16,
- CellLabel->"In[24]:=",ExpressionUUID->"46982449-0780-45cf-810c-46e66814c863"]
+ CellLabel->"In[55]:=",ExpressionUUID->"46982449-0780-45cf-810c-46e66814c863"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1074, 1098},
-WindowMargins->{{Automatic, 153}, {Automatic, 82}},
+WindowSize->{1074, 871},
+WindowMargins->{{57, Automatic}, {Automatic, 16}},
 PrintingCopies->1,
 PrintingPageRange->{1, Automatic},
-FrontEndVersion->"13.0 for Mac OS X x86 (64-bit) (December 2, 2021)",
+FrontEndVersion->"12.3 for Mac OS X ARM (64-bit) (July 9, 2021)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"79f1e0f6-f261-4521-890f-4f34bc4a3b4e"
 ]
@@ -917,63 +2500,99 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 260, 4, 98, "Title",ExpressionUUID->"fca9def9-7c4a-43e1-b1de-916338efabe2"],
 Cell[843, 28, 211, 6, 90, "Text",ExpressionUUID->"940bbff1-bf05-40de-8bd9-719010930089"],
-Cell[1057, 36, 745, 15, 90, "Text",ExpressionUUID->"06f4ce1c-b841-4757-8def-0bcfef6e6d1f"],
+Cell[1057, 36, 772, 16, 90, "Text",ExpressionUUID->"06f4ce1c-b841-4757-8def-0bcfef6e6d1f"],
 Cell[CellGroupData[{
-Cell[1827, 55, 171, 3, 67, "Section",ExpressionUUID->"6fbb75f9-49a0-4a91-8942-ec96386d5952"],
-Cell[2001, 60, 396, 9, 84, "Text",ExpressionUUID->"2faf2085-ed1f-44e3-bb4c-6505fc87d772"],
-Cell[2400, 71, 740, 15, 34, "Input",ExpressionUUID->"69d76d11-3be0-4f4b-8175-4ecb94e003b7"],
-Cell[3143, 88, 207, 2, 36, "Text",ExpressionUUID->"be4519d5-a74b-4bf3-9bfa-30560f9a71ee"]
+Cell[1854, 56, 171, 3, 67, "Section",ExpressionUUID->"6fbb75f9-49a0-4a91-8942-ec96386d5952"],
+Cell[2028, 61, 396, 9, 84, "Text",ExpressionUUID->"2faf2085-ed1f-44e3-bb4c-6505fc87d772"],
+Cell[2427, 72, 741, 15, 34, "Input",ExpressionUUID->"69d76d11-3be0-4f4b-8175-4ecb94e003b7"],
+Cell[3171, 89, 207, 2, 36, "Text",ExpressionUUID->"be4519d5-a74b-4bf3-9bfa-30560f9a71ee"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3387, 95, 160, 3, 67, "Section",ExpressionUUID->"43fa3d42-aa34-41cc-9efc-0347c21e3a60"],
-Cell[3550, 100, 741, 15, 90, "Text",ExpressionUUID->"fa22e656-7282-4b34-8fb8-9fc01f941d8c"],
-Cell[4294, 117, 668, 13, 61, "Input",ExpressionUUID->"2de83763-a67c-4565-9352-3b68249d64e5"],
-Cell[4965, 132, 381, 7, 64, "Text",ExpressionUUID->"4408d83d-8eca-4921-99dc-00913b46a067"],
-Cell[5349, 141, 668, 14, 61, "Input",ExpressionUUID->"040a79b4-1eb2-4cbd-b38d-08741e01bd05"]
+Cell[3415, 96, 160, 3, 67, "Section",ExpressionUUID->"43fa3d42-aa34-41cc-9efc-0347c21e3a60"],
+Cell[3578, 101, 741, 15, 90, "Text",ExpressionUUID->"fa22e656-7282-4b34-8fb8-9fc01f941d8c"],
+Cell[CellGroupData[{
+Cell[4344, 120, 669, 13, 61, "Input",ExpressionUUID->"2de83763-a67c-4565-9352-3b68249d64e5"],
+Cell[5016, 135, 332, 5, 34, "Output",ExpressionUUID->"167cf710-9a35-4d5a-ada0-6a79194cfa67"]
+}, Open  ]],
+Cell[5363, 143, 381, 7, 64, "Text",ExpressionUUID->"4408d83d-8eca-4921-99dc-00913b46a067"],
+Cell[5747, 152, 669, 14, 61, "Input",ExpressionUUID->"040a79b4-1eb2-4cbd-b38d-08741e01bd05"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6054, 160, 279, 4, 67, "Section",ExpressionUUID->"071ca845-3af7-4202-b311-c65823ae3498"],
-Cell[6336, 166, 9548, 231, 1205, "Input",ExpressionUUID->"6ee73c83-4b14-471b-aa6c-d4c7ad6c8361"]
+Cell[6453, 171, 279, 4, 67, "Section",ExpressionUUID->"071ca845-3af7-4202-b311-c65823ae3498"],
+Cell[6735, 177, 9549, 231, 1205, "Input",ExpressionUUID->"6ee73c83-4b14-471b-aa6c-d4c7ad6c8361"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15921, 402, 248, 4, 67, "Section",ExpressionUUID->"6bafe0c4-7af5-45e4-a285-4186ce080de1"],
+Cell[16321, 413, 248, 4, 67, "Section",ExpressionUUID->"6bafe0c4-7af5-45e4-a285-4186ce080de1"],
 Cell[CellGroupData[{
-Cell[16194, 410, 168, 3, 54, "Subsection",ExpressionUUID->"711b3caf-7152-4654-abc9-5df556ca8417"],
-Cell[16365, 415, 1009, 26, 64, "Text",ExpressionUUID->"77da6aa8-fdb0-48b2-ae2f-064ed48122f1"],
-Cell[17377, 443, 3165, 66, 399, "Input",ExpressionUUID->"cb060012-c97e-4f6b-97db-610ad428555c"]
-}, Open  ]],
+Cell[16594, 421, 168, 3, 54, "Subsection",ExpressionUUID->"711b3caf-7152-4654-abc9-5df556ca8417"],
+Cell[16765, 426, 1009, 26, 64, "Text",ExpressionUUID->"77da6aa8-fdb0-48b2-ae2f-064ed48122f1"],
 Cell[CellGroupData[{
-Cell[20579, 514, 195, 2, 51, "Subsection",ExpressionUUID->"dbfd9f6d-d321-4530-8fbd-774f4c2da47e"],
-Cell[20777, 518, 444, 11, 39, "Text",ExpressionUUID->"6a081577-3dc4-4cdf-8a1b-0dd2bf8d719a"],
-Cell[21224, 531, 639, 17, 67, "Input",ExpressionUUID->"df6a6e30-a247-4f85-ac4d-acd947a03247"],
-Cell[21866, 550, 388, 7, 38, "Text",ExpressionUUID->"648eaf02-76e3-41b2-8d79-1d8886269ca0"],
-Cell[22257, 559, 1269, 29, 96, "Input",ExpressionUUID->"5a3b56d6-e734-41ef-b80c-1c7b2a6069a0"],
-Cell[23529, 590, 1072, 24, 67, "Input",ExpressionUUID->"c1927ee8-d5d0-4ab0-aa6c-23d543413e21"],
-Cell[24604, 616, 625, 12, 90, "Text",ExpressionUUID->"3989c68d-dc8b-44f2-8ed3-94938d0ad7b2"],
-Cell[25232, 630, 763, 21, 37, "Input",ExpressionUUID->"fb5f8160-1748-4220-8900-b66c49becac7"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[26032, 656, 170, 3, 54, "Subsection",ExpressionUUID->"4979c1af-e4a2-4b5f-b580-b915d6bb2226"],
-Cell[26205, 661, 520, 9, 64, "Text",ExpressionUUID->"2eea17c6-998a-456b-9775-5827f8ed9d2f"],
-Cell[26728, 672, 471, 10, 37, "Input",ExpressionUUID->"402420b7-4c3a-479a-ac92-27c59247adc0"],
-Cell[27202, 684, 282, 5, 38, "Text",ExpressionUUID->"22933d09-e88f-41f4-98c1-a70eb409b1fb"],
-Cell[27487, 691, 465, 10, 37, "Input",ExpressionUUID->"6e465590-8aad-4a5f-b374-842d3fbeab3b"],
-Cell[27955, 703, 495, 8, 64, "Text",ExpressionUUID->"1c33cc67-03a3-4f74-a268-87bfcf9ee211"],
-Cell[28453, 713, 562, 16, 37, "Input",ExpressionUUID->"c87a60b8-421f-4086-ab0e-db403e83b573"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[29052, 734, 170, 3, 54, "Subsection",ExpressionUUID->"86ead0d7-ed6f-484f-bdfc-3a9a40b1d0fe"],
-Cell[29225, 739, 947, 25, 93, "Text",ExpressionUUID->"df129454-f1be-436a-86d1-2b160c0dc454"],
-Cell[30175, 766, 623, 15, 61, "Input",ExpressionUUID->"c5a6e0e9-458c-40a2-bfb3-977a0b93e2e5"],
-Cell[30801, 783, 472, 8, 64, "Text",ExpressionUUID->"898d6f7d-7daa-47c5-a803-020d5ecafc84"],
-Cell[31276, 793, 1531, 30, 67, "Input",ExpressionUUID->"0ea7aa7f-81fc-483f-9da9-12235b0c711e"],
-Cell[32810, 825, 453, 8, 64, "Text",ExpressionUUID->"e550e490-59de-4d5c-a778-728094967acc"],
-Cell[33266, 835, 1684, 34, 95, "Input",ExpressionUUID->"4fb489fc-d733-41b3-831a-2778d839f1e2"]
+Cell[17799, 456, 3166, 66, 399, "Input",ExpressionUUID->"cb060012-c97e-4f6b-97db-610ad428555c"],
+Cell[20968, 524, 478, 11, 28, "Message",ExpressionUUID->"32378978-51f6-466d-8dd9-12ce8b1adc1c"],
+Cell[21449, 537, 490, 11, 28, "Message",ExpressionUUID->"b5b1ed47-0b7b-4871-aa65-44cfd95a7e55"],
+Cell[21942, 550, 525, 12, 28, "Message",ExpressionUUID->"a0c099bc-f17e-4611-ba41-707858a17398"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34999, 875, 153, 3, 67, "Section",ExpressionUUID->"e41863f1-4338-49d3-9216-37d168d3bcd5"],
-Cell[35155, 880, 696, 13, 87, "Input",ExpressionUUID->"46982449-0780-45cf-810c-46e66814c863"]
+Cell[22516, 568, 195, 2, 51, "Subsection",ExpressionUUID->"dbfd9f6d-d321-4530-8fbd-774f4c2da47e"],
+Cell[22714, 572, 522, 12, 39, "Text",ExpressionUUID->"6a081577-3dc4-4cdf-8a1b-0dd2bf8d719a"],
+Cell[23239, 586, 639, 17, 67, "Input",ExpressionUUID->"df6a6e30-a247-4f85-ac4d-acd947a03247"],
+Cell[CellGroupData[{
+Cell[23903, 607, 320, 6, 34, "Input",ExpressionUUID->"7c9f764c-8bae-4eec-bf32-bdba398ee5ff"],
+Cell[24226, 615, 1941, 58, 108, "Output",ExpressionUUID->"8a1fa093-a5c0-44cd-a117-bc60eb84e63f"]
+}, Open  ]],
+Cell[26182, 676, 388, 7, 38, "Text",ExpressionUUID->"648eaf02-76e3-41b2-8d79-1d8886269ca0"],
+Cell[26573, 685, 1346, 30, 96, "Input",ExpressionUUID->"5a3b56d6-e734-41ef-b80c-1c7b2a6069a0"],
+Cell[CellGroupData[{
+Cell[27944, 719, 1072, 24, 67, "Input",ExpressionUUID->"c1927ee8-d5d0-4ab0-aa6c-23d543413e21"],
+Cell[29019, 745, 3188, 89, 122, "Output",ExpressionUUID->"c654f47d-8daf-4e4c-9054-9e95480c6dec"]
+}, Open  ]],
+Cell[32222, 837, 625, 12, 90, "Text",ExpressionUUID->"3989c68d-dc8b-44f2-8ed3-94938d0ad7b2"],
+Cell[CellGroupData[{
+Cell[32872, 853, 763, 21, 37, "Input",ExpressionUUID->"fb5f8160-1748-4220-8900-b66c49becac7"],
+Cell[33638, 876, 2865, 82, 116, "Output",ExpressionUUID->"07f17e99-002f-47f4-80b3-fae56def3987"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36552, 964, 170, 3, 54, "Subsection",ExpressionUUID->"4979c1af-e4a2-4b5f-b580-b915d6bb2226"],
+Cell[36725, 969, 520, 9, 64, "Text",ExpressionUUID->"2eea17c6-998a-456b-9775-5827f8ed9d2f"],
+Cell[CellGroupData[{
+Cell[37270, 982, 471, 10, 37, "Input",ExpressionUUID->"402420b7-4c3a-479a-ac92-27c59247adc0"],
+Cell[37744, 994, 646, 18, 34, "Output",ExpressionUUID->"bf1bb80a-ead0-419b-89f0-1e6c7fd79315"]
+}, Open  ]],
+Cell[38405, 1015, 282, 5, 38, "Text",ExpressionUUID->"22933d09-e88f-41f4-98c1-a70eb409b1fb"],
+Cell[CellGroupData[{
+Cell[38712, 1024, 465, 10, 37, "Input",ExpressionUUID->"6e465590-8aad-4a5f-b374-842d3fbeab3b"],
+Cell[39180, 1036, 266, 5, 34, "Output",ExpressionUUID->"f88d4910-cf90-49b0-8142-c4b0a96a5d68"]
+}, Open  ]],
+Cell[39461, 1044, 495, 8, 64, "Text",ExpressionUUID->"1c33cc67-03a3-4f74-a268-87bfcf9ee211"],
+Cell[CellGroupData[{
+Cell[39981, 1056, 562, 16, 37, "Input",ExpressionUUID->"c87a60b8-421f-4086-ab0e-db403e83b573"],
+Cell[40546, 1074, 315, 7, 34, "Output",ExpressionUUID->"c60a84d4-b1cc-4d51-bec3-e48e8318d636"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40910, 1087, 170, 3, 54, "Subsection",ExpressionUUID->"86ead0d7-ed6f-484f-bdfc-3a9a40b1d0fe"],
+Cell[41083, 1092, 947, 25, 93, "Text",ExpressionUUID->"df129454-f1be-436a-86d1-2b160c0dc454"],
+Cell[CellGroupData[{
+Cell[42055, 1121, 623, 15, 61, "Input",ExpressionUUID->"c5a6e0e9-458c-40a2-bfb3-977a0b93e2e5"],
+Cell[42681, 1138, 7418, 201, 976, "Output",ExpressionUUID->"b50f47a3-4d6a-4a9b-a13d-7a2e928db398"]
+}, Open  ]],
+Cell[50114, 1342, 472, 8, 64, "Text",ExpressionUUID->"898d6f7d-7daa-47c5-a803-020d5ecafc84"],
+Cell[CellGroupData[{
+Cell[50611, 1354, 1531, 30, 67, "Input",ExpressionUUID->"0ea7aa7f-81fc-483f-9da9-12235b0c711e"],
+Cell[52145, 1386, 18401, 459, 3805, "Output",ExpressionUUID->"6376bdc6-ce5f-4cdb-b1b5-fd9297552bdb"]
+}, Open  ]],
+Cell[70561, 1848, 453, 8, 64, "Text",ExpressionUUID->"e550e490-59de-4d5c-a778-728094967acc"],
+Cell[CellGroupData[{
+Cell[71039, 1860, 1684, 34, 95, "Input",ExpressionUUID->"4fb489fc-d733-41b3-831a-2778d839f1e2"],
+Cell[72726, 1896, 21774, 555, 4805, "Output",ExpressionUUID->"a91abe31-b623-4fd1-8ff9-197a23ad351d"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[94561, 2458, 153, 3, 67, "Section",ExpressionUUID->"e41863f1-4338-49d3-9216-37d168d3bcd5"],
+Cell[94717, 2463, 696, 13, 87, "Input",ExpressionUUID->"46982449-0780-45cf-810c-46e66814c863"]
 }, Open  ]]
 }, Open  ]]
 }

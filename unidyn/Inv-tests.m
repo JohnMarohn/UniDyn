@@ -10,6 +10,13 @@
 
 (*~ START ~*)
 
+Off[SpinSingle$CreateOperators::comm]
+Off[SpinSingle$CreateOperators::simplify]
+Off[SpinSingle$CreateOperators::nocreate]
+Off[OscSingle$CreateOperators::comm]
+Off[OscSingle$CreateOperators::create]
+Off[OscSingle$CreateOperators::nocreate]
+
 (*@ Create a shorthand function for creating unit tests.
 @*)
 
@@ -18,15 +25,17 @@ If[$VersionNumber < 10.,
   vtest[label_,test_] :=
     If[test === True, 
       Print["Pass"],
-      Print["Fail > ", StringJoin["OpQ > test",ToString[label]]]],
+      Print["Fail > ", StringJoin["Inv > test",ToString[label]]]],
 
   vtest[label_,test_] := 
       VerificationTest[test,
           True,
           TestID-> StringJoin[
-              "OpQ > test",
+              "Inv > test",
               ToString[label]]]
 ]
+
+(*~ START ~*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym, aL$sym, aR$sym];
 Clear[\[Omega], \[CapitalDelta]];
@@ -99,6 +108,35 @@ vtest["13", Mult[Inv[Mult[aL$sym, Iz$sym]], aL$sym, Iz$sym] == 1]
 
 vtest["14", Mult[Mult[aL$sym, Iz$sym], Inv[Mult[aL$sym, Iz$sym]]] == 1]
 vtest["15", Mult[Inv[Mult[aL$sym, Iz$sym]], aL$sym, Iz$sym] == 1]
+
+(*@
+Here we test the inverse of a product involving a complication operator expression, call is \VerbCmd{A}. %
+This test fails, because the \VerbCmd{Mult[]} distributes over the sum of operators in \VerbCmd{Mult[]}. %
+We carefully write the unit test so that is passes if the expression fails to simplify to 1. %
+@*)
+
+vtest["16", SameQ[SameQ[Mult[Inv[Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym], Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym], 1], False]]
+
+(*@
+We try the above test, not replacing the operator \VerbCmd{A} with \VerbCmd{Inv[Inv[A]]}. %
+The replacement 
+@*)
+
+vtest["17", Mult[Inv[Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym], Inv[Inv[Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym]]] == 1]
+
+(*@ Clean up: @*)
+
+Clear[Ix$sym, Iy$sym, Iz$sym, aL$sym, aR$sym];
+Clear[\[Omega], \[CapitalDelta]];
+
+(*~ END ~*)
+
+On[SpinSingle$CreateOperators::comm]
+On[SpinSingle$CreateOperators::simplify]
+On[SpinSingle$CreateOperators::nocreate]
+On[OscSingle$CreateOperators::comm]
+On[OscSingle$CreateOperators::create]
+On[OscSingle$CreateOperators::nocreate]
 
 
 (*~ END ~*)

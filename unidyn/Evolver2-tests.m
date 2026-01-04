@@ -22,13 +22,13 @@ If[$VersionNumber < 10.,
   vtest[label_,test_] :=
     If[test === True, 
       Print["Pass"],
-      Print["Fail > ", StringJoin["Osc > test",ToString[label]]]],
+      Print["Fail > ", StringJoin["Evolver2 > test",ToString[label]]]],
 
   vtest[label_,test_] := 
       VerificationTest[test,
           True,
           TestID-> StringJoin[
-              "Osc > test",
+              "Evolver2 > test",
               ToString[label]]]
 ]
 

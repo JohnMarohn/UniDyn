@@ -33,13 +33,13 @@ If[$VersionNumber < 10.,
   vtest[label_,test_] :=
     If[test === True, 
       Print["Pass"],
-      Print["Fail > ", StringJoin["OpQ > test",ToString[label]]]],
+      Print["Fail > ", StringJoin["SpinBoson > test",ToString[label]]]],
 
   vtest[label_,test_] := 
       VerificationTest[test,
           True,
           TestID-> StringJoin[
-              "OpQ > test",
+              "SpinBoson > test",
               ToString[label]]]
 ]
 

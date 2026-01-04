@@ -58,9 +58,9 @@ Comm[rho$sym[1],rho$sym[3]]};
 
 If[OptionValue[quiet] == False,Print["commutators = ",commutators]];
 
-divisions ={Mult[Inv[rho$sym[0]],rho$sym[1]],
-  Mult[Inv[rho$sym[0]],rho$sym[2]],
-  Mult[Inv[rho$sym[1]],rho$sym[3]]};
+divisions ={Mult[Inv[rho$sym[0]],Inv[Inv[rho$sym[1]]]],
+  Mult[Inv[rho$sym[0]],Inv[Inv[rho$sym[2]]]],
+  Mult[Inv[rho$sym[1]],Inv[Inv[rho$sym[3]]]]};
 
 If[OptionValue[quiet] == False, Print["divisions = ",divisions]];
 
@@ -96,6 +96,9 @@ EndPackage[]
 If[$VerboseLoad == True,
     Message[Evolver2::usage]
 ];
+
+
+
 
 
 
