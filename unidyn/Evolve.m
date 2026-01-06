@@ -53,7 +53,7 @@ AllCommutingQ[H$sym_] := Module[{H$list, Comm$matrix},
 ]
 
 (*@
-\emph{If} all the terms in the Hamiltonian commute, then we may distribute %
+If all the terms in the Hamiltonian commute, then we may distribute %
 the \VerbFcn{Evolve} operator over the terms in the Hamiltonian. %
 @*)
 
@@ -61,8 +61,8 @@ Evolve[H$sym_?AllCommutingQ, t$sym_, rho$sym_] :=
 	Mult @@ (Evolve[#, t$sym, rho$sym]&) /@ List @@ H$sym
 
 (*@
-A function to coerce \emph{Mathematica} into writing simpler looking expressions, from %
-http://mathematica.stackexchange.com/questions/5403/how-to-get-fullsimplify-to-fully-simplify-my-expression-with-custom-complexity-f
+A function, from \href{http://mathematica.stackexchange.com/questions/5403/how-to-get-fullsimplify-to-fully-simplify-my-expression-with-custom-complexity-f}{\texttt{mathematica.stackexchange}}, %
+to coerce \emph{Mathematica} into writing simpler looking expressions. %
 @*)
 
 VisualComplexity:=(Count[ToBoxes[#],Except[" "|"("|")",_String],Infinity]&)

@@ -1,5 +1,6 @@
 \documentclass[12pt,letterpaper]{refart}
 
+\usepackage{authblk}  % Required for affiliations
 \usepackage{amsmath}                         % American Mathematical Society
 \usepackage{bm}                              % bold math
 \usepackage{braket}                          % Dirac notation
@@ -37,15 +38,23 @@
 \title{
   The UniDyn \emph{Mathematica} package:
   Self-derived unitary operator rotations in quantum mechanics}
-\author{
-	John A. Marohn\thanks{jam99@cornell.edu} \\ 
-	{\footnotesize Dept. of Chemistry and Chemical Biology} \\ 
-	{\footnotesize Cornell University, Ithaca, NY 14851-1301, USA}
-}
+
+\author[1]{Aritro Sinha Roy}
+\author[2]{Garett M. Leskowitz}
+\author[1]{John A. Marohn\thanks{jam99@cornell.edu}}
+
+\affil[1]{Dept. of Chemistry and Chemical Biology \authorcr 
+Cornell University \authorcr
+Baker Laboratory \authorcr
+Ithaca, NY, USA 14851-1301}
+\affil[2]{Application Chemistry \authorcr
+Nanalysis Corp. \authorcr
+4-4500 5th Street NE \authorcr Calgary, AB, Canada T2E 7C3}
+
 \maketitle
 
 \begin{abstract}
-\input{UniDyn-doc--abstract.tex}  
+\input{tex/UniDyn-doc--abstract.tex}  
 \end{abstract}
 
 \pagestyle{fancy}  % page header and footers
@@ -67,7 +76,8 @@ keywords={
 	Module, Do, For,
 	Map, Table, Position, Sort, Sequence, List,
 	Return, 
-	Dimensions
+	Dimensions,
+	Message,
 	},
 keywordstyle={\sffamily\bfseries\footnotesize}, % fonts used for keywords
 basicstyle={\sffamily\footnotesize},          % fonts that are used for everything else
@@ -110,6 +120,8 @@ literate={x\$var}{{\emph{x}}}1
 {rho\$sym\$0}{{\ensuremath{\rho_{0}}}}1
 {Ix\$sym}{{\ensuremath{I_x}}}1
 {Iy\$sym}{{\ensuremath{I_y}}}1
+{Ip\$sym}{{\ensuremath{I_{+}}}}1
+{Im\$sym}{{\ensuremath{I_{-}}}}1
 {Iz\$sym}{{\ensuremath{I_z}}}1
 {Sx\$sym}{{\ensuremath{S_x}}}1
 {Sy\$sym}{{\ensuremath{S_y}}}1
@@ -160,148 +172,52 @@ literate={x\$var}{{\emph{x}}}1
 {delta$\q\$sym}{{\ensuremath{\delta q}}}1
 }
 
-\section{Introduction}
-% ====================
-
-\input{UniDyn-doc--intro.tex}
-
-\section{Background}
-% ===============
-
-\input{UniDyn-doc--algorithm.tex}
-
-\section{The code}
-% ============
-
-The code consists of \verb+.m+ files and \emph{Mathematica} notebooks.
-Each modular \verb+.m+ file implements a desired function, like non-commutative multiplication or commutation.
-Associated with each \verb+.m+ file is a second \verb+.m+ file containing \emph{units test}.
-The code, at the time of writing, includes over 120 unit tests covering all the functions defined below.
-More detailed applications of the code are given in separate \emph{Mathematica} notebooks and will be discussed in the next section.
-
-Code was written in the literate-programming style, with \LaTeX{}-style text, equations, and tables interspersed with code in the form of commented-out text.
-In this section we use \LaTeX{}'s \verb+lstinputlisting+ package to import the code and typeset it nicely.
-This package also takes care of importing and un-commenting the embedded comments so they can be processed in \LaTeX.
-The package moreover implements a long list of character substitutions, allowing the code listings below to have variables appear with subscripts and superscripts.
-
-\subsection{Operators and scalars}
-% ------------------------------------------
-
-Our first task is to define functions that enable \emph{Mathematica} to distinguish between (non-commutative) operators and (commutative) scalars. 
-This is done in the \verb+OpQ.m+ package, whose listing appears below. 
-A variable is either a commutative \emph{scalar} or non-commutative \emph{operator}.
-Operators have a \emph{phylum} and an \emph{order}.
-Operators of different phyla commute.
-The operator \emph{order} is used for sorting.
-
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpQ.m}
-
-Unit tests for the functions in the \verb+OpQ.m+ package are organized into a separate package, \verb+OpQ-tests.m+, whose listing follows. 
-Unit testing is built on \emph{Mathematica}'s \verb+VerificationTest+ function.
-When the return value of the \verb+VerificationTest+ function is passed to the \verb+TestReport+ in a \emph{Mathematica} notebook, the notebook displays a nice graphical report card.
-
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpQ-tests.m}
-
-\section{Non-commutative multiplication}
-% ---------------------------------------------------
-
-We next define our own non-commutative multiplication function, \verb+Mult+.
-This is done in the \verb+Mult.m+ package.
-We provide a sorting function which rearranges operators being multiplied so that, if possible, operators of a higher \emph{phylum} appear in front of operators of a lower \emph{phylum}.
-During this rearrangement, non-commuting operators are not allowed to pass each other.
-
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Mult.m}
-
-Extensive unit testing shows that \verb+Mult+ distributes over addition, is associative, and pulls scalars out in front as desired.
-Testing is also carried out on the sorting function.
-
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Mult-tests.m}
-
-\section{Commutator}
-% -------------------------
-
-Define a commutator function which factors out scalars and has rules for simplifying more complex commutators, like and $[A B, C]$ and $[A, B C]$, involving three non-commuting operators.
-
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Comm.m}
-
-Extensive testing shows that the commutator function factors out scalars correctly and correctly simplifies over a dozen commutation identities, including the Jacobi identity.
-
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Comm-tests.m}
-
-\section{Spins}
-% ----------------
-
-Declare angular momentum operators for one spin $I_x$, $I_y$, and $I_z$ and specify the relevant commutation relations.
-To speed up computation, each operator's commutation relations are stored as an \emph{upvalue} of the operator instead of as a \emph{downvalue} of the commutator function.
-Additional product-operator simplification rules are defined if the spin is declared to have an angular momentum of $\ell = 1/2$.
-
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Spins.m}
-
-Test the commutation relations for one spin and for a system of two spins, one of them $\ell = 1/2$ and the other with $\ell$ unspecified.
-
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Spins-tests.m}
-
-\section{Harmonic oscillator}
-% -----------------------------------
-
-Declare the annihilation (or lowering) operator $a$ and the creation (or raising) operator $a^{\dagger}$ for a harmonic oscillator, and specify the relevant commutation relations.
-
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Osc.m}
-
-Check commutation relations among the harmonic-oscillator operators: $a$, $a^{\dagger}$, the number operator $N = a^{\dagger} a$, the unitless position operator $Q = (a^{\dagger} + a)/\sqrt{2}$, and the unitless momentum operator $P = i (a^{\dagger} - a)/\sqrt{2}$.
-Confirm that harmonic oscillator can exist ``on top of'' spin operators and are sorted correctly.
-
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Osc-tests.m}
-
-\section{Unitary Evolution}
-% --------------------------------
-
-Implement the \verb+Evolver+ algorithm described above.
-The function can be passed an option to print out intermediate variables, which is helpful for debugging.
-
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Evolve.m}
-
-Unit testing includes verifying that \verb+Evolver+ distributes over sums and factors our scalars correctly.
-Unit testing also verifies that \emph{Mathematica's} differential equation solver is behaving as expected.
-We are not worried about bugs in the solver. 
-We are instead concerned about changes in function syntax.
-The solver function's syntax changed between \emph{Mathematica} version 8 and 10 and could change again. 
-We added an equation-solver unit test to flag a future syntax change.
-
-We test the following cases of unitary evolution in the rotating frame:
-
-\begin{enumerate}
-\item $e^{-i\omega t I_z } I_x e^{+i \omega t I_z}$ \\
-  free evolution of transverse magnetization in a magnetic field
-\item $e^{-i \omega t I_x} I_z e^{+i \omega t I_x}$ \\
-  on-resonance nutation of longitudinal (i.e., thermal-equilibrium) magnetization in the rotating frame
-\item $e^{-i \omega t I_z} I_{+} e^{+i \omega t I_z}$ \\
-  free evolution of complex transverse magnetization in a magnetic field 
-\item $e^{-i d t I_z S_z} I_x e^{+i d t I_z S_z}$ \\
-  evolution of transverse magnetization under a scalar coupling
-\item $e^{-i (\Delta \, I_z + \omega \, I_x) t} I_z e^{+i (\Delta \, I_z + \omega \, I_x) t}$ \\
-  \label{item:nutation}
- off-resonance nutation of longitudinal magnetization
-\item $e^{- \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})} a e^{+ \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})}$  \\
-  evolution of the lowering (and raising) operator under the harmonic oscillator Hamiltonian
- \item $e^{- \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})} Q e^{+ \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})}$ \\
- evolution of the position (and momentum) operator under the harmonic oscillator Hamiltonian
- \item $e^{-i \delta q \, P }  Q e^{+i \delta q \, P }$ \\
-  a position kick
-\item $e^{-i \delta q \, Q }  P e^{+i \delta q \, Q }$ \\
-  a momentum kick
-\end{enumerate}
-The off-resonance spin nutation, case~\ref{item:nutation},  is an especially demanding test because it generates terms involving $I_x$, $I_y$, and $I_z$ operators from solutions to a third-order differential equation.
-
-\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Evolve-tests.m}
-
-% Cited References
-% ================
-
 \clearpage
+\tableofcontents
+\clearpage
+
+% ==============
+\section{Introduction}
+% ==============
+
+\input{tex/UniDyn-doc--intro.tex}
+
+% ==========================
+\section{Performing unitary rotations}
+% ==========================
+
+\input{tex/UniDyn-doc--algorithm.tex}
+
+% ======================
+\section{Representative results}
+\label{sec:results}
+% ======================
+
+\input{tex/UniDyn-doc--examples.tex}
+
+% ==============
+\section{Conclusions}
+% ==============
+
+\input{tex/UniDyn-doc--conclusions.tex}
+
+% =============
+% Cited References
+% =============
 \renewcommand*{\bibfont}{\raggedright\normalfont\small}
 \bibliographystyle{bib/grants-CV}
 \bibliography{bib/UniDyn-doc}
+
+
+% ============
+\clearpage
+\appendix
+\section{Code and associated unit tests}
+\label{sec:code}
+% ============
+
+\input{tex/UniDyn-doc--code.tex}
+
 
 
 \end{document}

@@ -1,21 +1,38 @@
 UniDyn
 ======
 
-Implements the unitary evolution of quantum mechanical operators in *Mathematica*.
+Summary
+-------
+
+We have developed *Mathematica* algorithms for symbolically calculating unitary transformations of quantum-mechanical operators. The algorithms obtain closed-form analytical results, do not rely on a matrix representation of operators, and are applicable to both bounded systems like coupled spins and unbounded systems like harmonic oscillators.  The transformations are *self derived* from the operators' underlying commutation relations and can therefore be carried out in a *basis free* way.
+
+Here are some representative unitary-evolution calculations:
+
+- Evolution of transverse, :math:`x`-axis spin magnetization in a magnetic field along the :math:`z` axis: :math:`e^{-i \, \omega t \, I_z} \: I_x \: e^{+i \, \omega t \, I_z} = I_x \, \sin{(\omega t)} + I_y \, \cos{(\omega t)}`.
+
+- Evolution of transverse, :math:`x`-axis spin magnetization under a scalar coupling: :math:`e^{-i \, J t \, I_z S_z} \: I_x \: e^{+i \, J \, I_z S_z} = I_x \, \cos{(J t /2 )} + 2 I_y S_z \, \sin{(J t/2)}`.
+
+- Evolution of the position operator under the harmonic oscillator Hamiltonian: :math:`e^{- i \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})} X e^{+i \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})} =  X \cos{(\omega t)} - P \sin{(\omega t)}`.
+
+- Evolution of a spin raising operator under a spin-dependent translation: :math:`e^{g I_z (a^{\dagger} - a)} I_{+} e^{-g I_z (a^{\dagger} - a)} = e^{-g (a^{\dagger} - a)} I_{+}`.
+
+The ``UniDyn`` package contains two versions of the algorithm and numerous associated functions needed to execute the algorithms.  These associated functions implement non-commutative multiplication, operator ordering, commutators, and symbolic operator inverses.
 
 Requirements
 ------------
 
-The package has been tested in the following environment:
+The package has been tested in the following environments:
 
-* macOS version 14.7.1 (Sonoma) and 
+* *Mathematica* versions 12.3 and 13.0.0.0
 
-* *Mathematica* version 13.0.0.0.
+* macOS versions 14.7.1 (Sonoma) and 15.7.3 (Sequoia)
 
 Installation
 ------------
 
-Open up ``UniDyn--Demo-01.nb`` and follow the directions.  You will be asked to enter in the *Mathematica* notebook a string indicating the location where you downloaded the ``UniDyn`` package files to.  After entering this location string, evaluate the notebook to import ``UniDyn`` and run the 120+ unit tests.  If that all goes well, you are ready to run the other notebooks, starting with ``UniDyn--Demo-02.nb``.  At the top of each notebook you will have to re-enter the location strings.
+Download this repository as a ``zip`` file.
+
+Open up ``UniDyn--Demo-01.nb`` and follow the directions.  You will be asked to enter in the *Mathematica* notebook a string indicating the location where you downloaded the ``UniDyn`` package files to.  After entering this location string, evaluate the notebook to import ``UniDyn`` and run the 150+ unit tests.  If that all goes well, you are ready to run the other notebooks, starting with ``UniDyn--Demo-02.nb``.  At the top of each notebook you will have to re-enter the location strings.
 
 Package files
 -------------
@@ -35,7 +52,7 @@ Example notebooks ::
 
     UniDyn--Demo-03.nb    Demonstrates how to take the digital Fourier 
                           transform of one-dimensional and two-dimensional 
-                          data.  Examples illustrate the FT data-ordering 
+                          data. Examples illustrate the FT data-ordering 
                           problem, aliasing, apodization, and zero filling 
                           with one-dimensional data and the phase-twist 
                           lineshape observed when Fourier transforming 
@@ -51,7 +68,10 @@ Example notebooks ::
                           following experiments: INEPT polarization 
                           transfer, heteronuclear COSY, and homonuclear COSY.
                            
-    UniDyn--Demo-Scratch.nb    Operator playground
+    UniDyn--Demo-06.nb    Compares the execution time for Evolver1 and Evolver2
+                          and shows examples of Evolver2 involving one spin, two
+                          spins, the harmonic oscillator, quantum optics, and
+                          electron transfer.
 
 Documentation ::
 
@@ -60,26 +80,27 @@ Documentation ::
                           The source code is read directly into the tex 
                           document and typeset.
     
-    UniDyn-doc.tex               Main document file.
-    UniDyn-doc--abstract.tex     Subdocument; the abstract.
-    UniDyn-doc--intro.tex        Subdocument; the introduction.
-    UniDyn-doc--algorithm.tex    Subdocument; explains the algorithm. 
 
 unidyn directory
 ^^^^^^^^^^^^^^^^
 
-The package files are stored in the ``unidyn/`` directory.  The package files consist of *Mathematica* files ::
+The package files are stored in the ``unidyn/`` directory.  
 
-    UniDyn.m    master file; loads all the other package files
-    OpQ.m       CreateOperator[] and CreateScalar[] convenience functions
-    Mult.m      NCSort[], SortedMult[], and MultSort[] functions to sort 
-                operators
-    Comm.m      Comm[,] to implement the commutator function
-    Spins.m     Angular momentum operators for a single spin (L = 1/2 or not)
-    Osc.m       Raising and lowering operators for a single harmonic oscillator
-    Evolve.m    Unitary evolution
+The package files consist of *Mathematica* files ::
+
+    UniDyn.m     master file; loads all the other package files
+    OpQ.m        CreateOperator[] and CreateScalar[] convenience functions
+    Mult.m       NCSort[], SortedMult[], and MultSort[] functions to sort operators
+    Comm.m       Comm[,] to implement the commutator function
+    Inv.m        Inv[] to implement a symbolic operator inverse
+    Spins.m      Angular momentum operators for a single spin (L = 1/2 or not)
+    Osc.m        Raising and lowering operators for a single harmonic oscillator
+    Evolve.m     Unitary evolution
+    Evolver1.m   The Evolver1 algorithm
+    Evolver2.m   The Evolver2 algorithm
+    SpinBoson.m  Spin and harmonic-oscillator operators for quantum optics
   
-and::
+and ::
 
     Matrices--two-spin-half.m    Matrices for the six angular momentum
                                  operators for a spin system consisting 
@@ -90,9 +111,18 @@ plus unit-testing files ::
     OpQ-tests.m 
     Mult-tests.m
     Comm-tests.m
+    Inv-tests.m
     Spins-tests.m
     Osc-tests.m
     Evolve-tests.m
+    Evolver1-tests.m
+    Evolver2-tests.m
+    SpinBoson-tests.m
+
+study directory
+^^^^^^^^^^^^^^^
+
+The ``study/`` directory contains files used during the development of improvements and new features.
 
 Other files
 -----------
@@ -104,15 +134,18 @@ Other files
 * License [`link <https://github.com/JohnMarohn/UniDyn/blob/master/LICENSE>`__]
 
 
+Packaging notes
+---------------
+
 Background reading
-------------------
+^^^^^^^^^^^^^^^^^^
 
 I rely a lot on the ``UpSetDelayed[]`` function, ``:^=`` in shorthand.  The idea up an *upvalue* and a *downvalue* is explained pretty well in the article "Associating Definitions with Different Symbols" in the Wolfram Language Tutorial [#mma-updelayed]_.  
 
 Creating a *Mathematica* package is not as well documented as I would expect.  While a list of functions used to create a *Mathematica* package can be found in the "Package Development" section of the Wolfram Language Guide [#MMA-packaging]_, a good example illustrating how to create a package is lacking in the *Mathematica* documentation.  The discussions at the *Mathematica* Stack Exchange are helpful.  The "Creating Mathematica packages" article [#MSE29324]_ is a quick and easy introduction to packaging.  The question "How can I return private members of a Mathematica package as the output of package functions without the ``PackageName`Private``` prefix?" is answered in a longer article [#MMA-packaging-1]_.
 
-Packaging notes
----------------
+Privacy issues
+^^^^^^^^^^^^^^
 
 Creating a *Mathematica* package out of the ``UniDyn`` code was tricky.  The main reason for this was that lot of the functions in my package's ``.m`` files create *upvalues* for variables that are passed to the functions.  
 
@@ -139,7 +172,7 @@ In the ``UniDyn`` package we will define some symbols as commutative and others 
 
     ScalarQ[a$sym] ^:= True
 
-In words, the *upvalue* of ``a$sym`` when passed to the function ``ScalarQ`` is the value ``True``.  By implementing the assignment using the ``^:=`` operator, this assignment is stored with the variable ``a$sym`` and not with this function ``ScalarQ``.  This way of doing things makes it a variable's job to know whether it is commutative or not and keeps the function `ScalarQ`` lightweight and fast.
+In words, the *upvalue* of ``a$sym`` when passed to the function ``ScalarQ`` is the value ``True``.  By implementing the assignment using the ``^:=`` operator, this assignment is stored with the variable ``a$sym`` and not with this function ``ScalarQ``.  This way of doing things makes it a variable's job to know whether it is commutative or not and keeps the function ``ScalarQ`` lightweight and fast.
 
 This assignment works fine if implemented in a notebook.  If we implement the above code in a function defined between the ``Begin["Private`"]`` and ``End[]`` declarations in an ``.m`` file, however, then the assignment is not communicated back to the ``Global``` context where it's needed.  I tried a couple of work-arounds: passing the ``a$sym`` variable back up to the ``Global``` context using a ``Return[]`` statement doesn't seem to work, nor does writing the variable ``Global`a$sym`` in the private function.  In the end, I decided to simply keep the functions defining upvalues public.  This is achieved by omitting the ``Begin["Private`"]`` and ``End[]`` statements in the package ``.m`` file.
 

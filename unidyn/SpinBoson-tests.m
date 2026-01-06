@@ -60,10 +60,26 @@ Check that we get the expected Hamiltonian after normal ordering.
 vtest["01", Simplify[1/2 (Mult[aL$sym, aR$sym] + Mult[aR$sym, aL$sym])] == Mult[aR$sym, aL$sym] + 1/2]
 
 (*@
-Another normal ordering check.
+A normal-ordering check for products of two creation/annihilation operators.
 @*)
 
-vtest["02", Mult[aL$sym, aR$sym] == Mult[aR$sym, aL$sym] + 1]
+vtest["02a", Mult[aL$sym, aR$sym] == Mult[aR$sym, aL$sym] + 1]
+
+(*@
+A normal-ordering check for products of three creation/annihilation operators.
+@*)
+
+vtest["03a", Mult[aL$sym, aR$sym, aL$sym] == Mult[aR$sym, aL$sym, aL$sym] + aL$sym]
+vtest["03b", Mult[aL$sym, aL$sym, aR$sym] == Mult[aR$sym, aL$sym, aL$sym] + 2 aL$sym]
+vtest["03c", Mult[aR$sym, aL$sym, aR$sym] == Mult[aR$sym, aR$sym, aL$sym] + aR$sym]
+vtest["03d", Mult[aL$sym, aR$sym, aR$sym] == Mult[aR$sym, aR$sym, aL$sym] + 2 aR$sym]
+
+(*@
+Two angular momentum identities.
+@*)
+
+vtest["04a", Mult[Im$sym, Ip$sym] == Simplify[3/4 - Mult[Iz$sym, Iz$sym] - Iz$sym]]
+vtest["04b", Mult[Ip$sym, Im$sym] == Simplify[3/4 - Mult[Iz$sym, Iz$sym] + Iz$sym]]
 
 (*~ END ~*)
 
@@ -84,6 +100,9 @@ On[SpinBoson$CreateOperators::nocreate]
 On[SpinBoson$CreateOperators::comm]
 On[SpinBoson$CreateOperators::simp]
 On[SpinBoson$CreateOperators::normord]
+
+
+
 
 
 

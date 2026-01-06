@@ -1,324 +1,1182 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>UniDyn</title>
-  <style>
-    html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      word-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 1em;
-      }
-    }
-    @media print {
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
-      font-size: 85%;
-      margin: 0;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.21.2: https://docutils.sourceforge.io/" />
+<title>UniDyn</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 9511 2024-01-13 09:50:07Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+Despite the name, some widely supported CSS2 features are used.
+
+See https://docutils.sourceforge.io/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: gray; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic, pre.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/*
+ * Stylesheet overrides for ReSTview
+ */
+
+/* Some breathing space for the text */
+
+body {
+    margin: 3em;
+    max-width: 50em;
+}
+
+/* Monospace text */
+
+tt {
+    color: #234F32;
+}
+
+/* Doctest blocks */
+
+blockquote > pre.doctest-block {
+    margin-left: 0;
+}
+
+/* Literal blocks */
+
+pre.literal-block {
+    color: #AA4400;
+}
+
+/* Block quotations */
+
+blockquote {
+    margin-left: 2em;  /* to match with pre.code et al */
+    margin-right: 2em;
+}
+
+/* Code blocks */
+
+pre.code {
+    background: inherit;
+}
+
+/* Footnotes */
+
+a.footnote-reference,
+a.fn-backref {
+    font-size: xx-small;
+    vertical-align: super;
+    line-height: normal;
+    text-decoration: none;
+}
+a.footnote-reference:hover,
+a.fn-backref:hover {
+    text-decoration: underline;
+}
+
+table.footnote {
+    border: none;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 20px;
+    margin-right: 0.5em;
+    font-size: small;
+}
+table.footnote td {
+    border: none;
+    padding-top: 1em;
+    padding-left: 0px;
+}
+table.footnote tr:first-child > td.label {
+    border-top: 1px solid #eee;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+table.footnote + table.footnote {
+    margin-top: 0;
+}
+table.footnote + table.footnote td {
+    border: none;
+    padding-top: 0;
+}
+
+/* System messages (aka errors) */
+
+div.system-messages h1 {
+    color: red;
+}
+div.system-message {
+    border: none;
+    border-left: 1ex solid red;
+    margin-left: -3em;
+    margin-top: 0;
+    padding-left: 4.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    color: red;
+    background: #fff8f8;
+}
+div.system-message p.system-message-title {
+    margin-top: 0;
+    font-weight: bold;
+}
+
+</style>
+<style type="text/css">
+
+/*
+*   math2html: convert LaTeX equations to HTML output.
+*
+*   Copyright (C) 2009,2010 Alex Fernández
+*                 2021      Günter Milde
+*
+*   Released under the terms of the `2-Clause BSD license'_, in short:
+*   Copying and distribution of this file, with or without modification,
+*   are permitted in any medium without royalty provided the copyright
+*   notice and this notice are preserved.
+*   This file is offered as-is, without any warranty.
+*
+* .. _2-Clause BSD license: http://www.spdx.org/licenses/BSD-2-Clause
+*
+*   Based on eLyXer: convert LyX source files to HTML output.
+*   http://elyxer.nongnu.org/
+*
+*
+* CSS file for LaTeX formulas.
+*
+* References: http://www.zipcon.net/~swhite/docs/math/math.html
+*             http://www.cs.tut.fi/~jkorpela/math/
+*/
+
+/* Formulas */
+.formula {
+	text-align: center;
+	margin: 1.2em 0;
+	line-height: 1.4;
+}
+span.formula {
+	white-space: nowrap;
+}
+div.formula {
+	padding: 0.5ex;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Basic features */
+a.eqnumber {
+	display: inline-block;
+	float: right;
+	clear: right;
+	font-weight: bold;
+}
+span.unknown {
+	color: #800000;
+}
+span.ignored, span.arraydef {
+	display: none;
+}
+.phantom {
+	visibility: hidden;
+}
+.formula i {
+	letter-spacing: 0.1ex;
+}
+
+/* Alignment */
+.align-l {
+	text-align: left;
+}
+.align-r {
+	text-align: right;
+}
+.align-c {
+	text-align: center;
+}
+
+/* Structures */
+span.hspace {
+	display: inline-block;
+}
+span.overline, span.bar {
+	text-decoration: overline;
+}
+.fraction, .fullfraction, .textfraction {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+}
+span.formula .fraction,
+.textfraction,
+span.smallmatrix {
+	font-size: 80%;
+	line-height: 1;
+}
+span.numerator {
+	display: block;
+	line-height: 1;
+}
+span.denominator {
+	display: block;
+	line-height: 1;
+	padding: 0ex;
+	border-top: thin solid;
+}
+.formula sub, .formula sup {
+	font-size: 80%;
+}
+sup.numerator, sup.unit {
+	vertical-align: 80%;
+}
+sub.denominator, sub.unit {
+	vertical-align: -20%;
+}
+span.smallsymbol {
+	font-size: 75%;
+	line-height: 75%;
+}
+span.boldsymbol {
+	font-weight: bold;
+}
+span.sqrt {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0.1ex;
+}
+sup.root {
+	position: relative;
+	left: 1.4ex;
+}
+span.radical {
+	display: inline-block;
+	padding: 0ex;
+	/* font-size: 160%; for DejaVu, not required with STIX */
+	line-height: 100%;
+	vertical-align: top;
+	vertical-align: middle;
+}
+
+span.root {
+	display: inline-block;
+	border-top: thin solid;
+	padding: 0ex;
+	vertical-align: middle;
+}
+div.formula .bigoperator,
+.displaystyle .bigoperator,
+.displaystyle .bigoperator {
+	line-height: 120%;
+	font-size: 140%;
+	padding-right: 0.2ex;
+}
+span.fraction .bigoperator,
+span.scriptstyle .bigoperator {
+	line-height: inherit;
+	font-size: inherit;
+	padding-right: 0;
+}
+span.bigdelimiter {
+	display: inline-block;
+}
+span.bigdelimiter.size1 {
+	transform: scale(1, 1.2);
+	line-height: 1.2;
+}
+span.bigdelimiter.size2 {
+	transform: scale(1, 1.62);
+	line-height: 1.62%;
+
+}
+span.bigdelimiter.size3 {
+	transform: scale(1, 2.05);
+	line-height: 2.05%;
+}
+span.bigdelimiter.size4 {
+	transform: scale(1, 2.47);
+	line-height: 2.47%;
+}
+/* vertically stacked sub and superscript */
+span.scripts {
+	display: inline-table;
+	vertical-align: middle;
+	padding-right: 0.2ex;
+}
+.script {
+	display: table-row;
+	text-align: left;
+	line-height: 150%;
+}
+span.limits {
+	display: inline-table;
+	vertical-align: middle;
+}
+.limit {
+	display: table-row;
+	line-height: 99%;
+}
+sup.limit, sub.limit {
+	line-height: 100%;
+}
+span.embellished,
+span.embellished > .base {
+	display: inline-block;
+}
+span.embellished > sup,
+span.embellished > sub {
+	display: inline-block;
+	font-size: 100%;
+	position: relative;
+	bottom: 0.3em;
+	width: 0px;
+}
+span.embellished > sub {
+	top: 0.4em;
+}
+
+/* Environments */
+span.array, span.bracketcases, span.binomial, span.environment {
+	display: inline-table;
+	text-align: center;
+	vertical-align: middle;
+}
+span.arrayrow, span.binomrow {
+	display: table-row;
+	padding: 0;
+	border: 0;
+}
+span.arraycell, span.bracket, span.case, span.binomcell, span.environmentcell {
+	display: table-cell;
+	padding: 0ex 0.2ex;
+	line-height: 1; /* 99%; */
+	border: 0ex;
+}
+.environment.align > .arrayrow > .arraycell.align-l {
+	padding-right: 2em;
+}
+
+/* Inline binomials */
+span.binom {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 80%;
+}
+span.binomstack {
+	display: block;
+	padding: 0em;
+}
+
+/* Over- and underbraces */
+span.overbrace {
+	border-top: 2pt solid;
+}
+span.underbrace {
+	border-bottom: 2pt solid;
+}
+
+/* Stackrel */
+span.stackrel {
+	display: inline-block;
+	text-align: center;
+}
+span.upstackrel {
+	display: block;
+	padding: 0em;
+	font-size: 80%;
+	line-height: 64%;
+	position: relative;
+	top: 0.15em;
+
+}
+span.downstackrel {
+	display: block;
+	vertical-align: bottom;
+	padding: 0em;
+}
+
+/* Fonts */
+.formula {
+	font-family: STIX, "DejaVu Serif", "DejaVu Math TeX Gyre", serif;
+}
+span.radical,   /* ensure correct size of square-root sign */
+span.integral { /* upright integral signs for better alignment of indices */
+	font-family: "STIXIntegralsUp", STIX;
+	/* font-size: 115%; match apparent size with DejaVu */
+}
+span.bracket {
+  /* some "STIX" and "DejaVu Math TeX Gyre" bracket pieces don't fit */
+	font-family: "DejaVu Serif", serif;
+}
+span.mathsf, span.textsf {
+	font-family: sans-serif;
+}
+span.mathrm, span.textrm {
+	font-family: STIX, "DejaVu Serif", "DejaVu Math TeX Gyre", serif;
+}
+span.mathtt, span.texttt {
+	font-family: monospace;
+}
+span.text, span.textnormal,
+span.mathsf, span.mathtt, span.mathrm {
+	font-style: normal;
+}
+span.fraktur {
+	font-family: "Lucida Blackletter", eufm10, blackletter;
+}
+span.blackboard {
+	font-family: Blackboard, msbm10, serif;
+}
+span.scriptfont {
+	font-family: "Monotype Corsiva", "Apple Chancery", "URW Chancery L", cursive;
+	font-style: italic;
+}
+span.mathscr {
+  font-family: MathJax_Script, rsfs10,  cursive;
+  font-style: italic;
+}
+span.textsc {
+	font-variant: small-caps;
+}
+span.textsl {
+	font-style: oblique;
+}
+
+/* Colors */
+span.colorbox {
+	display: inline-block;
+	padding: 5px;
+}
+span.fbox {
+	display: inline-block;
+	border: thin solid black;
+	padding: 2px;
+}
+span.boxed, span.framebox {
+	display: inline-block;
+	border: thin solid black;
+	padding: 5px;
+}
+
+</style>
+<style type="text/css">
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+pre .hll { background-color: #ffffcc }
+pre { background: #ffffff; }
+pre .c { color: #888 } /* Comment */
+pre .err { color: #F00; background-color: #FAA } /* Error */
+pre .k { color: #080; font-weight: bold } /* Keyword */
+pre .o { color: #333 } /* Operator */
+pre .ch { color: #888 } /* Comment.Hashbang */
+pre .cm { color: #888 } /* Comment.Multiline */
+pre .cp { color: #579 } /* Comment.Preproc */
+pre .cpf { color: #888 } /* Comment.PreprocFile */
+pre .c1 { color: #888 } /* Comment.Single */
+pre .cs { color: #C00; font-weight: bold } /* Comment.Special */
+pre .gd { color: #A00000 } /* Generic.Deleted */
+pre .ge { font-style: italic } /* Generic.Emph */
+pre .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+pre .gr { color: #F00 } /* Generic.Error */
+pre .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+pre .gi { color: #00A000 } /* Generic.Inserted */
+pre .go { color: #888 } /* Generic.Output */
+pre .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+pre .gs { font-weight: bold } /* Generic.Strong */
+pre .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+pre .gt { color: #04D } /* Generic.Traceback */
+pre .kc { color: #080; font-weight: bold } /* Keyword.Constant */
+pre .kd { color: #080; font-weight: bold } /* Keyword.Declaration */
+pre .kn { color: #080; font-weight: bold } /* Keyword.Namespace */
+pre .kp { color: #038; font-weight: bold } /* Keyword.Pseudo */
+pre .kr { color: #080; font-weight: bold } /* Keyword.Reserved */
+pre .kt { color: #339; font-weight: bold } /* Keyword.Type */
+pre .m { color: #60E; font-weight: bold } /* Literal.Number */
+pre .s { background-color: #FFF0F0 } /* Literal.String */
+pre .na { color: #00C } /* Name.Attribute */
+pre .nb { color: #007020 } /* Name.Builtin */
+pre .nc { color: #B06; font-weight: bold } /* Name.Class */
+pre .no { color: #036; font-weight: bold } /* Name.Constant */
+pre .nd { color: #555; font-weight: bold } /* Name.Decorator */
+pre .ni { color: #800; font-weight: bold } /* Name.Entity */
+pre .ne { color: #F00; font-weight: bold } /* Name.Exception */
+pre .nf { color: #06B; font-weight: bold } /* Name.Function */
+pre .nl { color: #970; font-weight: bold } /* Name.Label */
+pre .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+pre .nt { color: #070 } /* Name.Tag */
+pre .nv { color: #963 } /* Name.Variable */
+pre .ow { color: #000; font-weight: bold } /* Operator.Word */
+pre .w { color: #BBB } /* Text.Whitespace */
+pre .mb { color: #60E; font-weight: bold } /* Literal.Number.Bin */
+pre .mf { color: #60E; font-weight: bold } /* Literal.Number.Float */
+pre .mh { color: #058; font-weight: bold } /* Literal.Number.Hex */
+pre .mi { color: #00D; font-weight: bold } /* Literal.Number.Integer */
+pre .mo { color: #40E; font-weight: bold } /* Literal.Number.Oct */
+pre .sa { background-color: #FFF0F0 } /* Literal.String.Affix */
+pre .sb { background-color: #FFF0F0 } /* Literal.String.Backtick */
+pre .sc { color: #04D } /* Literal.String.Char */
+pre .dl { background-color: #FFF0F0 } /* Literal.String.Delimiter */
+pre .sd { color: #D42 } /* Literal.String.Doc */
+pre .s2 { background-color: #FFF0F0 } /* Literal.String.Double */
+pre .se { color: #666; font-weight: bold; background-color: #FFF0F0 } /* Literal.String.Escape */
+pre .sh { background-color: #FFF0F0 } /* Literal.String.Heredoc */
+pre .si { background-color: #EEE } /* Literal.String.Interpol */
+pre .sx { color: #D20; background-color: #FFF0F0 } /* Literal.String.Other */
+pre .sr { color: #000; background-color: #FFF0FF } /* Literal.String.Regex */
+pre .s1 { background-color: #FFF0F0 } /* Literal.String.Single */
+pre .ss { color: #A60 } /* Literal.String.Symbol */
+pre .bp { color: #007020 } /* Name.Builtin.Pseudo */
+pre .fm { color: #06B; font-weight: bold } /* Name.Function.Magic */
+pre .vc { color: #369 } /* Name.Variable.Class */
+pre .vg { color: #D70; font-weight: bold } /* Name.Variable.Global */
+pre .vi { color: #33B } /* Name.Variable.Instance */
+pre .vm { color: #963 } /* Name.Variable.Magic */
+pre .il { color: #00D; font-weight: bold } /* Literal.Number.Integer.Long */
+</style>
 </head>
 <body>
-<header id="title-block-header">
+<div class="document" id="unidyn">
 <h1 class="title">UniDyn</h1>
-</header>
-<p>Implements the unitary evolution of quantum mechanical operators in <em>Mathematica</em>.</p>
-<h1 id="requirements">Requirements</h1>
-<p>This package requires the <em>Mathematica</em> NCAlgebra package, available for download from <a href="https://github.com/NCAlgebra/NC">https://github.com/NCAlgebra/NC</a>. The package was written by the University of San Diego non-commutative algebra group, primarily Bill Helton and Mauricio de Oliveira. Follow the directions at the github webpage to install. There are a number of ways to install the package; I recommend following the directions "Automatic Installation and Updates".</p>
-<p>The package has been tested in the following environment:</p>
-<ul>
-<li>macOS version 12.1 (Monterey);</li>
-<li><em>Mathematica</em> version 13.0.0.0; and</li>
-<li>NCAlgebra version 5.0.6, installed locally using the Input[] command.</li>
-</ul>
-<h1 id="installation">Installation</h1>
-<p>Open up <code>UniDyn--Demo-01.nb</code> and follow the directions. You will be asked to enter in the <em>Mathematica</em> notebook a string indicating the location where you downloaded the UniDyn and NCAlgebra package files to. After entering those location strings, evaluate the notebook to import <code>NC</code>, <code>NCAlgebra</code>, <code>UniDyn</code>, and run the 100+ <code>UniDyn</code> unit tests. If that all goes well, you are ready to run the other notebooks, starting with <code>UniDyn--Demo-02.nb</code>. At the top of each notebook you will have to re-enter the location strings.</p>
-<h1 id="package-files">Package files</h1>
-<h2 id="upper-directory">upper directory</h2>
-<p>Example notebooks :</p>
-<pre><code>UniDyn--Demo-01.nb    loads NCAlgebra and UniDyn; runs the unit tests
 
-UniDyn--Demo-02.nb    Spin magnetization evolving under off-resonance, 
-                      variable-phase rf irradiation.  Use Evolver to 
-                      calculate the magnetization analytically, then make a 
-                      vector plot of the magnetization under various 
+<div class="section" id="summary">
+<h1>Summary</h1>
+<p>We have developed <em>Mathematica</em> algorithms for symbolically calculating unitary transformations of quantum-mechanical operators. The algorithms obtain closed-form analytical results, do not rely on a matrix representation of operators, and are applicable to both bounded systems like coupled spins and unbounded systems like harmonic oscillators.  The transformations are <em>self derived</em> from the operators' underlying commutation relations and can therefore be carried out in a <em>basis free</em> way.</p>
+<p>Here are some representative unitary-evolution calculations:</p>
+<ul class="simple">
+<li>Evolution of transverse, <span class="formula"><i>x</i></span>-axis spin magnetization in a magnetic field along the <span class="formula"><i>z</i></span> axis: <span class="formula"><i>e</i><sup> − <i>i</i> <i>ω</i><i>t</i> <i>I</i><sub><i>z</i></sub></sup> <i>I</i><sub><i>x</i></sub> <i>e</i><sup> + <i>i</i> <i>ω</i><i>t</i> <i>I</i><sub><i>z</i></sub></sup> = <i>I</i><sub><i>x</i></sub> sin(<i>ω</i><i>t</i>) + <i>I</i><sub><i>y</i></sub> cos(<i>ω</i><i>t</i>)</span>.</li>
+<li>Evolution of transverse, <span class="formula"><i>x</i></span>-axis spin magnetization under a scalar coupling: <span class="formula"><i>e</i><sup> − <i>i</i> <i>J</i><i>t</i> <i>I</i><sub><i>z</i></sub><i>S</i><sub><i>z</i></sub></sup> <i>I</i><sub><i>x</i></sub> <i>e</i><sup> + <i>i</i> <i>J</i> <i>I</i><sub><i>z</i></sub><i>S</i><sub><i>z</i></sub></sup> = <i>I</i><sub><i>x</i></sub> cos(<i>J</i><i>t</i> ⁄ 2) + 2<i>I</i><sub><i>y</i></sub><i>S</i><sub><i>z</i></sub> sin(<i>J</i><i>t</i> ⁄ 2)</span>.</li>
+<li>Evolution of the position operator under the harmonic oscillator Hamiltonian: <span class="formula"><i>e</i><sup> − <i>i</i><i>ω</i><i>t</i><span class="fraction"><span class="ignored">(</span><span class="numerator">1</span><span class="ignored">)/(</span><span class="denominator">2</span><span class="ignored">)</span></span>(<i>a</i><sup>†</sup> <i>a</i> + <i>a</i> <i>a</i><sup>†</sup>)</sup><i>X</i><i>e</i><sup> + <i>i</i><i>ω</i><i>t</i><span class="fraction"><span class="ignored">(</span><span class="numerator">1</span><span class="ignored">)/(</span><span class="denominator">2</span><span class="ignored">)</span></span>(<i>a</i><sup>†</sup> <i>a</i> + <i>a</i> <i>a</i><sup>†</sup>)</sup> = <i>X</i>cos(<i>ω</i><i>t</i>) − <i>P</i>sin(<i>ω</i><i>t</i>)</span>.</li>
+<li>Evolution of a spin raising operator under a spin-dependent translation: <span class="formula"><i>e</i><sup><i>g</i><i>I</i><sub><i>z</i></sub>(<i>a</i><sup>†</sup> − <i>a</i>)</sup><i>I</i><sub> + </sub><i>e</i><sup> − <i>g</i><i>I</i><sub><i>z</i></sub>(<i>a</i><sup>†</sup> − <i>a</i>)</sup> = <i>e</i><sup> − <i>g</i>(<i>a</i><sup>†</sup> − <i>a</i>)</sup><i>I</i><sub> + </sub></span>.</li>
+</ul>
+<p>The <tt class="docutils literal">UniDyn</tt> package contains two versions of the algorithm and numerous associated functions needed to execute the algorithms.  These associated functions implement non-commutative multiplication, operator ordering, commutators, and symbolic operator inverses.</p>
+</div>
+<div class="section" id="requirements">
+<h1>Requirements</h1>
+<p>The package has been tested in the following environments:</p>
+<ul class="simple">
+<li><em>Mathematica</em> versions 12.3 and 13.0.0.0</li>
+<li>macOS versions 14.7.1 (Sonoma) and 15.7.3 (Sequoia)</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h1>Installation</h1>
+<p>Download this repository as a <tt class="docutils literal">zip</tt> file.</p>
+<p>Open up <tt class="docutils literal"><span class="pre">UniDyn--Demo-01.nb</span></tt> and follow the directions.  You will be asked to enter in the <em>Mathematica</em> notebook a string indicating the location where you downloaded the <tt class="docutils literal">UniDyn</tt> package files to.  After entering this location string, evaluate the notebook to import <tt class="docutils literal">UniDyn</tt> and run the 150+ unit tests.  If that all goes well, you are ready to run the other notebooks, starting with <tt class="docutils literal"><span class="pre">UniDyn--Demo-02.nb</span></tt>.  At the top of each notebook you will have to re-enter the location strings.</p>
+</div>
+<div class="section" id="package-files">
+<h1>Package files</h1>
+<div class="section" id="upper-directory">
+<h2>upper directory</h2>
+<p>Example notebooks</p>
+<pre class="literal-block">
+UniDyn--Demo-01.nb    Loads UniDyn and runs the unit tests.
+
+UniDyn--Demo-02.nb    Spin magnetization evolving under off-resonance,
+                      variable-phase rf irradiation.  Use Evolver to
+                      calculate the magnetization analytically, then make a
+                      vector plot of the magnetization under various
                       resonance offsets and rf phases.
 
-UniDyn--Demo-03.nb    Demonstrates how to take the digital Fourier 
-                      transform of one-dimensional and two-dimensional 
-                      data.  Examples illustrate the FT data-ordering 
-                      problem, aliasing, apodization, and zero filling 
-                      with one-dimensional data and the phase-twist 
-                      lineshape observed when Fourier transforming 
+UniDyn--Demo-03.nb    Demonstrates how to take the digital Fourier
+                      transform of one-dimensional and two-dimensional
+                      data.  Examples illustrate the FT data-ordering
+                      problem, aliasing, apodization, and zero filling
+                      with one-dimensional data and the phase-twist
+                      lineshape observed when Fourier transforming
                       two-dimensional data sets.
 
-UniDyn--Demo-04.nb    Calculates the signal analytically for two weakly 
-                      coupled spins, calculates a numerical signal, and 
-                      Fourier transforms the numerical signal to reveal
-                      the *spectrum* of the two coupled spins.  
+UniDyn--Demo-04.nb    Calculates magnetic resonance signal analytically for
+                      two weakly coupled spins, calculates a numerical
+                      signal, and Fourier transforms the numerical signal
+                      to reveal the *spectrum* of the two coupled spins.
 
-UniDyn--Demo-05.nb    Calculates the signal analytically and numerically 
-                      for two weakly coupled spins in the following 
-                      magnetic resonance experiments: INEPT polarization 
+UniDyn--Demo-05.nb    Calculates the magnetic resonance signal analytically
+                      and numerically for two weakly coupled spins in the
+                      following experiments: INEPT polarization
                       transfer, heteronuclear COSY, and homonuclear COSY.
 
-UniDyn--Demo-Scratch.nb    Operator playground</code></pre>
-<p>Documentation :</p>
-<pre><code>UniDyn-doc.pdf        Documentation.  Most of the documentation is 
+UniDyn--Demo-Scratch.nb    Operator playground
+</pre>
+<p>Documentation</p>
+<pre class="literal-block">
+UniDyn-doc.pdf        Documentation.  Most of the documentation is
                       contained *inline*, in comments in the source code.
-                      The source code is read directly into the tex 
-                      document and typeset.  
-
-UniDyn-doc.tex               Main document file.
-UniDyn-doc--abstract.tex     Document abstract.
-UniDyn-doc--intro.tex        Document introduction, explains the algorithm.</code></pre>
-<h2 id="unidyn-directory">unidyn directory</h2>
-<p>The package files are stored in the <code>unidyn/</code> directory. The package files consist of <em>Mathematica</em> files :</p>
-<pre><code>UniDyn.m    master file; loads all the other package files
-OpCreate.m  CreateOperator[] and CreateScalar[] convenience functions
-Mult.m      NCSort[], SortedMult[], and MultSort[] functions to sort 
-            operators
-Comm.m      Comm[,] to implement the commutator function
-Spins.m     Angular momentum operators for a single spin; can specify 
-            L = 1/2 or not.
-Osc.m       Raising and lowering operators for a single harmonic oscillator
-Evolve.m    Unitary evolution</code></pre>
-<p>and:</p>
-<pre><code>Matrices--two-spin-half.m    Matrices for the six angular momentum
-                             operators for a spin system consisting 
-                             of two I=1/2 spins.</code></pre>
-<p>plus unit-testing files :</p>
-<pre><code>OpCreate-tests.m 
+                      The source code is read directly into the tex
+                      document and typeset.
+</pre>
+</div>
+<div class="section" id="unidyn-directory">
+<h2>unidyn directory</h2>
+<p>The package files are stored in the <tt class="docutils literal">unidyn/</tt> directory.</p>
+<p>The package files consist of <em>Mathematica</em> files</p>
+<pre class="literal-block">
+UniDyn.m     master file; loads all the other package files
+OpQ.m        CreateOperator[] and CreateScalar[] convenience functions
+Mult.m       NCSort[], SortedMult[], and MultSort[] functions to sort operators
+Comm.m       Comm[,] to implement the commutator function
+Inv.m        Inv[] to implement a symbolic operator inverse
+Spins.m      Angular momentum operators for a single spin (L = 1/2 or not)
+Osc.m        Raising and lowering operators for a single harmonic oscillator
+Evolve.m     Unitary evolution
+Evolver1.m   The Evolver1 algorithm
+Evolver2.m   The Evolver2 algorithm
+SpinBoson.m  Spin and harmonic-oscillator operators for quantum optics
+</pre>
+<p>and</p>
+<pre class="literal-block">
+Matrices--two-spin-half.m    Matrices for the six angular momentum
+                             operators for a spin system consisting
+                             of two I=1/2 spins
+</pre>
+<p>plus unit-testing files</p>
+<pre class="literal-block">
+OpQ-tests.m
 Mult-tests.m
 Comm-tests.m
+Inv-tests.m
 Spins-tests.m
 Osc-tests.m
-Evolve-tests.m</code></pre>
-<h1 id="other-files">Other files</h1>
-<ul>
-<li>History [<a href="https://github.com/JohnMarohn/UniDyn/blob/master/HISTORY.rst">link</a>]</li>
-<li>To-do list [<a href="https://github.com/JohnMarohn/UniDyn/blob/master/TODO.rst">link</a>]</li>
-<li>License [<a href="https://github.com/JohnMarohn/UniDyn/blob/master/LICENSE">link</a>]</li>
+Evolve-tests.m
+Evolver1-tests.m
+Evolver2-tests.m
+SpinBoson-tests.m
+</pre>
+</div>
+<div class="section" id="study-directory">
+<h2>study directory</h2>
+<p>The <tt class="docutils literal">study/</tt> directory contains files used during the development of improvements and new features.</p>
+</div>
+</div>
+<div class="section" id="other-files">
+<h1>Other files</h1>
+<ul class="simple">
+<li>History [<a class="reference external" href="https://github.com/JohnMarohn/UniDyn/blob/master/HISTORY.rst">link</a>]</li>
+<li>To-do list [<a class="reference external" href="https://github.com/JohnMarohn/UniDyn/blob/master/TODO.rst">link</a>]</li>
+<li>License [<a class="reference external" href="https://github.com/JohnMarohn/UniDyn/blob/master/LICENSE">link</a>]</li>
 </ul>
-<h1 id="background-reading">Background reading</h1>
-<p>I rely a lot on the <code>UpSetDelayed[]</code> function, <code>:^=</code> in shorthand. The idea up an <em>upvalue</em> and a <em>downvalue</em> is explained pretty well in the article "Associating Definitions with Different Symbols" in the Wolfram Language Tutorial<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<p>Creating a <em>Mathematica</em> package is not as well documented as I would expect. While a list of functions used to create a <em>Mathematica</em> package can be found in the "Package Development" section of the Wolfram Language Guide<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, a good example illustrating how to create a package is lacking in the Mathematica documentation. The discussions at the Mathematica Stack Exchange are helpful. The "Creating Mathematica packages" article<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> is a quick and easy introduction to packaging. The question "How can I return private members of a Mathematica package as the output of package functions without the <code>PackageName`Private</code>` prefix?" is answered in a longer article<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
-<h1 id="packaging-notes">Packaging notes</h1>
-<p>Creating a <em>Mathematica</em> package out of the <code>UniDyn</code> code was tricky. There were two reasons for this: (1) I am using functions from another custom package in my package and (2) a lot of the functions in my package's <code>m</code> files create <em>upvalues</em> for variables that are passed to the functions.</p>
+</div>
+<div class="section" id="packaging-notes">
+<h1>Packaging notes</h1>
+<div class="section" id="background-reading">
+<h2>Background reading</h2>
+<p>I rely a lot on the <tt class="docutils literal">UpSetDelayed[]</tt> function, <tt class="docutils literal">:^=</tt> in shorthand.  The idea up an <em>upvalue</em> and a <em>downvalue</em> is explained pretty well in the article &quot;Associating Definitions with Different Symbols&quot; in the Wolfram Language Tutorial <a class="footnote-reference" href="#mma-updelayed" id="footnote-reference-1">[1]</a>.</p>
+<p>Creating a <em>Mathematica</em> package is not as well documented as I would expect.  While a list of functions used to create a <em>Mathematica</em> package can be found in the &quot;Package Development&quot; section of the Wolfram Language Guide <a class="footnote-reference" href="#mma-packaging" id="footnote-reference-2">[3]</a>, a good example illustrating how to create a package is lacking in the <em>Mathematica</em> documentation.  The discussions at the <em>Mathematica</em> Stack Exchange are helpful.  The &quot;Creating Mathematica packages&quot; article <a class="footnote-reference" href="#mse29324" id="footnote-reference-3">[2]</a> is a quick and easy introduction to packaging.  The question &quot;How can I return private members of a Mathematica package as the output of package functions without the <tt class="docutils literal">PackageName`Private`</tt> prefix?&quot; is answered in a longer article <a class="footnote-reference" href="#mma-packaging-1" id="footnote-reference-4">[4]</a>.</p>
+</div>
+<div class="section" id="privacy-issues">
+<h2>Privacy issues</h2>
+<p>Creating a <em>Mathematica</em> package out of the <tt class="docutils literal">UniDyn</tt> code was tricky.  The main reason for this was that lot of the functions in my package's <tt class="docutils literal">.m</tt> files create <em>upvalues</em> for variables that are passed to the functions.</p>
 <p>The usual way to package a function is to do something like</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode Mathematica"><code class="sourceCode mathematica"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BeginPackage</span><span class="op">[</span><span class="st">&quot;MyPackage`&quot;</span><span class="op">]</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>my$function::usage<span class="ex">=</span><span class="st">&quot;f(a,b) returns a^2 + b&quot;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Begin</span><span class="op">[</span><span class="st">&quot;Private`&quot;</span><span class="op">]</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>my$function<span class="op">[</span><span class="at">a_</span><span class="op">,</span><span class="at">b_</span><span class="op">]</span> <span class="ex">:=</span> (<span class="fu">c</span> <span class="ex">=</span> <span class="fu">a</span><span class="sc">^</span><span class="dv">2</span>; <span class="fu">Return</span><span class="op">[</span><span class="fu">b</span><span class="sc">+</span><span class="fu">c</span><span class="op">]</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">End</span><span class="op">[]</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">EndPackage</span><span class="op">[]</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">s</span> <span class="ex">=</span> my$function<span class="op">[</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">]</span>;</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">s</span> <span class="co">(* &lt;== returns 7 *)</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span> <span class="co">(* &lt;== returns c *)</span></span></code></pre></div>
-<p>In this example, the inner details of <code>my$function</code> are hidden in the <code>Private</code><span class="title-ref"> context, in *Mathematica* speak. When you run an </span><span class="title-ref">nb</span><span class="title-ref"> or </span><span class="title-ref">m</span><span class="title-ref"> file, you are working in the </span><span class="title-ref">Global</span><code>context.  The name</code>my$function<code>is exposed to the</code>Global<code>` context because the</code>my$function::usage<code>declaration appears before</code>Begin["Private`"]<code>.  The function</code>my$function<code>returns its result</code>7<code>to the</code>Global<code>` context but if code in an</code>nb<code>or</code>m<code>file asks for the value of the intermediate variable</code>c<code>, then nothing is returned; the function</code>my$function<code>and any variable declared between</code>Begin["Private`"]<code>and</code>End[]<code>will not be reported to the</code>Global<code>` context.  In the</code>UniDyn<code>package we will define some symbols as commutative and others as non-commutative.  We will be using the version of the</code>NonCommutativeMultiply<code>function defined in the</code>NCAlgebra<code>package.  To decide whether a symbol is commutative or not, the functions in the</code>NCAlgebra<code>package look to the</code>CommutativeQ<code>function; a symbol is commutative if it returns</code>True<code>when passed to the function</code>CommutativeQ<code>.  To define the</code>a$sym<code>variable, for example, as commutative we would declare  .. code:: Mathematica      CommutativeQ[a$sym] ^:= True  In words, the *upvalue* of</code>a$sym<code>when passed to the function</code>CommutativeQ<code>is the value</code>True<code>.  By implementing the assignment using the</code>^:=<code>operator, this assignment is stored with the variable</code>a$sym<code>and not with this function</code>CommutativeQ<code>.  This way of doing things makes it a variable's job to know whether it is commutative or not and keeps the function</code>CommutativeQ<code>lightweight and fast.  This assignment works fine if implemented in a notebook.  If we implement the above code in a function defined between the</code>Begin["Private`"]<code>and</code>End[]<code>declarations in an</code>m<code>file, however, then the assignment is not communicated back to the</code>Global<code>` context where it's needed.  I tried a couple of work-arounds: passing the</code>a$sym<code>variable back up to the</code>Global<code>` context using a</code>Return[]<code>statement doesn't seem to work, nor does writing the variable</code>Global`a$sym<code>in the private function.  In the end, I decided to simply keep the functions defining upvalues public.  This is achieved by omitting the</code>Begin["Private`"]<code>and</code>End[]<code>statements in the package</code>m<code>file.   Going public ^^^^^^^^^^^^  The code below, taken from</code>OpCreate.m<code>, shows how this works.   .. code:: Mathematica      BeginPackage["OpCreate`",{"Global`","NC`","NCAlgebra`"}]      CreateOperator::usage="CreateOperator[] is used ..."     CreateScalar::usage="CreateScalar[list] is used ..."      (* Begin["Private`"] &lt;== Not needed.  We do not want the following functions private! *)          CommQ = NonCommutativeMultiply`CommutativeQ          Clear[CreateScalar];     CreateScalar[a$sym_Symbol] := (Clear[a$sym]; CommQ[a$sym] ^:= True;)          &lt;more code here&gt;          (* End[] &lt;== Not needed. *)          EndPackage[]  Code placed between the</code>(<em>`` and ``</em>)<code>characters is a *comment*.  I have left comments in the above code to indicate where the</code>Begin["Private`"]<code>and</code>End[]<code>would normally go.  In the above code it was important to *not* use the function</code>CommutativeQ<code>; if we do, then *Mathematica* will think we are talking about a new, conflicting function, will throw a warning, and the code will not do what we want.  Instead, we need to specify the function we want by its full name,</code>NonCommutativeMultiply`CommutativeQ<code>.  Since this function name is really long, in the code above we define</code>CommQ<code>as a short name for the function.   Keeping private ^^^^^^^^^^^^^^^  The packages</code>OpCreate.m<code>,</code>Mult.m<code>, and</code>Comm.m<code>are set up this way, with no</code>"Private`"<code>context.  In contrast, the package</code>Spins.m<code>*does* have a</code>"Private`"<code>context:  .. code:: Mathematica      BeginPackage["Spins`",{"Global`","NC`","NCAlgebra`","OpCreate`","Mult`","Comm`"}]          SpinSingle$CreateOperators::usage="Descriptive messsage"           Begin["Private`"] (* &lt;&lt;==== IMPORTANT *)          SpinSingle$CreateOperators[Ix$sym_,Iy$sym_,Iz$sym_,L_:Null] :=           Module[{nonexistent},                      nonexistent = Or @@ (CommutativeQ /@ {Ix$sym,Iy$sym,Iz$sym});                  &lt;more code here&gt;                  Ix$sym /: Comm[Ix$sym,Iy$sym] =  I Iz$sym;                   &lt;more code here&gt;              ];                  Return[{Ix$sym,Iy$sym,Iz$sym}] (* &lt;&lt;==== IMPORTANT *)     ]          End[]     EndPackage[]  Without the</code>"Private`"<code>context, *Mathematica* would get confused by the appearance of the</code>CommutativeQ<code>and</code>Comm<code>functions because they are defined elsewhere first.  Without the</code>"Private`"<code>context in</code>Spins.m<code>, you get the following problems.  First, when you load the</code>UniDyn<code>` package in a notebook   .. code:: Mathematica      $VerboseLoad = True;     Needs["UniDyn`"]  you get the error  .. code:: Mathematica      CommutativeQ::shdw: Symbol CommutativeQ appears in multiple contexts {Spins`,NonCommutativeMultiply`}; definitions in context Spins` may shadow or be shadowed by other definitions. &gt;&gt;      Moreover, when you run the unit-testing files, most of the tests fail.  Wrapping the function</code>SpinSingle$CreateOperators<code>in</code>Begin["Private`"]<code>and</code>End[]<code>solves the *shadowing* problem.  Because the function is now hidden in a private context, the declaration</code>SpinSingle$CreateOperators::usage<code>is needed to expose the function's existence to the</code>Global<code>` context.  The function</code>SpinSingle$CreateOperators<code>defines *upvalues* for the spin operators.  The</code>Return[]<code>statement is needed to pass these definitions back up to the</code>Global``` context.</p>
-<h1 id="references">References</h1>
-<section class="footnotes" role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p><a href="https://reference.wolfram.com/language/tutorial/AssociatingDefinitionsWithDifferentSymbols.html">https://reference.wolfram.com/language/tutorial/AssociatingDefinitionsWithDifferentSymbols.html</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p><a href="https://reference.wolfram.com/language/guide/PackageDevelopment.html">https://reference.wolfram.com/language/guide/PackageDevelopment.html</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p><a href="http://mathematica.stackexchange.com/questions/29324/creating-mathematica-packages">http://mathematica.stackexchange.com/questions/29324/creating-mathematica-packages</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p><a href="http://mathematica.stackexchange.com/questions/7502/how-can-i-return-private-members-of-a-mathematica-package-as-the-output-of-packa">http://mathematica.stackexchange.com/questions/7502/how-can-i-return-private-members-of-a-mathematica-package-as-the-output-of-packa</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
+<pre class="code literal-block">
+BeginPackage[&quot;MyPackage`&quot;]
+my$function::usage=&quot;f(a,b) returns a^2 + b&quot;
+Begin[&quot;Private`&quot;]
+my$function[a_,b_] := (c = a^2; Return[b+c])
+End[]
+EndPackage[]
+
+s = my$function[2,3];
+s (* &lt;== returns 7 *)
+c (* &lt;== returns c *)
+</pre>
+<p>In this example, the inner details of <tt class="docutils literal">my$function</tt> are hidden in the <tt class="docutils literal">Private`</tt> context, in <em>Mathematica</em> speak. When you run an <tt class="docutils literal">nb</tt> or <tt class="docutils literal">.m</tt> file, you are working in the <tt class="docutils literal">Global`</tt> context.  The name <tt class="docutils literal">my$function</tt> is exposed to the <tt class="docutils literal">Global`</tt> context because the <tt class="docutils literal"><span class="pre">my$function::usage</span></tt> declaration appears before <tt class="docutils literal"><span class="pre">Begin[&quot;Private`&quot;]</span></tt>.  The function <tt class="docutils literal">my$function</tt> returns its result <tt class="docutils literal">7</tt> to the <tt class="docutils literal">Global`</tt> context but if code in an <tt class="docutils literal">nb</tt> or <tt class="docutils literal">.m</tt> file asks for the value of the intermediate variable <tt class="docutils literal">c</tt>, then nothing is returned; the function <tt class="docutils literal">my$function</tt> and any variable declared between <tt class="docutils literal"><span class="pre">Begin[&quot;Private`&quot;]</span></tt> and <tt class="docutils literal">End[]</tt> will not be reported to the <tt class="docutils literal">Global`</tt> context.</p>
+<p>In the <tt class="docutils literal">UniDyn</tt> package we will define some symbols as commutative and others as non-commutative.  To decide whether a symbol is commutative or not we look to the <tt class="docutils literal">ScalarQ</tt> and <tt class="docutils literal">OperatorQ</tt> functions; a symbol is commutative if it returns <tt class="docutils literal">True</tt> when passed to the function <tt class="docutils literal">ScalarQ</tt>.  To define the <tt class="docutils literal">a$sym</tt> variable, for example, as commutative we would declare</p>
+<pre class="code literal-block">
+ScalarQ[a$sym] ^:= True
+</pre>
+<p>In words, the <em>upvalue</em> of <tt class="docutils literal">a$sym</tt> when passed to the function <tt class="docutils literal">ScalarQ</tt> is the value <tt class="docutils literal">True</tt>.  By implementing the assignment using the <tt class="docutils literal">^:=</tt> operator, this assignment is stored with the variable <tt class="docutils literal">a$sym</tt> and not with this function <tt class="docutils literal">ScalarQ</tt>.  This way of doing things makes it a variable's job to know whether it is commutative or not and keeps the function <tt class="docutils literal">ScalarQ</tt> lightweight and fast.</p>
+<p>This assignment works fine if implemented in a notebook.  If we implement the above code in a function defined between the <tt class="docutils literal"><span class="pre">Begin[&quot;Private`&quot;]</span></tt> and <tt class="docutils literal">End[]</tt> declarations in an <tt class="docutils literal">.m</tt> file, however, then the assignment is not communicated back to the <tt class="docutils literal">Global`</tt> context where it's needed.  I tried a couple of work-arounds: passing the <tt class="docutils literal">a$sym</tt> variable back up to the <tt class="docutils literal">Global`</tt> context using a <tt class="docutils literal">Return[]</tt> statement doesn't seem to work, nor does writing the variable <tt class="docutils literal">Global`a$sym</tt> in the private function.  In the end, I decided to simply keep the functions defining upvalues public.  This is achieved by omitting the <tt class="docutils literal"><span class="pre">Begin[&quot;Private`&quot;]</span></tt> and <tt class="docutils literal">End[]</tt> statements in the package <tt class="docutils literal">.m</tt> file.</p>
+</div>
+<div class="section" id="going-public">
+<h2>Going public</h2>
+<p>The code snippet below, taken from <tt class="docutils literal">OpQ.m</tt>, shows how this works.</p>
+<pre class="code literal-block">
+BeginPackage[&quot;OpQ`&quot;,{&quot;Global`&quot;}]
+
+ScalarQ::usage=&quot;ScalarQ[a] returns True if ...&quot;
+OperatorQ::usage=&quot;OperatorQ[a] returns True if ...&quot;
+
+(* Begin[&quot;Private`&quot;] &lt;== Not needed.  We do not want the following functions private! *)
+
+Clear[OperatorQ, ScalarQ]
+OperatorQ[x$var_] :=
+    Apply[Or,
+        Map[SimpleOperatorQ,
+            Level[x$var,{-1}]]];
+ScalarQ[x$var_]:= !OperatorQ[x$var];
+
+Clear[CreateScalar];
+CreateScalar[a$sym_Symbol] := (Clear[a$sym]; CommQ[a$sym] ^:= True;)
+
+(* End[] &lt;== Not needed. *)
+
+EndPackage[]
+</pre>
+<p>Code placed between the <tt class="docutils literal">(*</tt> and <tt class="docutils literal">*)</tt> characters is a <em>comment</em>.  I have left comments in the above code to indicate where the <tt class="docutils literal"><span class="pre">Begin[&quot;Private`&quot;]</span></tt> and <tt class="docutils literal">End[]</tt> would normally go.</p>
+</div>
+<div class="section" id="keeping-private">
+<h2>Keeping private</h2>
+<p>The packages <tt class="docutils literal">OpQ.m</tt>, <tt class="docutils literal">Mult.m</tt>, and <tt class="docutils literal">Comm.m</tt> are set up this way, with no <tt class="docutils literal">&quot;Private`&quot;</tt> context.  In contrast, the package <tt class="docutils literal">Spins.m</tt> <em>does</em> have a <tt class="docutils literal">&quot;Private`&quot;</tt> context.  This can be seen the following code snippet.</p>
+<pre class="code literal-block">
+BeginPackage[&quot;Spins`&quot;,{&quot;Global`&quot;,&quot;OpQ`&quot;,&quot;Mult`&quot;,&quot;Comm`&quot;}]
+
+SpinSingle$CreateOperators::usage=&quot;Descriptive messsage&quot; s
+
+Begin[&quot;Private`&quot;] (* &lt;&lt;==== IMPORTANT *)
+
+SpinSingle$CreateOperators[Ix$sym_,Iy$sym_,Iz$sym_,L_:Null] :=
+
+    Module[{nonexistent},
+
+        nonexistent =
+            Not[OperatorQ[Ix$sym]] ||
+            Not[OperatorQ[Iy$sym]] ||
+            Not[OperatorQ[Iz$sym]];
+
+        Ix$sym /: Comm[Ix$sym,Iy$sym] =  I Iz$sym;
+
+        &lt;more code here&gt;
+
+    ];
+
+    Return[{Ix$sym,Iy$sym,Iz$sym}] (* &lt;&lt;==== IMPORTANT *)
+]
+
+End[]
+EndPackage[]
+</pre>
+<p>Without the <tt class="docutils literal">&quot;Private`&quot;</tt> context, <em>Mathematica</em> would get confused by the appearance of the <tt class="docutils literal">OperatorQ</tt> and <tt class="docutils literal">Comm</tt> functions because they are defined elsewhere first.  Without the <tt class="docutils literal">&quot;Private`&quot;</tt> context in <tt class="docutils literal">Spins.m</tt>, you get the following problems.  First, when you load the <tt class="docutils literal">UniDyn`</tt> package in a notebook</p>
+<pre class="code literal-block">
+$VerboseLoad = True;
+Needs[&quot;UniDyn`&quot;]
+</pre>
+<p>you get the error</p>
+<pre class="code literal-block">
+CommutativeQ::shdw: Symbol OperatorQ appears in multiple contexts
+... definitions in context Spins` may shadow or be shadowed by other
+definitions.
+</pre>
+<p>Moreover, when you run the unit-testing files, most of the tests fail.  Wrapping the function <tt class="docutils literal">SpinSingle$CreateOperators</tt> in <tt class="docutils literal"><span class="pre">Begin[&quot;Private`&quot;]</span></tt> and <tt class="docutils literal">End[]</tt> solves the <em>shadowing</em> problem.  Because the function is now hidden in a private context, the declaration <tt class="docutils literal"><span class="pre">SpinSingle$CreateOperators::usage</span></tt> is needed to expose the function's existence to the <tt class="docutils literal">Global`</tt> context.  The function <tt class="docutils literal">SpinSingle$CreateOperators</tt> defines <em>upvalues</em> for the spin operators.  The <tt class="docutils literal">Return[]</tt> statement is needed to pass these definitions back up to the <tt class="docutils literal">Global`</tt> context.</p>
+</div>
+</div>
+<div class="section" id="references">
+<h1>References</h1>
+<table class="docutils footnote" frame="void" id="mma-updelayed" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-1">[1]</a></td><td><a class="reference external" href="https://reference.wolfram.com/language/tutorial/AssociatingDefinitionsWithDifferentSymbols.html">https://reference.wolfram.com/language/tutorial/AssociatingDefinitionsWithDifferentSymbols.html</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="mse29324" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-3">[2]</a></td><td><a class="reference external" href="http://mathematica.stackexchange.com/questions/29324/creating-mathematica-packages">http://mathematica.stackexchange.com/questions/29324/creating-mathematica-packages</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="mma-packaging" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-2">[3]</a></td><td><a class="reference external" href="https://reference.wolfram.com/language/guide/PackageDevelopment.html">https://reference.wolfram.com/language/guide/PackageDevelopment.html</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="mma-packaging-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-4">[4]</a></td><td><a class="reference external" href="http://mathematica.stackexchange.com/questions/7502/how-can-i-return-private-members-of-a-mathematica-package-as-the-output-of-packa">http://mathematica.stackexchange.com/questions/7502/how-can-i-return-private-members-of-a-mathematica-package-as-the-output-of-packa</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<script type="text/javascript">
+var mtime = '1767650368.0323842';
+var poll = null;
+window.onload = function () {
+    setTimeout(function () {
+        poll = new XMLHttpRequest();
+        poll.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var reload = new XMLHttpRequest();
+                reload.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.title = this.responseXML.title;
+                        document.body.innerHTML = this.responseXML.body.innerHTML;
+                        var old_styles = document.getElementsByTagName('style');
+                        var new_styles = this.responseXML.getElementsByTagName('style');
+                        for (var i = old_styles.length - 1; i >= 0; i--) {
+                            old_styles[i].remove();
+                        }
+                        // convert HTMLCollection to an array so that
+                        // items don't disappear from under us when I append
+                        // them to a different DOM tree
+                        new_styles = [].slice.call(new_styles);
+                        for (var i = 0; i < new_styles.length; i++) {
+                            document.head.appendChild(new_styles[i]);
+                        }
+                        mtime = this.getResponseHeader('X-Restview-Mtime');
+                        if (mtime) {
+                            poll.open('HEAD', '/polling?pathname=' + location.pathname + '&mtime=' + mtime, true);
+                            poll.send();
+                        }
+                    }
+                }
+                reload.open('GET', location.pathname, true);
+                reload.responseType = 'document';
+                reload.send();
+            }
+        }
+        poll.open('HEAD', '/polling?pathname=' + location.pathname + '&mtime=' + mtime, true);
+        poll.send(null);
+    }, 0);
+}
+window.onbeforeunload = function () {
+    poll.abort();
+}
+</script>
 </body>
 </html>

@@ -1,0 +1,125 @@
+%!TEX root = ../UniDyn-doc.tex
+
+% ---------------------------
+\subsection{Two spins}
+% ---------------------------
+
+Define two spins, $\bm{I}$ and $\bm{S}$.
+The first spin has an unspecified total angular momentum while the second spin has total angular momentum $S = 1/2$.
+The \verb+Evolver2+ algorithm computes
+\begin{equation}
+e^{-i \, J t \, I_z S_z} 
+\: I_x \: 
+e^{+i \, J \, I_z S_z} = 
+  I_x \, \cos{(J t  \big/ 2 )} 
+  + 2 I_y S_z \, \sin{(J t \big/ 2)},
+\end{equation}
+which is a non-trivial extension of the single-spin rotations encoded in the unit tests.
+For the evolution of $S_x$, \verb+Evolver2+ computes
+\begin{equation}
+e^{-i \, J t \, I_z S_z} 
+\: S_x \: 
+e^{+i \, J \, I_z S_z} = 
+  S_x \, \cos{\big( J t  \sqrt{I_{z}^2} \big)} 
+  +  \frac{2 I_z S_y}{\sqrt{I_{z}^2}} \sin{\big(J t \sqrt{I_{z}^2}\big)}.
+\label{eq:Sx-J-coupling-example}
+\end{equation}
+If we specify the spin angular momentum $I$ then it is straightforward to write down the eigenvalues of $I_z$ and expand the trigonometric operators in Eq.~\ref{eq:Sx-J-coupling-example} using L\"{o}dwin projection-operator theorem \cite{Lowdin1955mar}.
+
+
+% ---------------------------------------
+\subsection{Harmonic oscillator}
+% ---------------------------------------
+
+Consider a harmonic oscillator with Hamiltonian
+\begin{equation}
+{\cal H}_0 = \omega_0 \left( a^{\dagger} a + \frac{1}{2} \right)
+\end{equation}
+and consider that we calculate oscillator dynamics in an interaction representation defined by ${\cal H}_0$.
+The application of an on-resonance force leads to a Hamiltonian
+\begin{equation}
+{\cal H}_1 = \frac{A}{\sqrt{2}} (e^{-i \phi} \, a^{\dagger} + e^{+i \phi} \, a)
+\end{equation}
+where $\phi$ is the phase of the oscillating force.
+The \verb+Evolver2+ algorithm computes that the oscillator's position and momentum evolve under the action of ${\cal H}_1$ as follows: 
+\begin{subequations}
+\begin{align}
+e^{-i \, {\cal H}_1  t}  Q e^{+i \, {\cal H}_1  t} & = Q + A t \sin{\phi} \\
+e^{-i \, {\cal H}_1  t}  P e^{+i \, {\cal H}_1  t} & = P + A t \cos{\phi}.
+\end{align}
+\end{subequations}
+This example shows that the algorithm handles complex numbers correctly.
+
+Modulating the spring constant of the oscillator at twice the oscillator's resonance frequency $2 \omega_0$ gives rise a ``squeezing'' Hamiltonian
+\begin{equation}
+{\cal H}_2 = \frac{\Omega}{2} \left( e^{-i \phi} (a^\dagger)^2 + e^{+i \phi} a^2 \right)
+\end{equation}
+with $\phi$ the phase of the oscillating spring constant.  
+Under the action of this Hamiltonian, the \verb+Evolver2+ algorithm computes that
+\begin{equation}
+e^{-i \, {\cal H}_2  t}  a^{\dagger} e^{+i \, {\cal H}_2  t}
+ = a^{\dagger} \cosh{(\Omega \, t)} - i a e^{i \phi} \sinh{(\Omega \, t)}.
+\label{eq:sqeeze-a-dagger--resonance}
+\end{equation}
+When $\phi = \pi/2$, 
+\begin{equation}
+\{ Q, P \} \xrightarrow{{\cal H}_2}  \{ e^{-\Omega \, t} Q, e^{+\Omega \, t} P \} 
+\end{equation}
+we see that $Q$ is attenuated while $P$ is amplified.
+On the other hand, when $\phi = 3 \pi/2$, 
+\begin{equation}
+\{ Q, P \} \xrightarrow{{\cal H}_2}  \{ e^{+\Omega \, t} Q, e^{-\Omega t} \, P \},
+\end{equation}
+and now $Q$ is amplified while $P$ is attenuated. 
+For these two choices of phase, the expectation value of the product $Q P$ is conserved.
+This example shows that the \verb+Evolver2+ algorithm can capture the physics of degenerate parametric amplification \cite{Mollow1967aug,Mollow1967auga}.
+
+Consider the more complicated case of non-degenerate parametric amplification, when the spring constant is modulated off-resonance at frequency $2 \omega$.
+To remove the time-dependence in the resulting Hamiltonian, we need an interaction representation defined by $\omega (a^{\dagger} a + 1/2)$.
+\verb+Evolver2+ computes that, in this interaction representation, $a^{\dagger}$ evolves as follows:
+\begin{multline}
+e^{-i \, (\Delta \omega \, a^{\dagger} a +  {\cal H}_2)  t}  
+a^{\dagger} 
+e^{-i \, (\Delta \omega \, a^{\dagger} a +  {\cal H}_2)  t}  
+\\
+= a^{\dagger} \cos{(t \sqrt{\Delta \omega^2 - \Omega^2})}
+   - \frac{i (\Delta \omega \, a^{\dagger} + \Omega \, e^{i \phi}  \, a) \sin{(t \sqrt{\Delta \omega^2 - \Omega^2})}}
+            {\sqrt{\Delta \omega^2 - \Omega^2}}.
+\label{eq:sqeeze-a-dagger--off-resonance}
+\end{multline}
+with $\Delta \omega = \omega_0 - \omega$ a resonance offset.
+The Eq.~\ref{eq:sqeeze-a-dagger--off-resonance} calculation is challenging because $[\Delta \omega \, a^{\dagger} a, {\cal H}_2] \neq 0$, and the resulting operator transformation is non-trivial.
+Equation~\ref{eq:sqeeze-a-dagger--off-resonance} reduces to Eq.~\ref{eq:sqeeze-a-dagger--resonance} in the on-resonance limit, $\Delta \omega \rightarrow 0$.
+In the limit of no parametric amplification, $\Omega \rightarrow 0$, Eq.~\ref{eq:sqeeze-a-dagger--off-resonance} reduces to the expected $a^{\dagger} e^{-i \, \Delta \omega \, t}$.
+In the general, off-resonance case, Eq.~\ref{eq:sqeeze-a-dagger--off-resonance} exhibits complicated dynamics ---  either oscillatory or exponential, depending on the relative size of $\Delta \omega$ and $\Omega$.
+
+
+% ------------------------------------
+\subsection{Electron transfer}
+% ------------------------------------
+
+In Ref.~\citenum{Mikkelsen1987feb}, electron transfer between two sites (H and H$^{+}$ for example) the electronic Hamiltonian, vibrational Hamiltonian, and electronic-vibrational coupling is treated using a Holstein molecular crystal model.
+The electronic states are represented by an $I = 1/2$ spin system $\bm{I}$ and the vibrational states are represented by an harmonic oscillator with creation and annihilation operators $(a^{\dagger}, a)$.
+To remove the electronic-vibrational coupling, dynamics are calculated in an interaction representation defined by an operator (in our notation)
+\begin{equation}
+T = -2 g I_z \big( a^{\dagger} - a \big).
+\end{equation}
+The associated unitary transformation corresponds to an electronic-state-dependent translation.
+In this interaction representation, \verb+Evolver2+ correctly computes
+\begin{equation}
+e^{-i \, t \, T } \, I_{\pm} \, e^{+i \, t \, T } = e^{\pm 2 g  \big( a^{\dagger} - a \big)} \,  I_{\pm}
+\label{eq:translate-T}
+\end{equation}
+This example shows that \verb+Evolver2+ can handle differential equations in which the coefficients are \emph{operators}.
+
+This example highlights the limitations of \verb+Evolver1+, which fails to resolve Eq.~\ref{eq:translate-T}.
+The first two derivatives in the $I_{+}$ case are
+\begin{align}
+\rho^{(0)} &= I_{+} \\
+\rho^{(1)} &= 2 g \big( I_{+} a - I_{+} a^{\dagger} \big)
+\end{align}
+and the \verb+Divide+ function employed in \verb+Evolver1+ is unable to see that $\rho^{(1)}/\rho^{(0)} = 2 g  \big( a^{\dagger} - a \big)$.
+The $\verb+Inv+$ function employed in \verb+Evolver2+ is able to implement this division correctly.
+
+
+  

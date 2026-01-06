@@ -1,7 +1,7 @@
-%!TEX root = UniDyn-doc.tex
+%!TEX root = ../UniDyn-doc.tex
 
 
-Given a time-independent Hamiltonian ${\cal H}$ and an initial density operator $\rho(0)$ evolving in the Schr\"{o}dinger represenation, the \VerbFcn{Evolver} algorithm described below computes the density operator at time $t$ by implementing the following unitary rotation
+Given a time-independent Hamiltonian ${\cal H}$ and an initial density operator $\rho(0)$ evolving in the Schr\"{o}dinger represenation, the \VerbFcn{Evolver} algorithms described below computes the density operator at time $t$ by implementing the following unitary rotation
 \begin{equation}
 \rho(t) 
 	= e^{-i {\cal H} t} \: \rho(0) \: e^{+i {\cal H} t}
@@ -29,7 +29,7 @@ where $\omega$ is the Larmor frequency and $I_x$, $I_y$, and $I_z$ are the spin 
 \end{equation}
 where $a$ is the annihilation operator and $\omega$ is the harmonic-oscillator's resonance frequency.
 Knowing the commutation relations among the operators comprising ${\cal H}$ and $\rho(0)$, it is often possible to obtain a closed-form algebraic solution to Eq.~\ref{Eq:Evolve}.  
-The \VerbFcn{Evolver} algorithm obtains closed-form solutions to Eq.~\ref{Eq:Evolve} by extending an approach introduced by Slichter in Section 2.3 of his \emph{Principles of Magnetic Resonance} text \cite{Slichter1990}.
+The \VerbFcn{Evolver} algorithms obtain closed-form solutions to Eq.~\ref{Eq:Evolve} by extending an approach introduced by Slichter in Section 2.3 of his \emph{Principles of Magnetic Resonance} text \cite{Slichter1990}.
 In this approach, one infers the differential equation that $\rho(t)$ satisfies.
 The only input to the algorithm is the commutation relations for the relevant operators.
 
@@ -71,7 +71,7 @@ We find that this approach fails when the arguments of the associated sines, cos
 
 Slichter was interested in calculating the unitary evolution of angular momentum operators arising in spin-physics problems \cite{Slichter1990}, like the rotation in eq.~\ref{eq:example-spin}.
 In the following section we introduce the Slichter procedure by considering example cases.
-We show that his procedure works well for harmonic oscillator problems too, including problems involving the coupling of a harmonic oscillator with a two-level system, a minimum model for describing electron transfer in chemical reactions and radiation-matter interactions in the strong-coupling limit.
+We show that his procedure works well for harmonic oscillator problems too, including problems involving the coupling of a harmonic oscillator with a two-level system, a minimum model for describing electron transfer in chemical reactions \cite{Mikkelsen1987feb} and radiation-matter interactions in the strong-coupling limit \cite{Jaynes1963jan,Eberly1980may,Greentree2013nov,Larson2024aug}.
 
 It will become apparent that automating Slichter's procedure in a computer algebra program like \emph{Mathematica} is possible but challenging.
 There are two challenges.
@@ -81,9 +81,3 @@ We address these problems below.
 We then introduce two generalizations of the Slichter algorithm that are well suited for automation by a computer algebra program.
 We have implemented these algorithm as a \emph{Mathematica} function, \VerbFcn{Evolver}.
 This function evaluates Eq.~\ref{Eq:Evolve} given an ${\cal H}$, an initial operator $\rho(0)$, and the commutation relations between the operators comprising ${\cal H}$ and $\rho(0)$.
-
-% An exponentiated spin operator $A$ of the form $e^{i A}$ can be written, using the Cayley-Hamilton theorem, as a polynomial function of $A$ \cite{DeZela2014jun,Curtright2014aug}.
-
-% Spin $I = 1/2$ operators, Pauli matrices.
-
-% Spin $I = 1$ operators, the eight Gell-Mann matrices \cite{Gell-Mann1962feb,Bertlmann2008may,Curtright2015dec}

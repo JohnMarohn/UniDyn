@@ -52,11 +52,12 @@ If[nonexistent == True,
 		OscSingle$CreateOperators[aL$sym, aR$sym];
 		Message[SpinBoson$CreateOperators::create],
 	Message[SpinBoson$CreateOperators::nocreate];];
-(*
+
+(*@
 Add raising and lowering operator commutation rules. %
 The commutations relations are defined as \emph{upvalues} of the %
 spin raising and lowering operators.
-*)
+@*)
 
 Ip$sym /: Comm[Ip$sym, Im$sym] = 2 Iz$sym;
 Ip$sym /: Comm[Ip$sym, Iz$sym] = -Ip$sym;
@@ -67,12 +68,11 @@ Iz$sym /: Comm[Iz$sym, Im$sym] = -Im$sym;
 
 Message[SpinBoson$CreateOperators::comm];
 
-(*
-Add raising and lowering operator simplification rules.
-*)
+(*@
+Add raising and lowering operator simplification rules. %
+@*)
 
 Ip$sym /: Mult[a___, Ip$sym, Ip$sym, b___] := 0;
-
 Im$sym /: Mult[a___, Im$sym, Im$sym, b___] := 0;
 
 Ip$sym /: Mult[a___, Ip$sym, Iz$sym ,b___] := -(1/2)Mult[a, Ip$sym, b];
@@ -86,10 +86,9 @@ Iz$sym /: Mult[a___, Iz$sym, Im$sym, b___] := -(1/2)Mult[a, Im$sym, b];
 
 Message[SpinBoson$CreateOperators::simp];
 
-(*
-Try to achieve normal ordering of the % 
-harmonic oscillator raising and lowering operators.
-*)
+(*@
+Try to achieve normal ordering of the harmonic oscillator raising and lowering operators. %
+@*)
 
 aR$sym /: Mult[a___, aL$sym, aR$sym, b___] := Mult[a, aR$sym, aL$sym, b] + Mult[a, b];
 
@@ -107,6 +106,9 @@ EndPackage[]
 If[$VerboseLoad == True,
     Message[SpinBoson$CreateOperators::usage]
 ]
+
+
+
 
 
 

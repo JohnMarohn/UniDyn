@@ -44,18 +44,19 @@ it to return useful results.  @*)
 
 (*@ Print out the vector of density-operator derivatives if asked. @*)
 
-  If[OptionValue[quiet] == False, Print["\[Rho] matrix = ", rho$sym[#]& /@ {0,1,2,3,4} // MatrixForm]];
+  If[OptionValue[quiet] == False, 
+  Print["\[Rho] matrix = ", rho$sym[#]& /@ {0,1,2,3,4} // MatrixForm]];
 
 (*@ Look for an entry in the $(\rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ list that is % 
 proportional to $\rho^{(3)}$. Stop when you find it.  Determining %
-\emph{proportional to} is tricky.  Here we use the ability of the \verb+NCALgebra+ %
-package to compute a symbolic inverse of an operator.  When %
-$(\rho^{(n)})^{-1}**\rho^{(3)}$ is a scalar, then we have found a match. % 
+\emph{proportional to} is tricky when non-commuting operators are involved. %
+Here we simply use the \emph{Mathematica} \verb+Divide[]+ function. %   
+When $(\rho^{(n)})^{-1}**\rho^{(3)}$ is a scalar, then we have found a match. % 
 We are implicity assuming that the entries $(\rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ %
 \emph{have} an inverse.  This will be true of then entries involve Hermitian %
 operators.  If the entries involve \emph{non-Hermitian operators}, however, like %
 $I_{+}$ or $I_{-}$ then the entries might not have a proper inverse.  % 
-We do not, at present, test whether the operators in the list are Hermitian or not. % 
+We do not, at present, test whether the operators in the Hamiltonian are Hermitian or not. % 
 @*) 
 
   a$vect={0,0,0,0};
@@ -63,8 +64,8 @@ We do not, at present, test whether the operators in the list are Hermitian or n
   r = Catch[
     Do[
       q = Mult[
-         Divide[rho$sym[3],Mult[rho$sym[k]]]
-       ] // FullSimplify[#, ComplexityFunction->VisualComplexity]& ;
+         Divide[rho$sym[3], Mult[rho$sym[k]]]
+       ] // FullSimplify[#, ComplexityFunction->VisualComplexity]&;
 
       If[ScalarQ[q]==True, Throw[{3-k, q}]],
       {k,0,2}

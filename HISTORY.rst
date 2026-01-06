@@ -1,6 +1,25 @@
 History
 -------
 
+2026/01/05 jam99
+^^^^^^^^^^^^^^^^
+  
+A major revision and extension.  Introduce a new unitary-rotation function ``Evolver2`` to complement ``Evolver`` (renamed ``Evolver1``).  The ``Evolver1`` algorithm worked well for spin problems but not for harmonic oscillator problems or mixed spin-oscillator systems.  The new ``Evolver2`` algorithm works through commutators to discover which differential equation the density operator solves, computes the relevant initial conditions and oscillation frequency, and plugs these values into the differential-equation solution.  The  ``Evolver2`` algorithm works well for harmonic oscillator and mixed spin-oscillator systems.
+
+* Introduce the ``Inv`` function, a symbolic operator-inverse function.
+
+* Refactor ``Evolver.m`` into ``Evolve.m`` and ``Evolver1.m``.
+
+* Add an ``Evolver2`` algorithm.
+
+* Introduce ``SpinBoson.m``, containing :math:`I = 1/2` spin operators and harmonic oscillator operators.
+
+* All the new ``m`` files have associated units tests. All units tests pass.
+
+* Remove ``UniDyn--Demo-Scratch.nb``.
+
+* Add ``UniDyn--Demo-06.nb``, a demonstration notebook that compares the execution time for ``Evolver1`` and ``Evolver2`` and shows examples of ``Evolver2`` involving one spin, two spins, the harmonic oscillator, quantum optics, and electron transfer.
+
 2024/11/09 jam99
 ^^^^^^^^^^^^^^^^
 
@@ -51,7 +70,7 @@ A major revision.  Rewrite the code to remove the dependence on the external non
 2016/05/11 jam99
 ^^^^^^^^^^^^^^^^
 
-Notebook ``UniDyn--Demo-05.nb`` added to illustrate, for two weakly coupled spins, the 1D spectrum, the INEPT experiment, the heteronuclear COSY, and the homonuclear COSY.
+* Notebook ``UniDyn--Demo-05.nb`` added to illustrate, for two weakly coupled spins, the 1D spectrum, the INEPT experiment, the heteronuclear COSY, and the homonuclear COSY.
 
 2016/05/05 jam99
 ^^^^^^^^^^^^^^^^

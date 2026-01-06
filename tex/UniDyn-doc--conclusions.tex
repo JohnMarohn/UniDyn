@@ -1,0 +1,19 @@
+%!TEX root = ../UniDyn-doc.tex
+
+The \verb+UniDyn+ package offers a general approach to symbolically computing the unitary evolution of quantum-mechanical operators given only the operators’ underlying commutation relations.
+The package includes code for manipulating and simplifying expressions involving a mixture of commuting and non-commuting symbols, commutators, and inverse operators.
+The Sec.~\ref{sec:results} results show that the \verb+Evolver+ algorithms are applicable in cases well beyond the unit tests discussed in Sec.~\ref{sec:results} and Appendix~\ref{sec:code}.
+The \verb+UniDyn+ package GitHub page includes seven \emph{Mathematica} notebooks showing example \verb+Evolver2+ calculations involving one spin, two spins, the harmonic oscillator, quantum optics, and electron transfer.
+
+One of us (JAM) has used the \verb+UniDyn+ package to teach both magnetic resonance, multidimensional spectroscopy, relaxation theory, and quantum optics in a graduate quantum mechanics course.
+The package significantly expands the range of phenomena that can be covered in a one-semester graduate course on time-dependent quantum mechanics.
+
+Two of us (ASR and JAM) recently used \verb+Evolver1+ to compute multi-spin double-quantum coherence expressions for up to $N_{\mathrm{spin}} = 9$ spin $I = 1/2$ particles \cite{SinhaRoy2024apr}.
+Given that $N_{\mathrm{spin}} = 9$ is near the limit of what can be simulated \emph{numerically}, were were initially surprised to find that the evolution of so many spins could be treated \emph{analytically}.
+We should consider, however, that the pulse sequences in Ref.~\citenum{SinhaRoy2024apr} were relatively simple and that spin-spin couplings act in a pairwise fashion.
+These constraints limited the terms in the density operator to many fewer than would be included in a numerical calculation. 
+Remarkably, \verb+Evolver1+ results could be averaged over orientations analytically and extrapolated to obtain analytical expressions for signal valid in the $N_{\mathrm{spin}} \rightarrow \infty$ limit.
+
+We shope that others will find the \verb+UniDyn+ package as useful as we have.
+
+

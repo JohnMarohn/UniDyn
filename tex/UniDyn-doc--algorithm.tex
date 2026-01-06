@@ -1,4 +1,4 @@
-%!TEX root = UniDyn-doc.tex
+%!TEX root = ../UniDyn-doc.tex
 
 To understand the \VerbFcn{Evolver} algorithm it is essential to understand Slichter's approach to calculating the unitary evolution of an operator.  To help the reader understand and appreciate Slichter's approach, let us briefly review two methods commonly used for solving Eq.~\ref{Eq:Evolve}.  As an example, consider the case where ${\cal H} = \omega I_z$ and $\rho(0) = I_{+} = I_x + i \, I_y$.  In this case we want to compute
 \begin{equation}
@@ -7,7 +7,12 @@ To understand the \VerbFcn{Evolver} algorithm it is essential to understand Slic
 	\label{Eq:I+rot}
 \end{equation}
 
-\myparagraph{Method 1}  One approach to computing $\rho(t)$ is to expand Eq.~\ref{Eq:I+rot} in a Taylor series,
+
+% --------------------------
+\subsection{Method 1}
+% --------------------------
+
+One approach to computing $\rho(t)$ is to expand Eq.~\ref{Eq:I+rot} in a Taylor series,
 \begin{equation}
 \rho(t) 
 	= \rho(0) + \rho^{(1)}(0) \, t + \frac{1}{2!} \rho^{(2)}(0) \, t^2
@@ -59,7 +64,11 @@ We are now supposed to recognize the term in parenthesis as the Taylor series of
 	\label{Eq:I+-soln-method-1}
 \end{equation}   
 
-\myparagraph{Method 2} A second approach to evaluating Eq.~\ref{Eq:I+rot} is to expand the exponential using the L\"{o}wdin projection-operator theorem \cite{Lowdin1955mar}.  This theorem allows us to expand a function of an operator --- $I_z$ here --- in terms involving the function evaluated at the operator's eigenvalues times an operator that project's onto the eigenvalue's subspace.  Taking the total spin angular momentum to be $I = 1/2$ for simplicity, the relevant eigenvalues are $+1/2$ and $-1/2$ and the relevant projection operators are ${\cal P}_{1/2} = \ket{\alpha}\bra{\alpha}$ and ${\cal P}_{-1/2} = \ket{\beta}\bra{\beta}$.  Applying L\"{o}wdin's theorem,
+% --------------------------
+\subsection{Method 2} 
+% --------------------------
+
+A second approach to evaluating Eq.~\ref{Eq:I+rot} is to expand the exponential using the L\"{o}wdin projection-operator theorem \cite{Lowdin1955mar}, equivalent to the Cayley-Hamilton theorem \cite{Strang2016}.  This theorem allows us to expand a function of an operator --- $I_z$ here --- in terms involving the function evaluated at the operator's eigenvalues times an operator that project's onto the eigenvalue's subspace.  Taking the total spin angular momentum to be $I = 1/2$ for simplicity, the relevant eigenvalues are $+1/2$ and $-1/2$ and the relevant projection operators are ${\cal P}_{1/2} = \ket{\alpha}\bra{\alpha}$ and ${\cal P}_{-1/2} = \ket{\beta}\bra{\beta}$.  Applying L\"{o}wdin's theorem,
 \begin{equation}
 e^{-i \, \omega t \, I_z} 
 	= e^{-i \, \omega t / 2} \ket{\alpha}\bra{\alpha}
@@ -79,9 +88,24 @@ Applying the relations $I_{+} \ket{\alpha} = 0$, $I_{+} \ket{\beta} = \ket{\alph
 	\label{Eq:I+-soln-method-2}
 \end{equation} 
 
-While both these approaches yield closed-form solutions, each is hardly extensible.  The first method requires the resumming of a Taylor series; this step would be difficult or impossible to automate for any evolution more complicated that the one above.  The second method requires obtaining the eigenvalues of the Hamiltonian, usually by reducing it to matrix form and diagonalizing it.  It is hard to see how to apply this diagonalization procedure in an infinite-level system like the idealized harmonic oscillator. Even for a spin problem where the number of levels is finite, diagonalizing ${\cal H}$ would force us to write down the matrix representation of ${\cal H}$ which would in turn commit us to specifying the total angular momentum $I$ of the spin we are interested in.  In many problems, we would like to obtain a solution valid for a spin of \emph{any} $I$.  
+While both Methods 1 and 2 yield closed-form solutions, each is hardly extensible. 
+Method 1 requires resumming a Taylor series; this step would be difficult or impossible to automate for any evolution more complicated than the one above.
+Method 2 requires obtaining the eigenvalues of the Hamiltonian, by reducing it to matrix form and diagonalizing it.  
+It is hard to see how to apply this procedure in an infinite-level system like the idealized harmonic oscillator.
+For spin problems where the number of levels is finite, Method 2 still has serious limitations.
+Diagonalizing ${\cal H}$ forces us to write down the matrix representation of ${\cal H}$ which in turn commits us to specifying the total angular momentum $I$ of the spin we are interested in.
+An exponentiated matrix $A$ of the form $e^{i A}$ can be written, using the Cayley-Hamilton theorem \cite{Strang2016}, as a polynomial function of $A$ \cite{DeZela2014jun,Curtright2014aug}.
+If $A$ is a spin angular-momentum operator, then $e^{i A}$ can be written as a sum over four Pauli matrices for $I = 1/2$ and as a sum over eight Gell-Mann matrices for $I = 1$ \cite{Gell-Mann1962feb,Bertlmann2008may,Curtright2015dec}.
+In many problems, we would like to obtain a solution valid for a spin of \emph{any} $I$, and most interesting spin problems involve Hamiltonians more complicated than a spin angular-momentum operator.
 
-\myparagraph{Method 3, Example 1} Now consider Slichter's procedure. Let us take another look at the derivative of $\rho$:
+
+% --------------------------
+\subsection{Method 3} 
+% --------------------------
+
+Now consider Slichter's procedure \cite{Slichter1990}. 
+
+\myparagraph{Example 1} Let us take another look at the derivative of $\rho$:
 \begin{subequations}  
 \begin{align}
 \dot{\rho}(t)
@@ -110,7 +134,7 @@ In this differential equation, $\omega$ is a \emph{number}, while $\rho(t)$ is a
 \end{equation}
 which is easily verified by back substitution. 
 
-\myparagraph{Method 3, Example 2} An analogous calculation arises in a harmonic oscillator problem where the Hamiltonian is ${\cal H} = \omega (a^{\dagger} a + 1/2)$ and the initial operator is $\rho(0) = a^{\dagger}$: 
+\myparagraph{Example 2} An analogous calculation arises in a harmonic oscillator problem where the Hamiltonian is ${\cal H} = \omega (a^{\dagger} a + 1/2)$ and the initial operator is $\rho(0) = a^{\dagger}$: 
 \begin{equation}
 \rho(t) 
 	= e^{-i \omega t (a^{\dagger} a + 1/2)} 
@@ -174,26 +198,6 @@ We are given that $\rho(0) = I_x$ and we see from Eq.~\ref{Eq:Ixrot-(b)} that $\
 	\label{Eq:Ixrot-soln}
 \end{equation}
 as the solution to Eq.~\ref{Eq:Ixrot}.
-
-\section{The algorithm}
-
-To automate the steps leading to Eqs.~\ref{Eq:I+rot-soln}, \ref{Eq:adaggerrot-soln}, and \ref{Eq:Ixrot-soln} we require the ability to
-\begin{enumerate}
-  \item perform non-commutative algebra, 
-  \item evaluate commutators,
-  \item divide operators, and 
-  \item determine which differential equation an evolved operator satisfies.
-\end{enumerate}
-\emph{Mathematica} has a native function for carrying out non-commutative multiplication, but this function has essentially no simplification rules associated with it; for example,
-\begin{Verbatim}[xleftmargin=0.25in]
-In[1] := a ** (2 b) // Simplify
-Out[1] = a ** (2 b)
-\end{Verbatim}
-This limitation was resolved by Helton and co-workers, whose \verb+NCALgebra+ package \cite{Helton2015feb} gives \emph{Mathematica} the ability to manipulate non-commuting algebraic expressions.
-This package allows the user to define variables as either commuting (e.g., $\omega$) or non-commuting (e.g., $I_+$, $I_x$, $a^{\dagger}$, and so on). 
-This package forms an excellent starting point for implementing non-commutative multiplication, and expanding and simplifying commutators. 
-We find, however, that using the package adds significant computational overhead, increasing computation time over ten-fold.  
-We instead created our own non-commutative multiplication function and accompanying simplification rules. 
 
 Based on our experience so far, developing an algorithm capable of self-deriving Eqs.~\ref{Eq:I+rot-soln}, \ref{Eq:adaggerrot-soln}, and \ref{Eq:Ixrot-soln} would now seem to be a matter of calculating
 \begin{align}
@@ -378,7 +382,11 @@ p^{\prime}  =
 \end{equation}
 From these examples, we recognize $\exp\!{\left( -i \hbar^{-1} \, \delta x \, p \right)}$ as the unitary transformation inducing a translation and $\exp\!{\left( -i \hbar^{-1} \, \delta p \, x \right)}$ as the unitary transformation inducing a momentum kick.
 
-\myparagraph{Method 4} We now show by example that the single differential equation in each of these five cases can be reduced to a set of \emph{coupled first-order} differential equations --- a significant step towards making a simple automated, unitary evolution algorithm.  We would expect the four cases to each still require a decision on the number of coupled of equations required to solve for $\rho$ in each case.  Surprisingly, no decision is needed.  We will show that all the cases we have discussed so far can be handled by a set of four coupled differential equations.  This is the essential new insight implemented here in the first \VerbFcn{Evolver} algorithm. 
+% --------------------------
+\subsection{Method 4} 
+% --------------------------
+
+We now show by example that the single differential equation in each of these five cases can be reduced to a set of \emph{coupled first-order} differential equations --- a significant step towards making a simple automated, unitary evolution algorithm.  We would expect the five cases to each still require a decision on the number of coupled of equations required to solve for $\rho$ in each case.  Surprisingly, no decision is needed.  We will show that all the cases we have discussed so far can be handled by a set of four coupled differential equations.  This is the essential new insight implemented here in the \VerbFcn{Evolver1} algorithm. 
 
 To understand the new method, consider transforming the second-order differential equation in Eq.~\ref{Eq:Ixrot-ODE} into two coupled first-order equations.  Let the two new variables be 
 \begin{equation}
@@ -523,7 +531,10 @@ In the above equations we have defined $\bm{\lambda}$ as the vector of $x_n$'s t
 	= 0
 	\label{Eq:big-equation}
 \end{equation} 
-with $\bm{\lambda}_0$ given.  The \VerbFcn{Evolver} algorithm proceeds as follows.
+with $\bm{\lambda}_0$ given.  
+
+The \VerbFcn{Evolver1} algorithm proceeds as follows.
+
 \begin{enumerate}
 
   \item Evaluate the derivatives $\rho^{(1)}$ through $\rho^{(3)}$ by repeatedly applying computing $\rho^{(n+1)} = [-i H, \rho^{(n)}]$, starting from $\rho^{(0)} = \rho(0)$.  Assign the initial-condition vector ${\bm{\lambda}}_0 = (\rho^{(3)}, \ldots, \rho^{(0)})$.
@@ -539,7 +550,11 @@ If no match can be found, declare the problem unsolvable.
 
 \end{enumerate}
 	
-\myparagraph{Method 5} An alternative approach is to figure out, on a case-by-case basis, which differential equation $\rho(t)$ is governed by and write out the differential-equation solution by hand.
+% --------------------------	
+\subsection{Method 5} 
+% --------------------------	
+
+An alternative approach is to identify, on a case-by-case basis, which differential equation $\rho(t)$ is governed by and write out the differential-equation solution by hand.
 This alternative approach constitutes the \VerbFcn{Evolver2} algorithm. 
 The algorithm proceeds by testing the following cases, stopping if the case is true.
 The cases are labelled 0, 1, 2, or 3, according the order of differential equation governing $\rho$, and are given the designation L for linear and E for exponential, depending on the kind of solution. 
@@ -600,3 +615,61 @@ d_3 = {\mathrm{Inv}}[\rho^{(1)}] \, \rho^{(3)}
 \item If none of these cases are satisfied, declare the problem unsolvable.
 
 \end{enumerate}
+
+% --------------------	
+\subsection{Code} 
+\label{sec:code}
+% --------------------
+
+To automate the steps in the \VerbFcn{Evolver1} and \VerbFcn{Evolver2} algorithms we require the ability to
+\begin{enumerate}
+  \item perform non-commutative algebra, 
+  \item evaluate commutators,
+  \item divide operators, and 
+  \item determine which differential equation an evolved operator satisfies.
+\end{enumerate}
+\emph{Mathematica} has a native function for carrying out non-commutative multiplication, but this function has essentially no simplification rules associated with it.
+For example,
+\begin{Verbatim}[xleftmargin=0.25in]
+In[1] := a ** (2 b) // Simplify
+Out[1] = a ** (2 b)
+\end{Verbatim}
+This limitation was resolved by Helton and co-workers, whose \verb+NCALgebra+ package \cite{Helton2015feb} gives \emph{Mathematica} the ability to manipulate non-commuting algebraic expressions.
+Their package allows the user to define variables as either commuting (e.g., $\omega$) or non-commuting (e.g., $I_+$, $I_x$, $a^{\dagger}$, and so on). 
+The \verb+NCALgebra+ package forms an excellent starting point for implementing non-commutative multiplication, and expanding and simplifying commutators. 
+We find, however, that using the package adds significant computational overhead, increasing computation time over ten-fold.  
+
+To avoid this overhead, we created our own non-commutative multiplication and commutator functions, with accompanying simplification rules.
+
+The resulting code consists of  \emph{Mathematica} files (\verb+.m+) and notebooks (\verb+.nb+).
+Each modular \verb+m+ file implements a desired function.
+Associated with each \verb+m+ file is a second \verb+m+ file containing \emph{unit tests}.
+The code, at the time of writing, includes 160 unit tests.
+Code was written in the literate-programming style \cite{Knuth1984feb}, with \LaTeX{}-style text, equations, and tables interspersed with code in the form of commented-out text.
+The code and units tests are printed out, with typeset in-line commentary, in Appendix~\ref{sec:code}. 
+
+To unit-test \verb+Evolver1+ and \verb+Evolver2+ algorithms, we computed the following rotating-frame unitary evolutions and checked the results against by-hand computations:
+\begin{enumerate}
+\item $e^{-i\omega t I_z } I_x e^{+i \omega t I_z}$,  
+free evolution of transverse magnetization in a magnetic field
+\item $e^{-i \omega t I_x} I_z e^{+i \omega t I_x}$,
+on-resonance nutation of longitudinal (i.e., thermal-equilibrium) magnetization in the rotating frame
+\item $e^{-i \omega t I_z} I_{+} e^{+i \omega t I_z}$,
+free evolution of complex transverse magnetization in a magnetic field 
+\item $e^{-i d t I_z S_z} I_x e^{+i d t I_z S_z}$,
+evolution of transverse magnetization under a scalar coupling
+\item $e^{-i (\Delta \, I_z + \omega \, I_x) t} I_z e^{+i (\Delta \, I_z + \omega \, I_x) t}$, off-resonance nutation of longitudinal magnetization \label{item:nutation}
+\item $e^{- \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})} a e^{+ \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})}$,
+evolution of the lowering (and raising) operator under the harmonic oscillator Hamiltonian
+\item $e^{- \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})} Q e^{+ \omega t \frac{1}{2} (a^{\dagger} \, a + a \, a^{\dagger})}$,
+evolution of the position (and momentum) operator under the harmonic oscillator Hamiltonian
+\item $e^{-i \delta q \, P }  Q e^{+i \delta q \, P }$, a displacement
+\item $e^{-i \delta q \, Q }  P e^{+i \delta q \, Q }$, a momentum kick
+\end{enumerate}
+The off-resonance spin nutation, case~\ref{item:nutation},  is an especially demanding test because it generates terms involving $I_x$, $I_y$, and $I_z$ operators from solutions to a third-order differential equation.
+
+For unitary rotation involving spin and harmonic-oscillator operators, \verb+Evolver1+ and \verb+Evolver2+ give identical answers.
+For the off-resonance Rabi nutation calculation, Example 5, the \verb+Evolver2+ algorithm is a factor of 25 faster than the \verb+Evolver1+ algorithm.
+
+In the following section we present representative results.
+Detailed applications of the code are given in seven stand-alone \emph{Mathematica} notebooks.

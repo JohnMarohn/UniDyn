@@ -1,0 +1,144 @@
+%!TEX root = ../UniDyn-doc.tex
+
+In this section we use \LaTeX{}'s \verb+lstinputlisting+ package to import the code and typeset it nicely.
+The package imports and un-comments the embedded comments so that \LaTeX can process them and implements a long list of character substitutions, allowing the code listings below to have variables appearing with subscripts and superscripts.
+
+% ------------------------------------------
+\subsection{Operators and scalars}
+% ------------------------------------------
+
+Our first task is to define functions that enable \emph{Mathematica} to distinguish between (non-commutative) operators and (commutative) scalars. 
+This is done in the \verb+OpQ.m+ package, whose listing appears below. 
+A variable is either a commutative \emph{scalar} or non-commutative \emph{operator}.
+Operators have a \emph{phylum} and an \emph{order}.
+Operators of different phyla commute.
+The operator \emph{order} is used for sorting.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpQ.m}
+
+Unit tests for the functions in the \verb+OpQ.m+ package are organized into a separate package, \verb+OpQ-tests.m+, whose listing follows. 
+Unit testing is built on \emph{Mathematica}'s \verb+VerificationTest+ function.
+When the return value of the \verb+VerificationTest+ function is passed to the \verb+TestReport+ in a \emph{Mathematica} notebook, the notebook displays a nice graphical report card.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/OpQ-tests.m}
+
+
+% -------------------------------------------------------
+\subsection{Non-commutative multiplication}
+% -------------------------------------------------------
+
+We next define our own non-commutative multiplication function, \verb+Mult+.
+This is done in the \verb+Mult.m+ package.
+We provide a sorting function which rearranges operators being multiplied so that, if possible, operators of a higher \emph{phylum} appear in front of operators of a lower \emph{phylum}.
+During this rearrangement, non-commuting operators are not allowed to pass each other.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Mult.m}
+
+Extensive unit testing shows that \verb+Mult+ distributes over addition, is associative, and pulls scalars out in front as desired.
+Testing is also carried out on the sorting function.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Mult-tests.m}
+
+% ------------------------------
+\subsection{Commutator}
+% ------------------------------
+
+Define a commutator function which factors out scalars and has rules for simplifying more complex commutators, like and $[A B, C]$ and $[A, B C]$, involving three non-commuting operators.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Comm.m}
+
+Extensive testing shows that the commutator function factors out scalars correctly and correctly simplifies over a dozen commutation identities, including the Jacobi identity.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Comm-tests.m}
+
+
+% ---------------------
+\subsection{Spins}
+% ---------------------
+
+Declare angular momentum operators for one spin $I_x$, $I_y$, and $I_z$ and specify the relevant commutation relations.
+To speed up computation, each operator's commutation relations are stored as an \emph{upvalue} of the operator instead of as a \emph{downvalue} of the commutator function.
+Additional product-operator simplification rules are defined if the spin is declared to have an angular momentum of $\ell = 1/2$.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Spins.m}
+
+Test the commutation relations for one spin and for a system of two spins, one of them $\ell = 1/2$ and the other with $\ell$ unspecified.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Spins-tests.m}
+
+
+% ---------------------------------------
+\subsection{Harmonic oscillator}
+% ---------------------------------------
+
+Declare the annihilation (or lowering) operator $a$ and the creation (or raising) operator $a^{\dagger}$ for a harmonic oscillator, and specify the relevant commutation relations.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Osc.m}
+
+Check commutation relations among the harmonic-oscillator operators: $a$, $a^{\dagger}$, the number operator $N = a^{\dagger} a$, the unitless position operator $Q = (a^{\dagger} + a)/\sqrt{2}$, and the unitless momentum operator $P = i (a^{\dagger} - a)/\sqrt{2}$.
+Confirm that harmonic oscillator can exist ``on top of'' spin operators and are sorted correctly.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Osc-tests.m}
+
+
+% -------------------------------------
+\subsection{Unitary Evolution}
+% -------------------------------------
+
+Before coding the \verb+Evolver+ algorithms, it is useful to define an \verb+Evolve+ function.
+This function serves as a preprocessor for the \verb+Evolver+ algorithms defined below.
+The \verb+Evolve+ function distributes evolution over sums and products in the density operator, and leading scalars are pulled out front.
+If all terms in the Hamiltonian commute, then \verb+Evolve+ is distributed over all terms in the Hamiltonian. 
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Evolve.m}
+
+Unit testing verifies that \verb+Evolver+ distributes over sums and factors out scalars correctly.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Evolve-tests.m}
+
+
+% ---------------------------------------------
+\subsection{The Evolver1 algorithm}
+% ---------------------------------------------
+\label{sec:Evolver1}
+
+Implement the \verb+Evolver1+ algorithm described above.
+The function can be passed an option to print out intermediate variables, which is helpful for debugging.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Evolver1.m}
+
+We implemented the unit tests listed in Sec~\ref{sec:code}
+Additionally, we also verify that \emph{Mathematica's} differential equation solver is behaving as expected.
+We are not worried about bugs in the solver. 
+We are instead concerned about changes in function syntax.
+The solver function's syntax changed between \emph{Mathematica} version 8 and 10 and could change again. 
+We added an equation-solver unit test to flag a future syntax change.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Evolver1-tests.m}
+
+% ---------------------------------------------
+\subsection{The Evolver2 algorithm}
+% ---------------------------------------------
+
+Implement the \verb+Evolver2+ algorithm described above.
+The function can be passed an option to print out intermediate variables, which is helpful for debugging.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Evolver2.m}
+
+Unit testing is the same as for \verb+Evolver1+, Sec.~\ref{sec:Evolver1}, minus the testing of \emph{Mathematica's} differential equation solver.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/Evolver2-tests.m}
+
+% ----------------------------------------
+\subsection{Spin-boson system}
+% ----------------------------------------
+
+Define spin $I = 1/2$ angular momentum and creation/annihilation operators describing a two-level electronic system.
+Define creation and annihilation operators describing either photons or a harmonic oscillator.
+These definitions enable us to describe electron transfer using Marcus theory and address problems in quantum optics using the Jaynes-Cummings Hamiltonian.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/SpinBoson.m}
+
+Carry out a few unit tests to verify normal ordering and angular momentum identities.
+
+\lstinputlisting[linerange=START-END,includerangemarker=false]{unidyn/SpinBoson-tests.m}
