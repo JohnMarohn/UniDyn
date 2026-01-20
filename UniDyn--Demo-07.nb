@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    676138,      12592]
-NotebookOptionsPosition[    668006,      12464]
-NotebookOutlinePosition[    668534,      12484]
-CellTagsIndexPosition[    668491,      12481]
+NotebookDataLength[    676363,      12594]
+NotebookOptionsPosition[    668233,      12466]
+NotebookOutlinePosition[    668759,      12486]
+CellTagsIndexPosition[    668716,      12483]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -247,8 +247,8 @@ Cell[BoxData[
                     FEPrivate`FrontEndResource[
                     "FEBitmaps", "SummaryBoxOpener"], 
                     ImageSizeCache -> {
-                    11.966367964725942`, {0., 11.966367964725942`}}], 
-                   Appearance -> None, BaseStyle -> {}, 
+                    7.832531758729706, {0., 7.832531758729706}}], Appearance -> 
+                   None, BaseStyle -> {}, 
                    ButtonFunction :> (Typeset`open$$ = True), Evaluator -> 
                    Automatic, Method -> "Preemptive"], 
                   Alignment -> {Center, Center}, ImageSize -> 
@@ -263,8 +263,8 @@ Cell[BoxData[
                     FEPrivate`FrontEndResource[
                     "MUnitExpressions", "SuccessIcon"], 
                     ImageSizeCache -> {
-                    17.6, {4.042822302575223, 9.157177697424778}}], Alignment -> 
-                    Center, ImageSize -> 
+                    11.52, {2.641044882461429, 5.998955117538571}}], 
+                    Alignment -> Center, ImageSize -> 
                     Dynamic[{
                     Automatic, 
                     3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
@@ -789,8 +789,8 @@ unidyn\\Comm-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "FEBitmaps", "SummaryBoxOpener"], 
                     ImageSizeCache -> {
-                    11.966367964725942`, {0., 11.966367964725942`}}], 
-                   Appearance -> None, BaseStyle -> {}, 
+                    7.832531758729706, {0., 7.832531758729706}}], Appearance -> 
+                   None, BaseStyle -> {}, 
                    ButtonFunction :> (Typeset`open$$ = True), Evaluator -> 
                    Automatic, Method -> "Preemptive"], 
                   Alignment -> {Center, Center}, ImageSize -> 
@@ -805,8 +805,8 @@ unidyn\\Comm-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "MUnitExpressions", "SuccessIcon"], 
                     ImageSizeCache -> {
-                    17.6, {4.042822302575223, 9.157177697424778}}], Alignment -> 
-                    Center, ImageSize -> 
+                    11.52, {2.641044882461429, 5.998955117538571}}], 
+                    Alignment -> Center, ImageSize -> 
                     Dynamic[{
                     Automatic, 
                     3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
@@ -1202,8 +1202,8 @@ unidyn\\Evolver1-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "FEBitmaps", "SummaryBoxOpener"], 
                     ImageSizeCache -> {
-                    11.966367964725942`, {0., 11.966367964725942`}}], 
-                   Appearance -> None, BaseStyle -> {}, 
+                    7.832531758729706, {0., 7.832531758729706}}], Appearance -> 
+                   None, BaseStyle -> {}, 
                    ButtonFunction :> (Typeset`open$$ = True), Evaluator -> 
                    Automatic, Method -> "Preemptive"], 
                   Alignment -> {Center, Center}, ImageSize -> 
@@ -1218,8 +1218,8 @@ unidyn\\Evolver1-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "MUnitExpressions", "SuccessIcon"], 
                     ImageSizeCache -> {
-                    17.6, {4.042822302575223, 9.157177697424778}}], Alignment -> 
-                    Center, ImageSize -> 
+                    11.52, {2.641044882461429, 5.998955117538571}}], 
+                    Alignment -> Center, ImageSize -> 
                     Dynamic[{
                     Automatic, 
                     3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
@@ -1599,8 +1599,8 @@ unidyn\\Evolver2-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "FEBitmaps", "SummaryBoxOpener"], 
                     ImageSizeCache -> {
-                    11.966367964725942`, {0., 11.966367964725942`}}], 
-                   Appearance -> None, BaseStyle -> {}, 
+                    7.832531758729706, {0., 7.832531758729706}}], Appearance -> 
+                   None, BaseStyle -> {}, 
                    ButtonFunction :> (Typeset`open$$ = True), Evaluator -> 
                    Automatic, Method -> "Preemptive"], 
                   Alignment -> {Center, Center}, ImageSize -> 
@@ -1615,8 +1615,8 @@ unidyn\\Evolver2-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "MUnitExpressions", "SuccessIcon"], 
                     ImageSizeCache -> {
-                    17.6, {4.042822302575223, 9.157177697424778}}], Alignment -> 
-                    Center, ImageSize -> 
+                    11.52, {2.641044882461429, 5.998955117538571}}], 
+                    Alignment -> Center, ImageSize -> 
                     Dynamic[{
                     Automatic, 
                     3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
@@ -1924,8 +1924,8 @@ unidyn\\Evolve-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "FEBitmaps", "SummaryBoxOpener"], 
                     ImageSizeCache -> {
-                    11.966367964725942`, {0., 11.966367964725942`}}], 
-                   Appearance -> None, BaseStyle -> {}, 
+                    7.832531758729706, {0., 7.832531758729706}}], Appearance -> 
+                   None, BaseStyle -> {}, 
                    ButtonFunction :> (Typeset`open$$ = True), Evaluator -> 
                    Automatic, Method -> "Preemptive"], 
                   Alignment -> {Center, Center}, ImageSize -> 
@@ -1940,8 +1940,8 @@ unidyn\\Evolve-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "MUnitExpressions", "SuccessIcon"], 
                     ImageSizeCache -> {
-                    17.6, {4.042822302575223, 9.157177697424778}}], Alignment -> 
-                    Center, ImageSize -> 
+                    11.52, {2.641044882461429, 5.998955117538571}}], 
+                    Alignment -> Center, ImageSize -> 
                     Dynamic[{
                     Automatic, 
                     3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
@@ -2482,8 +2482,8 @@ unidyn\\Inv-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "FEBitmaps", "SummaryBoxOpener"], 
                     ImageSizeCache -> {
-                    11.966367964725942`, {0., 11.966367964725942`}}], 
-                   Appearance -> None, BaseStyle -> {}, 
+                    7.832531758729706, {0., 7.832531758729706}}], Appearance -> 
+                   None, BaseStyle -> {}, 
                    ButtonFunction :> (Typeset`open$$ = True), Evaluator -> 
                    Automatic, Method -> "Preemptive"], 
                   Alignment -> {Center, Center}, ImageSize -> 
@@ -2498,8 +2498,8 @@ unidyn\\Inv-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "MUnitExpressions", "SuccessIcon"], 
                     ImageSizeCache -> {
-                    17.6, {4.042822302575223, 9.157177697424778}}], Alignment -> 
-                    Center, ImageSize -> 
+                    11.52, {2.641044882461429, 5.998955117538571}}], 
+                    Alignment -> Center, ImageSize -> 
                     Dynamic[{
                     Automatic, 
                     3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
@@ -2942,8 +2942,8 @@ unidyn\\Mult-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "FEBitmaps", "SummaryBoxOpener"], 
                     ImageSizeCache -> {
-                    11.966367964725942`, {0., 11.966367964725942`}}], 
-                   Appearance -> None, BaseStyle -> {}, 
+                    7.832531758729706, {0., 7.832531758729706}}], Appearance -> 
+                   None, BaseStyle -> {}, 
                    ButtonFunction :> (Typeset`open$$ = True), Evaluator -> 
                    Automatic, Method -> "Preemptive"], 
                   Alignment -> {Center, Center}, ImageSize -> 
@@ -2958,8 +2958,8 @@ unidyn\\Mult-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "MUnitExpressions", "SuccessIcon"], 
                     ImageSizeCache -> {
-                    17.6, {4.042822302575223, 9.157177697424778}}], Alignment -> 
-                    Center, ImageSize -> 
+                    11.52, {2.641044882461429, 5.998955117538571}}], 
+                    Alignment -> Center, ImageSize -> 
                     Dynamic[{
                     Automatic, 
                     3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
@@ -3452,8 +3452,8 @@ unidyn\\OpQ-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "FEBitmaps", "SummaryBoxOpener"], 
                     ImageSizeCache -> {
-                    11.966367964725942`, {0., 11.966367964725942`}}], 
-                   Appearance -> None, BaseStyle -> {}, 
+                    7.832531758729706, {0., 7.832531758729706}}], Appearance -> 
+                   None, BaseStyle -> {}, 
                    ButtonFunction :> (Typeset`open$$ = True), Evaluator -> 
                    Automatic, Method -> "Preemptive"], 
                   Alignment -> {Center, Center}, ImageSize -> 
@@ -3468,8 +3468,8 @@ unidyn\\OpQ-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "MUnitExpressions", "SuccessIcon"], 
                     ImageSizeCache -> {
-                    17.6, {4.042822302575223, 9.157177697424778}}], Alignment -> 
-                    Center, ImageSize -> 
+                    11.52, {2.641044882461429, 5.998955117538571}}], 
+                    Alignment -> Center, ImageSize -> 
                     Dynamic[{
                     Automatic, 
                     3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
@@ -3977,8 +3977,8 @@ unidyn\\Osc-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "FEBitmaps", "SummaryBoxOpener"], 
                     ImageSizeCache -> {
-                    11.966367964725942`, {0., 11.966367964725942`}}], 
-                   Appearance -> None, BaseStyle -> {}, 
+                    7.832531758729706, {0., 7.832531758729706}}], Appearance -> 
+                   None, BaseStyle -> {}, 
                    ButtonFunction :> (Typeset`open$$ = True), Evaluator -> 
                    Automatic, Method -> "Preemptive"], 
                   Alignment -> {Center, Center}, ImageSize -> 
@@ -3993,8 +3993,8 @@ unidyn\\Osc-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "MUnitExpressions", "SuccessIcon"], 
                     ImageSizeCache -> {
-                    17.6, {4.042822302575223, 9.157177697424778}}], Alignment -> 
-                    Center, ImageSize -> 
+                    11.52, {2.641044882461429, 5.998955117538571}}], 
+                    Alignment -> Center, ImageSize -> 
                     Dynamic[{
                     Automatic, 
                     3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
@@ -4276,8 +4276,8 @@ unidyn\\SpinBoson-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "FEBitmaps", "SummaryBoxOpener"], 
                     ImageSizeCache -> {
-                    11.966367964725942`, {0., 11.966367964725942`}}], 
-                   Appearance -> None, BaseStyle -> {}, 
+                    7.832531758729706, {0., 7.832531758729706}}], Appearance -> 
+                   None, BaseStyle -> {}, 
                    ButtonFunction :> (Typeset`open$$ = True), Evaluator -> 
                    Automatic, Method -> "Preemptive"], 
                   Alignment -> {Center, Center}, ImageSize -> 
@@ -4292,8 +4292,8 @@ unidyn\\SpinBoson-tests.m", "EvaluationID" ->
                     FEPrivate`FrontEndResource[
                     "MUnitExpressions", "SuccessIcon"], 
                     ImageSizeCache -> {
-                    17.6, {4.042822302575223, 9.157177697424778}}], Alignment -> 
-                    Center, ImageSize -> 
+                    11.52, {2.641044882461429, 5.998955117538571}}], 
+                    Alignment -> Center, ImageSize -> 
                     Dynamic[{
                     Automatic, 
                     3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
@@ -12345,33 +12345,35 @@ eFB/Rj7+F1GcxKvgQeGsScddHayXuzxIdcy4Eiz4A/PxwDTagvrZLRLzGUJY
 Cell[TextData[{
  "Note that simulating the triple quantum coherence signal using conventional \
 numerical methods would require evaluating matrix exponentials of dimensions \
-8 \[Times] 8 at 6 \[Times] 201 \[Times] 41 \[Times] 41 = 2,027,286 points. \
-This number corresponds to density operator evolution over three pulses and \
-three free evolution periods, the time domain sampling, and averaging over ",
+8 \[Times] 8 at (3+3) \[Times] 6 \[Times] 201 \[Times] 41 \[Times] 41 = \
+12,163,716 points. This number corresponds to density operator evolution over \
+three pulses and three free evolution periods, six scans for the phase \
+cycling, the time domain sampling, and averaging over ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["\[Theta]", "12"], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   SubscriptBox["\[Theta]", "12"], TraditionalForm]],ExpressionUUID->
   "ffe3af1b-9ec9-ec4c-8ea2-9eef0246afd9"],
  " and ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["\[Theta]", "13"], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   SubscriptBox["\[Theta]", "13"], TraditionalForm]],ExpressionUUID->
   "f11975d6-78ac-fb48-aae6-c9e5cc36c85b"],
  ".  As the number of spins and/or additional parameters increases, the total \
 number of evaluation points grows rapidly, rendering the computation \
-prohibitively expensive.\n\nIt is therefore advantageous to derive an \
-analytical expression for the signal using ",
- "UniDyn and subsequently export this expression to an efficient numerical \
-platform, such as Python, for performing the required numerical simulations. \
-[1-3]"
+prohibitively expensive. With the analytical approach using UniDyn, number of \
+evaluations reduces to 201 \[Times] 41 \[Times] 41 =  337,881 points.\n\nIt \
+is therefore advantageous to derive an analytical expression for a signal \
+using UniDyn and subsequently export this expression to an efficient \
+numerical platform, such as Python, for performing the required numerical \
+simulations. [1-3]"
 }], "Text",
  CellChangeTimes->{{3.977857615060564*^9, 3.9778576959582214`*^9}, {
   3.9778577401222153`*^9, 3.9778580042938023`*^9}, {3.9778580776902027`*^9, 
   3.977858369622284*^9}, {3.9778585091524315`*^9, 3.977858773630827*^9}, {
   3.9778588309171295`*^9, 3.977858838048746*^9}, {3.9778593548530045`*^9, 
-  3.9778593595987873`*^9}},
+  3.9778593595987873`*^9}, {3.977939407841652*^9, 3.9779396705317287`*^9}, {
+  3.9779397615573406`*^9, 3.977939762640497*^9}, {3.977939803081028*^9, 
+  3.977939832070177*^9}},
  FontSize->16,ExpressionUUID->"b9427383-4ca2-7d49-a5a5-834cc123310e"],
 
 Cell[" ", "Text",
@@ -12462,8 +12464,8 @@ Cell[" ", "Text",
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1440, 747.75},
-WindowMargins->{{-6, Automatic}, {Automatic, -6}},
+WindowSize->{1428, 741.75},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 PrintingCopies->1,
 PrintingPageRange->{1, Automatic},
 TaggingRules-><|"TryRealOnly" -> False|>,
@@ -12505,92 +12507,92 @@ Cell[7631, 182, 840, 18, 60, "Input",ExpressionUUID->"8777a335-4ef0-48ee-99fe-4f
 Cell[8474, 202, 202, 3, 41, "Text",ExpressionUUID->"5fce9118-f72d-4acb-92c4-ab1d23ae6c88"],
 Cell[CellGroupData[{
 Cell[8701, 209, 743, 20, 86, "Input",ExpressionUUID->"2ef9b043-dc21-4263-bf49-3b21651f79d9"],
-Cell[9447, 231, 264267, 4444, 546, "Output",ExpressionUUID->"75959e31-b1f7-dc4d-835e-d73ce96b5420"]
+Cell[9447, 231, 264237, 4444, 546, "Output",ExpressionUUID->"75959e31-b1f7-dc4d-835e-d73ce96b5420"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[273763, 4681, 324, 6, 72, "Section",ExpressionUUID->"dfefb8e6-da99-4bd0-9ed1-b6a5a4d41ff7"],
-Cell[274090, 4689, 243, 3, 38, "Text",ExpressionUUID->"96351404-c45d-448b-bc63-4e93635996bb"],
-Cell[274336, 4694, 3082, 58, 240, "Input",ExpressionUUID->"d3806585-b421-434c-abd9-2e9f505618f8"],
-Cell[277421, 4754, 308, 4, 41, "Text",ExpressionUUID->"5b945f6d-9986-9840-870a-8b278e789ca6"],
-Cell[277732, 4760, 5487, 132, 470, "Input",ExpressionUUID->"d3769876-b746-47c0-b45f-d803c24e7b81"],
-Cell[283222, 4894, 248, 3, 41, "Text",ExpressionUUID->"5e4f1ceb-522f-b640-a72b-5709f73b3fee"],
-Cell[283473, 4899, 8844, 198, 449, "Input",ExpressionUUID->"94b454bb-4388-7d48-94e6-ef1bc2d1504f"],
-Cell[292320, 5099, 332, 4, 41, "Text",ExpressionUUID->"2b20c27e-e54a-f44d-9e0a-e6c1eaec8e11"],
+Cell[273733, 4681, 324, 6, 72, "Section",ExpressionUUID->"dfefb8e6-da99-4bd0-9ed1-b6a5a4d41ff7"],
+Cell[274060, 4689, 243, 3, 38, "Text",ExpressionUUID->"96351404-c45d-448b-bc63-4e93635996bb"],
+Cell[274306, 4694, 3082, 58, 240, "Input",ExpressionUUID->"d3806585-b421-434c-abd9-2e9f505618f8"],
+Cell[277391, 4754, 308, 4, 41, "Text",ExpressionUUID->"5b945f6d-9986-9840-870a-8b278e789ca6"],
+Cell[277702, 4760, 5487, 132, 470, "Input",ExpressionUUID->"d3769876-b746-47c0-b45f-d803c24e7b81"],
+Cell[283192, 4894, 248, 3, 41, "Text",ExpressionUUID->"5e4f1ceb-522f-b640-a72b-5709f73b3fee"],
+Cell[283443, 4899, 8844, 198, 449, "Input",ExpressionUUID->"94b454bb-4388-7d48-94e6-ef1bc2d1504f"],
+Cell[292290, 5099, 332, 4, 41, "Text",ExpressionUUID->"2b20c27e-e54a-f44d-9e0a-e6c1eaec8e11"],
 Cell[CellGroupData[{
-Cell[292677, 5107, 3750, 92, 198, "Input",ExpressionUUID->"290838b7-15b2-ff45-8fab-b2d230e036af"],
-Cell[296430, 5201, 5084, 122, 285, "Output",ExpressionUUID->"dec28cc0-df04-aa41-8471-b686ff5b759a"]
+Cell[292647, 5107, 3750, 92, 198, "Input",ExpressionUUID->"290838b7-15b2-ff45-8fab-b2d230e036af"],
+Cell[296400, 5201, 5084, 122, 285, "Output",ExpressionUUID->"dec28cc0-df04-aa41-8471-b686ff5b759a"]
 }, Open  ]],
-Cell[301529, 5326, 229, 3, 41, "Text",ExpressionUUID->"790179ad-eee3-4590-9ea5-c33ab8188bdb"],
+Cell[301499, 5326, 229, 3, 41, "Text",ExpressionUUID->"790179ad-eee3-4590-9ea5-c33ab8188bdb"],
 Cell[CellGroupData[{
-Cell[301783, 5333, 8950, 210, 934, "Input",ExpressionUUID->"f634f6b4-0d61-4c6f-b71c-b66b569447d5"],
-Cell[310736, 5545, 468, 6, 35, "Output",ExpressionUUID->"11a5b6ae-bfd7-814a-b24a-1f1f84902f89"]
+Cell[301753, 5333, 8950, 210, 934, "Input",ExpressionUUID->"f634f6b4-0d61-4c6f-b71c-b66b569447d5"],
+Cell[310706, 5545, 468, 6, 35, "Output",ExpressionUUID->"11a5b6ae-bfd7-814a-b24a-1f1f84902f89"]
 }, Open  ]],
-Cell[311219, 5554, 1856, 43, 126, "Text",ExpressionUUID->"b0338553-7b65-7d47-bd91-09ec9e57839c"],
-Cell[313078, 5599, 676, 16, 38, "Text",ExpressionUUID->"3dea0ea5-aa2e-2b41-9118-348a4779d5e8"],
+Cell[311189, 5554, 1856, 43, 126, "Text",ExpressionUUID->"b0338553-7b65-7d47-bd91-09ec9e57839c"],
+Cell[313048, 5599, 676, 16, 38, "Text",ExpressionUUID->"3dea0ea5-aa2e-2b41-9118-348a4779d5e8"],
 Cell[CellGroupData[{
-Cell[313779, 5619, 563, 13, 31, "Input",ExpressionUUID->"1e0ad642-c076-2c40-b5fd-85d09a4d3a56"],
-Cell[314345, 5634, 4142, 118, 119, "Output",ExpressionUUID->"b55c8c69-0dfa-ed48-b514-7694f1eb60a2"]
+Cell[313749, 5619, 563, 13, 31, "Input",ExpressionUUID->"1e0ad642-c076-2c40-b5fd-85d09a4d3a56"],
+Cell[314315, 5634, 4142, 118, 119, "Output",ExpressionUUID->"b55c8c69-0dfa-ed48-b514-7694f1eb60a2"]
 }, Open  ]],
-Cell[318502, 5755, 1957, 40, 81, "Text",ExpressionUUID->"9d11f9b4-f642-1343-8d60-c4e94bf46baf"],
-Cell[320462, 5797, 1458, 38, 39, "Text",ExpressionUUID->"866c49ec-1cf2-8940-a876-48048ebfb77b"],
-Cell[321923, 5837, 581, 17, 35, "Text",ExpressionUUID->"c837faa1-d921-6a47-8a07-e153133a5757"],
-Cell[322507, 5856, 1825, 44, 61, "Text",ExpressionUUID->"ec2a6981-17f2-484a-bd8e-b18a14e9c3aa"],
-Cell[324335, 5902, 325, 6, 35, "Text",ExpressionUUID->"7d728819-e2de-4e41-b8f7-4699045bdf5a"],
-Cell[324663, 5910, 1110, 25, 35, "Text",ExpressionUUID->"5fa0f604-18a2-2f43-844e-8c20c61fad60"],
-Cell[325776, 5937, 1007, 23, 35, "Text",ExpressionUUID->"e53b5f72-0455-f043-8ba7-d4adabf67c86"],
-Cell[326786, 5962, 291, 5, 35, "Text",ExpressionUUID->"63f25705-6607-7242-8263-5a817ac89e5e"],
-Cell[327080, 5969, 388, 8, 35, "Text",ExpressionUUID->"0b0c7d69-500b-5d4e-abab-bd7865cf3988"],
+Cell[318472, 5755, 1957, 40, 81, "Text",ExpressionUUID->"9d11f9b4-f642-1343-8d60-c4e94bf46baf"],
+Cell[320432, 5797, 1458, 38, 39, "Text",ExpressionUUID->"866c49ec-1cf2-8940-a876-48048ebfb77b"],
+Cell[321893, 5837, 581, 17, 35, "Text",ExpressionUUID->"c837faa1-d921-6a47-8a07-e153133a5757"],
+Cell[322477, 5856, 1825, 44, 61, "Text",ExpressionUUID->"ec2a6981-17f2-484a-bd8e-b18a14e9c3aa"],
+Cell[324305, 5902, 325, 6, 35, "Text",ExpressionUUID->"7d728819-e2de-4e41-b8f7-4699045bdf5a"],
+Cell[324633, 5910, 1110, 25, 35, "Text",ExpressionUUID->"5fa0f604-18a2-2f43-844e-8c20c61fad60"],
+Cell[325746, 5937, 1007, 23, 35, "Text",ExpressionUUID->"e53b5f72-0455-f043-8ba7-d4adabf67c86"],
+Cell[326756, 5962, 291, 5, 35, "Text",ExpressionUUID->"63f25705-6607-7242-8263-5a817ac89e5e"],
+Cell[327050, 5969, 388, 8, 35, "Text",ExpressionUUID->"0b0c7d69-500b-5d4e-abab-bd7865cf3988"],
 Cell[CellGroupData[{
-Cell[327493, 5981, 2317, 57, 107, "Input",ExpressionUUID->"2346107d-7969-9b4e-8404-ddc5bc084fdf"],
-Cell[329813, 6040, 3454, 87, 108, "Output",ExpressionUUID->"4273a532-5e8c-0146-84f9-b34200cc2e60"]
+Cell[327463, 5981, 2317, 57, 107, "Input",ExpressionUUID->"2346107d-7969-9b4e-8404-ddc5bc084fdf"],
+Cell[329783, 6040, 3454, 87, 108, "Output",ExpressionUUID->"4273a532-5e8c-0146-84f9-b34200cc2e60"]
 }, Open  ]],
-Cell[333282, 6130, 650, 19, 37, "Text",ExpressionUUID->"e313f173-21bd-7f4d-bb1c-3a473c1bfcc4"],
+Cell[333252, 6130, 650, 19, 37, "Text",ExpressionUUID->"e313f173-21bd-7f4d-bb1c-3a473c1bfcc4"],
 Cell[CellGroupData[{
-Cell[333957, 6153, 8617, 212, 470, "Input",ExpressionUUID->"4a1d8843-c861-ce4a-a46d-e3ac6d7965d7"],
-Cell[342577, 6367, 220112, 3729, 662, "Output",ExpressionUUID->"70624a43-875b-4f4d-9a19-23e55f29ca7d"]
+Cell[333927, 6153, 8617, 212, 470, "Input",ExpressionUUID->"4a1d8843-c861-ce4a-a46d-e3ac6d7965d7"],
+Cell[342547, 6367, 220112, 3729, 662, "Output",ExpressionUUID->"70624a43-875b-4f4d-9a19-23e55f29ca7d"]
 }, Open  ]],
-Cell[562704, 10099, 2359, 65, 83, "Text",ExpressionUUID->"4af43771-31c9-0d49-af7f-71ab2000b955"],
+Cell[562674, 10099, 2359, 65, 83, "Text",ExpressionUUID->"4af43771-31c9-0d49-af7f-71ab2000b955"],
 Cell[CellGroupData[{
-Cell[565088, 10168, 4645, 113, 256, "Input",ExpressionUUID->"de8f134d-f2fe-d540-8c86-4094571b7c4c"],
-Cell[569736, 10283, 421, 6, 35, "Output",ExpressionUUID->"802d1c57-3c87-3e47-934c-a503130e2a55"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[570194, 10294, 3942, 93, 235, "Input",ExpressionUUID->"f39f7410-2ccd-f745-bc00-bf8c322dc8a9"],
-Cell[574139, 10389, 326, 4, 35, "Output",ExpressionUUID->"4fd66af8-4d0e-4741-b3e3-c0d32b6e156a"]
-}, Open  ]],
-Cell[574480, 10396, 198, 3, 37, "Text",ExpressionUUID->"bf3f35c5-8362-7540-823b-c0c0f70490f3"],
-Cell[CellGroupData[{
-Cell[574703, 10403, 4377, 112, 177, "Input",ExpressionUUID->"a0b3dd04-2b60-c64b-be2e-f51cd5f59ee6"],
-Cell[579083, 10517, 47432, 964, 405, "Output",ExpressionUUID->"e36336b0-2ef0-dd47-836f-204955ae371b"]
-}, Open  ]],
-Cell[626530, 11484, 919, 21, 38, "Text",ExpressionUUID->"bb4aaec0-045e-2540-b70a-656b443ca536"],
-Cell[CellGroupData[{
-Cell[627474, 11509, 703, 16, 31, "Input",ExpressionUUID->"c8537297-8e1e-a448-9daf-594b18dfdc70"],
-Cell[628180, 11527, 4627, 127, 140, "Output",ExpressionUUID->"8949f2e6-7a2d-464d-a4f7-95472f75bb76"]
-}, Open  ]],
-Cell[632822, 11657, 495, 9, 35, "Text",ExpressionUUID->"8cb476f0-a4a1-934b-8021-bd0c25854e1c"],
-Cell[CellGroupData[{
-Cell[633342, 11670, 1946, 39, 68, "Input",ExpressionUUID->"d84cb31d-ec2c-784a-8a59-3ad3f002a191"],
-Cell[635291, 11711, 830, 19, 35, "Output",ExpressionUUID->"69e73003-607b-6043-8bbf-cf75017f89eb"]
+Cell[565058, 10168, 4645, 113, 256, "Input",ExpressionUUID->"de8f134d-f2fe-d540-8c86-4094571b7c4c"],
+Cell[569706, 10283, 421, 6, 35, "Output",ExpressionUUID->"802d1c57-3c87-3e47-934c-a503130e2a55"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[636158, 11735, 4850, 116, 256, "Input",ExpressionUUID->"3c3971c3-36a1-9f44-837a-fad957678a62"],
-Cell[641011, 11853, 303, 4, 35, "Output",ExpressionUUID->"90192a3d-b74e-1b47-8f81-c9250d72175f"]
+Cell[570164, 10294, 3942, 93, 235, "Input",ExpressionUUID->"f39f7410-2ccd-f745-bc00-bf8c322dc8a9"],
+Cell[574109, 10389, 326, 4, 35, "Output",ExpressionUUID->"4fd66af8-4d0e-4741-b3e3-c0d32b6e156a"]
 }, Open  ]],
-Cell[641329, 11860, 285, 7, 37, "Text",ExpressionUUID->"74be7d53-cb65-4541-a73c-f8aeee5a9b59"],
+Cell[574450, 10396, 198, 3, 37, "Text",ExpressionUUID->"bf3f35c5-8362-7540-823b-c0c0f70490f3"],
 Cell[CellGroupData[{
-Cell[641639, 11871, 3232, 85, 135, "Input",ExpressionUUID->"91012580-53df-5c41-a4f8-898de11530c3"],
-Cell[644874, 11958, 18522, 383, 405, "Output",ExpressionUUID->"b2a6ff98-02cc-ca49-b856-43e149ae91f3"]
+Cell[574673, 10403, 4377, 112, 177, "Input",ExpressionUUID->"a0b3dd04-2b60-c64b-be2e-f51cd5f59ee6"],
+Cell[579053, 10517, 47432, 964, 405, "Output",ExpressionUUID->"e36336b0-2ef0-dd47-836f-204955ae371b"]
 }, Open  ]],
-Cell[663411, 12344, 1595, 30, 165, "Text",ExpressionUUID->"b9427383-4ca2-7d49-a5a5-834cc123310e"],
-Cell[665009, 12376, 327, 10, 11, "Text",ExpressionUUID->"072ed938-066e-f845-acbc-c3e509cb51a3"],
+Cell[626500, 11484, 919, 21, 38, "Text",ExpressionUUID->"bb4aaec0-045e-2540-b70a-656b443ca536"],
 Cell[CellGroupData[{
-Cell[665361, 12390, 165, 3, 48, "Subsubsection",ExpressionUUID->"cb7e139c-c8d7-c848-a4e8-33fc9d6a9726"],
-Cell[665529, 12395, 699, 16, 32, "ItemNumbered",ExpressionUUID->"fcb27ec4-e689-0f4f-8f7c-0d517d669441"],
-Cell[666231, 12413, 639, 15, 32, "ItemNumbered",ExpressionUUID->"a8fb64fc-a19b-704a-9190-3c99ced77cb5"],
-Cell[666873, 12430, 763, 17, 53, "ItemNumbered",ExpressionUUID->"df14d614-f442-2040-98a0-e6733618e852"],
-Cell[667639, 12449, 327, 10, 11, "Text",ExpressionUUID->"29bb58e6-8138-7040-a454-bdc8c0b973e3"]
+Cell[627444, 11509, 703, 16, 31, "Input",ExpressionUUID->"c8537297-8e1e-a448-9daf-594b18dfdc70"],
+Cell[628150, 11527, 4627, 127, 140, "Output",ExpressionUUID->"8949f2e6-7a2d-464d-a4f7-95472f75bb76"]
+}, Open  ]],
+Cell[632792, 11657, 495, 9, 35, "Text",ExpressionUUID->"8cb476f0-a4a1-934b-8021-bd0c25854e1c"],
+Cell[CellGroupData[{
+Cell[633312, 11670, 1946, 39, 68, "Input",ExpressionUUID->"d84cb31d-ec2c-784a-8a59-3ad3f002a191"],
+Cell[635261, 11711, 830, 19, 35, "Output",ExpressionUUID->"69e73003-607b-6043-8bbf-cf75017f89eb"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[636128, 11735, 4850, 116, 256, "Input",ExpressionUUID->"3c3971c3-36a1-9f44-837a-fad957678a62"],
+Cell[640981, 11853, 303, 4, 35, "Output",ExpressionUUID->"90192a3d-b74e-1b47-8f81-c9250d72175f"]
+}, Open  ]],
+Cell[641299, 11860, 285, 7, 37, "Text",ExpressionUUID->"74be7d53-cb65-4541-a73c-f8aeee5a9b59"],
+Cell[CellGroupData[{
+Cell[641609, 11871, 3232, 85, 135, "Input",ExpressionUUID->"91012580-53df-5c41-a4f8-898de11530c3"],
+Cell[644844, 11958, 18522, 383, 405, "Output",ExpressionUUID->"b2a6ff98-02cc-ca49-b856-43e149ae91f3"]
+}, Open  ]],
+Cell[663381, 12344, 1852, 32, 191, "Text",ExpressionUUID->"b9427383-4ca2-7d49-a5a5-834cc123310e"],
+Cell[665236, 12378, 327, 10, 11, "Text",ExpressionUUID->"072ed938-066e-f845-acbc-c3e509cb51a3"],
+Cell[CellGroupData[{
+Cell[665588, 12392, 165, 3, 48, "Subsubsection",ExpressionUUID->"cb7e139c-c8d7-c848-a4e8-33fc9d6a9726"],
+Cell[665756, 12397, 699, 16, 32, "ItemNumbered",ExpressionUUID->"fcb27ec4-e689-0f4f-8f7c-0d517d669441"],
+Cell[666458, 12415, 639, 15, 32, "ItemNumbered",ExpressionUUID->"a8fb64fc-a19b-704a-9190-3c99ced77cb5"],
+Cell[667100, 12432, 763, 17, 53, "ItemNumbered",ExpressionUUID->"df14d614-f442-2040-98a0-e6733618e852"],
+Cell[667866, 12451, 327, 10, 11, "Text",ExpressionUUID->"29bb58e6-8138-7040-a454-bdc8c0b973e3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
