@@ -1,6 +1,6 @@
 %!TEX root = ../UniDyn-doc.tex
 
-To understand the \VerbFcn{Evolver} algorithm it is essential to understand Slichter's approach to calculating the unitary evolution of an operator.  To help the reader understand and appreciate Slichter's approach, let us briefly review two methods commonly used for solving Eq.~\ref{Eq:Evolve}.  As an example, consider the case where ${\cal H} = \omega I_z$ and $\rho(0) = I_{+} = I_x + i \, I_y$.  In this case we want to compute
+To understand the \VerbFcn{Evolver} algorithm it is essential to understand Slichter's approach to calculating the unitary evolution of an operator.  To help the reader understand and appreciate Slichter's approach, let us briefly review two methods commonly used for solving Eq.~\ref{Eq:Evolve}.  As an example, consider the case where ${\cal H} = \omega I_z$ and $\rho(0) = I_{+} = I_x + i \, I_y$.  In this case we want to compute \footnote{We note in Eq.~\ref{Eq:I+rot} and in what follows the use of certain conventions that are common in magnetic resonance. The first is the use of angular frequency units (radians/s) for Hamiltonians, rather than energy units, by suppressing explicit appearance of $\hbar$ in equations. Second, $\rho(t)$, $\rho(0)$, etc., are traceless, "reduced" density operators, with their projections onto the identity operator removed, since the identity operator commutes with everything in the relevant Lie algebra and therefore undergoes no nontrivial dynamics. Third, we allow use of "$I_+$" as an initial density operator (in practice, to follow the strictly incompatible "quadrature" components of magnetization simultaneously), even though it is not Hermitian.}
 \begin{equation}
 \rho(t) 
 	= e^{-i \, \omega t \, I_z} \, I_{+} \, e^{+i \, \omega t \, I_z}.
@@ -18,7 +18,7 @@ One approach to computing $\rho(t)$ is to expand Eq.~\ref{Eq:I+rot} in a Taylor 
 	= \rho(0) + \rho^{(1)}(0) \, t + \frac{1}{2!} \rho^{(2)}(0) \, t^2
  		+ \frac{1}{3!} \rho^{(3)}(0) \, t^3 + \cdots
 \end{equation}
-The coefficients are obtained by differentiating $\rho$ and setting $t \rightarrow 0$.  Taking the first derivative,
+The coefficients are obtained by differentiating $\rho(t)$ (Eq.~\ref{Eq:I+rot}) and setting $t \rightarrow 0$.  Taking the first derivative,
 \begin{subequations}
 \begin{align}
 \rho^{(1)}(t) 
@@ -57,7 +57,7 @@ Substituting this finding into the Taylor expansion gives
 		+ \cdots
 	\right)
 \end{equation}
-We are now supposed to recognize the term in parenthesis as the Taylor series of $e^{-i \, \omega \, t}$.  This insight enables us to resum the infinite series in the Taylor expansion to obtain the closed-form result
+We now recognize the term in parenthesis as the Taylor series of $e^{-i \, \omega \, t}$.  This insight enables us to resum the infinite series in the Taylor expansion to obtain the closed-form result
 \begin{equation}
 \rho(t) 
 	= I_{+} \, e^{-i \, \omega \, t}.
@@ -68,7 +68,7 @@ We are now supposed to recognize the term in parenthesis as the Taylor series of
 \subsection{Method 2} 
 % --------------------------
 
-A second approach to evaluating Eq.~\ref{Eq:I+rot} is to expand the exponential using the L\"{o}wdin projection-operator theorem \cite{Lowdin1955mar}, equivalent to the Cayley-Hamilton theorem \cite{Strang2016}.  This theorem allows us to expand a function of an operator --- $I_z$ here --- in terms involving the function evaluated at the operator's eigenvalues times an operator that project's onto the eigenvalue's subspace.  Taking the total spin angular momentum to be $I = 1/2$ for simplicity, the relevant eigenvalues are $+1/2$ and $-1/2$ and the relevant projection operators are ${\cal P}_{1/2} = \ket{\alpha}\bra{\alpha}$ and ${\cal P}_{-1/2} = \ket{\beta}\bra{\beta}$.  Applying L\"{o}wdin's theorem,
+A second approach to evaluating Eq.~\ref{Eq:I+rot} is to expand the exponential using the L\"{o}wdin projection-operator theorem \cite{Lowdin1955mar}, equivalent to the Cayley-Hamilton theorem \cite{Strang2016}.  This theorem allows us to expand a function of an operator --- $I_z$ here --- in terms involving the function evaluated at the operator's eigenvalues times an operator that projects onto the eigenvalue's subspace. Formally, we may put ${\cal f(O)} = \sum_i{{\cal f(a_i)}\ket{u_i}\bra{u_i}}$ in place of ${\cal f(O)}$ when operator ${\cal O}$'s eigensystem is known, i.e., when ${\cal O}\ket{u_i} = {\cal a_i}\ket{u_i}$ for all $i$. Taking the total spin angular momentum to be $I = 1/2$ for simplicity, the relevant eigenvalues are $+1/2$ and $-1/2$ and the relevant projection operators are ${\cal P}_{1/2} = \ket{\alpha}\bra{\alpha}$ and ${\cal P}_{-1/2} = \ket{\beta}\bra{\beta}$.  Applying L\"{o}wdin's theorem,
 \begin{equation}
 e^{-i \, \omega t \, I_z} 
 	= e^{-i \, \omega t / 2} \ket{\alpha}\bra{\alpha}
@@ -96,7 +96,7 @@ For spin problems where the number of levels is finite, Method 2 still has serio
 Diagonalizing ${\cal H}$ forces us to write down the matrix representation of ${\cal H}$ which in turn commits us to specifying the total angular momentum $I$ of the spin we are interested in.
 An exponentiated matrix $A$ of the form $e^{i A}$ can be written, using the Cayley-Hamilton theorem \cite{Strang2016}, as a polynomial function of $A$ \cite{DeZela2014jun,Curtright2014aug}.
 If $A$ is a spin angular-momentum operator, then $e^{i A}$ can be written as a sum over four Pauli matrices for $I = 1/2$ and as a sum over eight Gell-Mann matrices for $I = 1$ \cite{Gell-Mann1962feb,Bertlmann2008may,Curtright2015dec}.
-In many problems, we would like to obtain a solution valid for a spin of \emph{any} $I$, and most interesting spin problems involve Hamiltonians more complicated than a spin angular-momentum operator.
+In many problems, we would like to obtain a solution valid for a spin of \emph{any} $I$, and most interesting spin problems involve Hamiltonians more complicated than $I_{x, y, z}$, such as those associated with quadrupolar or spin-spin interactions.
 
 
 % --------------------------
@@ -147,7 +147,7 @@ Using the same procedure and the commutation relation $[a^{\dagger} a,a^{\dagger
 	\rho(t)  = a^{\dagger} e^{-i \: \omega t}.
 \end{equation}
 
-These first two Slichter-procedure example cases have in common that the commutator of the Hamiltonian with the operator of interest is simply proportional to the operator. As a result of this underlying commutation relation, the problem of calculating Eq.~\ref{Eq:Evolve} in both cases has been reduced to the problem of solving a first-order differential equation, Eq.~\ref{Eq:Eq:I+rot-ODE}.  In light of the two previous methods, the Slichter procedure is rather remarkable.  It allows us to obtain a closed-form solution for Eq.~\ref{Eq:I+rot} without resorting to Taylor series and without even requiring knowledge of the Hamiltonian's eigenvalues.    
+These first two examples have in common that the commutator of the Hamiltonian with the operator of interest is simply proportional to the operator. As a result of this underlying commutation relation, the problem of calculating Eq.~\ref{Eq:Evolve} in both cases has been reduced to the problem of solving a first-order differential equation with constant coefficients, Eq.~\ref{Eq:Eq:I+rot-ODE}.  In light of the two previous methods, the Slichter procedure is rather remarkable.  It allows us to obtain a closed-form solution for Eq.~\ref{Eq:I+rot} without resorting to Taylor series and without even requiring knowledge of the Hamiltonian's eigenvalues.    
 
 \myparagraph{Example 3} The Slichter procedure is readily applied to more complicated unitary-evolution problems.  Consider the case where ${\cal H} = \omega I_z$ and $\rho(0) = I_x$.  Then
 \begin{equation}
@@ -213,7 +213,7 @@ and continuing until we obtain an expression that is proportional to $\rho = U^{
 	= e^{-i \, (\Delta \omega I_z + \omega_1 I_x) \, t}
 	  \, I_z \,
 	 e^{+i \, (\Delta \omega I_z + \omega_1 I_x) \, t}
-	\equiv U^{\dagger} \, I_{x} \, U
+	\equiv U^{\dagger} \, I_{z} \, U
 	\label{Eq:Example4}  
 \end{equation}
 Computing the first few derivatives, we find
@@ -334,12 +334,12 @@ Plugging this integration constant into Eq.~\ref{Eq:Example4-temp} we obtain the
 	\label{Eq:example4-soln}	
 \end{multline}
 
-We see in this example an answer for $\rho(t)$ that is markedly more complicated that in the previous examples, the solution to a third order differential equation.  To uncover this differential equation, is was necessary to compare subsequent derivatives of $\rho(t)$ not to $\rho(0)$ but to $\dot{\rho}(0)$ instead.
+We see in this example an answer for $\rho(t)$ that is markedly more complicated than in the previous examples, the solution to a third order differential equation.  To uncover this differential equation, is was necessary to compare subsequent derivatives of $\rho(t)$ not to $\rho(0)$ but to $\dot{\rho}(0)$ instead.
 
 Considering in total the four examples of unitary evolution enumerated so far, it would seem that any algorithm we develop needs to consider the possibility that the density operator satisfies a first, second, or even third-order differential equation.  
 Before continuing, there is another case to consider.
 
-\myparagraph{Example 5} Consider the unitary rotation
+\myparagraph{Example 5} Consider the unitary transformation
 \begin{equation}
 x^{\prime}  = 
   e^{-i \hbar^{-1} \, \delta x \, p}
@@ -386,7 +386,7 @@ From these examples, we recognize $\exp\!{\left( -i \hbar^{-1} \, \delta x \, p 
 \subsection{Method 4} 
 % --------------------------
 
-We now show by example that the single differential equation in each of these five cases can be reduced to a set of \emph{coupled first-order} differential equations --- a significant step towards making a simple automated, unitary evolution algorithm.  We would expect the five cases to each still require a decision on the number of coupled of equations required to solve for $\rho$ in each case.  Surprisingly, no decision is needed.  We will show that all the cases we have discussed so far can be handled by a set of four coupled differential equations.  This is the essential new insight implemented here in the \VerbFcn{Evolver1} algorithm. 
+We now show by example that the single differential equation in each of these five cases can be reduced to a set of \emph{coupled first-order} differential equations with constant coefficients --- a significant step towards making a simple automated, unitary evolution algorithm.  We would expect the five cases to each still require a decision on the number of coupled of equations required to solve for $\rho$ in each case.  Surprisingly, no decision is needed.  We will show that all the cases we have discussed so far can be handled by a set of four coupled differential equations.  This is the essential new insight implemented here in the \VerbFcn{Evolver1} algorithm. 
 
 To understand the new method, consider transforming the second-order differential equation in Eq.~\ref{Eq:Ixrot-ODE} into two coupled first-order equations.  Let the two new variables be 
 \begin{equation}
@@ -396,7 +396,7 @@ Taking the time derivative of each of these variables we obtain
 \begin{subequations}
 \begin{align}
 \dot{x}_1 & = \dot{\rho} = x_2, \text{ and} \\
-\dot{x}_1 & = \ddot{\rho} = - \omega^2 \rho = - \omega^2 x_1.
+\dot{x}_2 & = \ddot{\rho} = - \omega^2 \rho = - \omega^2 x_1.
 \end{align}
 \end{subequations}
 It is apparent that these two variables satisfy the following set of coupled first order equations
@@ -454,7 +454,7 @@ In writing $\dot{x}_3$ we have used the shorthand $U(t) \equiv \exp\!{\left( i \
 \end{equation}
 Solving this new set of three coupled equations gives $x_1(t) = \rho(t) = I_x \, \sin{(\omega t)} + I_y \, \cos{(\omega t)}$ --- the \emph{same answer} that was obtained by solving the set of two coupled equations, Eqs.~\ref{Eq:Ixrot-2x2}.  This finding suggests that we are at liberty to ``overguess'' the number of equations required to solve the problem.
 
-Let us see how the new method would be applied to solve the Example 4 problem with ${\cal H} = \Delta \omega I_z + \omega_1 I_x$ and $\rho(0) = I_z$.  The time derivatives up to third order may be summarized as
+Let us see how the new method would be applied to solve the Example 4 problem with ${\cal H} = \Delta \omega I_z + \omega_1 I_x$ and $\rho(0) = I_x$.  The time derivatives up to third order may be summarized as
 \begin{equation}
 \begin{bmatrix}
 	\rho^{(3)} \\
@@ -544,7 +544,7 @@ The \VerbFcn{Evolver1} algorithm proceeds as follows.
   \item  Look for an entry in the list $(\rho^{(2)}, \rho^{(1)}, \rho^{(0)})$ that is proportional to $\rho^{(3)}$, starting with the $\rho^{(2)}$ (entry $n = 3$) and working towards $\rho^{(0)}$ (entry $n = 1$). Call the entry where the match occurs $n_{\text{match}}$. Call the ratio between $\rho^{(3)}$ and the matching entry $r$.
   
   \item Fill in the upper row of $\bm{\Omega}$ with zeros.  Assign the value $r$ to the entry in the $n_{\text{match}}$ column of the upper row of $\bm{\Omega}$, counting from the right to the left.  
-If no match can be found, declare the problem unsolvable.
+If no match can be found, declare the problem unsolvable by \VerbFcn{Evolver1}.
   
   \item Feed Eq.~\ref{Eq:big-equation}, including the initial condition, to \emph{Mathematica} to solve.  The time-dependent density operator is $\rho(t) = \lambda_{1}(t)$. 
 
@@ -557,7 +557,7 @@ If no match can be found, declare the problem unsolvable.
 An alternative approach is to identify, on a case-by-case basis, which differential equation $\rho(t)$ is governed by and write out the differential-equation solution by hand.
 This alternative approach constitutes the \VerbFcn{Evolver2} algorithm. 
 The algorithm proceeds by testing the following cases, stopping if the case is true.
-The cases are labelled 0, 1, 2, or 3, according the order of differential equation governing $\rho$, and are given the designation L for linear and E for exponential, depending on the kind of solution. 
+The cases are labeled 0, 1, 2, or 3, according the order of differential equation governing $\rho$, and are given the designation L for linear and E for exponential, depending on the kind of solution. 
 
 \begin{enumerate}
 
@@ -612,7 +612,7 @@ d_3 = {\mathrm{Inv}}[\rho^{(1)}] \, \rho^{(3)}
   + \frac{1}{\omega^2} \left( 1 -  \cos{(\omega \, t)} \right) \, \rho^{(2)} 
 \end{equation}
 
-\item If none of these cases are satisfied, declare the problem unsolvable.
+\item If none of these cases are satisfied, declare the problem unsolvable by \VerbFcn{Evolver2}.
 
 \end{enumerate}
 
