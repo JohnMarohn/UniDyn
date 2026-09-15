@@ -58,7 +58,8 @@ the \VerbFcn{Evolve} operator over the terms in the Hamiltonian. %
 @*)
 
 Evolve[H$sym_?AllCommutingQ, t$sym_, rho$sym_] := 
-	Mult @@ (Evolve[#, t$sym, rho$sym]&) /@ List @@ H$sym
+	(* incorrect: Mult @@ (Evolve[#, t$sym, rho$sym]&) /@ List @@ H$sym *)
+	Fold[Evolve[#2, t$sym, #1] &, rho$sym, Reverse[List @@ H$sym]]
 
 (*@
 A function, from \href{http://mathematica.stackexchange.com/questions/5403/how-to-get-fullsimplify-to-fully-simplify-my-expression-with-custom-complexity-f}{\texttt{mathematica.stackexchange}}, %
@@ -78,3 +79,6 @@ If[$VerboseLoad == True,
     Message[AllCommutingQ::usage]
     Message[VisualComplexity::usage]
 ];
+
+
+

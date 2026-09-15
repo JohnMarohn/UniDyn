@@ -63,19 +63,23 @@ expanded. %
 H0 = Q;
 H1 = q Mult[Q, R] + s Mult[S, U] + Mult[U, S] + Mult[V, V, W];
 H2 = q Q + s S + v Mult[Q, S];
+H3 = q Q + s S + v V;
 
 vtest["02a > commuting test 1", AllCommutingQ[H0] === False]
 vtest["02b > commuting test 2", AllCommutingQ[H1] === False]
 vtest["02c > commuting test 3", AllCommutingQ[H2] === True]
+vtest["02d > commuting test 4", AllCommutingQ[H3] === True]
 
 vtest["03a > Evolve expand test 1", Evolve[H0, t, Q] === Evolve[Q, t, Q]]
 vtest["03b > Evolve expand test 2", Evolve[H1, t, Q] 
 	=== Evolve[q Mult[Q,R] + s Mult[S,U] + Mult[U, S] + Mult[V, V, W], t, Q]]
-vtest["03c > Evolve expand test 3", Evolve[H2, t, Q] 
-	=== Mult[Evolve[q Q, t, Q], Evolve[s S, t, Q], Evolve[v Mult[Q,S], t, Q]]]
+vtest["03c > Evolve expand test 3", Evolve[H3, t, R] === Evolve[q Q, t, Evolve[s S, t, Evolve[v V, t, R]]]]
 
-Clear[H0, H1, H2]
+Clear[H0, H1, H2, H3]
 Clear[Q, R, S, U, V, W, q, r, s, u, v, w]
+
+
+
 
 
 
