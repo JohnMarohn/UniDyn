@@ -5,7 +5,8 @@
  ** Test the creation of spin 1/2 angular momentum operators, 
  **  harmonic oscillator operators, including raising and lowering operators
  ** John Marohn
- ** 2025/12/24
+ ** 2025/12/24 add SpinBoson$CreateOperators tests
+ ** 2026/09/15 add TwoSpinBoson$CreateOperators tests
  **)
 
 
@@ -24,6 +25,12 @@ Off[SpinBoson$CreateOperators::nocreate]
 Off[SpinBoson$CreateOperators::comm]
 Off[SpinBoson$CreateOperators::simp]
 Off[SpinBoson$CreateOperators::normord]
+
+Off[TwoSpinBoson$CreateOperators::create]
+Off[TwoSpinBoson$CreateOperators::nocreate]
+Off[TwoSpinBoson$CreateOperators::comm]
+Off[TwoSpinBoson$CreateOperators::simp]
+Off[TwoSpinBoson$CreateOperators::normord]
 
 (*@ Create a shorthand function for creating unit tests.
 @*)
@@ -48,7 +55,7 @@ Clear[Ix$sym, Iy$sym, Iz$sym, Ip$sym, Im$sym, aR$sym, aL$sym];
 (*~ START ~*)
 
 (*@
-Create some operators to play with.
+Create operators to play with: one two-level atom and a cavity mode.
 @*)
 
 SpinBoson$CreateOperators[Ix$sym, Iy$sym, Iz$sym, Ip$sym, Im$sym, aR$sym, aL$sym];
@@ -81,6 +88,31 @@ Two angular momentum identities.
 vtest["04a", Mult[Im$sym, Ip$sym] == Simplify[3/4 - Mult[Iz$sym, Iz$sym] - Iz$sym]]
 vtest["04b", Mult[Ip$sym, Im$sym] == Simplify[3/4 - Mult[Iz$sym, Iz$sym] + Iz$sym]]
 
+(*@
+Create operators to play with: two two-level atoms and a cavity mode.
+@*)
+
+Clear[Ix$sym, Iy$sym, Iz$sym, Ip$sym, Im$sym, Sx$sym, Sy$sym, Sz$sym, Sp$sym, Sm$sym, aR$sym, aL$sym];
+
+TwoSpinBoson$CreateOperators[Ix$sym, Iy$sym, Iz$sym, Ip$sym, Im$sym, Sx$sym, Sy$sym, Sz$sym, Sp$sym, Sm$sym, aR$sym, aL$sym];
+
+(*@
+Check that I and S spin operators commute.
+@*)
+
+vtest["05a", Comm[Ix$sym, Sx$sym + Sy$sym + Sz$sym] == 0]
+vtest["05b", Comm[Iy$sym, Sx$sym + Sy$sym + Sz$sym] == 0]
+vtest["05c", Comm[Iz$sym, Sx$sym + Sy$sym + Sz$sym] == 0]
+
+(*@
+Two angular momentum identities.
+@*)
+
+vtest["06a", Mult[Sm$sym, Sp$sym] == Simplify[3/4 - Mult[Sz$sym, Sz$sym] - Sz$sym]]
+vtest["06b", Mult[Sp$sym, Sm$sym] == Simplify[3/4 - Mult[Sz$sym, Sz$sym] + Sz$sym]]
+
+
+
 (*~ END ~*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym, Ip$sym, Im$sym, aR$sym, aL$sym];
@@ -100,6 +132,12 @@ On[SpinBoson$CreateOperators::nocreate]
 On[SpinBoson$CreateOperators::comm]
 On[SpinBoson$CreateOperators::simp]
 On[SpinBoson$CreateOperators::normord]
+
+On[TwoSpinBoson$CreateOperators::create]
+On[TwoSpinBoson$CreateOperators::nocreate]
+On[TwoSpinBoson$CreateOperators::comm]
+On[TwoSpinBoson$CreateOperators::simp]
+On[TwoSpinBoson$CreateOperators::normord]
 
 
 
