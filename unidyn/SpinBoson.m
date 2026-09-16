@@ -40,7 +40,9 @@ Begin["Private`"]
 
 (*~ START ~*)
 
-SpinBoson$CreateOperators[Ix$sym_, Iy$sym_, Iz$sym_, Ip$sym_, Im$sym_, aR$sym_, aL$sym_] :=
+SpinBoson$CreateOperators[
+	Ix$sym_, Iy$sym_, Iz$sym_, Ip$sym_, Im$sym_,
+	aR$sym_, aL$sym_] :=
 
 Module[{nonexistent},
 
@@ -117,7 +119,10 @@ Return[{Ix$sym, Iy$sym, Iz$sym, Ip$sym, Im$sym, aR$sym, aL$sym}]
 ]
 
 
-TwoSpinBoson$CreateOperators[Ix$sym_, Iy$sym_, Iz$sym_, Ip$sym_, Im$sym_, Sx$sym_, Sy$sym_, Sz$sym_, Sp$sym_, Sm$sym_, aR$sym_, aL$sym_] :=
+TwoSpinBoson$CreateOperators[
+  Ix$sym_, Iy$sym_, Iz$sym_, Ip$sym_, Im$sym_, 
+  Sx$sym_, Sy$sym_, Sz$sym_, Sp$sym_, Sm$sym_,
+  aR$sym_, aL$sym_] :=
 
 Module[{nonexistent},
 

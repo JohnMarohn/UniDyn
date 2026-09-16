@@ -49,7 +49,8 @@ vtest["01b > distribute multiplication",
 	=== Mult[Evolve[H, t, Q], Evolve[H, t, R], Evolve[H, t, S]]]
 vtest["01c > distribute complicated expression", 
 	Evolve[H, t, Mult[(Q q), (r R), (s S)] + u U]
-    === u Evolve[H, t, U] + q r s Mult[Evolve[H, t, Q], Evolve[H, t, R], Evolve[H, t, S]]]
+    === u Evolve[H, t, U] 
+    + q r s Mult[Evolve[H, t, Q], Evolve[H, t, R], Evolve[H, t, S]]]
 
 (*@
 Make up some Hamiltonians and see if they pass the all-terms-commuting test.  %
@@ -73,7 +74,8 @@ vtest["02d > commuting test 4", AllCommutingQ[H3] === True]
 vtest["03a > Evolve expand test 1", Evolve[H0, t, Q] === Evolve[Q, t, Q]]
 vtest["03b > Evolve expand test 2", Evolve[H1, t, Q] 
 	=== Evolve[q Mult[Q,R] + s Mult[S,U] + Mult[U, S] + Mult[V, V, W], t, Q]]
-vtest["03c > Evolve expand test 3", Evolve[H3, t, R] === Evolve[q Q, t, Evolve[s S, t, Evolve[v V, t, R]]]]
+vtest["03c > Evolve expand test 3", Evolve[H3, t, R] 
+      === Evolve[q Q, t, Evolve[s S, t, Evolve[v V, t, R]]]]
 
 Clear[H0, H1, H2, H3]
 Clear[Q, R, S, U, V, W, q, r, s, u, v, w]

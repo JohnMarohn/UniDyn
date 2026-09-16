@@ -8,8 +8,6 @@
  **)
 
 
-(*~ START ~*)
-
 Off[SpinSingle$CreateOperators::comm]
 Off[SpinSingle$CreateOperators::simplify]
 Off[SpinSingle$CreateOperators::nocreate]
@@ -38,7 +36,7 @@ If[$VersionNumber < 10.,
 (*~ START ~*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym, aL$sym, aR$sym];
-Clear[\[Omega], \[CapitalDelta]];
+Clear[\[Omega], \[CapitalDelta], \[Phi]];
 
 (*@
 Create some operators and scalars to play with.
@@ -48,8 +46,8 @@ CreateOperator[{{Ix$sym, Iy$sym, Iz$sym},{aL$sym, aR$sym}}];
 SpinSingle$CreateOperators[Ix$sym, Iy$sym, Iz$sym, 1/2];
 OscSingle$CreateOperators[aL$sym, aR$sym];
 
-CreateScalar[{\[Omega], \[CapitalDelta]}];
-$Assumptions= {Element[\[Omega], Reals], Element[\[CapitalDelta], Reals]};
+CreateScalar[{\[Omega], \[CapitalDelta], \[Phi]}];
+$Assumptions= {Element[\[Omega], Reals], Element[\[CapitalDelta], Reals], Element[\[Phi], Reals]};
 
 (*@
 Bottoming out cases.
@@ -115,19 +113,25 @@ This test fails, because the \VerbCmd{Mult[]} distributes over the sum of operat
 We carefully write the unit test so that is passes if the expression fails to simplify to 1. %
 @*)
 
-vtest["16", SameQ[SameQ[Mult[Inv[Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym], Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym], 1], False]]
+vtest["16", SameQ[SameQ[Mult[Inv[Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym], 
+                                 Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym], 1], False]]
 
 (*@
-We try the above test, not replacing the operator \VerbCmd{A} with \VerbCmd{Inv[Inv[A]]}. %
-The replacement 
+Tyy the above test, replacing the operator \VerbCmd{A} with \VerbCmd{Inv[Inv[A]]}. %
 @*)
 
-vtest["17", Mult[Inv[Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym], Inv[Inv[Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym]]] == 1]
+vtest["17", Mult[Inv[Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym], 
+                 Inv[Inv[Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym]]] == 1]
+
+Inv[Inv[Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym]]
+Mult[Inv[Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym], Inv[Inv[Cos[\[Phi]] Iy$sym - Sin[\[Phi]] Ix$sym]]]
+
+Cos[\[Phi]] Mult[Inv[Iy$sym Cos[\[Phi]]-Ix$sym Sin[\[Phi]]],Iy$sym]-Mult[Inv[Iy$sym Cos[\[Phi]]-Ix$sym Sin[\[Phi]]],Ix$sym] Sin[\[Phi]]
 
 (*@ Clean up: @*)
 
 Clear[Ix$sym, Iy$sym, Iz$sym, aL$sym, aR$sym];
-Clear[\[Omega], \[CapitalDelta]];
+Clear[\[Omega], \[CapitalDelta], \[Phi]];
 
 (*~ END ~*)
 
@@ -137,12 +141,6 @@ On[SpinSingle$CreateOperators::nocreate]
 On[OscSingle$CreateOperators::comm]
 On[OscSingle$CreateOperators::create]
 On[OscSingle$CreateOperators::nocreate]
-
-
-(*~ END ~*)
-
-Clear[Ix$sym, Iy$sym, Iz$sym, aL$sym ,aR$sym];
-Clear[\[Omega], \[CapitalDelta]];
 
 
 
