@@ -4,7 +4,7 @@
 \subsection{Two spins}
 % ---------------------------
 
-Define two spins, $\bm{I}$ and $\bm{S}$.
+Define two spins with angular momentum operators $\bm{I}$ and $\bm{S}$.
 The first spin has an unspecified total angular momentum while the second spin has total angular momentum $S = 1/2$. The two spins interact through the weak-coupling Hamiltonian ${\cal H} = J\, I_{z} S_{z}$.
 The \verb+Evolver2+ algorithm computes
 \begin{equation}
@@ -50,7 +50,7 @@ e^{-i \, {\cal H}_1  t}  P e^{+i \, {\cal H}_1  t} & = P + A t \cos{\phi}.
 \end{subequations}
 This example shows that the algorithm handles complex numbers correctly.
 
-Modulating the spring constant of the oscillator at twice the oscillator's resonance frequency $2 \omega_0$ gives rise a ``squeezing'' Hamiltonian
+Modulating the spring constant of the oscillator at twice the oscillator's resonance frequency $2 \omega_0$ gives rise to a ``squeezing'' Hamiltonian
 \begin{equation}
 {\cal H}_2 = \frac{\Omega}{2} \left( e^{-i \phi} (a^\dagger)^2 + e^{+i \phi} a^2 \right)
 \end{equation}
@@ -125,7 +125,89 @@ The $\verb+Inv+$ function employed in \verb+Evolver2+ is able to implement this 
 \subsection{Ion-based quantum computing}
 % ------------------------------------------------------
 %
-% /Users/jam99/Dropbox/Chem-7940--Graduate-Quantum-II--Spring-2008/Homeworks/Chem 794 -- 2008 -- Homework-10.tex
-% /Users/jam99/Dropbox/Chem-7940--Graduate-Quantum-II--Spring-2008/Homeworks solutions/10.2.pdf
+% Motivated by /Users/jam99/Dropbox/Chem-7940--Graduate-Quantum-II--Spring-2008
+%
+%   /Homeworks/Chem 794 -- 2008 -- Homework-10.tex
+%   /Homeworks solutions/10.2.pdf
+%
+% which looks at the case where the cavity is resonant with atom I but off resonance for atom S.
 
-  
+A pair of atoms placed in a single-mode electromagnetic cavity are described by the Tavis–Cummings Hamiltonian \cite{Tavis1968jun,Tavis1969dec}, ${\cal H} = {\cal H}_0 + {\cal H}_1$, with 
+\begin{equation}
+{\cal H}_0 = \omega_I I_z + \omega_S S_z + \omega a^{\dagger} a
+\end{equation}
+capturing the energy of the atoms and the cavity, and
+\begin{equation}
+{\cal H}_1 = g_I \omega \big( I_{+} a + I_{-} a^{\dagger} \big) + g_S \omega \big( S_{+} a + S_{-} a^{\dagger} \big)
+\end{equation}
+describing the exchange of photons between the atoms' electronic states and the cavity.
+The above Hamiltonians approximate each atom as a two-level system whose electronic-state populations and coherences are computed using $I$- and $S$-spin pseudo angular-momentum operators. 
+The frequencies $\omega_I$, $\omega_S$, $\omega$ are the transition frequencies of the $I$ atom, $S$ atom, and cavity, respectively, while $g_I$ and $g_S$ are two unitless coupling coefficients describing the atom-field coupling.
+
+Let us assume that the atoms are of the same species and let the cavity be detuned from each atom by an amount $\Delta$:
+\begin{subequations}
+\begin{align}
+\omega_I & = \omega - \Delta \\
+\omega_S & = \omega - \Delta 
+\end{align}
+\end{subequations}
+To compute the effect of the Hamiltonian ${\cal H}_1$ on the system, first transform ${\cal H}_1$ into an interaction representation defined by ${\cal H}_0$.  We obtain, using \verb+Evolver2+,
+\begin{align}
+\widetilde{\cal H}_{1}(t)
+  & = e^{-i t {\cal H}_0} {\cal H}_1 e^{+i t {\cal H}_0} \\
+  & = g_I  \left( e^{-i t \Delta} I_{-} a^{\dagger} + e^{+i t \Delta} I_{+} a \right)
+        + g_S \left( e^{-i t \Delta} S_{-} a^{\dagger} + e^{+i t \Delta} S_{+} a \right)
+\end{align}
+The transformed interaction Hamiltonian is time-dependent.
+We can approximate its effect on the atoms and the cavity using the Magnus expansion \cite{Magnus1954nov,Blanes2009jan}.
+The zeroth-order term in the expansion is
+\begin{equation}
+\widetilde{\cal H}_{1}^{(0)}
+ = \frac{1}{t_{\mathrm{c}}} \int_{0}^{t_{\mathrm{c}}} \widetilde{\cal H}_{1}(t) \, dt = 0
+\end{equation}
+with $t_{\mathrm{c}}$ a cycle time chosen to be the period, $2 \pi \big/ \Delta$, associated with the detuning frequency $
+\Delta$.
+To zeroth order, the interaction has no effect. 
+The first-order term is found to be
+\begin{align}
+\widetilde{\cal H}_{1}^{(1)}
+ & = - \frac{i}{2 t_{\mathrm{c}}} 
+    \int_{0}^{t_{\mathrm{c}}}  \left( \int_{0}^{t_2} [\widetilde{\cal H}_{1}(t_1), \widetilde{\cal H}_{1}(t_2)] \, d t_1 \right) \, d t_2 \\
+ & = - \frac{\omega^2}{\Delta} 
+ \left( 
+   2 g_I^2 \big( n + \frac{1}{2} \big) I_z 
+   + 2 g_S^2 \big( n + \frac{1}{2} \big) S_z 
+   + g_I g_S \big( I_{-} S^{+} + I_{+} S^{-} \big)
+ \right)
+ \label{eq:ion-H11}
+\end{align}
+with $n$ the number of photons in the cavity and $t_{\mathrm{c}} = 2 \pi \big/ \Delta$.
+In writing the above result, we have dropped a trivial constant term.
+The first two terms in eq.~\ref{eq:ion-H11} correspond to a photon-number-dependent shift of each atom's electronic transition frequency.
+The last two terms represent a cavity-mediated exchange interaction.
+With $n = 0$ photons in the cavity and with both coupling constants identical, $g_I = g$ and  $g_S = g$, 
+using \verb+Evolver2+ we can compute the effect of the first-order term on an initial density operator $\rho(0) \propto I_{+}$ analytically:
+\begin{align}
+\rho(t) 
+  & \propto e^{-i t \widetilde{\cal H}_{1}^{(1)}} I_{+} \, e^{+i t \widetilde{\cal H}_{1}^{(1)}} \\
+  & = e^{- i t \Omega} \big(  I_{+} \cos{(\Omega t)} + I_z S_{+} \sin{(\Omega t)} \big) 
+\end{align}
+with $\Omega = g^2 \omega^2 \big/ \Delta$ an effective Rabi frequency.
+The second term, in magnetic resonance language, is an anti-phase single quantum coherence between the $I$ states and the $S$ states.  
+Starting instead with both atoms in the ground state, $\rho(0) = (\frac{1}{2} + I_z )(\frac{1}{2} + S_z )$, let us apply a brief $\pi/2$ pulse to each atomic system.
+These pulses will transform the density operator to $\rho(0^{+}) = (\frac{1}{2} + I_x )(\frac{1}{2} + S_x)$. 
+Evolving $\rho(0^{+})$ under the eq.~\ref{eq:ion-H11} Hamiltonian for a time $\Delta t = \pi \big/ 2 \Omega$, the density operator is now
+\[
+  \rho(\Delta t) = \frac{1}{4} + I_z S_z + I_y S_y + I_z S_x, 
+\]
+The value of the Wootters' concurrence function \cite{Wootters1998mar,Rungta2001sep} for this density operator is 1; the two atoms are maximally entangled.
+The associated wavefunction is the Bell-like state \cite{Horodecki2009jun}
+\[
+  \frac{1}{2} \left(  \ket{\uparrow \uparrow} 
+    - \ket{\uparrow \downarrow} 
+    - \ket{\downarrow \uparrow} 
+    - \ket{\downarrow \downarrow} \right).
+\]
+Zheng and Guo \cite{Zheng2000sep} developed a similar entanglement scheme by evolving the wavefunction $\psi_0 = \ket{\uparrow \downarrow}$; their cavity-assisted entanglement scheme was demonstrated experimentally by Osnaghi and coworkers \cite{Osnaghi2001jun}.
+Here we have recapitulated Zheng and Guo's work succinctly using the Magnus expansion to create an effective Hamiltonian and evolving the density operator using this effective Hamiltonian.
+

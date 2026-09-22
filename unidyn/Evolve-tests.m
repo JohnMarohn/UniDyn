@@ -58,7 +58,7 @@ The first test is particularly important.  In test 03a and 03b below, nothing %
 happens; the Hamiltonian is either so simple that it can be broken into pieces, 03a, %
 or contains terms which do not commut, 03b.   In test 03c we have a Hamiltonian %
 whose three terms commute, and in this case the \VerbFcn{Evolve} operator can be %
-expanded. %
+nested. %
 @*)
 
 H0 = Q;

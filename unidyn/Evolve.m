@@ -40,7 +40,9 @@ Evolve[H$sym__, t$sym__, Times[a_?ScalarQ, rho$sym__]] := a Evolve[H$sym, t$sym,
 A test to see if all the terms in a sum commute with each other. %
 It is important to include an \VerbFcn{AllCommutingQ::usage} statement %
 at the top of this package so that this function is available in the \verb+General`+ %
-context of the notebook.
+context of the notebook. Form a matrix of containing the commutators of all terms in %
+the Hamiltonian.  If all entries in that matrix are zero, then all terms in the %
+Hamiltonian commute.
 @*)
 
 AllCommutingQ[H$sym_] := Module[{H$list, Comm$matrix},
@@ -55,10 +57,18 @@ AllCommutingQ[H$sym_] := Module[{H$list, Comm$matrix},
 (*@
 If all the terms in the Hamiltonian commute, then we may distribute %
 the \VerbFcn{Evolve} operator over the terms in the Hamiltonian. %
+That is, if $[{\cal H}_1, {\cal H}_2]= 0$, then we can perform the %
+evolutions sequentially as follows: %
+\[
+  e^{-i t ({\cal H}_1 + {\cal H}_2 )} \rho(0) e^{+i t ({\cal H}_2 + {\cal H}_1 )}
+  = 
+  e^{-i t {\cal H}_1} e^{-i t {\cal H}_2} \rho(0) e^{+i t {\cal H}_2} e^{+i t {\cal H}_1}
+\]
+Below we use the \emph{Mathematica} command {\bf Fold} to created nested evolutions, %
+generalizing the above equation to Hamiltonians with more than two commuting terms. %
 @*)
 
 Evolve[H$sym_?AllCommutingQ, t$sym_, rho$sym_] := 
-	(* incorrect: Mult @@ (Evolve[#, t$sym, rho$sym]&) /@ List @@ H$sym *)
 	Fold[Evolve[#2, t$sym, #1] &, rho$sym, Reverse[List @@ H$sym]]
 
 (*@
@@ -75,9 +85,9 @@ End[]
 EndPackage[]
 
 If[$VerboseLoad == True,
-    Message[Evolve::usage]
-    Message[AllCommutingQ::usage]
-    Message[VisualComplexity::usage]
+    Message[Evolve::usage];
+    Message[AllCommutingQ::usage];
+    Message[VisualComplexity::usage];
 ];
 
 

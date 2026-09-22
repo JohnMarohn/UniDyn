@@ -59,7 +59,7 @@ SpinSingle$CreateOperators[Sx$sym, Sy$sym, Sz$sym, L=1/2];
 (*@
 Test the differential equation solver first.  In \emph{Mathematica} version 10 %
 gives more leeway in how the equations are set up -- you can set one list %
-equal to another, for example.  In \emph{Mathematica} version 8, in contrast %
+equal to another, for example.  In \emph{Mathematica} version 8, in contrast, %
 the syntax is not so forgiving.  Let us mock-up an equation by hand and feed %
 it to the solver. %
 @*)
