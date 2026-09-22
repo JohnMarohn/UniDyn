@@ -3,6 +3,7 @@
 % ---------------------------
 \subsection{Two spins}
 % ---------------------------
+\label{sec:two-spins}
 
 Define two spins with angular momentum operators $\bm{I}$ and $\bm{S}$.
 The first spin has an unspecified total angular momentum while the second spin has total angular momentum $S = 1/2$. The two spins interact through the weak-coupling Hamiltonian ${\cal H} = J\, I_{z} S_{z}$.
@@ -30,6 +31,7 @@ If we specify the spin angular momentum $I$ then it is straightforward to write 
 % ---------------------------------------
 \subsection{Harmonic oscillator}
 % ---------------------------------------
+\label{sec:ho}
 
 Consider a harmonic oscillator with Hamiltonian
 \begin{equation}
@@ -97,6 +99,7 @@ In the general, off-resonance case, Eq.~\ref{eq:sqeeze-a-dagger--off-resonance} 
 % ------------------------------------
 \subsection{Electron transfer}
 % ------------------------------------
+\label{sec:et}
 
 In Ref.~\citenum{Mikkelsen1987feb}, electron transfer between two sites (H and H$^{+}$ for example) the electronic Hamiltonian, vibrational Hamiltonian, and electronic-vibrational coupling is treated using a Holstein molecular crystal model.
 The electronic states are represented by an $I = 1/2$ spin system $\bm{I}$, and the vibrational states are represented by a harmonic oscillator with creation and annihilation operators $(a^{\dagger}, a)$.
@@ -124,6 +127,7 @@ The $\verb+Inv+$ function employed in \verb+Evolver2+ is able to implement this 
 % ------------------------------------------------------
 \subsection{Ion-based quantum computing}
 % ------------------------------------------------------
+\label{sec:qc}
 %
 % Motivated by /Users/jam99/Dropbox/Chem-7940--Graduate-Quantum-II--Spring-2008
 %
@@ -210,4 +214,18 @@ The associated wavefunction is the Bell-like state \cite{Horodecki2009jun}
 \]
 Zheng and Guo \cite{Zheng2000sep} developed a similar entanglement scheme by evolving the wavefunction $\psi_0 = \ket{\uparrow \downarrow}$; their cavity-assisted entanglement scheme was demonstrated experimentally by Osnaghi and coworkers \cite{Osnaghi2001jun}.
 Here we have recapitulated Zheng and Guo's work succinctly using the Magnus expansion to create an effective Hamiltonian and evolving the density operator using this effective Hamiltonian.
+
+% ------------------------------------------------------
+\subsection{Electron spin resonance}
+% ------------------------------------------------------
+\label{sec:esr}
+
+Roy, Marohn, and co workers recently used \verb+Evolver1+ to compute multi-spin double-quantum coherence expressions for up to $N_{\mathrm{spin}} = 9$ spin $I = 1/2$ particles \cite{SinhaRoy2024apr}.
+Given that $N_{\mathrm{spin}} = 9$ is near the limit of what can be simulated \emph{numerically}, we were initially surprised to find that the evolution of so many spins could be treated \emph{analytically}.
+We should consider, however, that the pulse sequences in Ref.~\citenum{SinhaRoy2024apr} were relatively simple and that spin-spin couplings act in a pairwise fashion.
+These constraints limited the terms in the density operator to many fewer than would be included in a numerical calculation. 
+Remarkably, \verb+Evolver1+ results could be averaged over orientations analytically and extrapolated to obtain analytical expressions for signal valid in the $N_{\mathrm{spin}} \rightarrow \infty$ limit.
+Further applications of \verb+Evolver1+, including the effects of the pseudo-secular dipolar coupling and finite pulses, have resulted into significantly improved, yet rapid, data analysis of pulsed dipolar electron spin resonance signals \cite{SinhaRoy2024apr,SinhaRoy2025jan,SinhaRoy2026jan}.
+%
+% \cite{sinha2024rapid, sinha2026detection}. 
 

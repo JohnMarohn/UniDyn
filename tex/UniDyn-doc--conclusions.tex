@@ -2,18 +2,20 @@
 
 The \verb+UniDyn+ package offers a general approach to symbolically computing the unitary evolution of quantum-mechanical operators given only the operators’ underlying commutation relations.
 The package includes code for manipulating and simplifying expressions involving a mixture of commuting and non-commuting symbols, commutators, and inverse operators.
-The Sec.~\ref{sec:results} results show that the \verb+Evolver+ algorithms are applicable in cases well beyond the unit tests discussed in Sec.~\ref{sec:results} and Appendix~\ref{sec:code}.
 The \verb+UniDyn+ package GitHub page includes eight \emph{Mathematica} notebooks showing example \verb+Evolver2+ calculations involving one spin, two spins, the harmonic oscillator, quantum optics, and electron transfer.
 
-One of us (JAM) has used the \verb+UniDyn+ package to teach magnetic resonance, multidimensional spectroscopy, relaxation theory, and quantum optics in a graduate quantum mechanics course.
-The package significantly expands the range of phenomena that can be covered in a one-semester graduate course on time-dependent quantum mechanics.
+Achieving the analytical rotations in Secs.~\ref{sec:code-subsection}, \ref{sec:two-spins}, \ref{sec:ho}, and \ref{sec:et} was possible because each calculation took place in a finite-dimensional Lie algebra, closed under repeated commutation with a Hamiltonian.
+The Sec.~\ref{sec:results} results show that the \verb+Evolver+ algorithms are applicable in cases well beyond the unit tests discussed in Sec.~\ref{sec:results} and Appendix~\ref{sec:code}.
+The \verb+Evolver1+ and \verb+Evolver2+ algorithms were unable to obtain a closed form solution for the Sec.~\ref{sec:qc} density operator $\rho(0^{+})$ evolving under the Hamiltonian ${\cal H}_0 + {\cal H}_1$.
+We could nevertheless use the \verb+UniDyn+ package to obtain a leading-order analytical solution for the time-dependent density operator $\rho(t)$ by using \verb+Evolver2+ to transform the Hamiltonian into an interaction representation, obtain an effective Hamiltonian using a first-order Magnus expansion, and evolve $\rho(0^{+})$ under the resulting effective Hamiltonian.
+While the Sec.~\ref{sec:qc} calculation reproduced a known result, in contrast with the wavefunction approach used previously, it is straightforward to extend the density operator approach used here to handle impure initial conditions.
+It would be straightforward to extend the Sec.~\ref{sec:qc} analysis to include higher-order Magnus expansion terms for additional accuracy.
 
-Two of us (ASR and JAM) recently used \verb+Evolver1+ to compute multi-spin double-quantum coherence expressions for up to $N_{\mathrm{spin}} = 9$ spin $I = 1/2$ particles \cite{SinhaRoy2024apr}.
-Given that $N_{\mathrm{spin}} = 9$ is near the limit of what can be simulated \emph{numerically}, we were initially surprised to find that the evolution of so many spins could be treated \emph{analytically}.
-We should consider, however, that the pulse sequences in Ref.~\citenum{SinhaRoy2024apr} were relatively simple and that spin-spin couplings act in a pairwise fashion.
-These constraints limited the terms in the density operator to many fewer than would be included in a numerical calculation. 
-Remarkably, \verb+Evolver1+ results could be averaged over orientations analytically and extrapolated to obtain analytical expressions for signal valid in the $N_{\mathrm{spin}} \rightarrow \infty$ limit. Further applications of \verb+Evolver1+, including the effects of the pseudo-secular dipolar coupling and finite pulses, have resulted into significantly improved, yet rapid, data analysis of pulsed dipolar electron spin resonance signals \cite{sinha2024rapid, sinha2026detection}. 
-
-We hope that others will find the \verb+UniDyn+ package as useful as we have.
+We envision that the \verb+UniDyn+ package will be useful for both teaching and research.
+Marohn has used the package to teach magnetic resonance, multidimensional spectroscopy, relaxation theory, and quantum optics in a graduate quantum mechanics course.
+The package significantly expands the range of phenomena that can be covered, in class and in problem sets, in a one-semester graduate course on time-dependent quantum mechanics.
+As described in Sec.~\ref{sec:esr}, Roy, Marohn, and co workers have used the \verb+UniDyn+ to obtain new analytical results for multispin evolution in pulsed dipolar electron spin resonance signals in the $N_{\mathrm{spin}} \rightarrow \infty$ limit. 
+This finding, and the Sec.~\ref{sec:qc} calculation, suggests that  \verb+UniDyn+ is ready to address research questions in quantum information and quantum computing.
+We hope that others will find using the \verb+UniDyn+ package as stimulating as we have.
 
 
