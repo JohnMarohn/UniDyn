@@ -202,7 +202,7 @@ Starting instead with both atoms in the ground state, $\rho(0) = (\frac{1}{2} + 
 These pulses will transform the density operator to $\rho(0^{+}) = (\frac{1}{2} + I_x )(\frac{1}{2} + S_x)$. 
 Evolving $\rho(0^{+})$ under the eq.~\ref{eq:ion-H11} Hamiltonian for a time $\Delta t = \pi \big/ 2 \Omega$, the density operator is now
 \[
-  \rho(\Delta t) = \frac{1}{4} + I_z S_z + I_y S_y + I_z S_x, 
+  \rho(\Delta t) = \frac{1}{4} + I_x S_z + I_y S_y + I_z S_x, 
 \]
 The value of the Wootters' concurrence function \cite{Wootters1998mar,Rungta2001sep} for this density operator is 1; the two atoms are maximally entangled.
 The associated wavefunction is the Bell-like state \cite{Horodecki2009jun}
@@ -215,17 +215,89 @@ The associated wavefunction is the Bell-like state \cite{Horodecki2009jun}
 Zheng and Guo \cite{Zheng2000sep} developed a similar entanglement scheme by evolving the wavefunction $\psi_0 = \ket{\uparrow \downarrow}$; their cavity-assisted entanglement scheme was demonstrated experimentally by Osnaghi and coworkers \cite{Osnaghi2001jun}.
 Here we have recapitulated Zheng and Guo's work succinctly using the Magnus expansion to create an effective Hamiltonian and evolving the density operator using this effective Hamiltonian.
 
-% ------------------------------------------------------
-\subsection{Electron spin resonance}
-% ------------------------------------------------------
+% ----------------------------------------------------------------------------------
+\subsection{Electron spin resonance: an $N$-spin signal expression with $N\to\infty$} %Density operator expression for an $N$-spin system with $N \to \infty$}
+% ---------------------------------------------------------------------------------- 
 \label{sec:esr}
+Double quantum coherence (DQC) is a major pulsed electron spin resonance (ESR) technique for measuring inter-spin distances in the range of 10 to 80 \AA\, typically in doubly spin-labeled proteins in the frozen state \cite{Saxena1997aug,Borbat1999nov,SinhaRoy2026jan}. In its standard form, DQC is a 6-pulse experiment, described in Figure~\ref{fig:dqc}. For an isolated pair of spin-1/2s, double quantum coherence is generated selectively using the $\pi/2 \text{--} t_\mathrm{p} \text{--} \pi \text{--} t_\mathrm{p} \text{--} \pi/2$-section of the pulse sequence, combined with phase cycling. The middle section, $t_1 \text{--} \pi \text{--} t_1$, refocuses the DQC and then the last $\pi/2$-pulse converts it to anti-phase single quantum coherence (SQC). The final $t_2 \text{--} \pi \text{--} t_2$-sequence creates in-phase SQC and a refocused echo is obtained at $t_2 = t_\mathrm{m} \text{ (constant) } - t_\mathrm{p}$ (cf. Figure~\ref{fig:dqc}). 
 
-Roy, Marohn, and co workers recently used \verb+Evolver1+ to compute multi-spin double-quantum coherence expressions for up to $N_{\mathrm{spin}} = 9$ spin $I = 1/2$ particles \cite{SinhaRoy2024apr}.
-Given that $N_{\mathrm{spin}} = 9$ is near the limit of what can be simulated \emph{numerically}, we were initially surprised to find that the evolution of so many spins could be treated \emph{analytically}.
-We should consider, however, that the pulse sequences in Ref.~\citenum{SinhaRoy2024apr} were relatively simple and that spin-spin couplings act in a pairwise fashion.
-These constraints limited the terms in the density operator to many fewer than would be included in a numerical calculation. 
-Remarkably, \verb+Evolver1+ results could be averaged over orientations analytically and extrapolated to obtain analytical expressions for signal valid in the $N_{\mathrm{spin}} \rightarrow \infty$ limit.
-Further applications of \verb+Evolver1+, including the effects of the pseudo-secular dipolar coupling and finite pulses, have resulted into significantly improved, yet rapid, data analysis of pulsed dipolar electron spin resonance signals \cite{SinhaRoy2024apr,SinhaRoy2025jan,SinhaRoy2026jan}.
-%
-% \cite{sinha2024rapid, sinha2026detection}. 
+For an isolated spin pair with weak dipolar coupling (spin-spin distance $\ge 17$ \AA) and with ideal pulse approximation, the DQC signal expression is given by \cite{Borbat1999nov}
 
+\begin{equation}
+    V_{0} = \frac{i}{8} \, s_{a_{12}}^{t_\mathrm{p}}\,s_{a_{12}}^{t_2}
+    \label{eqn:eq-dqcideal}
+\end{equation}
+where $s_a^t \equiv \sin{(a\, t)}$. The dipolar coupling constant $a_{12}$ is given by \cite{Borbat1999nov}
+
+\begin{equation}
+    a_{12} = \omega_0\,(1-3\,\cos^2{\theta_{12}})/r_{12}^3  
+    \label{eqn:eq-dipCoup}
+\end{equation}
+where $\omega_0$ is the dipolar constant, $r_{12}$ is the distance between the spin pair and $\theta_{12}$ is the angle between the $\overrightarrow{r}_{12}$ vector and the external magnetic field. The signal from a frozen sample gives a powder average over $\theta_{12}$ and thus, inter-spin distance $r_{12}$ is measured by determining $a_{12}$ from DQC signals. In biophysical applications, with doubly spin-labeled proteins, such distance information can help predict protein structures and structural changes \cite{Borbat1999nov,SinhaRoy2026jan}.  
+
+However, in any doubly spin-labeled protein samples, the intermolecular dipolar interactions produce a non-negligible background signal or baseline. As a result, an accurate DQC analysis to obtain meaningful information requires a robust and accurate theory for baseline subtraction. This remained a key challenge in DQC data analysis since its development in the late 1990s.
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=\textwidth]{figures/DQC_Figure.png}
+\caption{DQC 6-pulse sequence with the short and tall rectangles representing $\pi/2$ and $\pi$-pulses, respectively. Typically, $t_\mathrm{m} = t_\mathrm{p} + t_2$ is kept constant in an experiment, while varying $t_p$ from 0 to $t_\mathrm{m}$ ($t_2$ = $t_\mathrm{m} - t_\mathrm{p}$); $t_1$ is kept constant as well. The pulse phases ($\phi_j$) and the propagators, for each pulse ($R$) and free-evolution ($Q$), are shown. Starting from the equilibrium density operator $\rho_0$, the overall density operator expressions are derived in four stages: preparation of multiple quantum coherences ($\rho_\mathrm{A}$), refocusing of DQC ($\rho_\mathrm{B}$), conversion of DQC to single quantum coherence ($\rho_\mathrm{C}$) and formation of refocused echo ($\rho_\mathrm{D}$).}
+\label{fig:dqc}
+\end{figure}
+
+In a recent work, Roy, Marohn, and co workers used \verb+Evolver1+ to obtain analytical and symbolic expressions of $\rho_\mathrm{A}$, $\rho_\mathrm{B}$, $\rho_\mathrm{C}$ and $\rho_\mathrm{D}$ (cf. Figure~\ref{fig:dqc}) with multiple spin-1/2 particles. In this work, the total Hamiltonian (${\cal H}$) is defined as \cite{Slichter1990,SinhaRoy2024apr}
+\begin{equation}
+    \begin{split}
+        {\cal H} &= {\cal H}_\mathrm{S} + {\cal H}_\mathrm{B} + {\cal H}_\mathrm{SB} \\
+        {\cal H}_\mathrm{S} &=\, \Omega_1\,I_\mathrm{1z}\,+\,\Omega_2\,I_\mathrm{2z}\,+\,a_{12}\,I_\mathrm{1z}\,I_\mathrm{2z} \\
+        {\cal H}_\mathrm{B} &=\,\sum_{j=3}^{N}\Omega_{j}\,I_{j\mathrm{z}}\,+\,\sum_{i=3}^{N-1}\sum_{j=i+1}^N{a_{ij}\,I_{i\mathrm{z}}\,I_{j\mathrm{z}}} \\
+        {\cal H}_\mathrm{SB} &= \,\sum_{j=3}^N{\left(a_{1j}\,I_\mathrm{1z}\,I_{j\mathrm{z}} + a_{2j}\,I_\mathrm{2z}\,I_{j\mathrm{z}}\right)}
+    \end{split}
+    \label{eqn:eq-dqcHamiltonian}
+\end{equation}
+where ${\cal H}_\mathrm{S}$, ${\cal H}_\mathrm{B}$ and ${\cal H}_\mathrm{SB}$ are the Hamiltonians for an intramolecular spin pair, the spin bath and the interactions between the intramolecular pair and the bath, respectively. The resonance offset for the $j$th spin and the dipolar coupling constant between the $\{i, j\}$-pair of spins are given by $\Omega_j$ and $a_{ij}$, respectively.
+
+Starting with an isolated spin pair ($N_{\mathrm{spin}}$=2), phase-cycled analytical expression of $\rho_\mathrm{A}$ was obtained for up to $N_{\mathrm{spin}}$=9, i.e., the intramolecular pair plus 7 bath spins \cite{SinhaRoy2024apr}. Given that $N_{\mathrm{spin}} = 9$ is near the limit of what can be simulated \emph{numerically}, we were initially surprised to find that the evolution of so many spins could be treated \emph{analytically}. We should consider, however, that the DQC pulse sequence is relatively simple and that spin-spin couplings act in a pairwise fashion \cite{SinhaRoy2024apr}. These constraints limited the terms in the density operator to many fewer than would be included in a numerical calculation. 
+
+The patterns obtained from these expressions with increasing $N_{\mathrm{spin}}$ were used to express $\rho_\mathrm{A}$ for an arbitrary $N_{\mathrm{spin}}$ = $N$. Subsequently, the general $N$-spin expressions of $\rho_\mathrm{B}$ through $\rho_\mathrm{D}$ were obtained. Given the symmetry of the problem and with the high temperature approximation, it was sufficient to derive the density operator expressions starting with an equilibrium density operator $\rho_0 \propto I_\mathrm{1z}$ \cite{Slichter1990}. Finally, we collect all the terms that contain $a_{12}$ (i.e., the intramolecular dipolar contribution) and denote the collection as $\rho_\mathrm{D,DQC}$; the rest of the terms were collected under $\rho_\mathrm{D,BG}$. The following expressions of $\rho_\mathrm{D,DQC}$ and $\rho_\mathrm{D,BG}$ were obtained \cite{SinhaRoy2024apr} 
+
+\begin{equation}
+    \begin{split}
+        \rho_\mathrm{D,DQC} &= \frac{i}{4}I_\mathrm{1-}\sum_{n=0}^{N-2}\binom{N-2}{n}(-1)^{n}\prod_{j=2}^{n+2}s_{a_{1j}}^{t_p}s_{a_{1j}}^{t_2}\prod_{k=n+3}^{N}c_{a_{1k}}^{t_p}c_{a_{1k}}^{t_2} \\
+        \rho_\mathrm{D,BG} &= -\frac{i}{4}I_\mathrm{1-}\sum_{n=1}^{N-2}\binom{N-2}{n}\,(-1)^{n}\prod_{j=3}^{n+2}s_{a_{1j}}^{t_p}s_{a_{1j}}^{t_2}\prod_{k=n+3}^{N}c_{a_{1k}}^{t_p}c_{a_{1k}}^{t_2} \\
+    \end{split}
+    \label{eqn:eq-rhoD}
+\end{equation}
+
+The $N$-spin signal expression $V$ was obtained using the relations $V = \mathrm{Tr}(\rho_\mathrm{D}\cdot I_{1+})$ and $\mathrm{Tr}(I_{1-}\cdot I_{1+})/\mathrm{Tr}(\mathbb{1}_{2^N})$=1/2, given by \cite{SinhaRoy2024apr}
+\begin{equation}
+    \begin{split}
+        V_\mathrm{DQC} &= \underbrace{\frac{i}{8}s_{a_{12}}^{t_p}s_{a_{12}}^{t_2}}_{V_0}\sum_{n=0}^{N-2}\binom{N-2}{n}(-1)^{n}\prod_{j=3}^{n+2}s_{a_{1j}}^{t_p}s_{a_{1j}}^{t_2}\prod_{k=n+3}^{N}c_{a_{1k}}^{t_p}c_{a_{1k}}^{t_2} \\
+        V_\mathrm{BG} &= -\frac{i}{8}\sum_{n=1}^{N-2}\binom{N-2}{n}(-1)^{n}\prod_{j=3}^{n+2}s_{a_{1j}}^{t_p}s_{a_{1j}}^{t_2}\prod_{k=n+3}^{N}c_{a_{1k}}^{t_p}c_{a_{1k}}^{t_2}    
+    \end{split}
+    \label{eqn:eq-dqcNspin}
+\end{equation}
+
+We recognized that in a homogeneous sample, we can implement the following replacement rules to any intermolecular spin pairs 
+\begin{equation}
+    \begin{split}
+        & a_{1k} \to a(r, \theta) \\
+        & \prod_{k=1}^n \sin{(a_{1k}\, t)} \to \sin^n{(a(r, \theta)\,t)} \\
+        & \prod_{k=1}^n \cos{(a_{1k}\, t)} \to \cos^n{(a(r, \theta)\,t)}
+    \end{split}
+    \label{eqn:eq-replacement}
+\end{equation}
+Subsequently, Eq.~\ref{eqn:eq-dqcNspin} was rewritten using the replacement rules in Eq.~\ref{eqn:eq-replacement} and remarkably, these results could be averaged over the entire range of $r$ and $\theta$ and extrapolated to obtain analytical expressions for the average intermolecular contribution valid in the $N_{\mathrm{spin}} \rightarrow \infty$ limit. 
+
+The following closed form expressions for the DQC and background signals were obtained \cite{SinhaRoy2024apr}
+\begin{equation}
+    \begin{split}
+        &V_\mathrm{DQC} = C\, V_0\,\exp{\left(-4\,C\,\eta\,t_\mathrm{m}\right)} \\
+        &V_\mathrm{BG} = \frac{i\,C}{8}\,\bigg[\exp{\left(-2\,C\,\eta\,(t_\mathrm{m} + |t_\xi|)\right)} - \exp{\left(-4\,C\,\eta\,t_\mathrm{m}\right)}\bigg] \\
+    \end{split}
+    \label{eqn:eq-dqcCF}
+\end{equation}
+where $t_\mathrm{m} = t_\mathrm{p} + t_2$, $t_\xi = t_\mathrm{p} - t_2$, $\eta = 4\,\pi^2\,\omega_0/9\,\sqrt{3}$ (a constant) and $C$ is the doubly spin-labeled protein concentration.
+
+Interestingly, replacing $C$ by an effective concentration to account for finite pulses that only partially cover the frequency bandwidth of the spin labels, simulations using Eq.~\ref{eqn:eq-dqcCF} matched experimental results very well \cite{SinhaRoy2026jan, Mandato2025jul}.
+
+Further applications of \verb+Evolver1+, including the effects of the pseudo-secular dipolar coupling and finite pulses to the intramolecular DQC and other pulsed dipolar electron spin resonance techniques, have resulted into significantly improved, yet rapid, data analysis \cite{SinhaRoy2024apr,SinhaRoy2025jan,SinhaRoy2026jan}.
